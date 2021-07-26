@@ -1,16 +1,30 @@
 import logo from './logo.svg';
 import './App.css';
-import Navbar from './Component/FrontEnd/Home/Header/Navbar/Navbar';
-import Slider from './Component/FrontEnd/Home/Header/Slider/Slider';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+
+import Home from './Component/FrontEnd/Home/Home/Home';
 
 function App() {
   return (
-
-    <div className="App">
-      <Navbar></Navbar>
-      <Slider></Slider>
-      <h1>Hello Mysterious!</h1>
-    </div>
+<Router>
+      
+     <Switch>
+          <Route exact path="/">
+          <Home/>
+          </Route>
+          {/* <Route exact path="/">
+            <Home></Home>
+          </Route> */}
+          <Route path="/home">
+            <Home/>
+          </Route>
+        </Switch>
+    </Router>
   );
 }
 
