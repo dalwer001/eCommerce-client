@@ -2,6 +2,7 @@ import React from 'react';
 import Slider from '../Header/Slider/Slider';
 import Navbar from '../Header/Navbar/Navbar';
 import Footer from '../Footer/Footer';
+import Category from '../Category/Category';
 
 
 const Home = () => {
@@ -9,7 +10,8 @@ const Home = () => {
       <div>
            <Navbar></Navbar>
         <Slider></Slider>
-        <h1>Hello Mysterious!</h1>
+        <Category></Category>
+        <h1 class="text-center">Hello Mysterious!</h1>
         <Footer></Footer>
       </div>
     );
