@@ -2,14 +2,15 @@ import React from 'react';
 import Slider from '../Header/Slider/Slider';
 import Navbar from '../Header/Navbar/Navbar';
 import Footer from '../Footer/Footer';
+import Products from '../Products/Products';
 
 
 const Home = () => {
     return (
       <div>
-           <Navbar></Navbar>
+        <Navbar></Navbar>
         <Slider></Slider>
-        <h1>Hello Mysterious!</h1>
+        <Products/>
         <Footer></Footer>
       </div>
     );

@@ -1,0 +1,15 @@
+
+.recent-card-body{
+    background: rgb(205, 197, 212);
+    height: 100%;
+}
+
+.recent-card-hover{
+    position: relative;
+}
+
+
+.recent-card-hover:hover{
+    
+    
+}
