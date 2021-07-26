@@ -1,5 +1,7 @@
 import React from 'react';
-
+import fashion1 from '../../../../../Images/images1.jpg';
+import fashion2 from '../../../../../Images/images2.jpg';
+import fashion3 from '../../../../../Images/images3.jpg';
 
 const Slider = () => {
     return (
@@ -11,25 +13,25 @@ const Slider = () => {
   </div>
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img src="..." class="d-block w-100" alt="..."/>
-      <div class="carousel-caption d-none d-md-block">
+      <img src={fashion1} class="d-block w-100 h-25" alt="..."/>
+      {/* <div class="carousel-caption d-none d-md-block">
         <h5>First slide label</h5>
         <p>Some representative placeholder content for the first slide.</p>
-      </div>
+      </div> */}
     </div>
     <div class="carousel-item">
-      <img src="..." class="d-block w-100" alt="..."/>
-      <div class="carousel-caption d-none d-md-block">
+      <img src={fashion2} class="d-block w-100 h-25" alt="..."/>
+      {/* <div class="carousel-caption d-none d-md-block">
         <h5>Second slide label</h5>
         <p>Some representative placeholder content for the second slide.</p>
-      </div>
+      </div> */}
     </div>
     <div class="carousel-item">
-      <img src="..." class="d-block w-100" alt="..."/>
-      <div class="carousel-caption d-none d-md-block">
+      <img src={fashion3} class="d-block w-100 h-25" alt="..."/>
+      {/* <div class="carousel-caption d-none d-md-block">
         <h5>Third slide label</h5>
         <p>Some representative placeholder content for the third slide.</p>
-      </div>
+      </div> */}
     </div>
   </div>
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
