@@ -1,5 +1,5 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook, faInstagram, faTwitter } from '@fortawesome/free-brands-svg-icons';
 import { Link } from 'react-router-dom';
 
@@ -44,7 +44,6 @@ const Footer = () => {
                 <div class="col-md-12 text-center p-5">
                     <p>All rights reserved by ©AB Securities Ltd</p>
                 </div>
-               
             </div>
         </section>
     );

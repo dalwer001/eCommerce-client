@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useEffect } from 'react';
 import { useState } from 'react';
 import ProductDetails from '../ProductDetails/ProductDetails';
+import './Product.css';
 
 const Products = () => {
     const [recentProducts, setRecentProducts] = useState([]);
@@ -14,19 +15,21 @@ const Products = () => {
         productsLoaders();
     }, []);
 
-    const productLoader = recentProducts.splice(2,12);
+    const productLoader = recentProducts.splice(2, 12);
 
     return (
-        <div className="container">
-            <h4 className="mt-5 mb-5 border-bottom">Recent Products</h4>
-            <div className="row">
-                {
-                    productLoader.map(products =>
-                        <ProductDetails products={products}
-                        />)
-                }
-            </div>
+        <div className="recent-product-bg">
+            <div className="container p-5">
+                <h4 className="mb-5 border-bottom fw-bolder">Recent Products</h4>
+                <div className="row">
+                    {
+                        productLoader.map(products =>
+                            <ProductDetails products={products}
+                            />)
+                    }
+                </div>
 
+            </div>
         </div>
     );
 };
