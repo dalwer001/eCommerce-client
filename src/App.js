@@ -7,28 +7,30 @@ import {
 import Login from "./Component/FrontEnd/Login/Login"
 import Home from './Component/FrontEnd/Home/Home/Home';
 import axios from 'axios';
+import { createContext, useState } from 'react';
 
 axios.defaults.baseURL = "https://fakestoreapi.com";
 
+export const CartContext = createContext();
+
 function App() {
+  const [cartProduct, setCartProduct] = useState([]);
   return (
-<Router>
-      
-    <Switch>
+    <CartContext.Provider value={[cartProduct, setCartProduct]}>
+      <Router>
+        <Switch>
           <Route exact path="/">
-          <Home/>
+            <Home />
           </Route>
-          {/* <Route exact path="/">
-            <Home></Home>
-          </Route> */}
           <Route path="/home">
-            <Home/>
+            <Home />
           </Route>
           <Route path="/login">
-          <Login></Login>
+            <Login></Login>
           </Route>
         </Switch>
-    </Router>
+      </Router>
+    </CartContext.Provider>
   );
 }
 

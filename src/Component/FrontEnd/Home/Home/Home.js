@@ -8,16 +8,16 @@ import Offers from '../Offers/Offers';
 
 
 const Home = () => {
-    return (
-      <div>
-        <Navbar></Navbar>
-        <Slider></Slider>
-        <Category/>
-        <Products/>
-        <Offers></Offers>
-        <Footer></Footer>
-      </div>
-    );
+  return (
+    <div>
+      <Navbar></Navbar>
+      <Slider></Slider>
+      <Category />
+      <Products />
+      <Offers></Offers>
+      <Footer></Footer>
+    </div>
+  );
 };
 
 export default Home;
