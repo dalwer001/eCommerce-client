@@ -18,7 +18,7 @@ const ProductDetails = ({ products, addToCart }) => {
     return (
         <div className="col-sm-12 d-flex justify-content-center col-lg-4 col-md-6 py-3">
             <Bounce left cascade>
-                <Card style={{ width: '18rem', borderRadius: '8px', height: '28rem' }} className="recent-card-hover recent-product-card-pointer">
+                <Card style={{ width: '18rem', borderRadius: '8px', height: '28rem' }} className="recent-card-hover recent-product-card-pointer" onClick={() => singleProductClick(id)}>
                     <div className="card-image">
                         <Card.Img variant="top" src={image} className="w-100 img-fluid p-3" style={{ height: '18rem' }} />
                     </div>
@@ -27,7 +27,7 @@ const ProductDetails = ({ products, addToCart }) => {
                         <a><small><FontAwesomeIcon size="2x" onClick={() => addToCart(products)} className="shoppingCart ms-0 m-2" icon={faShoppingCart} /></small></a>
                     </div>
                     <Card.Body className="recent-card-body">
-                        <Card.Title><small onClick={() => singleProductClick(id)}>{title}</small></Card.Title>
+                        <Card.Title><small>{title}</small></Card.Title>
                         <Card.Text className="fw-bolder">
                             ${price}
                         </Card.Text>
