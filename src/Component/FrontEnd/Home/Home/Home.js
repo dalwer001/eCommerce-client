@@ -2,16 +2,17 @@ import React from 'react';
 import Slider from '../Header/Slider/Slider';
 import Navbar from '../Header/Navbar/Navbar';
 import Footer from '../Footer/Footer';
+import Products from '../Products/Products';
 import Category from '../Category/Category';
 
 
 const Home = () => {
     return (
       <div>
-           <Navbar></Navbar>
+        <Navbar></Navbar>
         <Slider></Slider>
-        <Category></Category>
-        <h1 class="text-center">Hello Mysterious!</h1>
+        <Category/>
+        <Products/>
         <Footer></Footer>
       </div>
     );

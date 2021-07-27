@@ -1,0 +1,49 @@
+
+.recent-card-body{
+    background-color: rgb(197, 183, 202);
+    /* background-image: conic-gradient(rgb(192, 107, 107) 60%, rgba(231, 216, 85, 0.568) 40%); */
+    background-image: repeating-radial-gradient( circle at 0 0, rgba(207, 134, 156, 0.657), rgb(166, 187, 195) 165px) ;
+    
+    height: 100%;
+    color: whitesmoke;
+}
+
+
+.recent-card-hover{
+    border-color:1px solid orchid;
+}
+
+.card-fontAwesome{
+    display:none;
+}
+
+.wishlist{
+    color:rgb(210, 209, 214)
+}
+.wishlist:hover{
+    color:brown;
+}
+
+.shoppingCart{
+    color:rgb(205, 202, 206)
+}
+.shoppingCart:hover{
+    color:rgb(228, 168, 153);
+}
+
+.card-image{
+    position: relative;
+    border: 1px solid rgb(230, 82, 151);
+}
+
+.card-icon{
+    position: absolute;
+    left:75%;
+}
+
+
+.recent-card-hover:hover{
+    box-shadow:0px 0px 15px 8px tomato;
+    transform: scale(1.3);
+    transition: .5s ease-in;
+}
