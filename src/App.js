@@ -7,6 +7,7 @@ import {
 import Login from "./Component/FrontEnd/Login/Login"
 import Home from './Component/FrontEnd/Home/Home/Home';
 import axios from 'axios';
+import SingleProduct from './Component/FrontEnd/SingleProduct/SingleProduct/SingleProduct';
 import { createContext, useState } from 'react';
 
 axios.defaults.baseURL = "https://fakestoreapi.com";
@@ -30,6 +31,9 @@ function App() {
           <Route path="/home">
             <Home/>
           </Route>
+          <Route path="/products/:id">
+          <SingleProduct/>
+        </Route>
           <Route path="/login">
           <Login></Login>
           </Route>

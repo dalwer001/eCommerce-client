@@ -15,7 +15,7 @@ const Products = () => {
         productsLoaders();
     }, []);
 
-    const productLoader = recentProducts.splice(2, 12);
+    const productLoader = recentProducts.slice(0, 9);
 
     return (
         <div className="recent-product-bg">
