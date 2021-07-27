@@ -19,20 +19,6 @@
   display: none;
 }
 
-.wishlist {
-  color: rgb(210, 209, 214);
-}
-.wishlist:hover {
-  color: brown;
-}
-
-.shoppingCart {
-  color: rgb(205, 202, 206);
-}
-.shoppingCart:hover {
-  color: rgb(228, 168, 153);
-}
-
 .card-image {
   position: relative;
   border: 1px solid rgb(230, 82, 151);
@@ -49,4 +35,6 @@
   transition: 0.5s ease-in;
 }
 
-.recent-product-card-pointer {cursor: pointer;}
+.recent-product-card-pointer {
+  cursor: pointer;
+}
