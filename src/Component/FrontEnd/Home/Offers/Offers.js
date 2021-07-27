@@ -15,7 +15,7 @@ const Offers = () => {
         productsLoaders();
     }, []);
 
-    const productLoader = recentProducts.splice(2, 12);
+    const productLoader = recentProducts.slice(2, 12);
     const responsive = {
         superLargeDesktop: {
             // the naming can be any, depends on you.
