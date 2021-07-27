@@ -9,12 +9,10 @@ import Home from './Component/FrontEnd/Home/Home/Home';
 import axios from 'axios';
 import SingleProduct from './Component/FrontEnd/SingleProduct/SingleProduct/SingleProduct';
 import { createContext, useState } from 'react';
-import Navbar from './Component/FrontEnd/Shared/Navbar/Navbar';
 import Footer from './Component/FrontEnd/Shared/Footer/Footer';
 import Gallery from './Component/FrontEnd/Gallery/Gallery';
-
+import Navbar from './Component/FrontEnd/Shared/Navbar/Navbar';
 axios.defaults.baseURL = "https://fakestoreapi.com";
-
 
 export const UserContext = createContext();
 
