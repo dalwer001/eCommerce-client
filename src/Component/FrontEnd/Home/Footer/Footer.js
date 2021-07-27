@@ -1,40 +1,50 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
+import { faFacebook, faInstagram, faTwitter } from '@fortawesome/free-brands-svg-icons';
+import { Link } from 'react-router-dom';
+
 
 const Footer = () => {
     return (
-        <section class="mt-5">
+        <section style ={{backgroundColor:"#F5F5F5"}}class="mt-5">
             <div class="row m-0 footer">
                 <div class="col-md-3 p-5">
                     <p>Our company</p>
-                    <p>Company Profile</p>
-                    <p>Management Profile</p>
-                    <p>Missions  Visions</p>
+                    <p>Our history</p>
+                    <p>Contact</p>
+                    <p>Jobs</p>
+                    <p>Journal</p>
+                    <p>Store Locations</p>
+
                 </div>
                 <div class="col-md-3 p-5">
-                    <p>Laws  Regulations</p>
-                    <p>Securities Laws and Rules</p>
-                    <p>Securities Related Rules.</p>
+                    <p>FAQs</p>
+                    <p>Terms & Conditions</p>
+                    <p>Privacy Policy</p>
+                    <p>Support</p>
                 </div>
                 <div class="col-md-3 p-5">
-                    <p>Services</p>
-                    <p>Account Opening</p>
-                    <p>Client Guidelines</p>
+                    <p>Women</p>
+                    <p>Men</p>
+                    <p>Kids</p>
+                    <p>Clothes</p>
+                    <p>Shoes</p>
+                    <p>Bags</p>
+                    <p>Accessories</p>
                 </div>
-                <div class="col-md-3 p-5">
-                    <p>Contact Us</p>
-                    <p>+88-02-9566266</p>
-                    <p>+88-02-9553939</p>
-                    <p>info@esecuresoft.com.bd</p>
-                    <p>Salim Center, Panthopath Dhaka</p>
+                <div class="col-md-3 p-5 ">
+                    <p className="">Follow Us</p>
+                    <Link to="#"><FontAwesomeIcon size="2x"className="text-primary ms-0 m-2" icon={faFacebook} /></Link>
+                    <Link to="#"><FontAwesomeIcon size="2x"className="text-danger m-2  " icon={faInstagram} /></Link>
+                    <Link to="#"><FontAwesomeIcon size="2x"className="text-info m-2 " icon={faTwitter} /></Link>
+                    
                 </div>
             </div>
-            <div class="row m-0 footer">
-                <div class="col-md-6 p-5">
+            <div class="row m-0 footer ">
+                <div class="col-md-12 text-center p-5">
                     <p>All rights reserved by ©AB Securities Ltd</p>
                 </div>
-                <div class="col-md-6 p-5 text-right">
-                    <p>Powered By eSecureSoft Technology Ltd. ( A ESL Company)</p>
-                </div>
+               
             </div>
         </section>
     );

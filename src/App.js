@@ -1,20 +1,20 @@
-import logo from './logo.svg';
 import './App.css';
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Link
+  Route
 } from "react-router-dom";
-
+import Login from "./Component/FrontEnd/Login/Login"
 import Home from './Component/FrontEnd/Home/Home/Home';
-import Login from './Component/FrontEnd/Login/Login';
+import axios from 'axios';
+
+axios.defaults.baseURL = "https://fakestoreapi.com";
 
 function App() {
   return (
 <Router>
       
-     <Switch>
+    <Switch>
           <Route exact path="/">
           <Home/>
           </Route>
@@ -25,7 +25,7 @@ function App() {
             <Home/>
           </Route>
           <Route path="/login">
-            <Login></Login>
+          <Login></Login>
           </Route>
         </Switch>
     </Router>
