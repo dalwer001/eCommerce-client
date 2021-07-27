@@ -1,0 +1,35 @@
+
+.recent-card-body{
+    background-color: rgb(197, 183, 202);
+    background-image: repeating-radial-gradient( circle at 0 0, rgba(224, 213, 217, 0.657), rgb(238, 245, 248) 165px) ;
+    height: 100%;
+    color: whitesmoke;
+}
+
+
+.recent-card-hover{
+    border-color:1px solid orchid;
+}
+
+.card-fontAwesome{
+    display:none;
+}
+
+
+
+
+.card-image{
+    position: relative;
+    border: 1px solid rgb(163, 134, 147);
+}
+
+
+
+
+.recent-card-hover:hover{
+    box-shadow:0px 0px 15px 8px rgb(241, 201, 194);
+    transform: scale(1.1);
+    transition: .5s ease-in;
+}
+
+.recent-product-card-pointer {cursor: pointer;}
