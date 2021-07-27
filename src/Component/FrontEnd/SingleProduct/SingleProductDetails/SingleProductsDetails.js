@@ -30,20 +30,22 @@ const SingleProductsDetails = () => {
                     <div>
                         <h1>{title}</h1>
                         <h6>${price}</h6>
-                        <p>{description}</p>
+                        <p className="product-text-align">{description}</p>
                     </div>
 
+                    {/* size design */}
                     <div className="d-flex align-items-center">
                         <div>
                             <p className="fs-4 single-size-text mt-2">Size</p>
                         </div>
-                        <div className=" mx-5 d-flex single-size-bg rounded-pill p-2">
-                            <a href="#" alt="" className=" product-size-hover mx-3 text-decoration-none text-dark">XS</a>
-                            <a  href="#" alt=""  className="mx-3 text-decoration-none text-dark">S</a>
-                            <a  href="#" alt="" className="mx-3 text-decoration-none text-dark">M</a>
+                        <div className=" mx-5 d-flex single-size-bg rounded-pill p-3">
+                            <a href="#" alt="" className=" product-size-hover mx-3 text-decoration-none ">XS</a>
+                            <a href="#" alt="" className="mx-3 text-decoration-none product-size-hover">S</a>
+                            <a href="#" alt="" className="mx-3 text-decoration-none product-size-hover">M</a>
                         </div>
                     </div>
-
+                    {/* ........................ */}
+                    {/* Cart and  */}
                 </div>
             </div>
         </section>
