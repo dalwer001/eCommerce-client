@@ -9,6 +9,8 @@ import Home from './Component/FrontEnd/Home/Home/Home';
 import axios from 'axios';
 import SingleProduct from './Component/FrontEnd/SingleProduct/SingleProduct/SingleProduct';
 import { createContext, useState } from 'react';
+import Navbar from './Component/FrontEnd/Shared/Navbar/Navbar';
+import Footer from './Component/FrontEnd/Shared/Footer/Footer';
 
 axios.defaults.baseURL = "https://fakestoreapi.com";
 
@@ -20,7 +22,7 @@ function App() {
   return (
     <UserContext.Provider value={[loggedInUser, setLoggedInUser]}>
 <Router>
-      
+  <Navbar/>
     <Switch>
           <Route exact path="/">
           <Home/>
@@ -38,6 +40,7 @@ function App() {
           <Login></Login>
           </Route>
         </Switch>
+        <Footer/>
     </Router>
     </UserContext.Provider>
   );
