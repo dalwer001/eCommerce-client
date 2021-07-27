@@ -14,9 +14,9 @@
     height: 22rem;
     width:18rem;
   }
-  .carousel-inner {
+  /* .carousel-inner {
     padding: 1em;
-  }
+  } */
   .carousel-control-prev,
   .carousel-control-next {
     background-color: #e1e1e1;

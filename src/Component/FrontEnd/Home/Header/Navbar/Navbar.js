@@ -1,4 +1,7 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCartPlus, faSearch, faHeart } from '@fortawesome/free-solid-svg-icons';
 import React from 'react';
+import { Link } from 'react-router-dom';
 import logo from '../../../../../Images/logo.jpg';
 import './Navbar.css';
 
@@ -37,8 +40,12 @@ const Navbar = () => {
               </ul>
                </div> */}
            
-              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-              <button class="btn btn-outline-success" type="submit">Search</button>
+              {/* <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/> */}
+
+              <Link to="#"><FontAwesomeIcon size="2x"className="search ms-0 m-2" icon={faSearch} /></Link>
+              <Link to="#"><FontAwesomeIcon size="2x"className=" wishlistNav  ms-0 m-2" icon={faHeart} /></Link>
+            
+              <Link to="#"><FontAwesomeIcon size="2x"className=" shoppingCart ms-0 m-2" icon={faCartPlus} /></Link>
             </form>
           </div>
         </div>
