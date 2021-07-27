@@ -16,6 +16,15 @@ const Products = () => {
     }, []);
 
     const productLoader = recentProducts.slice(2, 12);
+    const [cartProducts, setCartProducts] = useState([]);
+    const addToCart = (product) => {
+        let newCart = [];
+        newCart = [...cartProducts, product]
+        console.log('cart', newCart)
+        setCartProducts(newCart);
+    }
+
+    // console.log(cartProducts)
 
     return (
         <div className="recent-product-bg">
@@ -24,11 +33,10 @@ const Products = () => {
                 <div className="row">
                     {
                         productLoader.map(products =>
-                            <ProductDetails products={products}
+                            <ProductDetails key={products.id} products={products} addToCart={addToCart}
                             />)
                     }
                 </div>
-
             </div>
         </div>
     );

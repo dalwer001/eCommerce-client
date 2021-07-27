@@ -2,3 +2,22 @@
     width:45px;
     height:40px;
 }
+.search{
+    color:rgb(210, 209, 214)
+}
+.search:hover{
+    color:green;
+}
+.wishlistNav{
+    color:rgb(210, 209, 214)
+}
+.wishlistNav:hover{
+    color:red;
+}
+
+.shoppingCart{
+    color:rgb(205, 202, 206)
+}
+.shoppingCart:hover{
+    color:rgb(228, 168, 153);
+}

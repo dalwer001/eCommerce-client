@@ -7,30 +7,28 @@ import {
 import Login from "./Component/FrontEnd/Login/Login"
 import Home from './Component/FrontEnd/Home/Home/Home';
 import axios from 'axios';
-import { createContext, useState } from 'react';
+import SingleProduct from './Component/FrontEnd/SingleProduct/SingleProduct/SingleProduct';
 
 axios.defaults.baseURL = "https://fakestoreapi.com";
 
-export const CartContext = createContext();
-
 function App() {
-  const [cartProduct, setCartProduct] = useState([]);
   return (
-    <CartContext.Provider value={[cartProduct, setCartProduct]}>
-      <Router>
-        <Switch>
-          <Route exact path="/">
-            <Home />
-          </Route>
-          <Route path="/home">
-            <Home />
-          </Route>
-          <Route path="/login">
-            <Login></Login>
-          </Route>
-        </Switch>
-      </Router>
-    </CartContext.Provider>
+    <Router>
+      <Switch>
+        <Route exact path="/">
+          <Home />
+        </Route>
+        <Route path="/home">
+          <Home />
+        </Route>
+        <Route path="/products/:id">
+          <SingleProduct />
+        </Route>
+        <Route path="/login">
+          <Login></Login>
+        </Route>
+      </Switch>
+    </Router>
   );
 }
 

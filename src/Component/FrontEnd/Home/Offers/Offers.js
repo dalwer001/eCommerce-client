@@ -53,7 +53,6 @@ const Offers = () => {
                                             <p>{products.price} $</p>
                                             <a href="#" class="btn btn-primary">add to cart </a>
                                         </div>
-
                                     </div>
                                  </div>
 
