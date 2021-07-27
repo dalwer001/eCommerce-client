@@ -13,7 +13,7 @@ const ProductDetails = ({ products }) => {
 
         <div className="col-sm-12 d-flex justify-content-center col-lg-4 col-md-6 py-3">
             <Bounce left cascade>
-                <Card style={{ width: '18rem', borderRadius: '8px' }} className="recent-card-hover">
+                <Card style={{ width: '18rem', borderRadius: '8px',height:'28rem' }} className="recent-card-hover">
                     <div className="card-image">
                         <Card.Img variant="top" src={image} className="w-100 img-fluid p-3" style={{ height: '18rem' }} />
                     </div>
