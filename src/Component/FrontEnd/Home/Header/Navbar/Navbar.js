@@ -34,7 +34,7 @@ const Navbar = () => {
             <form class="d-flex">
                {/* <div>
                <ul class="navbar-nav me-auto mb-2 mb-lg-0"> 
-                   <li class="nav-item">
+                   <li class="nav-item  loginNav">
                 <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">Login</a>
               </li>
               </ul>
