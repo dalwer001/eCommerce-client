@@ -1,0 +1,25 @@
+.single-size-bg{
+    background-color: gainsboro;
+    /* border-radius: ; */
+}
+
+.single-size-text{
+    color:rgb(141, 141, 141); 
+}
+
+.product-text-align{
+    ;
+}
+
+.product-size-hover{
+    padding: 5px;
+    font-size: 20px;
+}
+
+.product-size-hover:focus{
+    background: darkslateblue;
+    border-radius:50%;
+    width: 50px;
+    text-align: center;
+    color: white;
+}

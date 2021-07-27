@@ -21,3 +21,8 @@
 .shoppingCart:hover{
     color:rgb(228, 168, 153);
 }
+@media screen and (min-width: 768px) {
+    .loginNav {
+      display: inline-block;
+    }
+  }

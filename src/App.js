@@ -8,12 +8,18 @@ import Login from "./Component/FrontEnd/Login/Login"
 import Home from './Component/FrontEnd/Home/Home/Home';
 import axios from 'axios';
 import SingleProduct from './Component/FrontEnd/SingleProduct/SingleProduct/SingleProduct';
+import { createContext, useState } from 'react';
 import Gallery from './Component/FrontEnd/Gallery/Gallery';
 
 axios.defaults.baseURL = "https://fakestoreapi.com";
 
+
+export const UserContext = createContext();
+
 function App() {
+  const [loggedInUser, setLoggedInUser] = useState({});
   return (
+    <UserContext.Provider value={[loggedInUser, setLoggedInUser]}>
 <Router>
       
     <Switch>
@@ -37,6 +43,7 @@ function App() {
           </Route>
         </Switch>
     </Router>
+    </UserContext.Provider>
   );
 }
 
