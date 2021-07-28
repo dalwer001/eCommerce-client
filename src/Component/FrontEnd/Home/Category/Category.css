@@ -1,8 +1,12 @@
 .categories img{
     width: 200px;
-    height: 150px;
+    height: 200px;
 }
 
-.categories-bg{
-    background: rgba(231, 225, 225, 0.589);
+.card-hover:hover{
+    
+    transform: scale(0.95);
+    transition: .5s ease-in;
 }
+
+.recent-product-card-pointer {cursor: pointer;}

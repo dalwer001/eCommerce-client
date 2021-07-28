@@ -1,35 +1,55 @@
-import React from 'react';
-import fashion4 from '../../../../Images/images4.jpg'
-import fashion5 from '../../../../Images/images5.jpg';
-import fashion6 from '../../../../Images/images6.jpg';
-import './Category.css';
+import React from "react";
+import man from "../../../../Images/man.png";
+import woman from "../../../../Images/woman.png";
+import child from "../../../../Images/children.png";
+import "./Category.css";
 
 const Category = () => {
   return (
     <section class="categories-bg">
       <div class="container overflow-hidden categories p-5">
-      <div class="row g-5">
-        <div class="col">
-          <div class="p-3 rounded bg-warning d-flex align-items-center justify-content-around">
-            <h1 class="text-white">Men</h1>
-            <img src={fashion4} alt="" />
+        <div class="row g-5 ">
+          <div class="col-md-4 ">
+            <div
+              style={{ backgroundColor: "#E3E0DB" }}
+              class="  rounded d-flex "
+            >
+              <h3 style={{ padding: "15px" }}>Men</h3>
+              <img
+                className=" card-hover recent-product-card-pointer"
+                src={man}
+                alt=""
+              />
+            </div>
+          </div>
 
+          <div class="col-md-4 ">
+            <div
+              style={{ backgroundColor: "#E3E0DB" }}
+              class="rounded  d-flex  "
+            >
+              <h3 style={{ padding: "15px", paddingRight: "0px" }}>Women</h3>
+              <img
+                className=" card-hover recent-product-card-pointer"
+                src={woman}
+                alt=""
+              />
+            </div>
+          </div>
+          <div class="col-md-4 ">
+            <div
+              style={{ backgroundColor: "#E3E0DB" }}
+              class="col  rounded  d-flex "
+            >
+              <h3 style={{ padding: "15px" }}>Kids</h3>
+              <img
+                className="card-hover recent-product-card-pointer"
+                src={child}
+                alt=""
+              />
+            </div>
           </div>
         </div>
-        <div class="col">
-          <div class="p-3 rounded bg-success d-flex align-items-center justify-content-around">
-            <h1 class="text-white">Women</h1>
-            <img src={fashion5} alt="" />
-          </div>
-        </div>
-        <div class="col">
-          <div class="p-3 rounded bg-primary d-flex align-items-center justify-content-around">
-            <h1 class="text-white">Kids</h1>
-            <img src={fashion6} alt="" />
-          </div>
-        </div>
-      </div>
-
       </div>
     </section>
   );
