@@ -1,0 +1,22 @@
+.title {
+  background-color: #eeeeee;
+  padding: 15px;
+  border-radius: 10px;
+}
+
+.image img {
+  width: 45px;
+  height: 40px;
+}
+
+.description p {
+  height: 70px;
+}
+
+.calculation h4 {
+  margin-left: 30px;
+}
+
+.description {
+  border-bottom: 3px solid grey;
+}
