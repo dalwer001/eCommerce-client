@@ -12,6 +12,7 @@ import { createContext, useState } from 'react';
 import Footer from './Component/FrontEnd/Shared/Footer/Footer';
 import Gallery from './Component/FrontEnd/Gallery/Gallery';
 import Navbar from './Component/FrontEnd/Shared/Navbar/Navbar';
+import Shop from './Component/FrontEnd/Shop/Shop/Shop';
 axios.defaults.baseURL = "https://fakestoreapi.com";
 
 export const UserContext = createContext();
@@ -40,6 +41,9 @@ function App() {
           </Route>
           <Route path="/login">
             <Login></Login>
+          </Route>
+          <Route path="/shop">
+            <Shop></Shop>
           </Route>
         </Switch>
         <Footer/>
