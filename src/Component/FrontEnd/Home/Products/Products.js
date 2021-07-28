@@ -26,9 +26,10 @@ const Products = () => {
 
     // load product more
     const showMoreProducts = () => {
+        setTimeout(()=>{
         setVisibleProduct((preValue) => preValue + 6);
-        if (setVisibleProduct) { }
-        // setSpinner(true);
+        },1000)
+        setSpinner(true);
     }
     if (visibleProduct) {
         setTimeout(() => { setSpinner(false); },1000);
