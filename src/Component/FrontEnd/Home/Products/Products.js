@@ -15,7 +15,10 @@ const Products = () => {
         productsLoaders();
     }, []);
 
-    const productLoader = recentProducts.slice(2, 12);
+    //product slicing
+    const productLoader = recentProducts.slice(0,9);
+
+    // cart product add
     const [cartProducts, setCartProducts] = useState([]);
     const addToCart = (product) => {
         let newCart = [];
