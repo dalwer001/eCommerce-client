@@ -50,7 +50,7 @@ const SingleProductsDetails = () => {
                         <div>
                             <p className="fs-4 single-size-text mt-2">Size</p>
                         </div>
-                        <div className=" mx-5 d-flex single-size-bg rounded-pill p-3">
+                        <div className=" mx-5 d-flex single-size-bg rounded-pill p-1">
                             <a href="#" alt="" className=" product-size-hover mx-3 text-decoration-none ">XS</a>
                             <a href="#" alt="" className="mx-3 text-decoration-none product-size-hover">S</a>
                             <a href="#" alt="" className="mx-3 text-decoration-none product-size-hover">M</a>
