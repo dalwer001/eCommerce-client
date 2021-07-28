@@ -1,8 +1,8 @@
-
-import { makeStyles } from '@material-ui/core/styles';
 import { Button, Slider, Typography } from '@material-ui/core';
 import React, { useState } from 'react';
 import './ShopFilter.css'
+import { Collapse } from 'react-bootstrap';
+import Pulse from 'react-reveal/Pulse';
 
 
 const ShopFilter = () => {
@@ -21,8 +21,8 @@ const ShopFilter = () => {
   
       
     return (
-        <div >
-             <div className="d-flex justify-content-end">
+        <div className="mb-3" >
+             <div className="d-flex justify-content-end ">
              
              <Button  className="fw-bolder "  onClick={() => setShowProduct(!showProduct)} variant="contained">Filter</Button>
              
@@ -38,11 +38,14 @@ const ShopFilter = () => {
              </ul> */}
  
              </div>
-       
            
-             {
-                showProduct ? <div className="row">
+           
+             <Collapse in = {showProduct}>
+             
+               <div className="row ">
+               <Pulse >
                         <div className="col-md-6">
+                       
                         <div className="">
                         <div>
                             <p className="fs-4 single-size-text mt-2 mx-3">Size</p>
@@ -62,7 +65,7 @@ const ShopFilter = () => {
                             display: 'block',
                             width: 'fit-content'
                             }}>
-                            <Typography className="fs-4 single-size-text mt-2 mx-3" id="range-slider" gutterBottom>
+                            <Typography className="fs-4 single-size-text mt-2 " id="range-slider" gutterBottom>
                                 Select Price Range:
                             </Typography>
                             <Slider
@@ -73,8 +76,10 @@ const ShopFilter = () => {
                             Your range of Price is between {value[0]} /- and {value[1]} /-
                             </div>
                         </div>
-                </div>:null
-            }
+                        </Pulse> 
+                </div>
+                
+            </Collapse>
            
            
         </div>
