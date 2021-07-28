@@ -1,10 +1,8 @@
 import axios from 'axios';
-import React, { useEffect } from 'react';
-import { useState } from 'react';
-import ProductDetails from '../ProductDetails/ProductDetails';
-import './Product.css';
+import React, { useEffect, useState } from 'react';
+import Offers from '../Home/Offers/Offers';
 
-const Products = () => {
+const OfferInfo = () => {
     const [recentProducts, setRecentProducts] = useState([]);
 
     useEffect(() => {
@@ -28,24 +26,21 @@ const Products = () => {
         console.log('cart', newCart)
         setCartProducts(newCart);
     }
-
-    // console.log(cartProducts)
-
     return (
         <div className="recent-product-bg">
-            <div className="container p-5">
-                <h4 className="mb-5 border-bottom fw-bolder">Recent Products</h4>
-                <div className="row">
-                    {
-                        productLoader.map(products =>
-                            <ProductDetails key={products.id} products={products} addToCart={addToCart}
-                            />
-                            )
-                    }
-                </div>
+        <div className="container p-5">
+            <h4 className="mb-5 border-bottom fw-bolder">Recent Products</h4>
+            <div className="row">
+                {/* {
+                    productLoader.map(products =>
+                        <Offers key={products.id} products={products} addToCart={addToCart}
+                        />
+                        )
+                } */}
             </div>
         </div>
+    </div>
     );
 };
 
-export default Products;
+export default OfferInfo;

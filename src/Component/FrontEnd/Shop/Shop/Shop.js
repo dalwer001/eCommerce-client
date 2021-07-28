@@ -1,4 +1,5 @@
 import React from 'react';
+import Products from '../../Home/Products/Products';
 import FilterProducts from '../FilterProducts/FilterProducts';
 import ShopFilter from '../ShopFilter/ShopFilter';
 import ShopSidebar from '../ShopSidebar/ShopSidebar';
@@ -11,7 +12,7 @@ const Shop = () => {
             </div>
             <div className="col-md-9">
                 <ShopFilter></ShopFilter>
-                <FilterProducts></FilterProducts>
+                <Products></Products>
             </div>
             
         </div>
