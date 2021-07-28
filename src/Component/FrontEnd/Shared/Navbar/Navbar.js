@@ -19,7 +19,7 @@ const Navbar = () => {
                 <a class="nav-link active" aria-current="page" href="/home">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Shop</a>
+                <a class="nav-link" href="/shop">Shop</a>
               </li>
               <li class="nav-item dropdown">
                 <a class="nav-link" href="#"> Journal </a>
@@ -28,7 +28,7 @@ const Navbar = () => {
                 <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">Pages</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="login" >Login</a>
+                <a class="nav-link" href="/login" >Login</a>
               </li>
             </ul>
             <form class="d-flex">

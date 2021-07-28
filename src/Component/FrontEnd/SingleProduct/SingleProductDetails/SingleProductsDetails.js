@@ -91,13 +91,13 @@ const SingleProductsDetails = () => {
                         </div>
 
                         <div>
-                            <FontAwesomeIcon size="2x" className="wishlist ms-0 m-2" icon={faHeart} />
+                            <FontAwesomeIcon size="2x" className="product-wishlist ms-0 m-2" icon={faHeart} />
                         </div>
                     </div>
 
                     {/* Category Name */}
                     <div className="mt-5">
-                        <small className="text-secondary fs-6 ">Category: <span className="fw-bolder text-dark">{category}</span></small>
+                        <small className="text-category fs-6 ">Category: <span className="fw-bolder text-dark">{category}</span></small>
                     </div>
 
                 </div>

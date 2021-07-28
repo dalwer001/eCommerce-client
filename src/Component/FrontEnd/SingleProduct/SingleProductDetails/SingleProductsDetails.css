@@ -45,3 +45,7 @@
     transform: scale(1.1);
     cursor:pointer;
 }
+
+.text-category{
+    color: rgb(151, 149, 149);
+}

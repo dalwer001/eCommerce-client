@@ -1,7 +1,11 @@
 
 .recent-card-body{
     background-color: rgb(197, 183, 202);
-    background-image: repeating-radial-gradient( circle at 0 0, rgba(224, 213, 217, 0.657), rgb(238, 245, 248) 165px) ;
+    background: repeating-radial-gradient(
+        circle at 0 0,
+        rgba(195, 113, 138, 0.657),
+        rgb(111, 152, 168) 165px
+    );
     height: 100%;
     color: whitesmoke;
 }
