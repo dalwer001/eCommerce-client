@@ -52,7 +52,7 @@ const Products = () => {
         setCartProducts(newCart);
     };
 
-    // console.log('cp', cartProducts)
+    console.log('cartProducts', cartProducts)
 
     return (
         <div className="recent-product-bg">

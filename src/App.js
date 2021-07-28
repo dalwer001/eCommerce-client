@@ -22,7 +22,6 @@ export const CartContext = createContext();
 function App() {
   const [loggedInUser, setLoggedInUser] = useState({});
   const [cartProducts, setCartProducts] = useState([]);
-  console.log(cartProducts)
   return (
     <UserContext.Provider value={[loggedInUser, setLoggedInUser]}>
       <CartContext.Provider value={[cartProducts, setCartProducts]}>
@@ -43,6 +42,9 @@ function App() {
             </Route>
             <Route path="/gallery">
               <Gallery></Gallery>
+            </Route>
+            <Route path="/cart">
+              <Cart />
             </Route>
             <Route path="/login">
               <Login></Login>

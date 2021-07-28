@@ -14,7 +14,7 @@ const SingleProductsDetails = () => {
         const singleProduct = async () => {
             const res = await axios.get(`/products/${id}`);
             setSingleProduct(res.data);
-            console.log(res.data);
+            // console.log(res.data);
         }
         singleProduct();
     }, [id]);
@@ -48,7 +48,7 @@ const SingleProductsDetails = () => {
         setCartProducts(newCart);
     };
 
-    console.log('cp', cartProducts);
+    // console.log('cp', cartProducts);
 
 
     return (

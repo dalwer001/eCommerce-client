@@ -16,7 +16,7 @@ const ProductReviews = () => {
     const reviewDescription = async () => {
       const res = await axios.get(`/products`);
       setReviewDes(res.data);
-      console.log(res.data);
+      // console.log(res.data);
     }
     reviewDescription();
   }, [])
@@ -29,7 +29,7 @@ const ProductReviews = () => {
     const singleProduct = async () => {
       const res = await axios.get(`/products/${id}`);
       setSingleProduct(res.data);
-      console.log(res.data);
+      // console.log(res.data);
     }
     singleProduct();
   }, [id])
@@ -85,7 +85,7 @@ const ProductReviews = () => {
               </div>
             </div>
             <div className="col-md-6">
-            <ReviewForm></ReviewForm>
+              <ReviewForm></ReviewForm>
             </div>
           </div>
         </div>
