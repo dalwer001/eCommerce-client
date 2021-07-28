@@ -1,21 +1,20 @@
 import axios from 'axios';
-import React, { useState } from 'react';
-import { useEffect } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import './SingleProductsDetails.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faMinus, faArrowRight, faHeart } from '@fortawesome/free-solid-svg-icons';
+import { CartContext } from '../../../../App';
 
 const SingleProductsDetails = () => {
     const [singleProduct, setSingleProduct] = useState([]);
-
     const { id } = useParams();
 
     useEffect(() => {
         const singleProduct = async () => {
             const res = await axios.get(`/products/${id}`);
             setSingleProduct(res.data);
-            console.log(res.data);
+            // console.log(res.data);
         }
         singleProduct();
     }, [id]);
@@ -24,12 +23,32 @@ const SingleProductsDetails = () => {
 
     // product quantity
     const [counter, setCounter] = useState(1);
-    const incrementCounter = () => setCounter(counter+1);
-    let decrementCounter = () => setCounter(counter-1);
-    if(counter<=1)
-    {
+    const incrementCounter = () => setCounter(counter + 1);
+    let decrementCounter = () => setCounter(counter - 1);
+    if (counter <= 1) {
         decrementCounter = () => setCounter(1);
     }
+
+    // add product to cart
+    const [cartProducts, setCartProducts] = useContext(CartContext);
+    const addToCart = (product) => {
+        const toBeAdded = product.id;
+        const sameProduct = cartProducts.find((p) => p.id === toBeAdded);
+        let count = 1;
+        let newCart = [];
+        if (sameProduct) {
+            count = sameProduct.quantity + 1;
+            sameProduct.quantity = count;
+            const others = cartProducts.filter((p) => p.id !== toBeAdded);
+            newCart = [...others, sameProduct];
+        } else {
+            product.quantity = 1;
+            newCart = [...cartProducts, product]
+        }
+        setCartProducts(newCart);
+    };
+
+    // console.log('cp', cartProducts);
 
 
     return (
@@ -50,7 +69,7 @@ const SingleProductsDetails = () => {
                         <div>
                             <p className="fs-4 single-size-text mt-2">Size</p>
                         </div>
-                        <div className=" mx-5 d-flex single-size-bg rounded-pill p-3">
+                        <div className=" mx-5 d-flex single-size-bg rounded-pill p-1">
                             <a href="#" alt="" className=" product-size-hover mx-3 text-decoration-none ">XS</a>
                             <a href="#" alt="" className="mx-3 text-decoration-none product-size-hover">S</a>
                             <a href="#" alt="" className="mx-3 text-decoration-none product-size-hover">M</a>
@@ -66,13 +85,13 @@ const SingleProductsDetails = () => {
                             <button className="btn mx-2 btn-outline-remove btn-sm" onClick={incrementCounter}><FontAwesomeIcon size="1x" className="ms-0" icon={faPlus} /></button>
                         </div>
 
-                        <div className="d-flex mx-4 align-items-center mt-2 add-cart-hover">
+                        <div onClick={() => addToCart(singleProduct)} className="d-flex mx-4 align-items-center mt-2 add-cart-hover">
                             <p className="fw-bolder mt-2">Add to cart</p>
                             <p className="mx-3 product-arrow-background mt-2"><FontAwesomeIcon size="1x" className=" ms-0 text-light" icon={faArrowRight} /></p>
                         </div>
 
                         <div>
-                        <FontAwesomeIcon size="2x" className="product-wishlist ms-0 m-2" icon={faHeart}/>
+                            <FontAwesomeIcon size="2x" className="product-wishlist ms-0 m-2" icon={faHeart} />
                         </div>
                     </div>
 

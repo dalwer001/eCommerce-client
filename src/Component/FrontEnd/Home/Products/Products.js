@@ -1,11 +1,12 @@
 import axios from 'axios';
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { useState } from 'react';
 import ProductDetails from '../ProductDetails/ProductDetails';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import Bounce from 'react-reveal/Bounce';
 import './Product.css';
+import { CartContext } from '../../../../App';
 
 const Products = () => {
     const [recentProducts, setRecentProducts] = useState([]);
@@ -25,26 +26,45 @@ const Products = () => {
 
     // load product more
     const showMoreProducts = () => {
+<<<<<<< HEAD
         setTimeout(() => {
             setVisibleProduct((nextProductLoad) =>nextProductLoad + 6);
         }, 1000)
         setSpinner(true);
+=======
+        setVisibleProduct((preValue) => preValue + 6);
+        if (setVisibleProduct) { }
+        // setSpinner(true);
+>>>>>>> f9c8bb37114100d86783be1c3cd043bcd09e5f71
     }
     if (visibleProduct) {
         setTimeout(() => { setSpinner(false); },1000);
     }
 
 
-    // cart product add
-    const [cartProducts, setCartProducts] = useState([]);
-    const addToCart = (product) => {
-        let newCart = [];
-        newCart = [...cartProducts, product]
-        console.log('cart', newCart)
-        setCartProducts(newCart);
-    }
 
-    // console.log(cartProducts)
+
+    // cart product add
+    const [cartProducts, setCartProducts] = useContext(CartContext);
+    const addToCart = (product) => {
+        const toBeAddedKey = product.id;
+        const sameProduct = cartProducts.find(pd => pd.id === toBeAddedKey);
+        let count = 1;
+        let newCart;
+        if (sameProduct) {
+            count = sameProduct.quantity + 1;
+            sameProduct.quantity = count;
+            const others = cartProducts.filter(pd => pd.id !== toBeAddedKey);
+            newCart = [...others, sameProduct];
+        }
+        else {
+            product.quantity = 1;
+            newCart = [...cartProducts, product];
+        }
+        setCartProducts(newCart);
+    };
+
+    console.log('cartProducts', cartProducts)
 
     return (
         <div className="recent-product-bg">
@@ -54,7 +74,8 @@ const Products = () => {
                     {
                         productLoader.map(products =>
                             <ProductDetails key={products.id} products={products} addToCart={addToCart}
-                            />)
+                            />
+                            )
                     }
                 </div>
 

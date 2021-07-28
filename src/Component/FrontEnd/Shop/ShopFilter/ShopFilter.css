@@ -1,0 +1,23 @@
+.product-size-hoverShop{
+    padding: 10px;
+    font-size: 17px;
+    background: rgb(232, 232, 233);
+    border-radius:25%;
+    width: 100%;
+    text-align: center;
+    color:black;
+}
+
+.product-size-hoverShop:focus{
+    background: rgb(139, 61, 119);
+    border-radius:50%;
+    width: 50px;
+    text-align: center;
+    color: white;
+}
+.normal a{
+    color: black;
+}
+.normal a:hover{
+    color:rgb(163, 163, 163);
+}
