@@ -42,7 +42,7 @@ const Footer = () => {
             </div>
             <div class="row m-0 footer ">
                 <div class="col-md-12 text-center p-5">
-                    <p>All rights reserved by ©AB Securities Ltd</p>
+                    <p>All rights reserved by ©Mysterious Software Company Ltd.</p>
                 </div>
             </div>
         </section>
