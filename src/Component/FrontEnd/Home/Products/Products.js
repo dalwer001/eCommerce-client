@@ -1,11 +1,18 @@
 import axios from 'axios';
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { useState } from 'react';
 import ProductDetails from '../ProductDetails/ProductDetails';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import Bounce from 'react-reveal/Bounce';
+import loadingProduct from '../../../../Images/load-product.gif';
 import './Product.css';
+import { CartContext } from '../../../../App';
 
 const Products = () => {
     const [recentProducts, setRecentProducts] = useState([]);
+    const [visibleProduct, setVisibleProduct] = useState(9);
+    // const [spinner, setSpinner] = useState(false);
 
     useEffect(() => {
         const productsLoaders = async () => {
@@ -16,18 +23,36 @@ const Products = () => {
     }, []);
 
     //product slicing
-    const productLoader = recentProducts.slice(0,9);
+    const productLoader = recentProducts.slice(0, visibleProduct);
 
-    // cart product add
-    const [cartProducts, setCartProducts] = useState([]);
-    const addToCart = (product) => {
-        let newCart = [];
-        newCart = [...cartProducts, product]
-        console.log('cart', newCart)
-        setCartProducts(newCart);
+    // load product more
+    const showMoreProducts = () => {
+        setVisibleProduct((preValue) => preValue + 6);
+        if (setVisibleProduct) { }
+        // setSpinner(true);
     }
 
-    // console.log(cartProducts)
+    // cart product add
+    const [cartProducts, setCartProducts] = useContext(CartContext);
+    const addToCart = (product) => {
+        const toBeAddedKey = product.id;
+        const sameProduct = cartProducts.find(pd => pd.id === toBeAddedKey);
+        let count = 1;
+        let newCart;
+        if (sameProduct) {
+            count = sameProduct.quantity + 1;
+            sameProduct.quantity = count;
+            const others = cartProducts.filter(pd => pd.id !== toBeAddedKey);
+            newCart = [...others, sameProduct];
+        }
+        else {
+            product.quantity = 1;
+            newCart = [...cartProducts, product];
+        }
+        setCartProducts(newCart);
+    };
+
+    console.log('cartProducts', cartProducts)
 
     return (
         <div className="recent-product-bg">
@@ -40,8 +65,20 @@ const Products = () => {
                             />)
                     }
                 </div>
+
+                {/* lOAD MORE PRODUCT */}
+                <Bounce left cascade>
+                    <div className="d-flex justify-content-center mt-5">
+                        <button className="product-load-btn rounded-pill" onClick={showMoreProducts}>
+                            <div className="d-flex justify-content-center align-items-center mt-2">
+                                <p>Load More</p>
+                                <p className="mx-2"><FontAwesomeIcon size="1x" className=" text-dark ms-0" icon={faArrowRight} /></p>
+                            </div>
+                        </button>
+                    </div>
+                </Bounce>
             </div>
-        </div>
+        </div >
     );
 };
 
