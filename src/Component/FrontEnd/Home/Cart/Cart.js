@@ -2,12 +2,14 @@ import React, { useContext } from 'react';
 import { CartContext } from '../../../../App';
 
 const Cart = () => {
-    const [cartProduct, setCartProduct] = useContext(CartContext);
-    console.log('id', cartProduct)
+    const [cartProducts, setCartProducts] = useContext(CartContext);
+    console.log('id', cartProducts)
 
     return (
         <div>
-
+            {
+                cartProducts.map(p => <p>{p.title}</p>)
+            }
         </div>
     );
 };

@@ -1,11 +1,18 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartPlus, faSearch, faHeart } from '@fortawesome/free-solid-svg-icons';
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../../../../Images/logo.jpg';
 import './Navbar.css';
+import { CartContext } from '../../../../../App';
 
 const Navbar = () => {
+  const [cartProducts, setCartProducts] = useContext(CartContext);
+  let cartProductQuantity = 0;
+  cartProducts.forEach(p => {
+    cartProductQuantity += p.quantity;
+  });
+
   return (
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container-fluid">
@@ -43,9 +50,15 @@ const Navbar = () => {
             {/* <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/> */}
 
             <Link to="#"><FontAwesomeIcon size="2x" className="search ms-0 m-2" icon={faSearch} /></Link>
-            <Link to="#"><FontAwesomeIcon size="2x" className=" wishlistNav  ms-0 m-2" icon={faHeart} /></Link>
-
-            <Link to="#"><FontAwesomeIcon size="2x" className=" shoppingCart ms-0 m-2" icon={faCartPlus} /></Link>
+            <Link to="#"><FontAwesomeIcon size="2x" className="wishlistNav  ms-0 m-2" icon={faHeart} /></Link>
+            <Link to="/cart">
+              <button type="button" className="btn btn-sm btn-light position-relative p-0">
+                <FontAwesomeIcon size="2x" className=" shoppingCart ms-0 m-2" icon={faCartPlus} />
+                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                  {cartProductQuantity}
+                </span>
+              </button>
+            </Link>
           </form>
         </div>
       </div>
