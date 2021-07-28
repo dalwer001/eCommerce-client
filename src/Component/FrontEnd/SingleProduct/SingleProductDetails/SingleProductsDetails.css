@@ -8,7 +8,7 @@
 }
 
 .product-text-align{
-    ;
+    text-align: justify;
 }
 
 .product-size-hover{
@@ -22,4 +22,26 @@
     width: 50px;
     text-align: center;
     color: white;
+}
+
+.btn-outline-remove{
+    box-shadow: none;
+}
+
+.product-arrow-background{
+    background:black;
+    padding: .7rem;
+    border-radius: 50%;
+    width: 45px;
+    text-align: center;
+}
+
+.add-cart-hover{
+    transition: .5s ease-in;
+}
+
+.add-cart-hover:hover{
+    box-shadow: rgb(156, 156, 156);
+    transform: scale(1.1);
+    cursor:pointer;
 }
