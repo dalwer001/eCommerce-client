@@ -1,4 +1,5 @@
 import React from 'react';
+import Products from '../../Home/Products/Products';
 import FilterProducts from '../FilterProducts/FilterProducts';
 import ShopFilter from '../ShopFilter/ShopFilter';
 import ShopSidebar from '../ShopSidebar/ShopSidebar';
@@ -10,8 +11,12 @@ const Shop = () => {
                 <ShopSidebar></ShopSidebar>
             </div>
             <div className="col-md-9">
+                <div className="d-flex justify-content-between">
+                <h4>Shop</h4>
+                <a href="/home"> Back to Home</a>
+                </div>
                 <ShopFilter></ShopFilter>
-                <FilterProducts></FilterProducts>
+                <Products></Products>
             </div>
             
         </div>

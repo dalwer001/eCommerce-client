@@ -34,6 +34,11 @@
     border-radius: 50%;
     width: 45px;
     text-align: center;
+    transition: .2s all ease-out;
+}
+
+.product-arrow-background:hover{
+    background: rgb(206, 154, 133);
 }
 
 .add-cart-hover{

@@ -1,8 +1,11 @@
+import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
-import'./Offers.css';
+import { useHistory } from 'react-router-dom';
+import './Offers.css';
 
 const Offers = () => {
     const [recentProducts, setRecentProducts] = useState([]);
@@ -14,6 +17,12 @@ const Offers = () => {
         }
         productsLoaders();
     }, []);
+    // const { id, title, image, price } = products;
+    // const history = useHistory();
+
+    // const singleProductClick = (id) => {
+    //     history.push(`/products/${id}`);
+    // }
 
     const productLoader = recentProducts.slice(2, 12);
     const responsive = {
@@ -35,7 +44,7 @@ const Offers = () => {
             items: 1
         }
     };
-    return (     
+    return (
         <div className="">
             <div className="container p-5">
                 <h4 className="mb-5 border-bottom fw-bolder">Offer Products</h4>
@@ -44,17 +53,33 @@ const Offers = () => {
                         {
                             productLoader.map(products =>
 
-
-                                <div className="col-sm-12 col-md-3 ">
-                                    <div class="card card-design">
-                                        <img src={products.image} class="card-img-top" alt="..." />
-                                        <div class="card-body">
-                                            <h5 class="card-title">{products.title}</h5>
-                                            <p>{products.price} $</p>
-                                            <a href="#" class="btn btn-primary">add to cart </a>
+                                <div class="col-md-10 col-sm-6">
+                                    <div class="product-grid">
+                                        <div style={{ height: "13rem" }} class="">
+                                            <a href="#" class="image">
+                                                <img class="product-image" src={products.image} />
+                                            </a>
+                                            <span class="product-discount-label">-33%</span>
+                                            <ul class="product-links">
+                                                <li><a href="#" data-tip="Add to Wishlist"><i class="fas fa-heart"></i></a></li>
+                                                <li><a href="#" data-tip="Quick View"  ><i class="fa fa-search"></i></a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="product-content">
+                                            {/* <ul class="rating">
+                <li class="fas fa-star"></li>
+                <li class="fas fa-star"></li>
+                <li class="fas fa-star"></li>
+                <li class="far fa-star"></li>
+                <li class="far fa-star"></li>
+            </ul> */}
+                                            <h3 class="title">{products.title}</h3>
+                                            <div class="price"><span>$90.00</span> ${products.price}</div>
+                                            <a class="add-to-cart" href="#"><FontAwesomeIcon size="1x" icon={faShoppingCart} /><span className="p-2">Add to cart</span></a>
                                         </div>
                                     </div>
-                                 </div>
+                                </div>
+
 
                             )}
                     </Carousel>

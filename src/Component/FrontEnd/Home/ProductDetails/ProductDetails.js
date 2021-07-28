@@ -7,6 +7,7 @@ import Bounce from 'react-reveal/Bounce';
 import { useHistory } from 'react-router-dom';
 
 
+
 const ProductDetails = ({ products, addToCart }) => {
     const { id, title, image, price } = products;
     const history = useHistory();
