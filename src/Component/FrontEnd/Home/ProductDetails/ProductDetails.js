@@ -23,7 +23,7 @@ const ProductDetails = ({ products, addToCart }) => {
                         <Card.Img variant="top" src={image} className="w-100 img-fluid p-3" style={{ height: '18rem' }} />
                     </div>
                     <div className="card-icon d-flex justify-content-end">
-                        <a href="#"> <small><FontAwesomeIcon size="2x" className="wishlist ms-0 m-2" icon={faHeart} /></small></a>
+                        <a href="#"> <small><FontAwesomeIcon size="2x" className="product-wishlist ms-0 m-2" icon={faHeart} /></small></a>
                         <a><small><FontAwesomeIcon size="2x" onClick={() => addToCart(products)} className="shoppingCart ms-0 m-2" icon={faShoppingCart} /></small></a>
                     </div>
                     <Card.Body className="recent-card-body">
