@@ -5,7 +5,7 @@
 
 .card-hover:hover{
     
-    transform: scale(0.95);
+    transform: scale(0.975);
     transition: .5s ease-in;
 }
 
