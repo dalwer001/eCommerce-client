@@ -26,16 +26,9 @@ const Products = () => {
 
     // load product more
     const showMoreProducts = () => {
-<<<<<<< HEAD
-        setTimeout(() => {
-            setVisibleProduct((nextProductLoad) =>nextProductLoad + 6);
-        }, 1000)
-        setSpinner(true);
-=======
         setVisibleProduct((preValue) => preValue + 6);
         if (setVisibleProduct) { }
         // setSpinner(true);
->>>>>>> f9c8bb37114100d86783be1c3cd043bcd09e5f71
     }
     if (visibleProduct) {
         setTimeout(() => { setSpinner(false); },1000);
