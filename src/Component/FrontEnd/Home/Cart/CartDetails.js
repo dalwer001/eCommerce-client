@@ -2,6 +2,12 @@ import React from 'react';
 
 const CartDetails = ({ pd }) => {
     const { image, title, quantity, price } = pd;
+
+    // calculation
+    // let total = 0;
+    // const singleProductTotal = price * quantity;
+    // total += singleProductTotal;
+    // console.log('total', total)
     return (
         <div>
             <div className="row d-flex justify-content-between text-start mt-2 description">
