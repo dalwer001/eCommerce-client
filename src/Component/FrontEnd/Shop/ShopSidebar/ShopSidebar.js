@@ -10,7 +10,7 @@ const ShopSidebar = () => {
 
     useEffect(()=>{
         const loadCategory = async()=>{
-            const res = await axios.get('/products/categories');
+            const res = await axios.get('/products/categories/jewelery');
             SetCategory(res.data);
             console.log(res.data);
         }
