@@ -4,7 +4,7 @@ import {
   Switch,
   Route
 } from "react-router-dom";
-import Login from "./Component/FrontEnd/Login/Login"
+import LoginO from "./Component/FrontEnd/Login/LoginO"
 import Home from './Component/FrontEnd/Home/Home/Home';
 import axios from 'axios';
 import SingleProduct from './Component/FrontEnd/SingleProduct/SingleProduct/SingleProduct';
@@ -51,7 +51,7 @@ function App() {
               <Cart />
             </Route>
             <Route path="/login">
-              <Login></Login>
+              <LoginO></LoginO>
             </Route>
             <Route path="/shop">
               <Shop></Shop>

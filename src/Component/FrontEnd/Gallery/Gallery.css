@@ -1,0 +1,8 @@
+
+.image-hover:hover{
+    
+    transform: scale(0.97);
+    transition: .5s ease-in;
+}
+
+.image-card-pointer {cursor: pointer;}
