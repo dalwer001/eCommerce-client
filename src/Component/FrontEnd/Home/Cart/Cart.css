@@ -13,13 +13,14 @@
   height: 40px;
 }
 
-.quantity-input {
-  display: flex;
-  flex-direction: column;
+.quantity-calculation .quantity {
+  height: 30px;
+  /* padding: 20px; */
+  /* width: 50px; */
 }
 
-.description input {
-  margin-bottom: 25px;
+.quantity-calculation input {
+  /* margin-bottom: 25px; */
   width: 60px;
 }
 

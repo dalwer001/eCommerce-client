@@ -12,7 +12,7 @@ const Gallery = () => {
 
   const getImage = () => {
     axios.get(url).then((res) => {
-        
+
       setImages(res.data);
     });
   };
@@ -23,35 +23,29 @@ const Gallery = () => {
 
   if (!images) {
     return <h1>loading.....</h1>;
-    
+
   }
 
   return (
-   
-        <div className="container p-5">
-            <div className="row m-0">
-            {images.map((product) => 
-            <div className="col-md-6 col-sm-12 col-lg-3 d-flex justify-content-center">
-        <Zoom>
-
-          <LazyLoadImage 
-          
-            effect="blur"
-            height="300px"
-            width="250px"
-            src={product.image}
-            key={product.id}
-            alt=""
-            className="image-hover p-3"
-          ></LazyLoadImage>
-        </Zoom>
-        </div>
-      )}
-            </div>
-        
-        </div>
-      
-    
+    <div className="container p-5">
+      <div className="row m-0">
+        {images.map((product) =>
+          <div className="col-md-6 col-sm-12 col-lg-3 d-flex justify-content-center">
+            <Zoom>
+              <LazyLoadImage
+                effect="blur"
+                height="300px"
+                width="250px"
+                src={product.image}
+                key={product.id}
+                alt=""
+                className="image-hover p-3"
+              ></LazyLoadImage>
+            </Zoom>
+          </div>
+        )}
+      </div>
+    </div>
   );
 };
 
