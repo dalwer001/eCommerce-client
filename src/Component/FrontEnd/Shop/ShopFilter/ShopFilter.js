@@ -56,7 +56,7 @@ const ShopFilter = () => {
                             <a href="#" alt="" className="mx-3 text-decoration-none product-size-hoverShop">M</a>
                             <a href="#" alt="" className="mx-3 text-decoration-none product-size-hoverShop">L</a>
                             <a href="#" alt="" className="mx-3 text-decoration-none product-size-hoverShop">XL</a>
-                        </div>
+                        </div> 
                         </div>
                         </div>
                         <div className="col-md-6">
@@ -70,12 +70,12 @@ const ShopFilter = () => {
                             </Typography>
                             <Slider
                                 value={value}
-                                min ={200}
+                                min = {200}
                                 max={1000}
                                 onChange={rangeSelector}
                              valueLabelDisplay="auto"
                             />
-                            Your range of Price is between {value[0]} /- and {value[1]} /-
+                            Your range of Price is between <span className="fw-bolder">${value[0]}</span> and <span className="fw-bolder">${value[1]}</span> 
                             </div>
                         </div>
                         </Pulse> 
