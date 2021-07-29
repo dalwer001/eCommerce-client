@@ -130,7 +130,7 @@ const Login = () => {
     return (
         <div className="container">
             <div className="col-md-12">
-                <div className="card bg-info shadow text-white mx-auto mt-5" style={{ width: '25rem', height: '30rem' }}>
+                <div className="card shadow text-white mx-auto mt-5" style={{ width: '25rem', height: '30rem', backgroundColor:"#A6C3EB" }}>
                     <form className="p-3" onSubmit={handleSubmit}>
                         <h2 className="border-bottom" >{newUser ? 'Create An Account' : 'Login'}</h2>
                         <label className="p-2">{newUser ? 'Name:' : 'Username or Email'}</label>
