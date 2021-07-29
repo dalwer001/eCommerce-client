@@ -70,6 +70,7 @@ const ShopFilter = () => {
                             </Typography>
                             <Slider
                                 value={value}
+                                step={10}
                                 min = {200}
                                 max={1000}
                                 onChange={rangeSelector}
