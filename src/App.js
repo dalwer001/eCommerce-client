@@ -14,6 +14,7 @@ import Gallery from './Component/FrontEnd/Gallery/Gallery';
 import Cart from './Component/FrontEnd/Home/Cart/Cart';
 import Navbar from './Component/FrontEnd/Shared/Navbar/Navbar';
 import Shop from './Component/FrontEnd/Shop/Shop/Shop';
+import Offers from './Component/FrontEnd/Home/Offers/Offers';
 axios.defaults.baseURL = "https://fakestoreapi.com";
 
 export const UserContext = createContext();
@@ -42,6 +43,9 @@ function App() {
             </Route>
             <Route path="/gallery">
               <Gallery></Gallery>
+            </Route>
+            <Route path="/offer">
+              <Offers></Offers>
             </Route>
             <Route path="/cart">
               <Cart />

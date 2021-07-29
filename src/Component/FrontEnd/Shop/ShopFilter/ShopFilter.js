@@ -11,7 +11,7 @@ const ShopFilter = () => {
 
 
     // Our States
-  const [value, setValue] =  React.useState([2,10]);
+  const [value, setValue] =  React.useState([200,300]);
   
   // Changing State when volume increases/decreases
   const rangeSelector = (event, newValue) => {
@@ -70,8 +70,10 @@ const ShopFilter = () => {
                             </Typography>
                             <Slider
                                 value={value}
+                                min ={200}
+                                max={1000}
                                 onChange={rangeSelector}
-                                valueLabelDisplay="auto"
+                             valueLabelDisplay="auto"
                             />
                             Your range of Price is between {value[0]} /- and {value[1]} /-
                             </div>
