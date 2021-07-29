@@ -4,7 +4,7 @@ import {
   Switch,
   Route
 } from "react-router-dom";
-import Login from "./Component/FrontEnd/Login/Login"
+import LoginO from "./Component/FrontEnd/Login/LoginO"
 import Home from './Component/FrontEnd/Home/Home/Home';
 import axios from 'axios';
 import SingleProduct from './Component/FrontEnd/SingleProduct/SingleProduct/SingleProduct';
@@ -17,6 +17,7 @@ import Shop from './Component/FrontEnd/Shop/Shop/Shop';
 import OurCompany from './Component/FrontEnd/FooterInfo/AboutUs/OurCompany/OurCompany';
 import History from './Component/FrontEnd/FooterInfo/AboutUs/History/History';
 import Contact from './Component/FrontEnd/FooterInfo/AboutUs/Contact/Contact';
+import Offers from './Component/FrontEnd/Home/Offers/Offers';
 axios.defaults.baseURL = "https://fakestoreapi.com";
 
 export const UserContext = createContext();
@@ -46,11 +47,14 @@ function App() {
             <Route path="/gallery">
               <Gallery></Gallery>
             </Route>
+            <Route path="/offer">
+              <Offers></Offers>
+            </Route>
             <Route path="/cart">
               <Cart />
             </Route>
             <Route path="/login">
-              <Login></Login>
+              <LoginO></LoginO>
             </Route>
             <Route path="/shop">
               <Shop></Shop>
