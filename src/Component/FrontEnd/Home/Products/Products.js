@@ -74,7 +74,6 @@ const Products = () => {
                 </div>
 
                 {/* lOAD MORE PRODUCT */}
-                {/* <Bounce left cascade> */}
                 <div className="d-flex justify-content-center mt-5">
                     {
                         !spinner ?
@@ -90,7 +89,6 @@ const Products = () => {
                             </div>
                     }
                 </div>
-                {/* </Bounce> */}
 
             </div>
         </div >
