@@ -10,13 +10,27 @@
 }
 
 .description p {
-  height: 70px;
+  height: 40px;
+}
+
+.quantity-input {
+  display: flex;
+  flex-direction: column;
+}
+
+.description input {
+  margin-bottom: 25px;
+  width: 60px;
 }
 
 .calculation h4 {
   margin-left: 30px;
 }
 
-.description {
-  border-bottom: 3px solid grey;
+.calculation-section {
+  border-top: 3px solid grey;
+}
+
+.calculation .money {
+  color: tomato;
 }
