@@ -56,7 +56,7 @@ const Offers = () => {
                                 <div class="col-md-10 col-sm-6">
                                     <div class="product-grid">
                                         <div style={{ height: "13rem" }} class="">
-                                            <a href="#" class="image">
+                                            <a href="#" class="images">
                                                 <img class="product-image" src={products.image} />
                                             </a>
                                             <span class="product-discount-label">-33%</span>
@@ -73,7 +73,7 @@ const Offers = () => {
                 <li class="far fa-star"></li>
                 <li class="far fa-star"></li>
             </ul> */}
-                                            <h3 class="title">{products.title}</h3>
+                                            <h3 class="titles">{products.title}</h3>
                                             <div class="price"><span>$90.00</span> ${products.price}</div>
                                             <a class="add-to-cart" href="#"><FontAwesomeIcon size="1x" icon={faShoppingCart} /><span className="p-2">Add to cart</span></a>
                                         </div>
