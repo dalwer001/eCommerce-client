@@ -25,12 +25,12 @@ const ShopSidebar = () => {
                             </Link>
                         </li>
                         <li>
-                            <Link to="/bags" className="text-white">
+                            <Link to="/bags" >
                                 <span>Bags</span>
                             </Link>
                         </li>
                         <li>
-                            <Link to="/accessories" className="text-white">
+                            <Link to="/accessories" >
                                 <span>Accessories</span>
                             </Link>
                         </li>
@@ -55,12 +55,12 @@ const ShopSidebar = () => {
                             </Link>
                         </li>
                         <li>
-                            <Link to="/addOrder" className="text-white">
+                            <Link to="/addOrder" >
                                 <span>Bags</span>
                             </Link>
                         </li>
                         <li>
-                            <Link to="/manageOrder" className="text-white">
+                            <Link to="/manageOrder" >
                                 <span>Accessories</span>
                             </Link>
                         </li>
@@ -84,12 +84,12 @@ const ShopSidebar = () => {
                             </Link>
                         </li>
                         <li>
-                            <Link to="/addOrder" className="text-white">
+                            <Link to="/addOrder" >
                                 <span>Bags</span>
                             </Link>
                         </li>
                         <li>
-                            <Link to="/manageOrder" className="text-white">
+                            <Link to="/manageOrder" >
                                 <span>Accessories</span>
                             </Link>
                         </li>
