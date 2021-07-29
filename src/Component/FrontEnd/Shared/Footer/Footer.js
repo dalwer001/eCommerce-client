@@ -3,7 +3,18 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook, faInstagram, faTwitter } from '@fortawesome/free-brands-svg-icons';
 import { Link } from 'react-router-dom';
 import'./Footer.css';
+import Typography from '@material-ui/core/Typography';
 
+function Copyright() {
+    return (
+      <Typography variant="body2" color="textSecondary" align="center">
+        {'All rights reserved by ©Mysterious Software Company Ltd. '}
+      {' '}
+        {new Date().getFullYear()}
+        {'.'}
+      </Typography>
+    );
+  }
 
 const Footer = () => {
     return (
@@ -45,7 +56,8 @@ const Footer = () => {
             </div>
             <div class="row m-0 footer ">
                 <div class="col-md-12 text-center p-5">
-                    <p>All rights reserved by ©Mysterious Software Company Ltd.</p>
+                <Copyright />
+                   
                 </div>
             </div>
         </section>
