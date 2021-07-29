@@ -19,7 +19,7 @@ const ShopSidebar = () => {
 
 
     return (
-       
+
         <div className="sidebar p-5">
             <h6 className="text-muted">Filter by category</h6>
             <ul className="list-unstyled mt-4 ">

@@ -22,7 +22,7 @@ const CartDetails = ({ pd }) => {
                 <p>{title}</p>
             </div>
             <div className="col-md-2 col-sm-2 col-2 quantity-calculation">
-                <div className="d-flex single-size-bg rounded-pill quantity">
+                <div className="d-flex single-size-bg rounded-pill quantity mx-4">
                     <button className="btn mx-2 btn-outline-remove btn-sm" onClick={decrementCounter}><FontAwesomeIcon size="1x" className="ms-0" icon={faMinus} /></button>
                     <input className="ps-3" type="number" id="quantity" name="pdQuantity" value={counter} />
                     <button className="btn mx-2 btn-outline-remove btn-sm" onClick={incrementCounter}><FontAwesomeIcon size="1x" className="ms-0" icon={faPlus} /></button>
