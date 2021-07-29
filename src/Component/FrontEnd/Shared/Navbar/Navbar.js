@@ -1,12 +1,24 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartPlus, faSearch, faHeart } from '@fortawesome/free-solid-svg-icons';
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../../../Images/logo.jpg';
 import './Navbar.css';
 import { CartContext } from '../../../../App';
+import { Collapse } from 'react-bootstrap';
+import { TextField} from '@material-ui/core';
 
 const Navbar = () => {
+  const [showSearchBox, setShowSearchBox] = useState(false);
+  const [data, setData] = useState([]);
+
+async function search(key) {
+  console.log(key);
+  let result = await fetch ("https://fakestoreapi.com/products"+ key);
+  console.log(result)
+  result = await result.json();
+  setData(result)
+}
   const [cartProducts, setCartProducts] = useContext(CartContext);
   let cartProductQuantity = 0;
   cartProducts.forEach(p => {
@@ -25,16 +37,16 @@ const Navbar = () => {
               <Link to="/home" className="nav-link active" aria-current="page" >Home</Link>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/shop">Shop</a>
+              <Link to="/shop"class="nav-link" >Shop</Link>
             </li>
             <li class="nav-item dropdown">
-              <a class="nav-link" href="#"> Journal </a>
+              <Link to ="/gallery"class="nav-link"> Gallery </Link>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">Pages</a>
+              <Link to="/offer" class="nav-link"  tabindex="-1" aria-disabled="true">Offers</Link>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/login" >Login</a>
+              <Link to="/login"class="nav-link">Login</Link>
             </li>
           </ul>
           <form class="d-flex">
@@ -47,8 +59,11 @@ const Navbar = () => {
                </div> */}
 
             {/* <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/> */}
-
-            <Link to="#"><FontAwesomeIcon size="2x" className="search ms-0 m-2" icon={faSearch} /></Link>
+          
+            <Link onClick={() => setShowSearchBox(!showSearchBox)} to="#"><FontAwesomeIcon size="2x" className="search ms-0 m-2 " icon={faSearch} /></Link>
+            <Collapse in = {showSearchBox}>
+            <TextField onChange ={(e) => search(e.target.value)} name="title" label="Search" fullWidth  />
+            </Collapse>
             <Link to="#"><FontAwesomeIcon size="2x" className=" wishlistNav  ms-0 m-2" icon={faHeart} /></Link>
             <Link to="/cart">
               <button type="button" className="btn btn-sm btn-light position-relative p-0 m-0">
