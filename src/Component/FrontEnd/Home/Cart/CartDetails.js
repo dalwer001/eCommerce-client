@@ -12,7 +12,7 @@ const CartDetails = ({ pd }) => {
                     <p>{title}</p>
                 </div>
                 <div className="col-md-2 col-sm-2 col-2 quantity-input">
-                    <input type="number" id="tentacles" name="tentacles" />
+                    <input type="number" id="quantity" name="pdQuantity" value={quantity} />
                 </div>
                 <div className="col-md-2 col-sm-2 col-2">
                     <p>${price}</p>

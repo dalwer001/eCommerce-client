@@ -1,19 +1,14 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import { CartContext } from '../../../../App';
 import './Cart.css';
 import CartDetails from './CartDetails';
 
 const Cart = () => {
     const [cartProducts, setCartProducts] = useContext(CartContext);
-    const [singleProductTotal, setSingleProductTotal] = useState(0);
-    cartProducts.forEach(pd => {
-        let singleProductTotal = 0;
-        const singleProductPrice = pd.price * pd.quantity;
-        singleProductTotal += singleProductPrice;
-        console.log(singleProductTotal)
-        // setSingleProductTotal(singleProductTotal);
+    let total = 0;
+    cartProducts.forEach(product => {
+        total += product.price * product.quantity;
     });
-
 
     return (
         <div className="container">
@@ -29,8 +24,8 @@ const Cart = () => {
             }
             <div className="d-flex justify-content-end mt-2 calculation-section">
                 <div className="calculation">
-                    <h5>Sub-Total: <span className="money">${ }</span></h5>
-                    <h4>Total: <span className="money">$</span></h4>
+                    <h5>Sub-Total: <span className="money">${total}</span></h5>
+                    <h4>Total: <span className="money">${total}</span></h4>
                 </div>
             </div>
         </div>
