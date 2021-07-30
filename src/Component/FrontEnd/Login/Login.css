@@ -1,15 +1,5 @@
   
-.buttonStyle{
-    background-color: rgba(211, 128, 128, 0.842);
-}
-.login{
-    background-color: rgba(207, 65, 65, 0.753);
-    
-}
-.create{
-    background-color: rgba(187, 75, 75, 0.747);
-    color: white;
-}
+
 .photo{
  height: 30px;
  width: 30px;

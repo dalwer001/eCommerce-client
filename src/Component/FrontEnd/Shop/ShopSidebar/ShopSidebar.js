@@ -1,16 +1,31 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useState } from 'react';
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import'./ShopSidebar.css';
 
 const ShopSidebar = () => {
+
+    const [category, SetCategory] = useState([]);
+
+    useEffect(()=>{
+        const loadCategory = async()=>{
+            const res = await axios.get('/products/categories/jewelery');
+            SetCategory(res.data);
+            console.log(res.data);
+        }
+        loadCategory();
+    },[])
+
+
     return (
-       
+
         <div className="sidebar p-5">
             <h6 className="text-muted">Filter by category</h6>
             <ul className="list-unstyled mt-4 ">
                 <li>
                     <Link to="/men" >
-                         <span>Men</span>
+                        <span>Men</span>
                     </Link>
                 </li>
                     <ul className="px-3 list-unstyled mb-5 ">
@@ -25,12 +40,12 @@ const ShopSidebar = () => {
                             </Link>
                         </li>
                         <li>
-                            <Link to="/bags" className="text-white">
+                            <Link to="/bags" >
                                 <span>Bags</span>
                             </Link>
                         </li>
                         <li>
-                            <Link to="/accessories" className="text-white">
+                            <Link to="/accessories" >
                                 <span>Accessories</span>
                             </Link>
                         </li>
@@ -40,7 +55,7 @@ const ShopSidebar = () => {
             <ul className="list-unstyled ">
                 <li>
                     <Link to="/buyer-dashboard" >
-                         <span>Women</span>
+                        <span>Women</span>
                     </Link>
                 </li>
                 <ul className="px-3 list-unstyled mb-5 ">
@@ -55,12 +70,12 @@ const ShopSidebar = () => {
                             </Link>
                         </li>
                         <li>
-                            <Link to="/addOrder" className="text-white">
+                            <Link to="/addOrder" >
                                 <span>Bags</span>
                             </Link>
                         </li>
                         <li>
-                            <Link to="/manageOrder" className="text-white">
+                            <Link to="/manageOrder" >
                                 <span>Accessories</span>
                             </Link>
                         </li>
@@ -69,7 +84,7 @@ const ShopSidebar = () => {
             <ul className="list-unstyled ">
                 <li>
                     <Link to="/buyer-dashboard" >
-                         <span>Kids</span>
+                        <span>Kids</span>
                     </Link>
                 </li>
                 <ul className="px-3 list-unstyled mb-5 ">
@@ -84,12 +99,12 @@ const ShopSidebar = () => {
                             </Link>
                         </li>
                         <li>
-                            <Link to="/addOrder" className="text-white">
+                            <Link to="/addOrder" >
                                 <span>Bags</span>
                             </Link>
                         </li>
                         <li>
-                            <Link to="/manageOrder" className="text-white">
+                            <Link to="/manageOrder" >
                                 <span>Accessories</span>
                             </Link>
                         </li>
