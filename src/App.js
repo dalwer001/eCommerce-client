@@ -18,43 +18,47 @@ axios.defaults.baseURL = "https://fakestoreapi.com";
 
 export const UserContext = createContext();
 export const CartContext = createContext();
+export const CountContext = createContext();
 
 function App() {
   const [loggedInUser, setLoggedInUser] = useState({});
   const [cartProducts, setCartProducts] = useState([]);
+  const [ProductCount, setProductCount] = useState(0);
   return (
     <UserContext.Provider value={[loggedInUser, setLoggedInUser]}>
       <CartContext.Provider value={[cartProducts, setCartProducts]}>
-        <Router>
-          <Navbar />
-          <Switch>
-            <Route exact path="/">
-              <Home />
-            </Route>
-            {/* <Route exact path="/">
+        <CountContext.Provider value={[ProductCount, setProductCount]}>
+          <Router>
+            <Navbar />
+            <Switch>
+              <Route exact path="/">
+                <Home />
+              </Route>
+              {/* <Route exact path="/">
             <Home></Home>
           </Route> */}
-            <Route path="/home">
-              <Home />
-            </Route>
-            <Route path="/products/:id">
-              <SingleProduct />
-            </Route>
-            <Route path="/gallery">
-              <Gallery></Gallery>
-            </Route>
-            <Route path="/cart">
-              <Cart />
-            </Route>
-            <Route path="/login">
-              <LoginO></LoginO>
-            </Route>
-            <Route path="/shop">
-              <Shop></Shop>
-            </Route>
-          </Switch>
-          <Footer />
-        </Router>
+              <Route path="/home">
+                <Home />
+              </Route>
+              <Route path="/products/:id">
+                <SingleProduct />
+              </Route>
+              <Route path="/gallery">
+                <Gallery></Gallery>
+              </Route>
+              <Route path="/cart">
+                <Cart />
+              </Route>
+              <Route path="/login">
+                <LoginO></LoginO>
+              </Route>
+              <Route path="/shop">
+                <Shop></Shop>
+              </Route>
+            </Switch>
+            <Footer />
+          </Router>
+        </CountContext.Provider>
       </CartContext.Provider>
     </UserContext.Provider>
   );
