@@ -26,13 +26,13 @@ const Products = () => {
 
     // load product more
     const showMoreProducts = () => {
-        setTimeout(()=>{
-        setVisibleProduct((preValue) => preValue + 6);
-        },1000)
+        setTimeout(() => {
+            setVisibleProduct((preValue) => preValue + 6);
+        }, 1000)
         setSpinner(true);
     }
     if (visibleProduct) {
-        setTimeout(() => { setSpinner(false); },1000);
+        setTimeout(() => { setSpinner(false); }, 1000);
     }
 
 
@@ -58,7 +58,7 @@ const Products = () => {
         setCartProducts(newCart);
     };
 
-    console.log('cartProducts', cartProducts)
+    // console.log('cartProducts', cartProducts)
 
     return (
         <div className="recent-product-bg">
@@ -69,7 +69,7 @@ const Products = () => {
                         productLoader.map(products =>
                             <ProductDetails key={products.id} products={products} addToCart={addToCart}
                             />
-                            )
+                        )
                     }
                 </div>
 

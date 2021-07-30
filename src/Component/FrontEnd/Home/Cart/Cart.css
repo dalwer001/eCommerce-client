@@ -15,12 +15,10 @@
 
 .quantity-calculation .quantity {
   height: 30px;
-  /* padding: 20px; */
-  /* width: 50px; */
+  width: 150px;
 }
 
 .quantity-calculation input {
-  /* margin-bottom: 25px; */
   width: 60px;
 }
 
@@ -34,4 +32,22 @@
 
 .calculation .money {
   color: tomato;
+}
+
+@media only screen and (max-width: 992px) {
+  .image {
+    display: none;
+  }
+  .quantity button {
+    margin: 0px !important;
+  }
+  .quantity input {
+    padding: 5px !important;
+  }
+  .quantity-calculation .quantity {
+    width: 100px;
+  }
+  .quantity-calculation input {
+    width: 40px;
+  }
 }
