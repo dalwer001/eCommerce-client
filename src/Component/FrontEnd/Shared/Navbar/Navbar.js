@@ -4,7 +4,7 @@ import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../../../Images/logo.jpg';
 import './Navbar.css';
-import { CartContext, QuantityContext } from '../../../../App';
+import { CartContext } from '../../../../App';
 import { Collapse } from 'react-bootstrap';
 import { TextField } from '@material-ui/core';
 // import { CartContext } from '../../../../App';
@@ -21,18 +21,13 @@ const Navbar = () => {
   //   result = await result.json();
   //   setData(result)
   // }
+
+
   // quantity calculation
-  const [grandQuantity, setGrandQuantity] = useContext(QuantityContext);
-
-
   const [cartProducts, setCartProducts] = useContext(CartContext);
   let cartProductQuantity = 0;
   cartProducts.forEach(p => {
-    if (!grandQuantity) {
-      cartProductQuantity += p.quantity;
-    } else {
-      cartProductQuantity = grandQuantity;
-    }
+    cartProductQuantity = cartProductQuantity + p.quantity;
   });
   return (
     <nav class="navbar navbar-expand-lg navbar-light bg-light">

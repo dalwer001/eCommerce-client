@@ -1,24 +1,18 @@
 import React, { useState, useContext } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
-import { CartContext, QuantityContext, TotalContext } from '../../../../App';
-import axios from 'axios';
+import { faPlus, faMinus, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { CartContext, TotalContext } from '../../../../App';
 
 const CartDetails = ({ pd }) => {
-    const { image, title, quantity, price } = pd;
+    const { id, image, title, quantity, price } = pd;
 
     // product quantity
-    const [grandQuantity, setGrandQuantity] = useContext(QuantityContext);
     const [cartProducts, setCartProducts] = useContext(CartContext);
     const [grandTotal, setGrandTotal] = useContext(TotalContext);
-
     const [counter, setCounter] = useState(quantity);
     const productTotal = price * quantity;
-    let totalQuantity = 0;
     let total = 0;
     cartProducts.forEach(product => {
-        totalQuantity += product.quantity;
-        setGrandQuantity(totalQuantity);
         total = total + product.price * product.quantity;
         setGrandTotal(total);
     })
@@ -34,13 +28,22 @@ const CartDetails = ({ pd }) => {
         decrementCounter = () => setCounter(1);
     };
 
+    // remove product
+    const removeProduct = id => {
+        const existingProduct = cartProducts.filter(pd => { return pd.id !== id })
+        setCartProducts(existingProduct)
+    }
+
     return (
         <div className="row d-flex justify-content-between text-start mt-2">
-            <div className="col-md-1 image">
+            <div className="col-md-1 image text-center">
                 <img src={image} alt="" />
             </div>
-            <div className="col-md-6 col-sm-5 col-5">
+            <div className="col-md-5 col-sm-5 col-5">
                 <p>{title}</p>
+            </div>
+            <div className="col-md-1 col-sm-1 col-1 remove">
+                <FontAwesomeIcon onClick={() => removeProduct(id)} size="1x" className="ms-0" icon={faTimes} />
             </div>
             <div className="col-md-2 col-sm-3 col-3 quantity-calculation">
                 <div className="d-flex single-size-bg rounded-pill quantity">
@@ -49,11 +52,11 @@ const CartDetails = ({ pd }) => {
                     <button className="btn mx-2 btn-outline-remove btn-sm" onClick={incrementCounter}><FontAwesomeIcon size="1x" className="ms-0" icon={faPlus} /></button>
                 </div>
             </div>
-            <div className="col-md-2 col-sm-2 col-2">
+            <div className="col-md-2 unitPrice">
                 <p>${price}</p>
             </div>
-            <div className="col-md-1 col-sm-2 col-2">
-                <p>${productTotal}</p>
+            <div className="col-md-1 col-sm-3 col-3 total">
+                <p>${productTotal.toFixed(2)}</p>
             </div>
         </div>
     );
