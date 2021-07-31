@@ -1,29 +1,38 @@
 import React, { useState, useContext } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
-import { CountContext } from '../../../../App';
+import { CartContext, QuantityContext, TotalContext } from '../../../../App';
+import axios from 'axios';
 
 const CartDetails = ({ pd }) => {
     const { image, title, quantity, price } = pd;
 
     // product quantity
-    const [ProductCount, setProductCount] = useContext(CountContext);
+    const [grandQuantity, setGrandQuantity] = useContext(QuantityContext);
+    const [cartProducts, setCartProducts] = useContext(CartContext);
+    const [grandTotal, setGrandTotal] = useContext(TotalContext);
+
     const [counter, setCounter] = useState(quantity);
-    const productTotal = price * counter;
-    const incrementCounter = () => setCounter(counter + 1);
-    let decrementCounter = () => setCounter(counter - 1);
+    const productTotal = price * quantity;
+    let totalQuantity = 0;
+    let total = 0;
+    cartProducts.forEach(product => {
+        totalQuantity += product.quantity;
+        setGrandQuantity(totalQuantity);
+        total = total + product.price * product.quantity;
+        setGrandTotal(total);
+    })
+    const incrementCounter = () => {
+        setCounter(counter + 1)
+        pd.quantity = counter + 1;
+    };
+    let decrementCounter = () => {
+        setCounter(counter - 1)
+        pd.quantity = counter - 1;
+    };
     if (counter <= 1) {
         decrementCounter = () => setCounter(1);
     };
-
-    // total product cost
-    let total = 0;
-    total += productTotal;
-    console.log('totalCost', total);
-
-    // let totalCount = 0;
-    // totalCount += counter;
-    // console.log('totalCount', totalCount)
 
     return (
         <div className="row d-flex justify-content-between text-start mt-2">
@@ -36,7 +45,7 @@ const CartDetails = ({ pd }) => {
             <div className="col-md-2 col-sm-3 col-3 quantity-calculation">
                 <div className="d-flex single-size-bg rounded-pill quantity">
                     <button className="btn mx-2 btn-outline-remove btn-sm" onClick={decrementCounter}><FontAwesomeIcon size="1x" className="ms-0" icon={faMinus} /></button>
-                    <input className="ps-3" type="number" id="quantity" name="pdQuantity" value={counter} />
+                    <input className="ps-3" type="number" id="quantity" name="pdQuantity" value={quantity} />
                     <button className="btn mx-2 btn-outline-remove btn-sm" onClick={incrementCounter}><FontAwesomeIcon size="1x" className="ms-0" icon={faPlus} /></button>
                 </div>
             </div>

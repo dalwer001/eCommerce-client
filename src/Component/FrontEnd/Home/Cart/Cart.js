@@ -1,11 +1,11 @@
 import React, { useContext } from 'react';
-import { CartContext, CountContext } from '../../../../App';
+import { CartContext, TotalContext } from '../../../../App';
 import './Cart.css';
 import CartDetails from './CartDetails';
 
 const Cart = () => {
     const [cartProducts, setCartProducts] = useContext(CartContext);
-    const [ProductCount, setProductCount] = useContext(CountContext);
+    const [grandTotal, setGrandTotal] = useContext(TotalContext);
 
     return (
         <div className="container">
@@ -21,8 +21,8 @@ const Cart = () => {
             }
             <div className="d-flex justify-content-end mt-2 calculation-section">
                 <div className="calculation">
-                    <h5>Sub-Total: <span className="money">${ }</span></h5>
-                    <h4>Total: <span className="money">${ }</span></h4>
+                    <h5>Sub-Total: <span className="money">${grandTotal}</span></h5>
+                    <h4>Total: <span className="money">${grandTotal}</span></h4>
                 </div>
             </div>
         </div>

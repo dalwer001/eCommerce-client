@@ -23,61 +23,65 @@ axios.defaults.baseURL = "https://fakestoreapi.com";
 
 export const UserContext = createContext();
 export const CartContext = createContext();
-export const CountContext = createContext();
+export const QuantityContext = createContext();
+export const TotalContext = createContext();
 
 function App() {
   const [loggedInUser, setLoggedInUser] = useState({});
   const [cartProducts, setCartProducts] = useState([]);
-  const [ProductCount, setProductCount] = useState(0);
+  const [grandQuantity, setGrandQuantity] = useState(0);
+  const [grandTotal, setGrandTotal] = useState(0);
   return (
     <UserContext.Provider value={[loggedInUser, setLoggedInUser]}>
       <CartContext.Provider value={[cartProducts, setCartProducts]}>
-        <CountContext.Provider value={[ProductCount, setProductCount]}>
-          <Router>
-            <Navbar />
-            <Switch>
-              <Route exact path="/">
-                <Home />
-              </Route>
-              {/* <Route exact path="/">
+        <QuantityContext.Provider value={[grandQuantity, setGrandQuantity]}>
+          <TotalContext.Provider value={[grandTotal, setGrandTotal]}>
+            <Router>
+              <Navbar />
+              <Switch>
+                <Route exact path="/">
+                  <Home />
+                </Route>
+                {/* <Route exact path="/">
             <Home></Home>
           </Route> */}
-              <Route path="/home">
-                <Home />
-              </Route>
-              <Route path="/products/:id">
-                <SingleProduct />
-              </Route>
-              <Route path="/gallery">
-                <Gallery></Gallery>
-              </Route>
-              <Route path="/offer">
-                <Offers></Offers>
-              </Route>
-              <Route path="/cart">
-                <Cart />
-              </Route>
-              <Route path="/login">
-                <Login></Login>
-              </Route>
+                <Route path="/home">
+                  <Home />
+                </Route>
+                <Route path="/products/:id">
+                  <SingleProduct />
+                </Route>
+                <Route path="/gallery">
+                  <Gallery></Gallery>
+                </Route>
+                <Route path="/offer">
+                  <Offers></Offers>
+                </Route>
+                <Route path="/cart">
+                  <Cart />
+                </Route>
+                <Route path="/login">
+                  <Login></Login>
+                </Route>
 
-              <Route path="/shop">
-                <Shop></Shop>
-              </Route>
-              {/* About us */}
-              <Route path="/ourCompany">
-                <OurCompany></OurCompany>
-              </Route>
-              <Route path="/history">
-                <History></History>
-              </Route>
-              <Route path="/contact">
-                <Contact></Contact>
-              </Route>
-            </Switch>
-            <Footer />
-          </Router>
-        </CountContext.Provider>
+                <Route path="/shop">
+                  <Shop></Shop>
+                </Route>
+                {/* About us */}
+                <Route path="/ourCompany">
+                  <OurCompany></OurCompany>
+                </Route>
+                <Route path="/history">
+                  <History></History>
+                </Route>
+                <Route path="/contact">
+                  <Contact></Contact>
+                </Route>
+              </Switch>
+              <Footer />
+            </Router>
+          </TotalContext.Provider>
+        </QuantityContext.Provider>
       </CartContext.Provider>
     </UserContext.Provider>
   );
