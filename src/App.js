@@ -19,7 +19,9 @@ import OurCompany from './Component/FrontEnd/FooterInfo/AboutUs/OurCompany/OurCo
 import History from './Component/FrontEnd/FooterInfo/AboutUs/History/History';
 import Contact from './Component/FrontEnd/FooterInfo/AboutUs/Contact/Contact';
 import Offers from './Component/FrontEnd/Home/Offers/Offers';
-axios.defaults.baseURL = "https://fakestoreapi.com";
+import AddOfferProducts from './Component/Backend/Products/AddOfferProducts/AddOfferProducts';
+
+// axios.defaults.baseURL = "https://fakestoreapi.com";
 
 export const UserContext = createContext();
 export const CartContext = createContext();
@@ -63,6 +65,10 @@ function App() {
 
               <Route path="/shop">
                 <Shop></Shop>
+              </Route>
+              {/* offer products */}
+              <Route path="/addOffer">
+                <AddOfferProducts></AddOfferProducts>
               </Route>
               {/* About us */}
               <Route path="/ourCompany">
