@@ -5,17 +5,29 @@ import { Link } from 'react-router-dom';
 import logo from '../../../../Images/logo.jpg';
 import './Navbar.css';
 import { CartContext } from '../../../../App';
+import { Collapse } from 'react-bootstrap';
+import { TextField } from '@material-ui/core';
+// import { CartContext } from '../../../../App';
 import SearchProduct from '../../Home/SearchProduct/SearchProduct';
 
 
 
+
 const Navbar = () => {
- 
-  
+  // async function search(key) {
+  //   console.log(key);
+  //   let result = await fetch("https://fakestoreapi.com/products" + key);
+  //   console.log(result)
+  //   result = await result.json();
+  //   setData(result)
+  // }
+
+
+  // quantity calculation
   const [cartProducts, setCartProducts] = useContext(CartContext);
   let cartProductQuantity = 0;
   cartProducts.forEach(p => {
-    cartProductQuantity += p.quantity;
+    cartProductQuantity = cartProductQuantity + p.quantity;
   });
   return (
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -30,16 +42,16 @@ const Navbar = () => {
               <Link to="/home" className="nav-link active" aria-current="page" >Home</Link>
             </li>
             <li class="nav-item">
-              <Link to="/shop"class="nav-link" >Shop</Link>
+              <Link to="/shop" class="nav-link" >Shop</Link>
             </li>
             <li class="nav-item dropdown">
-              <Link to ="/gallery"class="nav-link"> Gallery </Link>
+              <Link to="/gallery" class="nav-link"> Gallery </Link>
             </li>
             <li class="nav-item">
-              <Link to="/offer" class="nav-link"  tabindex="-1" aria-disabled="true">Offers</Link>
+              <Link to="/offer" class="nav-link" tabindex="-1" aria-disabled="true">Offers</Link>
             </li>
             <li class="nav-item">
-              <Link to="/login"class="nav-link">Login</Link>
+              <Link to="/login" class="nav-link">Login</Link>
             </li>
           </ul>
           <form class="d-flex">
@@ -52,8 +64,13 @@ const Navbar = () => {
                </div> */}
 
             {/* <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/> */}
-          
-           <SearchProduct></SearchProduct>
+
+            {/* <Link onClick={() => setShowSearchBox(!showSearchBox)} to="#"><FontAwesomeIcon size="2x" className="search ms-0 m-2 " icon={faSearch} /></Link>
+            <Collapse in={showSearchBox}>
+              <TextField onChange={(e) => search(e.target.value)} name="title" label="Search" fullWidth />
+            </Collapse> */}
+
+            <SearchProduct></SearchProduct>
             <Link to="#"><FontAwesomeIcon size="2x" className=" wishlistNav  ms-0 m-2" icon={faHeart} /></Link>
             <Link to="/cart">
               <button type="button" className="btn btn-sm btn-light position-relative p-0 m-0">

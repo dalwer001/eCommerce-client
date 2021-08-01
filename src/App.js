@@ -23,16 +23,16 @@ axios.defaults.baseURL = "https://fakestoreapi.com";
 
 export const UserContext = createContext();
 export const CartContext = createContext();
-export const CountContext = createContext();
+export const TotalContext = createContext();
 
 function App() {
   const [loggedInUser, setLoggedInUser] = useState({});
   const [cartProducts, setCartProducts] = useState([]);
-  const [ProductCount, setProductCount] = useState(0);
+  const [grandTotal, setGrandTotal] = useState(0);
   return (
     <UserContext.Provider value={[loggedInUser, setLoggedInUser]}>
       <CartContext.Provider value={[cartProducts, setCartProducts]}>
-        <CountContext.Provider value={[ProductCount, setProductCount]}>
+        <TotalContext.Provider value={[grandTotal, setGrandTotal]}>
           <Router>
             <Navbar />
             <Switch>
@@ -77,7 +77,7 @@ function App() {
             </Switch>
             <Footer />
           </Router>
-        </CountContext.Provider>
+        </TotalContext.Provider>
       </CartContext.Provider>
     </UserContext.Provider>
   );

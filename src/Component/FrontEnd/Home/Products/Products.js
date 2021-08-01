@@ -35,9 +35,6 @@ const Products = () => {
         setTimeout(() => { setSpinner(false); }, 1000);
     }
 
-
-
-
     // cart product add
     const [cartProducts, setCartProducts] = useContext(CartContext);
     const addToCart = (product) => {
