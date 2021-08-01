@@ -27,7 +27,6 @@ const AddOfferProducts = () => {
         formData.append('size', info.size);
         formData.append('category', info.category);
         formData.append('type', info.type);
-        formData.append('offerPrice', info.offerPrice);
         formData.append('quantity', info.quantity);
 
 
