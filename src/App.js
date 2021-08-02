@@ -19,16 +19,13 @@ import OurCompany from './Component/FrontEnd/FooterInfo/AboutUs/OurCompany/OurCo
 import History from './Component/FrontEnd/FooterInfo/AboutUs/History/History';
 import Contact from './Component/FrontEnd/FooterInfo/AboutUs/Contact/Contact';
 import Offers from './Component/FrontEnd/Home/Offers/Offers';
-<<<<<<< HEAD
 import Sidebar from './Component/BackEnd/AdminPanel/Sidebar/Sidebar';
 
 
-=======
 import VendorLogin from './Component/FrontEnd/VendorLogin/VendorLogin';
 import VendorRegister from './Component/FrontEnd/VendorLogin/VendorRegister';
 import AddOfferProducts from './Component/Backend/Products/AddOfferProducts/AddOfferProducts';
 import AddProducts from './Component/Backend/Products/AddProducts/AddProducts';
->>>>>>> bb28714a91267e2d2d54c6b7f39a703bc08991ac
 axios.defaults.baseURL = "https://fakestoreapi.com";
 // axios.defaults.baseURL = "https://fakestoreapi.com";
 
