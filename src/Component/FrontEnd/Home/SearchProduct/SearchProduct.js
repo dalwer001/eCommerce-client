@@ -12,7 +12,7 @@ const SearchProduct = () => {
 async function search(key) {
   console.log(key);
   let result = await fetch ("https://fakestoreapi.com/products"+ key);
-  console.log(result)
+  console.log(result) 
   result = await result.json();
   setData(result)
 }
