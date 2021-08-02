@@ -19,6 +19,9 @@ import OurCompany from './Component/FrontEnd/FooterInfo/AboutUs/OurCompany/OurCo
 import History from './Component/FrontEnd/FooterInfo/AboutUs/History/History';
 import Contact from './Component/FrontEnd/FooterInfo/AboutUs/Contact/Contact';
 import Offers from './Component/FrontEnd/Home/Offers/Offers';
+import Sidebar from './Component/BackEnd/AdminPanel/Sidebar/Sidebar';
+
+
 axios.defaults.baseURL = "https://fakestoreapi.com";
 
 export const UserContext = createContext();
@@ -26,10 +29,12 @@ export const CartContext = createContext();
 export const TotalContext = createContext();
 
 function App() {
+ 
   const [loggedInUser, setLoggedInUser] = useState({});
   const [cartProducts, setCartProducts] = useState([]);
   const [grandTotal, setGrandTotal] = useState(0);
   return (
+    
     <UserContext.Provider value={[loggedInUser, setLoggedInUser]}>
       <CartContext.Provider value={[cartProducts, setCartProducts]}>
         <TotalContext.Provider value={[grandTotal, setGrandTotal]}>
@@ -74,6 +79,9 @@ function App() {
               <Route path="/contact">
                 <Contact></Contact>
               </Route>
+            <Route path="/sidebar">
+            <Sidebar></Sidebar>
+            </Route>
             </Switch>
             <Footer />
           </Router>
