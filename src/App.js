@@ -20,6 +20,8 @@ import History from './Component/FrontEnd/FooterInfo/AboutUs/History/History';
 import Contact from './Component/FrontEnd/FooterInfo/AboutUs/Contact/Contact';
 import Offers from './Component/FrontEnd/Home/Offers/Offers';
 import AddOfferProducts from './Component/Backend/Products/AddOfferProducts/AddOfferProducts';
+import OfferInfo from './Component/FrontEnd/Home/OfferInfo/OfferInfo';
+import SingleOffer from './Component/FrontEnd/SingleProduct/SingleOffer/SingleOffer';
 
 // axios.defaults.baseURL = "https://fakestoreapi.com";
 
@@ -54,7 +56,7 @@ function App() {
                 <Gallery></Gallery>
               </Route>
               <Route path="/offer">
-                <Offers></Offers>
+                <OfferInfo></OfferInfo>
               </Route>
               <Route path="/cart">
                 <Cart />
@@ -69,6 +71,9 @@ function App() {
               {/* offer products */}
               <Route path="/addOffer">
                 <AddOfferProducts></AddOfferProducts>
+              </Route>
+              <Route path="/offerProducts/:id">
+                <SingleOffer></SingleOffer>
               </Route>
               {/* About us */}
               <Route path="/ourCompany">
