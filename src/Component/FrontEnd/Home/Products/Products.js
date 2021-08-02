@@ -15,7 +15,7 @@ const Products = () => {
 
     useEffect(() => {
         const productsLoaders = async () => {
-            const res = await axios.get('/products')
+            const res = await axios.get('http://localhost:5000/products')
             setRecentProducts(res.data);
         }
         productsLoaders();
@@ -64,7 +64,7 @@ const Products = () => {
                 <div className="row">
                     {
                         productLoader.map(products =>
-                            <ProductDetails key={products.id} products={products} addToCart={addToCart}
+                            <ProductDetails key={products._id} products={products} addToCart={addToCart}
                             />
                         )
                     }
