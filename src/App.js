@@ -18,11 +18,16 @@ import Shop from './Component/FrontEnd/Shop/Shop/Shop';
 import OurCompany from './Component/FrontEnd/FooterInfo/AboutUs/OurCompany/OurCompany';
 import History from './Component/FrontEnd/FooterInfo/AboutUs/History/History';
 import Contact from './Component/FrontEnd/FooterInfo/AboutUs/Contact/Contact';
-import Offers from './Component/FrontEnd/Home/Offers/Offers';
 import AddOfferProducts from './Component/Backend/Products/AddOfferProducts/AddOfferProducts';
 import OfferInfo from './Component/FrontEnd/Home/OfferInfo/OfferInfo';
 import SingleOffer from './Component/FrontEnd/SingleProduct/SingleOffer/SingleOffer';
+import Sidebar from './Component/Backend/AdminPanel/Sidebar/Sidebar';
 
+
+import VendorLogin from './Component/FrontEnd/VendorLogin/VendorLogin';
+import VendorRegister from './Component/FrontEnd/VendorLogin/VendorRegister';
+import AddProducts from './Component/Backend/Products/AddProducts/AddProducts';
+axios.defaults.baseURL = "https://fakestoreapi.com";
 // axios.defaults.baseURL = "https://fakestoreapi.com";
 
 export const UserContext = createContext();
@@ -30,10 +35,12 @@ export const CartContext = createContext();
 export const TotalContext = createContext();
 
 function App() {
+ 
   const [loggedInUser, setLoggedInUser] = useState({});
   const [cartProducts, setCartProducts] = useState([]);
   const [grandTotal, setGrandTotal] = useState(0);
   return (
+    
     <UserContext.Provider value={[loggedInUser, setLoggedInUser]}>
       <CartContext.Provider value={[cartProducts, setCartProducts]}>
         <TotalContext.Provider value={[grandTotal, setGrandTotal]}>
@@ -64,9 +71,19 @@ function App() {
               <Route path="/login">
                 <Login></Login>
               </Route>
-
+              <Route path="/vendorLogin">
+                <VendorLogin></VendorLogin>
+              </Route>
+              <Route path="/vendorRegister">
+                <VendorRegister></VendorRegister>
+              </Route>
               <Route path="/shop">
                 <Shop></Shop>
+              </Route>
+            
+              {/* add products */}
+              <Route path="/addProduct">
+                <AddProducts/>
               </Route>
               {/* offer products */}
               <Route path="/addOffer">
@@ -85,6 +102,9 @@ function App() {
               <Route path="/contact">
                 <Contact></Contact>
               </Route>
+            <Route path="/sidebar">
+            <Sidebar/>         
+             </Route>
             </Switch>
             <Footer />
           </Router>

@@ -53,6 +53,9 @@ const Navbar = () => {
             <li class="nav-item">
               <Link to="/login" class="nav-link">Login</Link>
             </li>
+            <li class="nav-item">
+              <Link to="/vendorLogin" class="nav-link">1'MIND Seller</Link>
+            </li>
           </ul>
           <form class="d-flex">
             {/* <div>
