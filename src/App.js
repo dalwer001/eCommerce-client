@@ -19,7 +19,7 @@ import OurCompany from './Component/FrontEnd/FooterInfo/AboutUs/OurCompany/OurCo
 import History from './Component/FrontEnd/FooterInfo/AboutUs/History/History';
 import Contact from './Component/FrontEnd/FooterInfo/AboutUs/Contact/Contact';
 import Offers from './Component/FrontEnd/Home/Offers/Offers';
-import Sidebar from './Component/BackEnd/AdminPanel/Sidebar/Sidebar';
+import Sidebar from './Component/Backend/AdminPanel/Sidebar/Sidebar';
 
 
 import VendorLogin from './Component/FrontEnd/VendorLogin/VendorLogin';
@@ -99,8 +99,8 @@ function App() {
                 <Contact></Contact>
               </Route>
             <Route path="/sidebar">
-            <Sidebar></Sidebar>
-            </Route>
+            <Sidebar/>         
+             </Route>
             </Switch>
             <Footer />
           </Router>
