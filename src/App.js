@@ -21,10 +21,9 @@ import Contact from './Component/FrontEnd/FooterInfo/AboutUs/Contact/Contact';
 import Offers from './Component/FrontEnd/Home/Offers/Offers';
 import VendorLogin from './Component/FrontEnd/VendorLogin/VendorLogin';
 import VendorRegister from './Component/FrontEnd/VendorLogin/VendorRegister';
-axios.defaults.baseURL = "https://fakestoreapi.com";
 import AddOfferProducts from './Component/Backend/Products/AddOfferProducts/AddOfferProducts';
 import AddProducts from './Component/Backend/Products/AddProducts/AddProducts';
-
+axios.defaults.baseURL = "https://fakestoreapi.com";
 // axios.defaults.baseURL = "https://fakestoreapi.com";
 
 export const UserContext = createContext();
