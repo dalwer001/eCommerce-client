@@ -12,14 +12,14 @@ const SingleProductsDetails = () => {
 
     useEffect(() => {
         const singleProduct = async () => {
-            const res = await axios.get(`/products/${id}`);
+            const res = await axios.get(`http://localhost:5000/products/${id}`);
             setSingleProduct(res.data);
             // console.log(res.data);
         }
         singleProduct();
     }, [id]);
 
-    const { title, price, image, category, description } = singleProduct;
+    const { title, description, price, size, category, type, quantity, image } = singleProduct;
 
     // product quantity
     const [counter, setCounter] = useState(1);
@@ -52,10 +52,15 @@ const SingleProductsDetails = () => {
 
 
     return (
-        <section className="container">
+        <section className="container py-5">
             <div className="row d-flex align-items-center">
                 <div className="col-sm-12 col-md-6 P-5 d-flex justify-content-center ">
-                    <img src={image} alt="" className="w-50 img-fluid" />
+                    {
+                        image ? <img src={`data:image/jpeg;base64,${image.img}`} alt="" className="w-75 img-fluid" />
+                            :
+                            <img className="img-fluid mb-3 product-image" src={`https://gentle-stream-95244.herokuapp.com//${singleProduct.img}`} alt="" />
+                    }
+                    
                 </div>
                 <div className="col-md-6 col-sm-12 mt-5">
                     <div>
@@ -70,9 +75,7 @@ const SingleProductsDetails = () => {
                             <p className="fs-4 single-size-text mt-2">Size</p>
                         </div>
                         <div className=" mx-5 d-flex single-size-bg rounded-pill p-1">
-                            <a href="#" alt="" className=" product-size-hover mx-3 text-decoration-none ">XS</a>
-                            <a href="#" alt="" className="mx-3 text-decoration-none product-size-hover">S</a>
-                            <a href="#" alt="" className="mx-3 text-decoration-none product-size-hover">M</a>
+                            <a href="#" alt="" className=" product-size-hover mx-3 text-decoration-none ">{size}</a>
                         </div>
                     </div>
                     {/* ........................ */}
