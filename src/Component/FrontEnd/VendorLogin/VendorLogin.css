@@ -1,0 +1,6 @@
+.vendorLogin{
+    background-image:url(../../../Images/vendorBackground.jpg);
+    background-size: cover;
+    position: relative;
+    height: 700px;
+}

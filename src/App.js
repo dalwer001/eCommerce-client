@@ -19,6 +19,8 @@ import OurCompany from './Component/FrontEnd/FooterInfo/AboutUs/OurCompany/OurCo
 import History from './Component/FrontEnd/FooterInfo/AboutUs/History/History';
 import Contact from './Component/FrontEnd/FooterInfo/AboutUs/Contact/Contact';
 import Offers from './Component/FrontEnd/Home/Offers/Offers';
+import VendorLogin from './Component/FrontEnd/VendorLogin/VendorLogin';
+import VendorRegister from './Component/FrontEnd/VendorLogin/VendorRegister';
 axios.defaults.baseURL = "https://fakestoreapi.com";
 
 export const UserContext = createContext();
@@ -60,11 +62,16 @@ function App() {
               <Route path="/login">
                 <Login></Login>
               </Route>
-
+              <Route path="/vendorLogin">
+                <VendorLogin></VendorLogin>
+              </Route>
+              <Route path="/vendorRegister">
+                <VendorRegister></VendorRegister>
+              </Route>
               <Route path="/shop">
                 <Shop></Shop>
               </Route>
-              {/* About us */}
+            
               <Route path="/ourCompany">
                 <OurCompany></OurCompany>
               </Route>
