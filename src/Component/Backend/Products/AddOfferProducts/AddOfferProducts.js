@@ -18,6 +18,7 @@ const AddOfferProducts = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        
         const formData = new FormData()
         formData.append('file', file);
         formData.append('title', info.title);

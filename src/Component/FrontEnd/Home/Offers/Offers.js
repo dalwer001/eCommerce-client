@@ -2,89 +2,60 @@ import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import { useHistory } from 'react-router-dom';
 import './Offers.css';
 
-const Offers = () => {
-    const [recentProducts, setRecentProducts] = useState([]);
+const Offers = ({ offers, addToCart }) => {
 
-    useEffect(() => {
-        const productsLoaders = async () => {
-            const res = await axios.get('/products')
-            setRecentProducts(res.data);
-        }
-        productsLoaders();
-    }, []);
-    // const { id, title, image, price } = products;
-    // const history = useHistory();
+    const { _id,title, description, price, size, category, type, quantity, image, offer } = offers;
 
-    // const singleProductClick = (id) => {
-    //     history.push(`/products/${id}`);
-    // }
+    const offerprice = price - (price * offer / 100);
+    console.log(offerprice);
 
-    const productLoader = recentProducts.slice(2, 12);
-    const responsive = {
-        superLargeDesktop: {
-            // the naming can be any, depends on you.
-            breakpoint: { max: 4000, min: 3000 },
-            items: 5
-        },
-        desktop: {
-            breakpoint: { max: 3000, min: 1024 },
-            items: 3
-        },
-        tablet: {
-            breakpoint: { max: 1024, min: 768 },
-            items: 2
-        },
-        mobile: {
-            breakpoint: { max: 768, min: 0 },
-            items: 1
-        }
-    };
+    const history = useHistory();
+
+    const singleProduct = (_id) => {
+        history.push(`/offerProducts/${_id}`);
+    }
     return (
         <div className="">
-            <div className="container p-5">
-                <h4 className="mb-5 border-bottom fw-bolder">Offer Products</h4>
-                <div className="row m-0">
-                    <Carousel responsive={responsive}>
-                        {
-                            productLoader.map(products =>
 
-                                <div class="col-md-10 col-sm-6">
-                                    <div class="product-grid">
-                                        <div style={{ height: "13rem" }} class="">
-                                            <a href="#" class="images">
-                                                <img class="product-image" src={products.image} />
-                                            </a>
-                                            <span class="product-discount-label">-33%</span>
-                                            <ul class="product-links">
-                                                <li><a href="#" data-tip="Add to Wishlist"><i class="fas fa-heart"></i></a></li>
-                                                <li><a href="#" data-tip="Quick View"  ><i class="fa fa-search"></i></a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="product-content">
-                                            {/* <ul class="rating">
+            <div class="col-md-10 col-sm-6">
+                <div class="product-grid">
+                    <div style={{ height: "13rem" }} class="">
+                        <a href="#" class="images">
+                            {/* <img class="product-image" src={products.image} /> */}
+                            {
+                                image ? <img class="product-image" src={`data:image/jpeg;base64,${image.img}`} alt="" />
+                                    :
+                                    <img className="img-fluid mb-3 product-image" src={`https://gentle-stream-95244.herokuapp.com//${image.img}`} alt="" />
+                            }
+                        </a>
+                        <span class="product-discount-label">{offer}%</span>
+                        <ul class="product-links">
+                            <li><a href="#" data-tip="Add to Wishlist"><i class="fas fa-heart"></i></a></li>
+                            <li><a href=""onClick={() => singleProduct(_id)} data-tip="View"><i  class="fa fa-eye"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="product-content">
+                        {/* <ul class="rating">
                 <li class="fas fa-star"></li>
                 <li class="fas fa-star"></li>
                 <li class="fas fa-star"></li>
                 <li class="far fa-star"></li>
                 <li class="far fa-star"></li>
             </ul> */}
-                                            <h3 class="titles">{products.title}</h3>
-                                            <div class="price"><span>$90.00</span> ${products.price}</div>
-                                            <a class="add-to-cart" href="#"><FontAwesomeIcon size="1x" icon={faShoppingCart} /><span className="p-2">Add to cart</span></a>
-                                        </div>
-                                    </div>
-                                </div>
-
-
-                            )}
-                    </Carousel>
+                        <h3 class="titles">{title}</h3>
+                        <div class="price"><span>${price}</span> {'\u00A0'} ${offerprice}</div>
+                        <a class="add-to-cart" href="#"><FontAwesomeIcon size="1x" icon={faShoppingCart} /><span className="p-2">Add to cart</span></a>
+                    </div>
                 </div>
             </div>
+
+
+
+
         </div>
 
     );
