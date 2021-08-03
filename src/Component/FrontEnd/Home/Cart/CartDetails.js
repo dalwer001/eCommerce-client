@@ -4,7 +4,7 @@ import { faPlus, faMinus, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { CartContext, TotalContext } from '../../../../App';
 
 const CartDetails = ({ pd }) => {
-    const { id, image, title, quantity, price } = pd;
+    const { _id, image, title, quantity, price } = pd;
 
     // product quantity
     const [cartProducts, setCartProducts] = useContext(CartContext);
@@ -30,7 +30,7 @@ const CartDetails = ({ pd }) => {
 
     // remove product
     const removeProduct = id => {
-        const existingProduct = cartProducts.filter(pd => { return pd.id !== id })
+        const existingProduct = cartProducts.filter(pd => { return pd._id !== id })
         setCartProducts(existingProduct)
     }
 
@@ -43,7 +43,7 @@ const CartDetails = ({ pd }) => {
                 <p>{title}</p>
             </div>
             <div className="col-md-1 col-sm-1 col-1 remove">
-                <FontAwesomeIcon onClick={() => removeProduct(id)} size="1x" className="ms-0" icon={faTimes} />
+                <FontAwesomeIcon onClick={() => removeProduct(_id)} size="1x" className="ms-0" icon={faTimes} />
             </div>
             <div className="col-md-2 col-sm-3 col-3 quantity-calculation">
                 <div className="d-flex single-size-bg rounded-pill quantity">

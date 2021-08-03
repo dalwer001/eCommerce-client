@@ -8,10 +8,10 @@ import './Offers.css';
 
 const Offers = ({ offers, addToCart }) => {
 
-    const { _id, title, description, price, size, category, type, quantity, image, offer } = offers;
+    const { _id, title, description, mainPrice, size, category, type, quantity, image, offer } = offers;
 
-    const offerPrice = price - (price * offer / 100);
-    // console.log(offerPrice);
+    const offerPrice = mainPrice - (mainPrice * offer / 100);
+    console.log(offerPrice);
 
     const history = useHistory();
 
@@ -49,7 +49,7 @@ const Offers = ({ offers, addToCart }) => {
                 <li class="far fa-star"></li>
             </ul> */}
                         <h3 class="titles">{title}</h3>
-                        <div class="price"><span>${price}</span> {'\u00A0'} ${offerPrice}</div>
+                        <div class="price"><span>${mainPrice}</span> {'\u00A0'} ${offerPrice}</div>
                         <a class="add-to-cart" onClick={() => addToCart(offers, offerPrice)}><FontAwesomeIcon size="1x" icon={faShoppingCart} /><span className="p-2">Add to cart</span></a>
                     </div>
                 </div>
@@ -58,7 +58,7 @@ const Offers = ({ offers, addToCart }) => {
 
 
 
-        </div>
+        </div >
 
     );
 };

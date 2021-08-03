@@ -23,7 +23,7 @@ const Products = () => {
 
     //product slicing
     const productLoader = recentProducts.slice(0, visibleProduct);
-    // console.log(productLoader)
+    console.log(productLoader)
 
     // load product more
     const showMoreProducts = () => {
@@ -65,7 +65,7 @@ const Products = () => {
                 <div className="row">
                     {
                         productLoader.map(products =>
-                            <ProductDetails key={products._id} products={products} addToCart={addToCart}
+                            <ProductDetails key={products?._id} products={products} addToCart={addToCart}
                             />
                         )
                     }

@@ -23,7 +23,7 @@ const OfferInfo = () => {
     // cart product add
     const [cartProducts, setCartProducts] = useContext(CartContext);
     const addToCart = (product, offerPrice) => {
-        // product.price = offerPrice;
+        product.price = offerPrice;
         const toBeAddedKey = product._id;
         const sameProduct = cartProducts.find(pd => pd._id === toBeAddedKey);
         let count = 1;
