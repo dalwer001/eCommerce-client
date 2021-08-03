@@ -8,16 +8,18 @@ import './Offers.css';
 
 const Offers = ({ offers, addToCart }) => {
 
-    const { _id,title, description, price, size, category, type, quantity, image, offer } = offers;
+    const { _id, title, description, price, size, category, type, quantity, image, offer } = offers;
 
-    const offerprice = price - (price * offer / 100);
-    console.log(offerprice);
+    const offerPrice = price - (price * offer / 100);
+    // console.log(offerPrice);
 
     const history = useHistory();
 
     const singleProduct = (_id) => {
         history.push(`/offerProducts/${_id}`);
     }
+
+
     return (
         <div className="">
 
@@ -35,7 +37,7 @@ const Offers = ({ offers, addToCart }) => {
                         <span class="product-discount-label">{offer}%</span>
                         <ul class="product-links">
                             <li><a href="#" data-tip="Add to Wishlist"><i class="fas fa-heart"></i></a></li>
-                            <li><a href=""onClick={() => singleProduct(_id)} data-tip="View"><i  class="fa fa-eye"></i></a></li>
+                            <li><a href="" onClick={() => singleProduct(_id)} data-tip="View"><i class="fa fa-eye"></i></a></li>
                         </ul>
                     </div>
                     <div class="product-content">
@@ -47,8 +49,8 @@ const Offers = ({ offers, addToCart }) => {
                 <li class="far fa-star"></li>
             </ul> */}
                         <h3 class="titles">{title}</h3>
-                        <div class="price"><span>${price}</span> {'\u00A0'} ${offerprice}</div>
-                        <a class="add-to-cart" href="#"><FontAwesomeIcon size="1x" icon={faShoppingCart} /><span className="p-2">Add to cart</span></a>
+                        <div class="price"><span>${price}</span> {'\u00A0'} ${offerPrice}</div>
+                        <a class="add-to-cart" onClick={() => addToCart(offers, offerPrice)}><FontAwesomeIcon size="1x" icon={faShoppingCart} /><span className="p-2">Add to cart</span></a>
                     </div>
                 </div>
             </div>

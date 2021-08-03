@@ -23,6 +23,7 @@ const Products = () => {
 
     //product slicing
     const productLoader = recentProducts.slice(0, visibleProduct);
+    // console.log(productLoader)
 
     // load product more
     const showMoreProducts = () => {

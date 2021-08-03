@@ -1,7 +1,8 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 
 import Carousel from 'react-multi-carousel';
+import { CartContext } from '../../../../App';
 import Offers from '../Offers/Offers';
 
 const OfferInfo = () => {
@@ -10,7 +11,7 @@ const OfferInfo = () => {
     useEffect(() => {
         const productsLoaders = async () => {
             const res = await axios.get('http://localhost:5000/offerProducts')
-            console.log(res.data);
+            // console.log(res.data);
             setRecentProduct(res.data);
         }
         productsLoaders();
@@ -20,13 +21,26 @@ const OfferInfo = () => {
 
 
     // cart product add
-    const [cartProducts, setCartProducts] = useState([]);
-    const addToCart = (product) => {
-        let newCart = [];
-        newCart = [...cartProducts, product]
-        console.log('cart', newCart)
+    const [cartProducts, setCartProducts] = useContext(CartContext);
+    const addToCart = (product, offerPrice) => {
+        // product.price = offerPrice;
+        const toBeAddedKey = product._id;
+        const sameProduct = cartProducts.find(pd => pd._id === toBeAddedKey);
+        let count = 1;
+        let newCart;
+        if (sameProduct) {
+            count = sameProduct.quantity + 1;
+            sameProduct.quantity = count;
+            const others = cartProducts.filter(pd => pd._id !== toBeAddedKey);
+            newCart = [...others, sameProduct];
+        }
+        else {
+            product.quantity = 1;
+            newCart = [...cartProducts, product];
+        }
         setCartProducts(newCart);
-    }
+        console.log(newCart)
+    };
 
 
     const responsive = {
@@ -50,20 +64,20 @@ const OfferInfo = () => {
 
     return (
         <div className="recent-product-bg">
-        <div className="container p-5">
-            <h4 className="mb-5 border-bottom fw-bolder">Offer Products</h4>
-            <div className="row">
-            <Carousel responsive={responsive}>
-                {
-                    recentProduct.map(offers =>
-                        <Offers key={offers._id} offers={offers} addToCart={addToCart}
-                        />
-                        )
-                }
-                         </Carousel>
+            <div className="container p-5">
+                <h4 className="mb-5 border-bottom fw-bolder">Offer Products</h4>
+                <div className="row">
+                    <Carousel responsive={responsive}>
+                        {
+                            recentProduct.map(offers =>
+                                <Offers key={offers._id} offers={offers} addToCart={addToCart}
+                                />
+                            )
+                        }
+                    </Carousel>
+                </div>
             </div>
         </div>
-    </div>
     );
 };
 

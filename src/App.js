@@ -35,12 +35,12 @@ export const CartContext = createContext();
 export const TotalContext = createContext();
 
 function App() {
- 
+
   const [loggedInUser, setLoggedInUser] = useState({});
   const [cartProducts, setCartProducts] = useState([]);
   const [grandTotal, setGrandTotal] = useState(0);
   return (
-    
+
     <UserContext.Provider value={[loggedInUser, setLoggedInUser]}>
       <CartContext.Provider value={[cartProducts, setCartProducts]}>
         <TotalContext.Provider value={[grandTotal, setGrandTotal]}>
@@ -80,10 +80,10 @@ function App() {
               <Route path="/shop">
                 <Shop></Shop>
               </Route>
-            
+
               {/* add products */}
               <Route path="/addProduct">
-                <AddProducts/>
+                <AddProducts />
               </Route>
               {/* offer products */}
               <Route path="/addOffer">
@@ -102,9 +102,9 @@ function App() {
               <Route path="/contact">
                 <Contact></Contact>
               </Route>
-            <Route path="/sidebar">
-            <Sidebar/>         
-             </Route>
+              <Route path="/sidebar">
+                <Sidebar />
+              </Route>
             </Switch>
             <Footer />
           </Router>
