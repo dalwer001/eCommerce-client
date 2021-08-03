@@ -39,14 +39,14 @@ const Products = () => {
     // cart product add
     const [cartProducts, setCartProducts] = useContext(CartContext);
     const addToCart = (product) => {
-        const toBeAddedKey = product.id;
-        const sameProduct = cartProducts.find(pd => pd.id === toBeAddedKey);
+        const toBeAddedKey = product._id;
+        const sameProduct = cartProducts.find(pd => pd._id === toBeAddedKey);
         let count = 1;
         let newCart;
         if (sameProduct) {
             count = sameProduct.quantity + 1;
             sameProduct.quantity = count;
-            const others = cartProducts.filter(pd => pd.id !== toBeAddedKey);
+            const others = cartProducts.filter(pd => pd._id !== toBeAddedKey);
             newCart = [...others, sameProduct];
         }
         else {
