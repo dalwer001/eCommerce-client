@@ -23,8 +23,14 @@ const SingleProductsDetails = () => {
 
     // product quantity
     const [counter, setCounter] = useState(1);
-    const incrementCounter = () => setCounter(counter + 1);
-    let decrementCounter = () => setCounter(counter - 1);
+    const incrementCounter = () => {
+        singleProduct.quantity = counter + 1;
+        setCounter(singleProduct.quantity)
+    };
+    let decrementCounter = () => {
+        singleProduct.quantity = counter - 1;
+        setCounter(singleProduct.quantity)
+    };
     if (counter <= 1) {
         decrementCounter = () => setCounter(1);
     }
@@ -34,22 +40,18 @@ const SingleProductsDetails = () => {
     const addToCart = (product) => {
         const toBeAdded = product.id;
         const sameProduct = cartProducts.find((p) => p.id === toBeAdded);
-        let count = 1;
+        let count = counter;
         let newCart = [];
         if (sameProduct) {
-            count = sameProduct.quantity + 1;
             sameProduct.quantity = count;
             const others = cartProducts.filter((p) => p.id !== toBeAdded);
             newCart = [...others, sameProduct];
         } else {
-            product.quantity = 1;
+            product.quantity = counter;
             newCart = [...cartProducts, product]
         }
         setCartProducts(newCart);
     };
-
-    // console.log('cp', cartProducts);
-
 
     return (
         <section className="container">
