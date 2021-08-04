@@ -19,13 +19,16 @@ import OurCompany from './Component/FrontEnd/FooterInfo/AboutUs/OurCompany/OurCo
 import History from './Component/FrontEnd/FooterInfo/AboutUs/History/History';
 import Contact from './Component/FrontEnd/FooterInfo/AboutUs/Contact/Contact';
 import Offers from './Component/FrontEnd/Home/Offers/Offers';
-import Sidebar from './Component/Backend/AdminPanel/Sidebar/Sidebar';
+import Sidebar from './Component/BackEnd/AdminPanel/Sidebar/Sidebar';
 
 
 import VendorLogin from './Component/FrontEnd/VendorLogin/VendorLogin';
 import VendorRegister from './Component/FrontEnd/VendorLogin/VendorRegister';
-import AddOfferProducts from './Component/Backend/Products/AddOfferProducts/AddOfferProducts';
-import AddProducts from './Component/Backend/Products/AddProducts/AddProducts';
+import AddOfferProducts from'./Component/BackEnd/Products/AddOfferProducts/AddOfferProducts';
+
+import AddProducts from './Component/BackEnd/Products/AddProducts/AddProducts';
+import VendorSidebar from './Component/BackEnd/VendorPanel/VendorSidebar';
+
 axios.defaults.baseURL = "https://fakestoreapi.com";
 // axios.defaults.baseURL = "https://fakestoreapi.com";
 
@@ -100,6 +103,9 @@ function App() {
               </Route>
             <Route path="/sidebar">
             <Sidebar/>         
+             </Route>
+             <Route path="/vendorSidebar">
+               <VendorSidebar></VendorSidebar>
              </Route>
             </Switch>
             <Footer />
