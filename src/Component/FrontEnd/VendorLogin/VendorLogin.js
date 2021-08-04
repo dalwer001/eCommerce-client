@@ -88,9 +88,9 @@ const VendorLogin = () => {
                 Vendor Login
               </Typography>
 
-              <TextField name="email" label="email*" value={email} onChange={(e)=>setEmail(e.target.value)} fullWidth />
+              <TextField type="email" name="email" label="email*" value={email} onChange={(e)=>setEmail(e.target.value)} fullWidth />
 
-              <TextField name="password" label="password*" value={password} onChange={(e)=>setPassword(e.target.value)} fullWidth />
+              <TextField type="password" name="password" label="password*" value={password} onChange={(e)=>setPassword(e.target.value)} fullWidth />
 
               <Button variant="contained " className={classes.buttonSubmit} size="large" type="submit" onClick={logInUser}>
                 Submit
