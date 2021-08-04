@@ -23,10 +23,11 @@ import OfferInfo from './Component/FrontEnd/Home/OfferInfo/OfferInfo';
 import SingleOffer from './Component/FrontEnd/SingleProduct/SingleOffer/SingleOffer';
 import Sidebar from './Component/Backend/AdminPanel/Sidebar/Sidebar';
 
-
+import PrivateRoute from './Component/FrontEnd/PrivateRoute/PrivateRoute';
 import VendorLogin from './Component/FrontEnd/VendorLogin/VendorLogin';
 import VendorRegister from './Component/FrontEnd/VendorLogin/VendorRegister';
 import AddProducts from './Component/Backend/Products/AddProducts/AddProducts';
+import ReviewForm from './Component/FrontEnd/SingleProduct/ReviewForm/ReviewForm';
 axios.defaults.baseURL = "https://fakestoreapi.com";
 // axios.defaults.baseURL = "https://fakestoreapi.com";
 
@@ -105,6 +106,9 @@ function App() {
               <Route path="/sidebar">
                 <Sidebar />
               </Route>
+            {/* <PrivateRoute path="/addReview">
+                  <ReviewForm></ReviewForm>
+              </PrivateRoute> */}
             </Switch>
             <Footer />
           </Router>

@@ -1,11 +1,14 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import './ProductReviews.css';
 import ReviewForm from '../ReviewForm/ReviewForm';
+import { useContext } from 'react';
+import { UserContext } from '../../../../App';
 
 
 const ProductReviews = () => {
+  const[loggedInUser, setLoggedInUser]=useContext(UserContext);
   const [toggleState, setToggleState] = useState(1);
 
   const toggleTab = (index) => {
@@ -94,7 +97,15 @@ const ProductReviews = () => {
               </div>
             </div>
             <div className="col-md-6">
-              <ReviewForm></ReviewForm>
+              {
+                loggedInUser.email?<ReviewForm></ReviewForm>: 
+                <div>
+                    <p>please login</p>
+                <button className="btn btn-danger"><Link to="/login">login</Link> </button>
+                </div>
+              
+              }
+              
             </div>
           </div>
         </div>
