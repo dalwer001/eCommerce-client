@@ -78,15 +78,13 @@ export default function VendorRegister() {
 
     const data =await res.json();
 
-    if(data.status === 422 || !data){
+    if(res.status === 422 || !data){
       window.alert("Invalid Registration");
     }
     else{
       window.alert("Registration Successfully");
       history.push("/vendorLogin");
     }
-  
-
   }
 
 
@@ -102,7 +100,7 @@ export default function VendorRegister() {
         <Typography component="h1" variant="h5">
           Sign up
         </Typography>
-        <form method="POST" className={classes.form} onSubmit={PostData}noValidate>
+        <form method="POST" className={classes.form} onSubmit={PostData} noValidate>
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
               <TextField
