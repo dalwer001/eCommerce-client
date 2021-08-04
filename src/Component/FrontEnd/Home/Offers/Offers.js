@@ -37,7 +37,7 @@ const Offers = ({ offers, addToCart }) => {
                         <span class="product-discount-label">{offer}%</span>
                         <ul class="product-links">
                             <li><a href="#" data-tip="Add to Wishlist"><i class="fas fa-heart"></i></a></li>
-                            <li  onClick={() => singleProduct(_id)} ><a href=""data-tip="View"><i class="fa fa-eye"></i></a></li>
+                            <li><a href="" onClick={() => singleProduct(_id)} data-tip="View"><i class="fa fa-eye"></i></a></li>
                         </ul>
                     </div>
                     <div class="product-content">
