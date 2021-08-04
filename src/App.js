@@ -18,14 +18,20 @@ import Shop from './Component/FrontEnd/Shop/Shop/Shop';
 import OurCompany from './Component/FrontEnd/FooterInfo/AboutUs/OurCompany/OurCompany';
 import History from './Component/FrontEnd/FooterInfo/AboutUs/History/History';
 import Contact from './Component/FrontEnd/FooterInfo/AboutUs/Contact/Contact';
-import AddOfferProducts from './Component/Backend/Products/AddOfferProducts/AddOfferProducts';
+import Offers from './Component/FrontEnd/Home/Offers/Offers';
+import Sidebar from './Component/BackEnd/AdminPanel/Sidebar/Sidebar';
+import AddOfferProducts from './Component/BackEnd/Products/AddOfferProducts/AddOfferProducts';
 import OfferInfo from './Component/FrontEnd/Home/OfferInfo/OfferInfo';
 import SingleOffer from './Component/FrontEnd/SingleProduct/SingleOffer/SingleOffer';
-import Sidebar from './Component/Backend/AdminPanel/Sidebar/Sidebar';
 
 import VendorLogin from './Component/FrontEnd/VendorLogin/VendorLogin';
 import VendorRegister from './Component/FrontEnd/VendorLogin/VendorRegister';
-import AddProducts from './Component/Backend/Products/AddProducts/AddProducts';
+
+
+import AddProducts from './Component/BackEnd/Products/AddProducts/AddProducts';
+import VendorSidebar from './Component/BackEnd/VendorPanel/VendorSidebar';
+
+
 import ReviewForm from './Component/FrontEnd/SingleProduct/ReviewForm/ReviewForm';
 // import PrivateRoute from './Component/FrontEnd/PrivateRoute/PrivateRoute';
 axios.defaults.baseURL = "https://fakestoreapi.com";
@@ -103,6 +109,12 @@ function App() {
               <Route path="/contact">
                 <Contact></Contact>
               </Route>
+            <Route path="/sidebar">
+            <Sidebar/>         
+             </Route>
+             <Route path="/vendorSidebar">
+               <VendorSidebar></VendorSidebar>
+             </Route>
               <Route path="/sidebar">
                 <Sidebar />
               </Route>
