@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import { useContext } from 'react';
 import jwt_decode from "jwt-decode";
@@ -19,6 +19,7 @@ const PrivateRoute = ({children, ...rest}) => {
       // will return false if expired and will return true if not expired
       return decodedToken.exp > currentTime;
     }
+
     return (
         <Route
       {...rest}
