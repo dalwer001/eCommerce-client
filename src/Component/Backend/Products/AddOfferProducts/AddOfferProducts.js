@@ -18,11 +18,12 @@ const AddOfferProducts = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        
         const formData = new FormData()
         formData.append('file', file);
         formData.append('title', info.title);
         formData.append('description', info.description);
-        formData.append('price', info.price);
+        formData.append('mainPrice', info.mainPrice);
         formData.append('offer', info.offer);
         formData.append('size', info.size);
         formData.append('category', info.category);
@@ -53,7 +54,7 @@ const AddOfferProducts = () => {
                 </div>
                 <div className="col-md-6">
                     <label class="form-label fw-bolder text-white">price</label>
-                    <input type="number" name="price" onBlur={handleBlur} class="form-control" placeholder="Enter Course Title" />
+                    <input type="number" name="mainPrice" onBlur={handleBlur} class="form-control" placeholder="Enter Course Title" />
                 </div>
                 <div className="col-md-6">
                     <label class="form-label fw-bolder text-white">offer</label>

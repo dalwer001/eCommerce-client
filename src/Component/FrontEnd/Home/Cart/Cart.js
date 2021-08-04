@@ -23,7 +23,7 @@ const Cart = () => {
                             <h6 className="col-md-1 col-sm-3 col-3 text-center">Total</h6>
                         </div>
                         {
-                            cartProducts.map(pd => <CartDetails key={pd.id} pd={pd} />)
+                            cartProducts.map(pd => <CartDetails key={pd._id} pd={pd} />)
                         }
                         <div className="d-flex justify-content-end mt-2 calculation-section">
                             <div className="calculation mt-2">

@@ -20,15 +20,20 @@ import History from './Component/FrontEnd/FooterInfo/AboutUs/History/History';
 import Contact from './Component/FrontEnd/FooterInfo/AboutUs/Contact/Contact';
 import Offers from './Component/FrontEnd/Home/Offers/Offers';
 import Sidebar from './Component/BackEnd/AdminPanel/Sidebar/Sidebar';
-
+import AddOfferProducts from './Component/BackEnd/Products/AddOfferProducts/AddOfferProducts';
+import OfferInfo from './Component/FrontEnd/Home/OfferInfo/OfferInfo';
+import SingleOffer from './Component/FrontEnd/SingleProduct/SingleOffer/SingleOffer';
 
 import VendorLogin from './Component/FrontEnd/VendorLogin/VendorLogin';
 import VendorRegister from './Component/FrontEnd/VendorLogin/VendorRegister';
-import AddOfferProducts from'./Component/BackEnd/Products/AddOfferProducts/AddOfferProducts';
+
 
 import AddProducts from './Component/BackEnd/Products/AddProducts/AddProducts';
 import VendorSidebar from './Component/BackEnd/VendorPanel/VendorSidebar';
 
+
+import ReviewForm from './Component/FrontEnd/SingleProduct/ReviewForm/ReviewForm';
+// import PrivateRoute from './Component/FrontEnd/PrivateRoute/PrivateRoute';
 axios.defaults.baseURL = "https://fakestoreapi.com";
 // axios.defaults.baseURL = "https://fakestoreapi.com";
 
@@ -37,12 +42,12 @@ export const CartContext = createContext();
 export const TotalContext = createContext();
 
 function App() {
- 
+
   const [loggedInUser, setLoggedInUser] = useState({});
   const [cartProducts, setCartProducts] = useState([]);
   const [grandTotal, setGrandTotal] = useState(0);
   return (
-    
+
     <UserContext.Provider value={[loggedInUser, setLoggedInUser]}>
       <CartContext.Provider value={[cartProducts, setCartProducts]}>
         <TotalContext.Provider value={[grandTotal, setGrandTotal]}>
@@ -65,7 +70,7 @@ function App() {
                 <Gallery></Gallery>
               </Route>
               <Route path="/offer">
-                <Offers></Offers>
+                <OfferInfo></OfferInfo>
               </Route>
               <Route path="/cart">
                 <Cart />
@@ -82,14 +87,17 @@ function App() {
               <Route path="/shop">
                 <Shop></Shop>
               </Route>
-            
+
               {/* add products */}
               <Route path="/addProduct">
-                <AddProducts/>
+                <AddProducts />
               </Route>
               {/* offer products */}
               <Route path="/addOffer">
                 <AddOfferProducts></AddOfferProducts>
+              </Route>
+              <Route path="/offerProducts/:id">
+                <SingleOffer></SingleOffer>
               </Route>
               {/* About us */}
               <Route path="/ourCompany">
@@ -107,6 +115,12 @@ function App() {
              <Route path="/vendorSidebar">
                <VendorSidebar></VendorSidebar>
              </Route>
+              <Route path="/sidebar">
+                <Sidebar />
+              </Route>
+            {/* <PrivateRoute path="/addReview">
+                  <ReviewForm></ReviewForm>
+              </PrivateRoute> */}
             </Switch>
             <Footer />
           </Router>
