@@ -65,7 +65,7 @@ const Products = () => {
                 <div className="row">
                     {
                         productLoader.map(products =>
-                            <ProductDetails key={products?._id} products={products} addToCart={addToCart}
+                            <ProductDetails key={products._id} products={products} addToCart={addToCart}
                             />
                         )
                     }
