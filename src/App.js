@@ -27,6 +27,7 @@ import Sidebar from './Component/Backend/AdminPanel/Sidebar/Sidebar';
 import VendorLogin from './Component/FrontEnd/VendorLogin/VendorLogin';
 import VendorRegister from './Component/FrontEnd/VendorLogin/VendorRegister';
 import AddProducts from './Component/Backend/Products/AddProducts/AddProducts';
+import PrivateRoute from './Component/FrontEnd/PrivateRoute/PrivateRoute';
 axios.defaults.baseURL = "https://fakestoreapi.com";
 // axios.defaults.baseURL = "https://fakestoreapi.com";
 

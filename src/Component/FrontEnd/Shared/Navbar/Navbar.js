@@ -4,7 +4,7 @@ import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../../../Images/logo.jpg';
 import './Navbar.css';
-import { CartContext } from '../../../../App';
+import { CartContext, UserContext } from '../../../../App';
 import { Collapse } from 'react-bootstrap';
 import { TextField } from '@material-ui/core';
 // import { CartContext } from '../../../../App';
@@ -24,6 +24,7 @@ const Navbar = () => {
 
 
   // quantity calculation
+  const [loggedInUser, setLoggedInUser] = useContext(UserContext);
   const [cartProducts, setCartProducts] = useContext(CartContext);
   let cartProductQuantity = 0;
   cartProducts.forEach(p => {
@@ -52,6 +53,9 @@ const Navbar = () => {
             </li>
             <li class="nav-item">
               <Link to="/login" class="nav-link">Login</Link>
+            </li>
+            <li class="nav-item">
+              <Link to="#" className="nav-link active text-dark">{loggedInUser.displayName || loggedInUser.email}</Link>
             </li>
             <li class="nav-item">
               <Link to="/vendorLogin" class="nav-link">1'MIND Seller</Link>
