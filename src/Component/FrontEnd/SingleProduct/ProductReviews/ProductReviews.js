@@ -27,12 +27,21 @@ const ProductReviews = () => {
 
   useEffect(() => {
     const singleProduct = async () => {
-      const res = await axios.get(`/products/${id}`);
+      const res = await axios.get(`http://localhost:5000/products/${id}`);
       setSingleProduct(res.data);
       // console.log(res.data);
     }
     singleProduct();
   }, [id])
+  useEffect(() => {
+    const singleProduct = async () => {
+      const res = await axios.get(`http://localhost:5000/offerProduct/${id}`);
+      setSingleProduct(res.data);
+      // console.log(res.data);
+    }
+    singleProduct();
+  }, [id])
+
   return (
     <div className="container mt-5 pt-5">
       <div className="bloc-tabs">
