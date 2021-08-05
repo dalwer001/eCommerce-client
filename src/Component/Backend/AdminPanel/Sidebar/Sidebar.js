@@ -1,5 +1,6 @@
 import React from 'react';
-import {   faTachometerAlt, faUsers, faHome, faUserFriends, faTasks, faEye} from '@fortawesome/free-solid-svg-icons';
+import {   faTachometerAlt, faUsers, faHome, faUserFriends, faTasks, faEye, faList, faImages, faChartLine, faCreditCard} from '@fortawesome/free-solid-svg-icons';
+import {faProductHunt, faFirstOrder} from '@fortawesome/free-brands-svg-icons'
 import './Sidebar.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -12,14 +13,9 @@ const Sidebar = () => {
             <div class="col-12 col-sm-3 col-xl-2 px-sm-2 px-0 bg-dark d-flex sticky-top">
                 <div class="d-flex flex-sm-column flex-row flex-grow-1 align-items-center align-items-sm-start px-3 pt-2 text-white">
                     <a href="/" class="d-flex align-items-center pb-sm-3 mb-md-0 me-md-auto text-white text-decoration-none">
-                        <span class="fs-5">B<span class="d-none d-sm-inline">rand</span></span>
+                        <span class="fs-5">A<span class="d-none d-sm-inline">dmin Panel</span></span>
                     </a>
                     <ul class="nav nav-pills flex-sm-column flex-row flex-nowrap flex-shrink-1 flex-sm-grow-0 flex-grow-1 mb-sm-auto mb-0 justify-content-center align-items-center align-items-sm-start" id="menu">
-                        <li class="nav-item">
-                            <a href="#" class="nav-link px-sm-0 px-2">
-                            <FontAwesomeIcon icon={faHome} /><span class="ms-1 d-none d-sm-inline">Home</span>
-                            </a>
-                        </li>
                         <li>
                             <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-sm-0 px-2">
                             <FontAwesomeIcon icon={faTachometerAlt} /><span class="ms-1 d-none d-sm-inline">Dashboard</span> </a>
@@ -53,27 +49,24 @@ const Sidebar = () => {
                         </li>
                         <li>
                             <a href="#" class="nav-link px-sm-0 px-2">
-                            <FontAwesomeIcon icon={faTasks} /><span class="ms-1 d-none d-sm-inline">Manage Category</span> </a>
+                            <FontAwesomeIcon icon={faList} /><span class="ms-1 d-none d-sm-inline"> Category</span> </a>
                         </li>
                         <li>
                             <a href="#" class="nav-link px-sm-0 px-2">
-                            <FontAwesomeIcon icon={faTasks} /><span class="ms-1 d-none d-sm-inline">Manage Product</span> </a>
+                            <FontAwesomeIcon icon={faProductHunt} /><span class="ms-1 d-none d-sm-inline"> Product</span> </a>
+                        </li>
+                       
+                        <li>
+                            <a href="#" class="nav-link px-sm-0 px-2">
+                            <FontAwesomeIcon icon={faImages} /><span class="ms-1 d-none d-sm-inline"> Gallery</span> </a>
                         </li>
                         <li>
                             <a href="#" class="nav-link px-sm-0 px-2">
-                            <FontAwesomeIcon icon={faTasks} /><span class="ms-1 d-none d-sm-inline">Manage vendor</span> </a>
+                            <FontAwesomeIcon icon={faChartLine} /><span class="ms-1 d-none d-sm-inline"> Report</span> </a>
                         </li>
                         <li>
                             <a href="#" class="nav-link px-sm-0 px-2">
-                            <FontAwesomeIcon icon={faTasks} /><span class="ms-1 d-none d-sm-inline">Manage Gallery</span> </a>
-                        </li>
-                        <li>
-                            <a href="#" class="nav-link px-sm-0 px-2">
-                            <FontAwesomeIcon icon={faTasks} /><span class="ms-1 d-none d-sm-inline">Manage Report</span> </a>
-                        </li>
-                        <li>
-                            <a href="#" class="nav-link px-sm-0 px-2">
-                            <FontAwesomeIcon icon={faTasks} /><span class="ms-1 d-none d-sm-inline">Manage Payment</span> </a>
+                            <FontAwesomeIcon icon={faCreditCard} /><span class="ms-1 d-none d-sm-inline"> Payment</span> </a>
                         </li>
                         <li>
                             <a href="#" class="nav-link px-sm-0 px-2">
