@@ -3,6 +3,7 @@ import {faProductHunt, faFirstOrder} from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import './VendorSidebar.css';
+import { Link } from 'react-router-dom';
 const VendorSidebar = () => {
     return (
         <div class="container-fluid overflow-hidden">
@@ -17,10 +18,35 @@ const VendorSidebar = () => {
                             <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-sm-0 px-2">
                             <FontAwesomeIcon icon={faTachometerAlt} /><span class="ms-1 d-none d-sm-inline">Dashboard</span> </a>
                         </li>
-                        <li>
-                            <a href="#" class="nav-link px-sm-0 px-2">
-                            <FontAwesomeIcon icon={faProductHunt} /><span class="ms-1 d-none d-sm-inline">Product </span></a>
+                        <li class="dropdown">
+                            <a href="#" class="nav-link dropdown-toggle px-sm-0 px-1" id="dropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                            <FontAwesomeIcon icon={faProductHunt} /><span class="ms-1 d-none d-sm-inline">Product</span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdown">
+                                <li>
+                                    <Link to="/addProduct" class="dropdown-item" href="#">Add Product</Link>
+                                </li>
+                                <li><a class="dropdown-item" href="#">Manage Products</a></li>
+                                <li>
+                                    <hr class="dropdown-divider"/>
+                                </li>
+                            </ul>
                         </li>
+                        <li class="dropdown">
+                            <a href="#" class="nav-link dropdown-toggle px-sm-0 px-1" id="dropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                            <FontAwesomeIcon icon={faTasks} /><span  class="ms-1 d-none d-sm-inline">Offer Product</span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdown">
+                                <li>
+                                    <Link to="/addOffer" class="dropdown-item" href="#">Add offer Product</Link>
+                                </li>
+                                <li><a class="dropdown-item" href="#">Manage offer Products</a></li>
+                                <li>
+                                    <hr class="dropdown-divider"/>
+                                </li>
+                            </ul>
+                        </li>
+                       
                         <li>
                             <a href="#" class="nav-link px-sm-0 px-2">
                             <FontAwesomeIcon icon={faUserCircle} /><span class="ms-1 d-none d-sm-inline">Profile </span></a>
@@ -29,10 +55,7 @@ const VendorSidebar = () => {
                             <a href="#" class="nav-link px-sm-0 px-2">
                             <FontAwesomeIcon icon={faChartLine} /><span class="ms-1 d-none d-sm-inline">Report </span></a>
                         </li>
-                        <li>
-                            <a href="#" class="nav-link px-sm-0 px-2">
-                            <FontAwesomeIcon icon={faTasks} /><span class="ms-1 d-none d-sm-inline">Offer Products</span></a>
-                        </li>
+                      
                         <li>
                             <a href="#" class="nav-link px-sm-0 px-2">
                             <FontAwesomeIcon icon={faFirstOrder} /><span class="ms-1 d-none d-sm-inline">Order </span></a>

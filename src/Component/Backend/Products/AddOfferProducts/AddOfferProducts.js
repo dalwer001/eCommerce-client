@@ -49,23 +49,23 @@ const AddOfferProducts = () => {
             <h1 className="text-center text-warning border-bottom">Add Offer Products</h1>
             <form class="row  bg-secondary mt-5 p-5 rounded container" onSubmit={handleSubmit}>
                 <div className="col-md-6">
-                    <label class="form-label fw-bolder text-white"> Title</label>
-                    <input type="text" name="title" onBlur={handleBlur} class="form-control" placeholder="Enter Course Title" />
+                    <label class="form-label fw-bolder text-white"> Product Name</label>
+                    <input type="text" name="title" onBlur={handleBlur} class="form-control" placeholder="Enter Product Name" />
                 </div>
                 <div className="col-md-6">
-                    <label class="form-label fw-bolder text-white">price</label>
-                    <input type="number" name="mainPrice" onBlur={handleBlur} class="form-control" placeholder="Enter Course Title" />
+                    <label class="form-label fw-bolder text-white">Price</label>
+                    <input type="number" name="mainPrice" onBlur={handleBlur} class="form-control" placeholder="Enter Price" />
                 </div>
                 <div className="col-md-6">
-                    <label class="form-label fw-bolder text-white">offer</label>
-                    <input type="number" name="offer" onBlur={handleBlur} class="form-control" placeholder="Enter Course Title" />
+                    <label class="form-label fw-bolder text-white">Offer</label>
+                    <input type="number" name="offer" onBlur={handleBlur} class="form-control" placeholder="Enter Offer" />
                 </div>
                 <div className="col-md-6">
                     <label class="form-label fw-bolder text-white">Image</label>
                     <input class="form-control" onChange={handleFileChange} type="file" name="image" />
                 </div>
                 <div className="col-md-6">
-                    <label class="form-label fw-bolder text-white">size</label>
+                    <label class="form-label fw-bolder text-white">Size</label>
                     <select class="form-select"onBlur={handleBlur} name="size" id="sel1">
                         <option></option>
                         <option>L</option>
@@ -76,7 +76,7 @@ const AddOfferProducts = () => {
                     </select>
                 </div>
                 <div className="col-md-6">
-                    <label class="form-label fw-bolder text-white">category</label>
+                    <label class="form-label fw-bolder text-white">Category</label>
                     <select class="form-select"name="category" onBlur={handleBlur} id="sel1">
                         <option></option>
                         <option>Men</option>
@@ -85,7 +85,7 @@ const AddOfferProducts = () => {
                     </select>
                 </div>
                 <div className="col-md-6">
-                    <label class="form-label fw-bolder text-white">type</label>
+                    <label class="form-label fw-bolder text-white">Type</label>
                     <select class="form-select"name="type" onBlur={handleBlur} id="sel1">
                         <option></option>
                         <option>Clothes</option>
@@ -95,12 +95,12 @@ const AddOfferProducts = () => {
                     </select>
                 </div>
                 <div className="col-md-6">
-                    <label class="form-label fw-bolder text-white">quantity</label>
-                    <input type="number" name="quantity" onBlur={handleBlur} class="form-control" placeholder="Enter Course Title" />
+                    <label class="form-label fw-bolder text-white">Quantity</label>
+                    <input type="number" name="quantity" onBlur={handleBlur} class="form-control" placeholder="Enter quantity" />
                 </div>
                 <div className="col-md-6">
                     <label class="form-label fw-bolder text-white">Description</label>
-                    <textarea type="text" onBlur={handleBlur} name="description" class="form-control" style={{ height: '15vh' }} placeholder="description" />
+                    <textarea type="text" onBlur={handleBlur} name="description" class="form-control" style={{ height: '15vh' }} placeholder="Enter Description" />
                 </div>
 
                 <div className="col-md-12 d-flex align-items-center">
