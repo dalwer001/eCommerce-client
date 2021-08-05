@@ -31,7 +31,7 @@ import AddProducts from './Component/BackEnd/Products/AddProducts/AddProducts';
 import VendorSidebar from './Component/BackEnd/VendorPanel/VendorSidebar';
 
 
-import ReviewForm from './Component/FrontEnd/SingleProduct/ReviewForm/ReviewForm';
+// import ReviewForm from './Component/FrontEnd/SingleProduct/ReviewForm/ReviewForm';
 axios.defaults.baseURL = "https://fakem storeapi.com";
 // axios.defaults.baseURL = "https://fakestoreapi.com";
 
