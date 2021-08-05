@@ -33,7 +33,7 @@ const VendorLogin = () => {
     }
     else{
       window.alert("Login Successful");
-      history.push('/');
+      history.push('/vendorSidebar');
     }
 
 
