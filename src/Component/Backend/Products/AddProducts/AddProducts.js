@@ -31,7 +31,7 @@ const AddProducts = () => {
 
 
         try {
-            const res = await axios.post('http://localhost:5000/addProduct', formData)
+            const res = await axios.post('https://sheltered-thicket-75703.herokuapp.com/addProduct', formData)
             if (res.data) {
                 e.target.reset();
                 alert('data post successfully');

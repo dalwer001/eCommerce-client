@@ -15,7 +15,7 @@ const Products = () => {
 
     useEffect(() => {
         const productsLoaders = async () => {
-            const res = await axios.get('http://localhost:5000/products')
+            const res = await axios.get('https://sheltered-thicket-75703.herokuapp.com/products')
             setRecentProducts(res.data);
         }
         productsLoaders();

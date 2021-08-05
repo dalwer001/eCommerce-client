@@ -30,7 +30,7 @@ const ProductReviews = () => {
 
   useEffect(() => {
     const singleProduct = async () => {
-      const res = await axios.get(`http://localhost:5000/products/${id}`);
+      const res = await axios.get(`https://sheltered-thicket-75703.herokuapp.com/products/${id}`);
       setSingleProduct(res.data);
       // console.log(res.data);
     }
@@ -38,7 +38,7 @@ const ProductReviews = () => {
   }, [id])
   useEffect(() => {
     const singleProduct = async () => {
-      const res = await axios.get(`http://localhost:5000/offerProduct/${id}`);
+      const res = await axios.get(`https://sheltered-thicket-75703.herokuapp.com/offerProduct/${id}`);
       setSingleProduct(res.data);
       // console.log(res.data);
     }

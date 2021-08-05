@@ -32,7 +32,7 @@ const AddOfferProducts = () => {
 
 
         try {
-            const res = await axios.post('http://localhost:5000/addOffer', formData)
+            const res = await axios.post('https://sheltered-thicket-75703.herokuapp.com/addOffer', formData)
             if (res.data) {
                 alert('data post successfully');
                 e.target.reset();
