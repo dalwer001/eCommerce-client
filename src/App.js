@@ -18,8 +18,8 @@ import Shop from './Component/FrontEnd/Shop/Shop/Shop';
 import OurCompany from './Component/FrontEnd/FooterInfo/AboutUs/OurCompany/OurCompany';
 import History from './Component/FrontEnd/FooterInfo/AboutUs/History/History';
 import Contact from './Component/FrontEnd/FooterInfo/AboutUs/Contact/Contact';
-import Sidebar from './Component/BackEnd/AdminPanel/Sidebar/Sidebar';
-import AddOfferProducts from './Component/BackEnd/Products/AddOfferProducts/AddOfferProducts';
+import Sidebar from './Component/Backend/AdminPanel/Sidebar/Sidebar';
+import AddOfferProducts from './Component/Backend/Products/AddOfferProducts/AddOfferProducts';
 import OfferInfo from './Component/FrontEnd/Home/OfferInfo/OfferInfo';
 import SingleOffer from './Component/FrontEnd/SingleProduct/SingleOffer/SingleOffer';
 
@@ -27,8 +27,8 @@ import VendorLogin from './Component/FrontEnd/VendorLogin/VendorLogin';
 import VendorRegister from './Component/FrontEnd/VendorLogin/VendorRegister';
 
 
-import AddProducts from './Component/BackEnd/Products/AddProducts/AddProducts';
-import VendorSidebar from './Component/BackEnd/VendorPanel/VendorSidebar';
+import AddProducts from './Component/Backend/Products/AddProducts/AddProducts';
+import VendorSidebar from './Component/Backend/VendorPanel/VendorSidebar';
 
 
 import ReviewForm from './Component/FrontEnd/SingleProduct/ReviewForm/ReviewForm';

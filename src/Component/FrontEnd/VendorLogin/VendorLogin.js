@@ -15,7 +15,7 @@ const VendorLogin = () => {
   const logInUser = async(e)=>{
     e.preventDefault();
 
-    const res = await fetch('http://localhost:5000/signIn',{
+    const res = await fetch('https://sheltered-thicket-75703.herokuapp.com/signIn',{
       method:"POST",
       headers:{
         "Content-Type":"application/json"

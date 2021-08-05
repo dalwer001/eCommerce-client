@@ -12,7 +12,7 @@ const SingleProductsDetails = () => {
 
     useEffect(() => {
         const singleProduct = async () => {
-            const res = await axios.get(`http://localhost:5000/products/${id}`);
+            const res = await axios.get(`https://sheltered-thicket-75703.herokuapp.com/products/${id}`);
             setSingleProduct(res.data);
             // console.log(res.data);
         }

@@ -65,7 +65,7 @@ export default function VendorRegister() {
 
     const {firstName, lastName, companyName, contactNumber, email, password} = user;
 
-    const res = await fetch('http://localhost:5000/register',{
+    const res = await fetch('https://sheltered-thicket-75703.herokuapp.com/register',{
       method:"POST",
       headers:{
         "Content-Type":"application/json"

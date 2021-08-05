@@ -37,7 +37,11 @@ const CartDetails = ({ pd }) => {
     return (
         <div className="row d-flex justify-content-between text-start mt-2 p-2">
             <div className="col-md-1 image text-center">
-                <img src={image} alt="" />
+                {
+                    image ? <img src={`data:image/jpeg;base64,${image.img}`}/> :
+                        <img src={`https://gentle-stream-95244.herokuapp.com//${pd.img}`} alt=""/>
+                }
+
             </div>
             <div className="col-md-5 col-sm-5 col-5">
                 <p>{title}</p>
