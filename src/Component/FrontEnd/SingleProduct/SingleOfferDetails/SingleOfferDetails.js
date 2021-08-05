@@ -18,8 +18,8 @@ const SingleOfferDetails = () => {
         singleProduct();
     }, [id]);
 
-    const { _id,title, price, image, category, description,offer} = singleProduct;
-    const offerprice = price - (price * offer / 100);
+    const { _id,title, mainPrice, image, category, description,offer} = singleProduct;
+    const offerprice = mainPrice - (mainPrice * offer / 100);
     console.log(offerprice);
 
     // product quantity
@@ -67,7 +67,7 @@ const SingleOfferDetails = () => {
                     <div>
                         <h1>{title}</h1>
                         <h5>{offer}% OFF</h5>
-                        <h6><del>${price}</del> {'\u00A0'} ${offerprice}</h6>
+                        <h6><del>${mainPrice}</del> {'\u00A0'} ${offerprice}</h6>
                         <p className="product-text-align">{description}</p>
                     </div>
 

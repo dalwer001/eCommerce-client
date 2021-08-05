@@ -1,12 +1,9 @@
-import React from 'react';
-import {   faTachometerAlt, faUsers, faHome, faUserFriends, faTasks, faEye} from '@fortawesome/free-solid-svg-icons';
-import './Sidebar.css';
+import { faHome, faTachometerAlt, faUserFriends, faUsers } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
-const Sidebar = () => {
-    
+import React from 'react';
+import './VendorSidebar.css';
+const VendorSidebar = () => {
     return (
-       
         <div class="container-fluid overflow-hidden">
         <div class="row vh-100 overflow-auto">
             <div class="col-12 col-sm-3 col-xl-2 px-sm-2 px-0 bg-dark d-flex sticky-top">
@@ -51,34 +48,6 @@ const Sidebar = () => {
                             <a href="#" class="nav-link px-sm-0 px-2">
                             <FontAwesomeIcon icon={faUsers} /><span class="ms-1 d-none d-sm-inline">Customers</span> </a>
                         </li>
-                        <li>
-                            <a href="#" class="nav-link px-sm-0 px-2">
-                            <FontAwesomeIcon icon={faTasks} /><span class="ms-1 d-none d-sm-inline">Manage Category</span> </a>
-                        </li>
-                        <li>
-                            <a href="#" class="nav-link px-sm-0 px-2">
-                            <FontAwesomeIcon icon={faTasks} /><span class="ms-1 d-none d-sm-inline">Manage Product</span> </a>
-                        </li>
-                        <li>
-                            <a href="#" class="nav-link px-sm-0 px-2">
-                            <FontAwesomeIcon icon={faTasks} /><span class="ms-1 d-none d-sm-inline">Manage vendor</span> </a>
-                        </li>
-                        <li>
-                            <a href="#" class="nav-link px-sm-0 px-2">
-                            <FontAwesomeIcon icon={faTasks} /><span class="ms-1 d-none d-sm-inline">Manage Gallery</span> </a>
-                        </li>
-                        <li>
-                            <a href="#" class="nav-link px-sm-0 px-2">
-                            <FontAwesomeIcon icon={faTasks} /><span class="ms-1 d-none d-sm-inline">Manage Report</span> </a>
-                        </li>
-                        <li>
-                            <a href="#" class="nav-link px-sm-0 px-2">
-                            <FontAwesomeIcon icon={faTasks} /><span class="ms-1 d-none d-sm-inline">Manage Payment</span> </a>
-                        </li>
-                        <li>
-                            <a href="#" class="nav-link px-sm-0 px-2">
-                            <FontAwesomeIcon icon={faEye} /><span class="ms-1 d-none d-sm-inline">View Order</span> </a>
-                        </li>
                     </ul>
                     <div class="dropdown py-sm-4 mt-sm-auto ms-auto ms-sm-0 flex-shrink-1">
                         <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
@@ -117,4 +86,4 @@ const Sidebar = () => {
     );
 };
 
-export default Sidebar;
+export default VendorSidebar;

@@ -18,16 +18,21 @@ import Shop from './Component/FrontEnd/Shop/Shop/Shop';
 import OurCompany from './Component/FrontEnd/FooterInfo/AboutUs/OurCompany/OurCompany';
 import History from './Component/FrontEnd/FooterInfo/AboutUs/History/History';
 import Contact from './Component/FrontEnd/FooterInfo/AboutUs/Contact/Contact';
+import Sidebar from './Component/Backend/AdminPanel/Sidebar/Sidebar';
 import AddOfferProducts from './Component/Backend/Products/AddOfferProducts/AddOfferProducts';
 import OfferInfo from './Component/FrontEnd/Home/OfferInfo/OfferInfo';
 import SingleOffer from './Component/FrontEnd/SingleProduct/SingleOffer/SingleOffer';
-import Sidebar from './Component/Backend/AdminPanel/Sidebar/Sidebar';
-
 
 import VendorLogin from './Component/FrontEnd/VendorLogin/VendorLogin';
 import VendorRegister from './Component/FrontEnd/VendorLogin/VendorRegister';
+
+
 import AddProducts from './Component/Backend/Products/AddProducts/AddProducts';
-axios.defaults.baseURL = "https://fakestoreapi.com";
+import VendorSidebar from './Component/Backend/VendorPanel/VendorSidebar';
+
+
+import ReviewForm from './Component/FrontEnd/SingleProduct/ReviewForm/ReviewForm';
+axios.defaults.baseURL = "https://fakem storeapi.com";
 // axios.defaults.baseURL = "https://fakestoreapi.com";
 
 export const UserContext = createContext();
@@ -83,7 +88,7 @@ function App() {
 
               {/* add products */}
               <Route path="/addProduct">
-                <AddProducts />
+                <AddProducts/>
               </Route>
               {/* offer products */}
               <Route path="/addOffer">
@@ -102,9 +107,18 @@ function App() {
               <Route path="/contact">
                 <Contact></Contact>
               </Route>
+            <Route path="/sidebar">
+            <Sidebar/>         
+             </Route>
+             <Route path="/vendorSidebar">
+               <VendorSidebar></VendorSidebar>
+             </Route>
               <Route path="/sidebar">
                 <Sidebar />
               </Route>
+            {/* <PrivateRoute path="/addReview">
+                  <ReviewForm></ReviewForm>
+              </PrivateRoute> */}
             </Switch>
             <Footer />
           </Router>

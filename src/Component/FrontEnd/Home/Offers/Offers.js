@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import 'react-multi-carousel/lib/styles.css';
-import { useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import './Offers.css';
 
 const Offers = ({ offers, addToCart }) => {
@@ -36,8 +36,8 @@ const Offers = ({ offers, addToCart }) => {
                         </a>
                         <span class="product-discount-label">{offer}%</span>
                         <ul class="product-links">
-                            <li><a href="#" data-tip="Add to Wishlist"><i class="fas fa-heart"></i></a></li>
-                            <li><a href="" onClick={() => singleProduct(_id)} data-tip="View"><i class="fa fa-eye"></i></a></li>
+                            <li data-tip="Add to Wishlist"><i class="fas fa-heart"></i></li>
+                            <li onClick={() => singleProduct(_id)} data-tip="View"><i class="fa fa-eye"></i></li>
                         </ul>
                     </div>
                     <div class="product-content">
