@@ -19,10 +19,12 @@ const SingleProductsDetails = () => {
         singleProduct();
     }, [id]);
 
-    const { title, description, price, size, category, type, quantity, image } = singleProduct;
+    const { _id, title, description, price, size, category, type, quantity, image } = singleProduct;
+    // console.log('q', singleProduct)
 
     // product quantity
-    const [counter, setCounter] = useState(1);
+    const [test, setTest] = useState(1)
+    const [counter, setCounter] = useState(test);
     const incrementCounter = () => {
         singleProduct.quantity = counter + 1;
         setCounter(singleProduct.quantity)
@@ -38,13 +40,13 @@ const SingleProductsDetails = () => {
     // add product to cart
     const [cartProducts, setCartProducts] = useContext(CartContext);
     const addToCart = (product) => {
-        const toBeAdded = product.id;
-        const sameProduct = cartProducts.find((p) => p.id === toBeAdded);
+        const toBeAdded = product._id;
+        const sameProduct = cartProducts.find((p) => p._id === toBeAdded);
         let count = counter;
         let newCart = [];
         if (sameProduct) {
             sameProduct.quantity = count;
-            const others = cartProducts.filter((p) => p.id !== toBeAdded);
+            const others = cartProducts.filter((p) => p._id !== toBeAdded);
             newCart = [...others, sameProduct];
         } else {
             product.quantity = counter;
@@ -52,6 +54,15 @@ const SingleProductsDetails = () => {
         }
         setCartProducts(newCart);
     };
+
+    useEffect(() => {
+        const singleProductQuantity = () => {
+            const quantity = cartProducts.find(pd => pd._id === _id)
+            setTest(quantity?.quantity);
+            console.log(quantity?.quantity)
+        };
+        singleProductQuantity();
+    })
 
     return (
         <section className="container py-5">
@@ -62,7 +73,7 @@ const SingleProductsDetails = () => {
                             :
                             <img className="img-fluid mb-3 product-image" src={`https://gentle-stream-95244.herokuapp.com//${singleProduct.img}`} alt="" />
                     }
-                    
+
                 </div>
                 <div className="col-md-6 col-sm-12 mt-5">
                     <div>
