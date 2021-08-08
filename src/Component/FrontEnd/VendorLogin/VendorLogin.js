@@ -1,12 +1,43 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './VendorLogin.css'
 import { TextField, Button, Typography, Paper } from '@material-ui/core';
 import useStyles from './VendorStyle.js';
 import { Carousel } from 'react-bootstrap';
 import Grid from "@material-ui/core/Grid";
 import Link from "@material-ui/core/Link";
+import { useHistory } from 'react-router-dom';
 const VendorLogin = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const history = useHistory();
   const classes = useStyles();
+
+  const logInUser = async(e)=>{
+    e.preventDefault();
+
+    const res = await fetch('https://sheltered-thicket-75703.herokuapp.com/signIn',{
+      method:"POST",
+      headers:{
+        "Content-Type":"application/json"
+      },
+      body:JSON.stringify({
+        email,password
+      })
+    });
+
+    const data = res.json();
+
+    if(res.status === 400 || !data)
+    {
+      window.alert('Invalid Credentials');
+    }
+    else{
+      window.alert("Login Successful");
+      history.push('/vendorSidebar');
+    }
+
+
+  }
   return (
 
     <div className="vendorLogin">
@@ -52,15 +83,16 @@ const VendorLogin = () => {
 
         <div className="col-md-4">
           <Paper className={classes.paper}>
-            <form autoComplete="off" noValidate className={`${classes.root} ${classes.form}`} action="">
+            <form autoComplete="off" noValidate className={`${classes.root} ${classes.form}`} action="" method="POST">
               <Typography variant="h6">
                 Vendor Login
               </Typography>
 
-              <TextField name="title" label="name*" fullWidth />
-              <TextField name="message" label="email*" fullWidth />
+              <TextField type="email" name="email" label="email*" value={email} onChange={(e)=>setEmail(e.target.value)} fullWidth />
 
-              <Button variant="contained " className={classes.buttonSubmit} size="large" type="submit" >
+              <TextField type="password" name="password" label="password*" value={password} onChange={(e)=>setPassword(e.target.value)} fullWidth />
+
+              <Button variant="contained " className={classes.buttonSubmit} size="large" type="submit" onClick={logInUser}>
                 Submit
               </Button>
               <Grid container>

@@ -15,7 +15,7 @@ const Products = () => {
 
     useEffect(() => {
         const productsLoaders = async () => {
-            const res = await axios.get('http://localhost:5000/products')
+            const res = await axios.get('https://sheltered-thicket-75703.herokuapp.com/products')
             setRecentProducts(res.data);
         }
         productsLoaders();
@@ -65,7 +65,7 @@ const Products = () => {
                 <div className="row">
                     {
                         productLoader.map(products =>
-                            <ProductDetails key={products?._id} products={products} addToCart={addToCart}
+                            <ProductDetails key={products._id} products={products} addToCart={addToCart}
                             />
                         )
                     }
