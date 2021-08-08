@@ -1,15 +1,39 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import {   faTachometerAlt, faUsers, faHome, faUserFriends, faTasks, faEye, faList, faImages, faChartLine, faCreditCard} from '@fortawesome/free-solid-svg-icons';
 import {faProductHunt, faFirstOrder} from '@fortawesome/free-brands-svg-icons'
 import './Sidebar.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useState } from 'react';
+import { UserContext } from '../../../../App';
 
 const Sidebar = () => {
+    const [loggedInUser, setLoggedInUser] = useContext(UserContext);
+    const [isAdmin, setIsAdmin] = useState(false)
+
+
+    useEffect(() => {
+        fetch(`http://localhost:5000/isAdmin`, {
+            method: "POST",
+            headers: { 'content-type': 'application/json' },
+            body: JSON.stringify({ email: loggedInUser.email })
+            
+
+        })
+            .then(res => res.json())
+            .then(data => setIsAdmin(data));
+    }, [loggedInUser.email]);
     
     return (
-       
-        <div class="container-fluid overflow-hidden">
+        <div>
+            {!isAdmin &&
+                <div className="">
+                <h1>hi</h1>
+            </div>
+            }
+        {isAdmin &&
+            <div class="container-fluid overflow-hidden">
         <div class="row vh-100 overflow-auto">
+        
             <div class="col-12 col-sm-3 col-xl-2 px-sm-2 px-0 bg-dark d-flex sticky-top">
                 <div class="d-flex flex-sm-column flex-row flex-grow-1 align-items-center align-items-sm-start px-3 pt-2 text-white">
                     <a href="/" class="d-flex align-items-center pb-sm-3 mb-md-0 me-md-auto text-white text-decoration-none">
@@ -90,6 +114,7 @@ const Sidebar = () => {
                     </div>
                 </div>
             </div>
+            
             <div class="col d-flex flex-column h-sm-100">
                 {/* <main class="row overflow-auto">
                     <div class="col pt-4">
@@ -106,7 +131,10 @@ const Sidebar = () => {
                 </footer>
             </div>
         </div>
-    </div>
+         
+    </div> 
+        }
+        </div>
     );
 };
 
