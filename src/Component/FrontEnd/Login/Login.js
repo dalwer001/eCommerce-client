@@ -97,7 +97,7 @@ const LoginO = () => {
 const handleSubmit = (e) => {
 
     if (newUser && user.email && user.password) {
-        firebase.auth().createUserWithEmailAndPassword(user.email, user.password)
+        firebase.auth().createUserWithEmailAndPassword(user.email, user.password,user.name)
             .then(res => {
                 const newUserInfo = { ...user };
                 newUserInfo.error = '';
@@ -118,7 +118,7 @@ const handleSubmit = (e) => {
 
         
     if (!newUser && user.email && user.password) {
-        firebase.auth().signInWithEmailAndPassword(user.email, user.password)
+        firebase.auth().signInWithEmailAndPassword(user.email, user.password,user.name)
             .then(res => {
                 const newUserInfo = { ...user };
                 newUserInfo.error = '';
@@ -164,7 +164,7 @@ const updateUserName = name => {
       .signInWithPopup(googleProvider)
       .then((result) => {
         const { displayName, email } = result.user;
-        const signedInUser = { Name: displayName, email }
+        const signedInUser = { name: displayName, email }
         setLoggedInUser(signedInUser)
         history.replace(from);
       }).catch((error) => {
