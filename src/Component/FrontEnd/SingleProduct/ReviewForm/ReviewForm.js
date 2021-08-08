@@ -11,17 +11,14 @@ return (
                 <Typography variant="h6">
                     Add review
                 </Typography>
-                <TextField name="creator" label="Your review*"  fullWidth className={classes.fileInput} />
                 <TextField name="title" label="name*" fullWidth  />
                 <TextField name="message" label="email*" fullWidth  />
-
+                <TextField name="creator" label="Your review*" multiline minRows={4} fullWidth />
                 <Button variant="contained" className={classes.buttonSubmit} color="primary" size="large" type="submit" >
                     Submit
                 </Button>
             </form>
         </Paper>
-
-
 );
 };
 
