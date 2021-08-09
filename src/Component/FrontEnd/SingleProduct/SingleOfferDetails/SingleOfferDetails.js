@@ -1,38 +1,31 @@
-import axios from 'axios';
-import React, { useContext, useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import './SingleProductsDetails.css';
+import { faArrowRight, faHeart, faMinus, faPlus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlus, faMinus, faArrowRight, faHeart } from '@fortawesome/free-solid-svg-icons';
+import axios from 'axios';
+import React, { useContext, useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import { CartContext } from '../../../../App';
 
-const SingleProductsDetails = () => {
+const SingleOfferDetails = () => {
     const [singleProduct, setSingleProduct] = useState([]);
     const { id } = useParams();
 
     useEffect(() => {
         const singleProduct = async () => {
-            const res = await axios.get(`https://sheltered-thicket-75703.herokuapp.com/products/${id}`);
+            const res = await axios.get(`https://sheltered-thicket-75703.herokuapp.com/offerProduct/${id}`);
             setSingleProduct(res.data);
             // console.log(res.data);
         }
         singleProduct();
     }, [id]);
 
-    const { _id, title, description, price, size, category, type, quantity, image } = singleProduct;
-    // console.log('q', singleProduct)
+    const { _id,title, mainPrice, image, category, description,offer} = singleProduct;
+    const offerprice = mainPrice - (mainPrice * offer / 100);
+    console.log(offerprice);
 
     // product quantity
-    const [test, setTest] = useState(1)
-    const [counter, setCounter] = useState(test);
-    const incrementCounter = () => {
-        singleProduct.quantity = counter + 1;
-        setCounter(singleProduct.quantity)
-    };
-    let decrementCounter = () => {
-        singleProduct.quantity = counter - 1;
-        setCounter(singleProduct.quantity)
-    };
+    const [counter, setCounter] = useState(1);
+    const incrementCounter = () => setCounter(counter + 1);
+    let decrementCounter = () => setCounter(counter - 1);
     if (counter <= 1) {
         decrementCounter = () => setCounter(1);
     }
@@ -40,45 +33,41 @@ const SingleProductsDetails = () => {
     // add product to cart
     const [cartProducts, setCartProducts] = useContext(CartContext);
     const addToCart = (product) => {
-        const toBeAdded = product._id;
-        const sameProduct = cartProducts.find((p) => p._id === toBeAdded);
-        let count = counter;
+        const toBeAdded = product.id;
+        const sameProduct = cartProducts.find((p) => p.id === toBeAdded);
+        let count = 1;
         let newCart = [];
         if (sameProduct) {
+            count = sameProduct.quantity + 1;
             sameProduct.quantity = count;
-            const others = cartProducts.filter((p) => p._id !== toBeAdded);
+            const others = cartProducts.filter((p) => p.id !== toBeAdded);
             newCart = [...others, sameProduct];
         } else {
-            product.quantity = counter;
+            product.quantity = 1;
             newCart = [...cartProducts, product]
         }
         setCartProducts(newCart);
     };
 
-    useEffect(() => {
-        const singleProductQuantity = () => {
-            const quantity = cartProducts.find(pd => pd._id === _id)
-            setTest(quantity?.quantity);
-            console.log(quantity?.quantity)
-        };
-        singleProductQuantity();
-    })
+    // console.log('cp', cartProducts);
+
 
     return (
-        <section className="container py-5">
+        <section className="container">
             <div className="row d-flex align-items-center">
                 <div className="col-sm-12 col-md-6 P-5 d-flex justify-content-center ">
                     {
-                        image ? <img src={`data:image/jpeg;base64,${image.img}`} alt="" className="w-75 img-fluid" />
-                            :
-                            <img className="img-fluid mb-3 product-image" src={`https://gentle-stream-95244.herokuapp.com//${singleProduct.img}`} alt="" />
-                    }
-
+                                image ? <img className="w-50 img-fluid"src={`data:image/jpeg;base64,${image.img}`} alt="" />
+                                    :
+                                    <></>
+                                    // <img className="img-fluid w-50 mb-3" src={`https://gentle-stream-95244.herokuapp.com//${image.img}`} alt="" />
+                            }
                 </div>
                 <div className="col-md-6 col-sm-12 mt-5">
                     <div>
                         <h1>{title}</h1>
-                        <h6>${price}</h6>
+                        <h5>{offer}% OFF</h5>
+                        <h6><del>${mainPrice}</del> {'\u00A0'} ${offerprice}</h6>
                         <p className="product-text-align">{description}</p>
                     </div>
 
@@ -88,7 +77,9 @@ const SingleProductsDetails = () => {
                             <p className="fs-4 single-size-text mt-2">Size</p>
                         </div>
                         <div className=" mx-5 d-flex single-size-bg rounded-pill p-1">
-                            <a href="#" alt="" className=" product-size-hover mx-3 text-decoration-none ">{size}</a>
+                            <a href="#" alt="" className=" product-size-hover mx-3 text-decoration-none ">XS</a>
+                            <a href="#" alt="" className="mx-3 text-decoration-none product-size-hover">S</a>
+                            <a href="#" alt="" className="mx-3 text-decoration-none product-size-hover">M</a>
                         </div>
                     </div>
                     {/* ........................ */}
@@ -122,4 +113,5 @@ const SingleProductsDetails = () => {
     );
 };
 
-export default SingleProductsDetails;
+
+export default SingleOfferDetails;

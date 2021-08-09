@@ -17,6 +17,8 @@ import { useHistory, useLocation } from "react-router";
 import firebaseConfig from "./firebase.config";
 import "./Login.css";
 import google from "../../../Images/google.png";
+import { UserContext } from "../../../App";
+import { useContext } from "react";
 if (firebase.apps.length === 0) {
   firebase.initializeApp(firebaseConfig);
 }
@@ -67,7 +69,7 @@ const LoginO = () => {
     success: false,
   });
 
-  // const [loggedInUser, setLoggedInUser] = useContext(UserContext);
+  const [loggedInUser, setLoggedInUser] = useContext(UserContext);
 
   let history = useHistory();
   let location = useLocation();
@@ -75,213 +77,213 @@ const LoginO = () => {
   //handleBlur
   const handleBlur = (e) => {
     let isFieldValid = true;
-    if (e.target.name === "email") {
-      isFieldValid = /\S+@\S+\.\S+/.test(e.target.value);
+    if (e.target.name === 'email') {
+        isFieldValid = /\S+@\S+\.\S+/.test(e.target.value);
+
     }
-    if (e.target.name === "password") {
-      const isPasswordValid = e.target.value.length > 6;
-      const passwordHasNumber = /\d{1}/.test(e.target.value);
-      isFieldValid = isPasswordValid && passwordHasNumber;
+    if (e.target.name === 'password') {
+        const isPasswordValid = e.target.value.length > 6;
+        const passwordHasNumber = /\d{1}/.test(e.target.value);
+        isFieldValid = isPasswordValid && passwordHasNumber;
     }
     if (isFieldValid) {
-      const newUserInfo = { ...user };
-      newUserInfo[e.target.name] = e.target.value;
-      setUser(newUserInfo);
+        const newUserInfo = { ...user };
+        newUserInfo[e.target.name] = e.target.value;
+        setUser(newUserInfo);
     }
-  };
-  //handleSubmit
-  const handleSubmit = (e) => {
-    // creating new user
+}
+
+
+const handleSubmit = (e) => {
+
     if (newUser && user.email && user.password) {
-      firebase
-        .auth()
-        .createUserWithEmailAndPassword(user.email, user.password)
-        .then((res) => {
-          const newUserInfo = { ...user };
-          newUserInfo.error = "";
-          newUserInfo.success = true;
-          setUser(newUserInfo);
-          updateUserName(user.name);
-          // setLoggedInUser(newUserInfo);
-          history.replace(from);
-        })
-        .catch((error) => {
-          const newUserInfo = { ...user };
-          newUserInfo.error = error.message;
-          newUserInfo.success = false;
-          setUser(newUserInfo);
-        });
+        firebase.auth().createUserWithEmailAndPassword(user.email, user.password,user.name)
+            .then(res => {
+                const newUserInfo = { ...user };
+                newUserInfo.error = '';
+                newUserInfo.success = true;
+                setUser(newUserInfo);
+                updateUserName(user.name);
+                setLoggedInUser(newUserInfo);
+                history.replace(from);
+            })
+            .catch((error) => {
+                const newUserInfo = { ...user };
+                newUserInfo.error = error.message;
+                newUserInfo.success = false;
+                setUser(newUserInfo);
+            });
     }
-    // login for existing user
+
+
+        
     if (!newUser && user.email && user.password) {
-      firebase
-        .auth()
-        .signInWithEmailAndPassword(user.email, user.password)
-        .then((res) => {
-          const newUserInfo = { ...user };
-          newUserInfo.error = "";
-          newUserInfo.success = true;
-          setUser(newUserInfo);
-          // setLoggedInUser(newUserInfo);
-          history.replace(from);
-        })
-        .catch((error) => {
-          const newUserInfo = { ...user };
-          newUserInfo.error = error.message;
-          newUserInfo.success = false;
-          setUser(newUserInfo);
-        });
+        firebase.auth().signInWithEmailAndPassword(user.email, user.password,user.name)
+            .then(res => {
+                const newUserInfo = { ...user };
+                newUserInfo.error = '';
+                newUserInfo.success = true;
+                setUser(newUserInfo);
+                setLoggedInUser(newUserInfo);
+                console.log(newUser);
+                console.log('sign in user info', res.user);
+                history.replace(from);
+            })
+            .catch((error) => {
+                const newUserInfo = { ...user };
+                newUserInfo.error = error.message;
+                newUserInfo.success = false;
+                setUser(newUserInfo);
+            });
+
     }
     e.preventDefault();
-  };
+}
 
-  //update User Name
-  const updateUserName = (name) => {
+
+
+const updateUserName = name => {
     const user = firebase.auth().currentUser;
 
-    user
-      .updateProfile({
-        displayName: name,
-      })
-      .then(function () {
-        console.log("User name Updated SuccessFully");
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  };
+    user.updateProfile({
+        displayName: name
+
+    })
+        .then(function () {
+            console.log('user name Updated SuccessFully');
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+}
 
   //google sign in
   const handleGoogleSignIn = () => {
-    const provider = new firebase.auth.GoogleAuthProvider();
-    firebase
-      .auth()
-      .signInWithPopup(provider)
+    const googleProvider = new firebase.auth.GoogleAuthProvider();
+    firebase.auth()
+      .signInWithPopup(googleProvider)
       .then((result) => {
         const { displayName, email } = result.user;
-        const signedInUser = { name: displayName, email };
-        // setLoggedInUser(signedInUser);
-        console.log(signedInUser);
+        const signedInUser = { name: displayName, email }
+        setLoggedInUser(signedInUser)
         history.replace(from);
-
-        /** @type {firebase.auth.OAuthCredential} */
-        var user = result.user;
-      })
-      .catch((error) => {
+      }).catch((error) => {
         var errorCode = error.code;
         var errorMessage = error.message;
-        console.log(errorCode, errorMessage);
+        var email = error.email;
+        var credential = error.credential;
+        console.log(errorMessage, email, credential, errorCode)
       });
-  };
-  const classes = useStyles();
+  }
+    const classes = useStyles();
 
-  return (
-    <Grid container component="main" className={classes.root}>
-      <CssBaseline />
-      <Grid item xs={false} sm={4} md={7} className={classes.image} />
-      <Grid item xs={12} sm={8} md={5} component={Paper}>
-        <div className={classes.paper}>
-          <Avatar className={classes.avatar}>
-            <LockOutlinedIcon />
-          </Avatar>
-          <Typography component="h1" variant="h5">
-            {newUser ? "Create An Account" : "Login"}
-          </Typography>
-          <form onSubmit={handleSubmit} className={classes.form} noValidate>
-            {newUser && (
-              <TextField
-                label={newUser ? "Name:" : "Username or Email"}
-                type="text"
-                className="form-control"
-                name="name"
-                placeholder="Your Name"
-                onBlur={handleBlur}
-                required
-              />
-            )}
-            <TextField
-              label={newUser ? "Your Email" : "UserName or Email"}
-              margin="normal"
-              required
-              fullWidth
-              id="email"
-              type="text"
-              name="email"
-              onBlur={handleBlur}
-              autoComplete="email"
-              autoFocus
-            />
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              name="password"
-              label="Password"
-              type="password"
-              id="password"
-              onBlur={handleBlur}
-              autoComplete="current-password"
-            />
-            <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Remember me"
-            />
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              color="primary"
-              className={classes.submit}
-            >
+    return (
+      <Grid container component="main" className={classes.root}>
+        <CssBaseline />
+        <Grid item xs={false} sm={4} md={7} className={classes.image} />
+        <Grid item xs={12} sm={8} md={5} component={Paper}>
+          <div className={classes.paper}>
+            <Avatar className={classes.avatar}>
+              <LockOutlinedIcon />
+            </Avatar>
+            <Typography component="h1" variant="h5">
               {newUser ? "Create An Account" : "Login"}
-            </Button>
-            <Grid container>
-              <Grid item xs>
-                <Link href="#" variant="body2">
-                  Forgot password?
-                </Link>
-              </Grid>
-              <Grid item>
-                <p className="text-center pt-2 ">
-                  {" "}
-                  {newUser
-                    ? "Already have an account?"
-                    : "Do not have an account?"}{" "}
-                  <button
-                    className="bg-white"
-                    onClick={() => setNewUser(!newUser)}
-                    name="newUser"
-                  >
-                    {" "}
-                    {newUser ? "Login" : "Create An Account"}
-                  </button>
-                </p>
-              </Grid>
-            </Grid>
-            <div className="text-center  mb-3 google">
-              <h5>or</h5>
-              <button
-                className="btn btn-light shadow border"
-                onClick={handleGoogleSignIn}
-              >
-                {" "}
-                <img className="photo" src={google} alt="" /> Continue with
-                google
-              </button>
-            </div>
-
-            <div>
-              <p style={{ color: "red", textAlign: "center" }}>{user.error}</p>
-              {user.success && (
-                <p style={{ color: "green" }}>
-                  User {newUser ? "Created" : "logged In"}Successfully.
-                </p>
+            </Typography>
+            <form onSubmit={handleSubmit} className={classes.form} noValidate>
+              {newUser && (
+                <TextField
+                  label={newUser ? "Name:" : "Username or Email"}
+                  type="text"
+                  className="form-control"
+                  name="name"
+                  placeholder="Your Name"
+                  onBlur={handleBlur}
+                  required
+                />
               )}
-            </div>
-          </form>
-        </div>
+              <TextField
+                label={newUser ? "Your Email" : "UserName or Email"}
+                margin="normal"
+                required
+                fullWidth
+                id="email"
+                type="text"
+                name="email"
+                onBlur={handleBlur}
+                autoComplete="email"
+                autoFocus
+              />
+              <TextField
+                margin="normal"
+                required
+                fullWidth
+                name="password"
+                label="Password"
+                type="password"
+                id="password"
+                onBlur={handleBlur}
+                autoComplete="current-password"
+              />
+              <FormControlLabel
+                control={<Checkbox value="remember" color="primary" />}
+                label="Remember me"
+              />
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                color="primary"
+                className={classes.submit}
+              >
+                {newUser ? "Create An Account" : "Login"}
+              </Button>
+              <Grid container>
+                <Grid item xs>
+                  <Link href="#" variant="body2">
+                    Forgot password?
+                  </Link>
+                </Grid>
+                <Grid item>
+                  <p className="text-center pt-2 ">
+                    {" "}
+                    {newUser
+                      ? "Already have an account?"
+                      : "Do not have an account?"}{" "}
+                    <button
+                      className="bg-white"
+                      onClick={() => setNewUser(!newUser)}
+                      name="newUser"
+                    >
+                      {" "}
+                      {newUser ? "Login" : "Create An Account"}
+                    </button>
+                  </p>
+                </Grid>
+              </Grid>
+              <div className="text-center  mb-3 google">
+                <h5>or</h5>
+                <button
+                  className="btn btn-light shadow border"
+                  onClick={handleGoogleSignIn}
+                >
+                  {" "}
+                  <img className="photo" src={google} alt="" /> Continue with
+                  google
+                </button>
+              </div>
+
+              <div>
+                <p style={{ color: "red", textAlign: "center" }}>{user.error}</p>
+                {user.success && (
+                  <p style={{ color: "green" }}>
+                    User {newUser ? "Created" : "logged In"}Successfully.
+                  </p>
+                )}
+              </div>
+            </form>
+          </div>
+        </Grid>
       </Grid>
-    </Grid>
-  );
-};
-export default LoginO;
+    );
+  };
+  export default LoginO;

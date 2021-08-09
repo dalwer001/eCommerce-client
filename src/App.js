@@ -18,20 +18,43 @@ import Shop from './Component/FrontEnd/Shop/Shop/Shop';
 import OurCompany from './Component/FrontEnd/FooterInfo/AboutUs/OurCompany/OurCompany';
 import History from './Component/FrontEnd/FooterInfo/AboutUs/History/History';
 import Contact from './Component/FrontEnd/FooterInfo/AboutUs/Contact/Contact';
-import Offers from './Component/FrontEnd/Home/Offers/Offers';
+import Sidebar from './Component/Backend/AdminPanel/Sidebar/Sidebar';
+import AddOfferProducts from './Component/Backend/Products/AddOfferProducts/AddOfferProducts';
+import OfferInfo from './Component/FrontEnd/Home/OfferInfo/OfferInfo';
+import SingleOffer from './Component/FrontEnd/SingleProduct/SingleOffer/SingleOffer';
+
 import VendorLogin from './Component/FrontEnd/VendorLogin/VendorLogin';
 import VendorRegister from './Component/FrontEnd/VendorLogin/VendorRegister';
-axios.defaults.baseURL = "https://fakestoreapi.com";
+
+
+<<<<<<< HEAD
+import AddProducts from './Component/BackEnd/Products/AddProducts/AddProducts';
+import VendorSidebar from './Component/BackEnd/VendorPanel/VendorSidebar';
+import PrivateRoute from './Component/FrontEnd/PrivateRoute/PrivateRoute';
+import AddAdmin from './Component/BackEnd/AddAdmin/AddAdmin';
+=======
+import AddProducts from './Component/Backend/Products/AddProducts/AddProducts';
+import VendorSidebar from './Component/Backend/VendorPanel/VendorSidebar';
+
+>>>>>>> a55b94d8ab41378867a399f40c3223c3f60da27b
+
+// import ReviewForm from './Component/FrontEnd/SingleProduct/ReviewForm/ReviewForm';
+axios.defaults.baseURL = "https://fakem storeapi.com";
+// axios.defaults.baseURL = "https://fakestoreapi.com";
 
 export const UserContext = createContext();
 export const CartContext = createContext();
 export const TotalContext = createContext();
 
 function App() {
+
   const [loggedInUser, setLoggedInUser] = useState({});
   const [cartProducts, setCartProducts] = useState([]);
   const [grandTotal, setGrandTotal] = useState(0);
+
+
   return (
+
     <UserContext.Provider value={[loggedInUser, setLoggedInUser]}>
       <CartContext.Provider value={[cartProducts, setCartProducts]}>
         <TotalContext.Provider value={[grandTotal, setGrandTotal]}>
@@ -47,14 +70,16 @@ function App() {
               <Route path="/home">
                 <Home />
               </Route>
-              <Route path="/products/:id">
+              
+                <Route path="/products/:id">
                 <SingleProduct />
               </Route>
+        
               <Route path="/gallery">
                 <Gallery></Gallery>
               </Route>
               <Route path="/offer">
-                <Offers></Offers>
+                <OfferInfo></OfferInfo>
               </Route>
               <Route path="/cart">
                 <Cart />
@@ -68,10 +93,22 @@ function App() {
               <Route path="/vendorRegister">
                 <VendorRegister></VendorRegister>
               </Route>
-              <Route path="/shop">
+              <PrivateRoute path="/shop">
                 <Shop></Shop>
+              </PrivateRoute>
+
+              {/* add products */}
+              <Route path="/addProduct">
+                <AddProducts/>
               </Route>
-            
+              {/* offer products */}
+              <Route path="/addOffer">
+                <AddOfferProducts></AddOfferProducts>
+              </Route>
+              <Route path="/offerProducts/:id">
+                <SingleOffer></SingleOffer>
+              </Route>
+              {/* About us */}
               <Route path="/ourCompany">
                 <OurCompany></OurCompany>
               </Route>
@@ -81,6 +118,21 @@ function App() {
               <Route path="/contact">
                 <Contact></Contact>
               </Route>
+             {/* <Route path="/sidebar">
+             <Sidebar/>         
+              </Route>  */}
+             <Route path="/vendorSidebar">
+               <VendorSidebar></VendorSidebar>
+             </Route>
+            <PrivateRoute path="/sidebar">
+              <Sidebar></Sidebar>
+            </PrivateRoute>
+            <Route path="/addAdmin">
+              <AddAdmin></AddAdmin>
+            </Route>
+            {/* <PrivateRoute path="/addReview">
+                  <ReviewForm></ReviewForm>
+              </PrivateRoute> */}
             </Switch>
             <Footer />
           </Router>

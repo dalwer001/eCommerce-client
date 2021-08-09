@@ -4,7 +4,7 @@ import { faPlus, faMinus, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { CartContext, TotalContext } from '../../../../App';
 
 const CartDetails = ({ pd }) => {
-    const { id, image, title, quantity, price } = pd;
+    const { _id, image, title, quantity, price } = pd;
 
     // product quantity
     const [cartProducts, setCartProducts] = useContext(CartContext);
@@ -30,20 +30,24 @@ const CartDetails = ({ pd }) => {
 
     // remove product
     const removeProduct = id => {
-        const existingProduct = cartProducts.filter(pd => { return pd.id !== id })
+        const existingProduct = cartProducts.filter(pd => { return pd._id !== id })
         setCartProducts(existingProduct)
     }
 
     return (
         <div className="row d-flex justify-content-between text-start mt-2 p-2">
             <div className="col-md-1 image text-center">
-                <img src={image} alt="" />
+                {
+                    image ? <img src={`data:image/jpeg;base64,${image.img}`}/> :
+                        <img src={`https://gentle-stream-95244.herokuapp.com//${pd.img}`} alt=""/>
+                }
+
             </div>
             <div className="col-md-5 col-sm-5 col-5">
                 <p>{title}</p>
             </div>
             <div className="col-md-1 col-sm-1 col-1 remove">
-                <FontAwesomeIcon onClick={() => removeProduct(id)} size="1x" className="ms-0" icon={faTimes} />
+                <FontAwesomeIcon onClick={() => removeProduct(_id)} size="1x" className="ms-0" icon={faTimes} />
             </div>
             <div className="col-md-2 col-sm-3 col-3 quantity-calculation">
                 <div className="d-flex single-size-bg rounded-pill quantity">

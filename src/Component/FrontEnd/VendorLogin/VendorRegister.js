@@ -12,6 +12,9 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import './VendorLogin.css'
+import { useState } from 'react';
+import axios from 'axios';
+import { useHistory } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -43,6 +46,49 @@ const useStyles = makeStyles((theme) => ({
 export default function VendorRegister() {
   const classes = useStyles();
 
+  const history = useHistory();
+
+  const [user, setUser] = useState({
+    firstName:"", lastName:"", companyName:"", contactNumber:"", email:"", password:""
+  })
+  let name, value;
+  const handleInputs=(e)=>{
+    console.log(e);
+    name= e.target.name;
+    value=e.target.value;
+
+    setUser({...user,[name]:value});
+  }
+
+  const PostData = async(e)=>{
+    e.preventDefault();
+
+    const {firstName, lastName, companyName, contactNumber, email, password} = user;
+
+    const res = await fetch('https://sheltered-thicket-75703.herokuapp.com/register',{
+      method:"POST",
+      headers:{
+        "Content-Type":"application/json"
+      },
+      body:JSON.stringify({
+        firstName, lastName, companyName, contactNumber, email, password
+      })
+
+    });
+
+    const data =await res.json();
+
+    if(res.status === 422 || !data){
+      window.alert("Invalid Registration");
+    }
+    else{
+      window.alert("Registration Successfully");
+      history.push("/vendorLogin");
+    }
+  }
+
+
+
   return (
       <div className="vendorLogin">
     <Container  component="main" maxWidth="xs">
@@ -54,13 +100,14 @@ export default function VendorRegister() {
         <Typography component="h1" variant="h5">
           Sign up
         </Typography>
-        <form className={classes.form}  noValidate>
+        <form method="POST" className={classes.form} onSubmit={PostData} noValidate>
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
               <TextField
                 autoComplete="fname"
                 name="firstName"
-               
+                value={user.firstName}
+                onChange={handleInputs}
                 required
                 fullWidth
                 id="firstName"
@@ -76,6 +123,8 @@ export default function VendorRegister() {
                 id="lastName"
                 label="Last Name"
                 name="lastName"
+                value={user.lasttName}
+                onChange={handleInputs}
                 autoComplete="lname"
               />
             </Grid>
@@ -87,6 +136,8 @@ export default function VendorRegister() {
                 id="companyName"
                 label="Company Name"
                 name="companyName"
+                value={user.companyName}
+                onChange={handleInputs}
                 autoComplete="companyName"
               />
             </Grid>
@@ -98,6 +149,8 @@ export default function VendorRegister() {
                 id="contactNumber"
                 label="Contact Number"
                 name="contactNumber"
+                value={user.contactNumber}
+                onChange={handleInputs}
                 autoComplete="contactNumber"
               />
             </Grid>
@@ -109,6 +162,8 @@ export default function VendorRegister() {
                 id="email"
                 label="Email Address"
                 name="email"
+                value={user.email}
+                onChange={handleInputs}
                 autoComplete="email"
               />
             </Grid>
@@ -119,18 +174,15 @@ export default function VendorRegister() {
                 required
                 fullWidth
                 name="password"
+                value={user.password}
+                onChange={handleInputs}
                 label="Password"
                 type="password"
                 id="password"
                 autoComplete="current-password"
               />
             </Grid>
-            <Grid item xs={12}>
-              <FormControlLabel
-                control={<Checkbox value="allowExtraEmails"  />}
-                label="I want to receive inspiration, marketing promotions and updates via email."
-              />
-            </Grid>
+            
           </Grid>
           <Button
             type="submit"

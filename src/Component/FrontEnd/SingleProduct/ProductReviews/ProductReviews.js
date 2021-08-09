@@ -1,11 +1,14 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import './ProductReviews.css';
 import ReviewForm from '../ReviewForm/ReviewForm';
+import { useContext } from 'react';
+import { UserContext } from '../../../../App';
 
 
 const ProductReviews = () => {
+  const[loggedInUser, setLoggedInUser]=useContext(UserContext);
   const [toggleState, setToggleState] = useState(1);
 
   const toggleTab = (index) => {
@@ -27,12 +30,21 @@ const ProductReviews = () => {
 
   useEffect(() => {
     const singleProduct = async () => {
-      const res = await axios.get(`/products/${id}`);
+      const res = await axios.get(`https://sheltered-thicket-75703.herokuapp.com/products/${id}`);
       setSingleProduct(res.data);
       // console.log(res.data);
     }
     singleProduct();
   }, [id])
+  useEffect(() => {
+    const singleProduct = async () => {
+      const res = await axios.get(`https://sheltered-thicket-75703.herokuapp.com/offerProduct/${id}`);
+      setSingleProduct(res.data);
+      // console.log(res.data);
+    }
+    singleProduct();
+  }, [id])
+
   return (
     <div className="container mt-5 pt-5">
       <div className="bloc-tabs">
@@ -85,7 +97,15 @@ const ProductReviews = () => {
               </div>
             </div>
             <div className="col-md-6">
-              <ReviewForm></ReviewForm>
+              {
+                loggedInUser.email?<ReviewForm></ReviewForm>: 
+                <div>
+                    <p>please login</p>
+                <button className="btn btn-danger"><Link to="/login">login</Link> </button>
+                </div>
+              
+              }
+              
             </div>
           </div>
         </div>

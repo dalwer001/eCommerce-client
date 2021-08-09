@@ -5,6 +5,7 @@ import Footer from '../../Shared/Footer/Footer';
 import Products from '../Products/Products';
 import Category from '../Category/Category';
 import Offers from '../Offers/Offers';
+import OfferInfo from '../OfferInfo/OfferInfo';
 
 
 const Home = () => {
@@ -13,7 +14,7 @@ const Home = () => {
         <Slider></Slider>
         <Category/>
         <Products/>
-        <Offers></Offers>
+        <OfferInfo></OfferInfo>
       </div>
     );
 };

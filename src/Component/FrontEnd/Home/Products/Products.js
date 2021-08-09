@@ -15,7 +15,7 @@ const Products = () => {
 
     useEffect(() => {
         const productsLoaders = async () => {
-            const res = await axios.get('/products')
+            const res = await axios.get('https://sheltered-thicket-75703.herokuapp.com/products')
             setRecentProducts(res.data);
         }
         productsLoaders();
@@ -23,6 +23,7 @@ const Products = () => {
 
     //product slicing
     const productLoader = recentProducts.slice(0, visibleProduct);
+    console.log(productLoader)
 
     // load product more
     const showMoreProducts = () => {
@@ -38,14 +39,14 @@ const Products = () => {
     // cart product add
     const [cartProducts, setCartProducts] = useContext(CartContext);
     const addToCart = (product) => {
-        const toBeAddedKey = product.id;
-        const sameProduct = cartProducts.find(pd => pd.id === toBeAddedKey);
+        const toBeAddedKey = product._id;
+        const sameProduct = cartProducts.find(pd => pd._id === toBeAddedKey);
         let count = 1;
         let newCart;
         if (sameProduct) {
             count = sameProduct.quantity + 1;
             sameProduct.quantity = count;
-            const others = cartProducts.filter(pd => pd.id !== toBeAddedKey);
+            const others = cartProducts.filter(pd => pd._id !== toBeAddedKey);
             newCart = [...others, sameProduct];
         }
         else {
@@ -64,7 +65,7 @@ const Products = () => {
                 <div className="row">
                     {
                         productLoader.map(products =>
-                            <ProductDetails key={products.id} products={products} addToCart={addToCart}
+                            <ProductDetails key={products._id} products={products} addToCart={addToCart}
                             />
                         )
                     }
