@@ -15,7 +15,7 @@ return (
                 <Typography variant="h6">
                     Add review
                 </Typography>
-                <TextField name="title" label="name*" value={loggedInUser.name} fullWidth  />
+                <TextField name="title" label="name*" value={loggedInUser.name ||loggedInUser.displayName} fullWidth  />
                 <TextField name="message" label="email*"value={loggedInUser.email} fullWidth  />
                 <TextField name="creator" label="Your review*" multiline minRows={4} fullWidth />
                 <Button variant="contained" className={classes.buttonSubmit} color="primary" size="large" type="submit" >
