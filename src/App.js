@@ -18,8 +18,8 @@ import Shop from './Component/FrontEnd/Shop/Shop/Shop';
 import OurCompany from './Component/FrontEnd/FooterInfo/AboutUs/OurCompany/OurCompany';
 import History from './Component/FrontEnd/FooterInfo/AboutUs/History/History';
 import Contact from './Component/FrontEnd/FooterInfo/AboutUs/Contact/Contact';
-import Sidebar from './Component/Backend/AdminPanel/Sidebar/Sidebar';
-import AddOfferProducts from './Component/Backend/Products/AddOfferProducts/AddOfferProducts';
+import Sidebar from './Component/BackEnd/AdminPanel/Sidebar/Sidebar';
+import AddOfferProducts from './Component/BackEnd/Products/AddOfferProducts/AddOfferProducts';
 import OfferInfo from './Component/FrontEnd/Home/OfferInfo/OfferInfo';
 import SingleOffer from './Component/FrontEnd/SingleProduct/SingleOffer/SingleOffer';
 
@@ -27,8 +27,11 @@ import VendorLogin from './Component/FrontEnd/VendorLogin/VendorLogin';
 import VendorRegister from './Component/FrontEnd/VendorLogin/VendorRegister';
 
 
-import AddProducts from './Component/Backend/Products/AddProducts/AddProducts';
-import VendorSidebar from './Component/Backend/VendorPanel/VendorSidebar';
+import AddProducts from './Component/BackEnd/Products/AddProducts/AddProducts';
+import VendorSidebar from './Component/BackEnd/VendorPanel/VendorSidebar';
+import PrivateRoute from './Component/FrontEnd/PrivateRoute/PrivateRoute';
+import AddAdmin from './Component/BackEnd/AddAdmin/AddAdmin';
+
 
 
 // import ReviewForm from './Component/FrontEnd/SingleProduct/ReviewForm/ReviewForm';
@@ -44,6 +47,8 @@ function App() {
   const [loggedInUser, setLoggedInUser] = useState({});
   const [cartProducts, setCartProducts] = useState([]);
   const [grandTotal, setGrandTotal] = useState(0);
+
+
   return (
 
     <UserContext.Provider value={[loggedInUser, setLoggedInUser]}>
@@ -61,9 +66,11 @@ function App() {
               <Route path="/home">
                 <Home />
               </Route>
-              <Route path="/products/:id">
+              
+                <Route path="/products/:id">
                 <SingleProduct />
               </Route>
+        
               <Route path="/gallery">
                 <Gallery></Gallery>
               </Route>
@@ -82,13 +89,13 @@ function App() {
               <Route path="/vendorRegister">
                 <VendorRegister></VendorRegister>
               </Route>
-              <Route path="/shop">
+              <PrivateRoute path="/shop">
                 <Shop></Shop>
-              </Route>
+              </PrivateRoute>
 
               {/* add products */}
               <Route path="/addProduct">
-                <AddProducts/>
+                <AddProducts />
               </Route>
               {/* offer products */}
               <Route path="/addOffer">
@@ -107,15 +114,18 @@ function App() {
               <Route path="/contact">
                 <Contact></Contact>
               </Route>
-            <Route path="/sidebar">
-            <Sidebar/>         
-             </Route>
+             {/* <Route path="/sidebar">
+             <Sidebar/>         
+              </Route>  */}
              <Route path="/vendorSidebar">
                <VendorSidebar></VendorSidebar>
              </Route>
-              <Route path="/sidebar">
-                <Sidebar />
-              </Route>
+            <PrivateRoute path="/sidebar">
+              <Sidebar></Sidebar>
+            </PrivateRoute>
+            <Route path="/addAdmin">
+              <AddAdmin></AddAdmin>
+            </Route>
             {/* <PrivateRoute path="/addReview">
                   <ReviewForm></ReviewForm>
               </PrivateRoute> */}
