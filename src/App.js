@@ -31,6 +31,8 @@ import AddProducts from './Component/Backend/Products/AddProducts/AddProducts';
 import VendorSidebar from './Component/Backend/VendorPanel/VendorSidebar';
 
 
+
+
 // import ReviewForm from './Component/FrontEnd/SingleProduct/ReviewForm/ReviewForm';
 axios.defaults.baseURL = "https://fakem storeapi.com";
 // axios.defaults.baseURL = "https://fakestoreapi.com";
@@ -88,7 +90,7 @@ function App() {
 
               {/* add products */}
               <Route path="/addProduct">
-                <AddProducts/>
+                <AddProducts />
               </Route>
               {/* offer products */}
               <Route path="/addOffer">
@@ -107,16 +109,16 @@ function App() {
               <Route path="/contact">
                 <Contact></Contact>
               </Route>
-            <Route path="/sidebar">
-            <Sidebar/>         
-             </Route>
-             <Route path="/vendorSidebar">
-               <VendorSidebar></VendorSidebar>
-             </Route>
               <Route path="/sidebar">
                 <Sidebar />
               </Route>
-            {/* <PrivateRoute path="/addReview">
+              <Route path="/vendorSidebar">
+                <VendorSidebar></VendorSidebar>
+              </Route>
+              <Route path="/sidebar">
+                <Sidebar />
+              </Route>
+              {/* <PrivateRoute path="/addReview">
                   <ReviewForm></ReviewForm>
               </PrivateRoute> */}
             </Switch>
