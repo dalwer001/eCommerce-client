@@ -73,19 +73,50 @@ const Sidebar = () => {
                             <a href="#" class="nav-link px-sm-0 px-2">
                             <FontAwesomeIcon icon={faUsers} /><span class="ms-1 d-none d-sm-inline">Customers</span> </a>
                         </li>
-                        <li>
-                            <a href="#" class="nav-link px-sm-0 px-2">
-                            <FontAwesomeIcon icon={faList} /><span class="ms-1 d-none d-sm-inline"> Category</span> </a>
+                        
+                        <li class="dropdown">
+                            <a href="#" class="nav-link dropdown-toggle px-sm-0 px-1" id="dropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                            <FontAwesomeIcon icon={faProductHunt} /><span class="ms-1 d-none d-sm-inline">Category</span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdown">
+                               
+                                <li><Link to="/addCategory" class="dropdown-item" >Add Category</Link></li>
+                                <li>
+                                    <hr class="dropdown-divider"/>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="nav-link dropdown-toggle px-sm-0 px-1" id="dropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                            <FontAwesomeIcon icon={faProductHunt} /><span class="ms-1 d-none d-sm-inline">Type</span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdown">
+                               
+                                <li><Link to="/addType" class="dropdown-item" >Add Type</Link></li>
+                                <li>
+                                    <hr class="dropdown-divider"/>
+                                </li>
+                            </ul>
                         </li>
                         <li class="dropdown">
                             <a href="#" class="nav-link dropdown-toggle px-sm-0 px-1" id="dropdown" data-bs-toggle="dropdown" aria-expanded="false">
                             <FontAwesomeIcon icon={faProductHunt} /><span class="ms-1 d-none d-sm-inline">Product</span>
                             </a>
                             <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdown">
-                                <li>
-                                    <Link to="/addProduct" class="dropdown-item" >Add Product</Link>
-                                </li>
+                               
                                 <li><Link to="/adminManageProduct" class="dropdown-item" >Manage Products</Link></li>
+                                <li>
+                                    <hr class="dropdown-divider"/>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="nav-link dropdown-toggle px-sm-0 px-1" id="dropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                            <FontAwesomeIcon icon={faProductHunt} /><span class="ms-1 d-none d-sm-inline">Offer Product</span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdown">
+                               
+                                <li><Link to="/adminOfferProduct" class="dropdown-item" >Manage Offer Product</Link></li>
                                 <li>
                                     <hr class="dropdown-divider"/>
                                 </li>

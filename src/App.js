@@ -112,7 +112,7 @@ function App() {
               <Route path="/addOffer">
                 <AddOfferProducts></AddOfferProducts>
               </Route>
-              <Route path="/offerProducts">
+              <Route path="/adminOfferProducts">
                 <ManageOfferProducts></ManageOfferProducts>
               </Route>
               <Route path="/offerProducts/:id">
@@ -141,7 +141,6 @@ function App() {
               <AddAdmin></AddAdmin>
             </Route>
             <Route path="/adminManageProduct">
-              {/* <ManageProducts></ManageProducts> */}
             <AdminManageProduct></AdminManageProduct>
             </Route>
             </Switch>
