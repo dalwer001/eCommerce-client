@@ -1,9 +1,25 @@
 import axios from 'axios';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const AddOfferProducts = () => {
     const [info, setInfo] = useState({})
     const [file, setFile] = useState(null)
+    const [categoryInfo, setCategoryInfo] = useState([])
+    useEffect(() => {
+        const productsLoaders = async () => {
+            const res = await axios.get('http://localhost:5000/categories')
+            setCategoryInfo(res.data);
+        }
+        productsLoaders();
+    }, []);
+    const [typeInfo, setTypeInfo] = useState([])
+    useEffect(() => {
+        const productsLoaders = async () => {
+            const res = await axios.get('http://localhost:5000/types')
+            setTypeInfo(res.data);
+        }
+        productsLoaders();
+    }, []);
 
     const handleBlur = e => {
         const newInfo = { ...info }
@@ -76,24 +92,28 @@ const AddOfferProducts = () => {
                     </select>
                 </div>
                 <div className="col-md-6">
-                    <label class="form-label fw-bolder text-white">Category</label>
-                    <select class="form-select"name="category" onBlur={handleBlur} id="sel1">
-                        <option></option>
-                        <option>Men</option>
-                        <option>Women</option>
-                        <option>Kids</option>
-                    </select>
-                </div>
-                <div className="col-md-6">
-                    <label class="form-label fw-bolder text-white">Type</label>
-                    <select class="form-select"name="type" onBlur={handleBlur} id="sel1">
-                        <option></option>
-                        <option>Clothes</option>
-                        <option>Shoes</option>
-                        <option>Bags</option>
-                        <option>Accessories</option>
-                    </select>
-                </div>
+                        <label class="form-label fw-bolder text-white">Category</label>
+                        <select class="form-select" name="category" onBlur={handleBlur} id="sel1">
+                            <option></option>
+                    {
+                        categoryInfo.map(categories=> 
+                            <option>{categories.category}</option>
+                       )
+                    }
+                     </select>
+                    </div>
+               
+                    <div className="col-md-6">
+                        <label class="form-label fw-bolder text-white">Type</label>
+                        <select class="form-select" name="type" onBlur={handleBlur} id="sel1">
+                            <option></option>
+                    {
+                        typeInfo.map(types=> 
+                            <option>{types.type}</option>
+                       )
+                    }
+                     </select>
+                    </div>
                 <div className="col-md-6">
                     <label class="form-label fw-bolder text-white">Quantity</label>
                     <input type="number" name="quantity" onBlur={handleBlur} class="form-control" placeholder="Enter quantity" />

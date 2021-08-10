@@ -1,11 +1,26 @@
 import axios from 'axios';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 const AddProducts = () => {
 
     const [productInfo, setProductInfo] = useState({})
     const [file, setFile] = useState(null)
-
+    const [categoryInfo, setCategoryInfo] = useState([])
+    useEffect(() => {
+        const productsLoaders = async () => {
+            const res = await axios.get('http://localhost:5000/categories')
+            setCategoryInfo(res.data);
+        }
+        productsLoaders();
+    }, []);
+    const [typeInfo, setTypeInfo] = useState([])
+    useEffect(() => {
+        const productsLoaders = async () => {
+            const res = await axios.get('http://localhost:5000/types')
+            setTypeInfo(res.data);
+        }
+        productsLoaders();
+    }, []);
     const handleBlur = e => {
         const newInfo = { ...productInfo }
         newInfo[e.target.name] = e.target.value;
@@ -74,20 +89,24 @@ const AddProducts = () => {
                         <label class="form-label fw-bolder text-white">category</label>
                         <select class="form-select" name="category" onBlur={handleBlur} id="sel1">
                             <option></option>
-                            <option>Men</option>
-                            <option>Women</option>
-                            <option>Kids</option>
-                        </select>
+                    {
+                        categoryInfo.map(categories=> 
+                            <option>{categories.category}</option>
+                       )
+                    }
+                     </select>
                     </div>
+                   
                     <div className="col-md-6">
-                        <label class="form-label fw-bolder text-white">type</label>
+                        <label class="form-label fw-bolder text-white">Type</label>
                         <select class="form-select" name="type" onBlur={handleBlur} id="sel1">
                             <option></option>
-                            <option>Clothes</option>
-                            <option>Shoes</option>
-                            <option>Bags</option>
-                            <option>Accessories</option>
-                        </select>
+                    {
+                        typeInfo.map(types=> 
+                            <option>{types.type}</option>
+                       )
+                    }
+                     </select>
                     </div>
                     <div className="col-md-6">
                         <label class="form-label fw-bolder text-white">quantity</label>
