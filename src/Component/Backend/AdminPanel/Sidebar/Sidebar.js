@@ -32,11 +32,11 @@ const Sidebar = () => {
             </div>
             }
         {isAdmin &&
-            <div class="container-fluid overflow-hidden">
-        <div class="row vh-100 overflow-auto">
+            <div class="container ">
+        <div class="row m-0 ">
         
-            <div class="col-12 col-sm-3 col-xl-2 px-sm-2 px-0 bg-dark d-flex sticky-top">
-                <div class="d-flex flex-sm-column flex-row flex-grow-1 align-items-center align-items-sm-start px-3 pt-2 text-white">
+           
+                <div class=" flex-sm-column flex-row  bg-dark align-items-center align-items-sm-start vx-100 px-3 pt-2 text-white">
                     <a href="/" class="d-flex align-items-center pb-sm-3 mb-md-0 me-md-auto text-white text-decoration-none">
                         <span class="fs-5">A<span class="d-none d-sm-inline">dmin Panel</span></span>
                     </a>
@@ -82,9 +82,9 @@ const Sidebar = () => {
                             </a>
                             <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdown">
                                 <li>
-                                    <Link to="/addProduct" class="dropdown-item" href="#">Add Product</Link>
+                                    <Link to="/addProduct" class="dropdown-item" >Add Product</Link>
                                 </li>
-                                <li><a class="dropdown-item" href="#">Manage Products</a></li>
+                                <li><Link to="/adminManageProduct" class="dropdown-item" >Manage Products</Link></li>
                                 <li>
                                     <hr class="dropdown-divider"/>
                                 </li>
@@ -124,23 +124,9 @@ const Sidebar = () => {
                         </ul>
                     </div>
                 </div>
-            </div>
             
-            <div class="col d-flex flex-column h-sm-100">
-                {/* <main class="row overflow-auto">
-                    <div class="col pt-4">
-                        <h3>Vertical Sidebar that switches to Horizontal Navbar</h3>
-                        <p class="lead">An example multi-level sidebar with collasible menu items. The menu functions like an "accordion" where only a single menu is be open at a time.</p>
-                        <hr />
-                        <h3>More content...</h3>
-                        <p>Sriracha biodiesel taxidermy organic post-ironic, Intelligentsia salvia mustache 90's code editing brunch. Butcher polaroid VHS art party, hashtag Brooklyn deep v PBR narwhal sustainable mixtape swag wolf squid tote bag. Tote bag cronut semiotics, raw denim deep v taxidermy messenger bag. Tofu YOLO Etsy, direct trade ethical Odd Future jean shorts paleo. Forage Shoreditch tousled aesthetic irony, street art organic Bushwick artisan cliche semiotics ugh synth chillwave meditation. Shabby chic lomo plaid vinyl chambray Vice. Vice sustainable cardigan, Williamsburg master cleanse hella DIY 90's blog.</p>
-                        <p>Ethical Kickstarter PBR asymmetrical lo-fi. Dreamcatcher street art Carles, stumptown gluten-free Kickstarter artisan Wes Anderson wolf pug. Godard sustainable you probably haven't heard of them, vegan farm-to-table Williamsburg slow-carb readymade disrupt deep v. Meggings seitan Wes Anderson semiotics, cliche American Apparel whatever. Helvetica cray plaid, vegan brunch Banksy leggings +1 direct trade. Wayfarers codeply PBR selfies. Banh mi McSweeney's Shoreditch selfies, forage fingerstache food truck occupy YOLO Pitchfork fixie iPhone fanny pack art party Portland.</p>
-                    </div>
-                </main> */}
-                <footer class="row bg-light py-4 mt-auto">
-                    <div class="col"> Footer content here... </div>
-                </footer>
-            </div>
+            
+           
         </div>
          
     </div> 

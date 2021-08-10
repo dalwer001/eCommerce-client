@@ -97,7 +97,7 @@ const LoginO = () => {
 const handleSubmit = (e) => {
 
     if (newUser && user.email && user.password) {
-        firebase.auth().createUserWithEmailAndPassword(user.email, user.password,user.name)
+        firebase.auth().createUserWithEmailAndPassword(user.email, user.password)
             .then(res => {
                 const newUserInfo = { ...user };
                 newUserInfo.error = '';
@@ -118,7 +118,7 @@ const handleSubmit = (e) => {
 
         
     if (!newUser && user.email && user.password) {
-        firebase.auth().signInWithEmailAndPassword(user.email, user.password,user.name)
+        firebase.auth().signInWithEmailAndPassword(user.email, user.password)
             .then(res => {
                 const newUserInfo = { ...user };
                 newUserInfo.error = '';
