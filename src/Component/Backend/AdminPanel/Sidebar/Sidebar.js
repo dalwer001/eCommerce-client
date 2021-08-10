@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from 'react';
 import {   faTachometerAlt, faUsers, faHome, faUserFriends, faTasks, faEye, faList, faImages, faChartLine, faCreditCard} from '@fortawesome/free-solid-svg-icons';
 import {faProductHunt, faFirstOrder} from '@fortawesome/free-brands-svg-icons'
 import './Sidebar.css';
+import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useState } from 'react';
 import { UserContext } from '../../../../App';
@@ -75,9 +76,19 @@ const Sidebar = () => {
                             <a href="#" class="nav-link px-sm-0 px-2">
                             <FontAwesomeIcon icon={faList} /><span class="ms-1 d-none d-sm-inline"> Category</span> </a>
                         </li>
-                        <li>
-                            <a href="#" class="nav-link px-sm-0 px-2">
-                            <FontAwesomeIcon icon={faProductHunt} /><span class="ms-1 d-none d-sm-inline"> Product</span> </a>
+                        <li class="dropdown">
+                            <a href="#" class="nav-link dropdown-toggle px-sm-0 px-1" id="dropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                            <FontAwesomeIcon icon={faProductHunt} /><span class="ms-1 d-none d-sm-inline">Product</span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdown">
+                                <li>
+                                    <Link to="/addProduct" class="dropdown-item" href="#">Add Product</Link>
+                                </li>
+                                <li><a class="dropdown-item" href="#">Manage Products</a></li>
+                                <li>
+                                    <hr class="dropdown-divider"/>
+                                </li>
+                            </ul>
                         </li>
                        
                         <li>
