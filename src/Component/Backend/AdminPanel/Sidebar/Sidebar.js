@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useState } from 'react';
 import { UserContext } from '../../../../App';
 
+
 const Sidebar = () => {
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
     const [isAdmin, setIsAdmin] = useState(false)
@@ -26,11 +27,11 @@ const Sidebar = () => {
     
     return (
         <div>
-            {!isAdmin &&
+            {/* {!isAdmin &&
                 <div className="">
                 <h1>hi</h1>
             </div>
-            }
+            } */}
         {isAdmin &&
             <div class="container ">
         <div class="row m-0 ">

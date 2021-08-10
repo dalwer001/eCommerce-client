@@ -31,9 +31,12 @@ import AddProducts from './Component/Backend/Products/AddProducts/AddProducts';
 import VendorSidebar from './Component/Backend/VendorPanel/VendorSidebar';
 import PrivateRoute from './Component/FrontEnd/PrivateRoute/PrivateRoute';
 import AddAdmin from './Component/Backend/AddAdmin/AddAdmin';
-// import ManageProducts from './Component/Backend/Products/ManageProducts/ManageProducts';
+import AddCategory from './Component/Backend/Category/AddCategory/AddCategory';
+import AddType from './Component/Backend/Type/AddType/AddType';
+
 
  import AdminManageProduct from './Component/Backend/Products/ManageProducts/AdminManageProduct';
+import ManageOfferProducts from './Component/Backend/Products/MangeOfferProduct/ManageOfferProducts'
 
 // import ReviewForm from './Component/FrontEnd/SingleProduct/ReviewForm/ReviewForm';
 axios.defaults.baseURL = "https://fakem storeapi.com";
@@ -67,11 +70,11 @@ function App() {
               <Route path="/home">
                 <Home />
               </Route>
-              
-                <Route path="/products/:id">
+
+              <Route path="/products/:id">
                 <SingleProduct />
               </Route>
-        
+
               <Route path="/gallery">
                 <Gallery></Gallery>
               </Route>
@@ -93,7 +96,14 @@ function App() {
               <PrivateRoute path="/shop">
                 <Shop></Shop>
               </PrivateRoute>
-
+              {/* add category */}
+              <Route path="/addCategory">
+                <AddCategory></AddCategory>
+              </Route>
+              {/* add Type */}
+              <Route path="/addType">
+                <AddType></AddType>
+              </Route>
               {/* add products */}
               <Route path="/addProduct">
                 <AddProducts />
@@ -101,6 +111,9 @@ function App() {
               {/* offer products */}
               <Route path="/addOffer">
                 <AddOfferProducts></AddOfferProducts>
+              </Route>
+              <Route path="/offerProducts">
+                <ManageOfferProducts></ManageOfferProducts>
               </Route>
               <Route path="/offerProducts/:id">
                 <SingleOffer></SingleOffer>
@@ -115,7 +128,7 @@ function App() {
               <Route path="/contact">
                 <Contact></Contact>
               </Route>
-             {/* <Route path="/sidebar">
+              {/* <Route path="/sidebar">
              <Sidebar/>         
               </Route>  */}
              <Route path="/vendorSidebar">
