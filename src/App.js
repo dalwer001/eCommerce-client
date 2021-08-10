@@ -31,6 +31,7 @@ import AddProducts from './Component/BackEnd/Products/AddProducts/AddProducts';
 import VendorSidebar from './Component/BackEnd/VendorPanel/VendorSidebar';
 import PrivateRoute from './Component/FrontEnd/PrivateRoute/PrivateRoute';
 import AddAdmin from './Component/BackEnd/AddAdmin/AddAdmin';
+import ManageOfferProducts from './Component/BackEnd/Products/MangeOfferProduct/ManageOfferProducts';
 
 
 
@@ -100,6 +101,9 @@ function App() {
               {/* offer products */}
               <Route path="/addOffer">
                 <AddOfferProducts></AddOfferProducts>
+              </Route>
+              <Route path="/offerProducts">
+                <ManageOfferProducts></ManageOfferProducts>
               </Route>
               <Route path="/offerProducts/:id">
                 <SingleOffer></SingleOffer>

@@ -5,6 +5,7 @@ import './Sidebar.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useState } from 'react';
 import { UserContext } from '../../../../App';
+import { Link } from 'react-router-dom';
 
 const Sidebar = () => {
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
@@ -25,11 +26,11 @@ const Sidebar = () => {
     
     return (
         <div>
-            {!isAdmin &&
+            {/* {!isAdmin &&
                 <div className="">
                 <h1>hi</h1>
             </div>
-            }
+            } */}
         {isAdmin &&
             <div class="container-fluid overflow-hidden">
         <div class="row vh-100 overflow-auto">
@@ -75,10 +76,40 @@ const Sidebar = () => {
                             <a href="#" class="nav-link px-sm-0 px-2">
                             <FontAwesomeIcon icon={faList} /><span class="ms-1 d-none d-sm-inline"> Category</span> </a>
                         </li>
-                        <li>
+                        <li class="dropdown">
+                <a
+                  href="#"
+                  class="nav-link dropdown-toggle px-sm-0 px-1"
+                  id="dropdown"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  <FontAwesomeIcon icon={faProductHunt} />
+                  <span class="ms-1 d-none d-sm-inline">Product</span>
+                </a>
+                <ul
+                  class="dropdown-menu dropdown-menu-dark text-small shadow"
+                  aria-labelledby="dropdown"
+                >
+                    <li>
+                    <Link to="/" class="dropdown-item" href="#">
+                      Manage Products
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/offerProducts" class="dropdown-item" href="#">
+                      Manage offer Products
+                    </Link>
+                  </li>
+                  <li>
+                    <hr class="dropdown-divider" />
+                  </li>
+                </ul>
+              </li>
+                        {/* <li>
                             <a href="#" class="nav-link px-sm-0 px-2">
                             <FontAwesomeIcon icon={faProductHunt} /><span class="ms-1 d-none d-sm-inline"> Product</span> </a>
-                        </li>
+                        </li> */}
                        
                         <li>
                             <a href="#" class="nav-link px-sm-0 px-2">
@@ -116,6 +147,7 @@ const Sidebar = () => {
             </div>
             
             <div class="col d-flex flex-column h-sm-100">
+
                 {/* <main class="row overflow-auto">
                     <div class="col pt-4">
                         <h3>Vertical Sidebar that switches to Horizontal Navbar</h3>
