@@ -26,14 +26,14 @@ const Sidebar = () => {
     }, [loggedInUser.email]);
     
     return (
-        <div>
+        <>
             {/* {!isAdmin &&
                 <div className="">
                 <h1>hi</h1>
             </div>
             } */}
         {isAdmin &&
-            <div class="container ">
+            <div class="container  ">
         <div class="row m-0 ">
         
            
@@ -145,7 +145,7 @@ const Sidebar = () => {
          
     </div> 
         }
-        </div>
+        </>
     );
 };
 

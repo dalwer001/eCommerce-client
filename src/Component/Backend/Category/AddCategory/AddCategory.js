@@ -17,7 +17,7 @@ const AddCategory = () => {
     
             try {
                 const res = await axios.post('http://localhost:5000/addCategory', formData)
-                if (res.data) {
+                if (res) {
                     e.target.reset();
                     alert('data post successfully');
                 }

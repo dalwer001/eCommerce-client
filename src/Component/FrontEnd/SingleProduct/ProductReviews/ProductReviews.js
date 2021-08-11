@@ -8,7 +8,7 @@ import { UserContext } from '../../../../App';
 
 
 const ProductReviews = () => {
-  const[loggedInUser, setLoggedInUser]=useContext(UserContext);
+  const [loggedInUser, setLoggedInUser] = useContext(UserContext);
   const [toggleState, setToggleState] = useState(1);
 
   const toggleTab = (index) => {
@@ -38,6 +38,7 @@ const ProductReviews = () => {
     }
     singleProduct();
   }, [id])
+
   useEffect(() => {
     const singleProduct = async () => {
       const res = await axios.get(`https://sheltered-thicket-75703.herokuapp.com/offerProduct/${id}`);
@@ -46,11 +47,14 @@ const ProductReviews = () => {
     }
     singleProduct();
   }, [id])
-  const reviewMap =()=>{
-    const newReview=  reviewDes.filter(review =>review.id===singleProduct._id )
+
+  
+  const reviewMap = () => {
+    const newReview = reviewDes.filter(review => review.id === singleProduct._id)
     // console.log(newReview.length);
     return newReview.length;
-   }
+  }
+
   return (
     <div className="container mt-5 pt-5">
       <div className="bloc-tabs">
@@ -64,8 +68,8 @@ const ProductReviews = () => {
           className={toggleState === 2 ? "tabs active-tabs" : "tabs"}
           onClick={() => toggleTab(2)}
         >
-            Reviews ({reviewMap()})
-   
+          Reviews ({reviewMap()})
+
         </button>
       </div>
 
@@ -84,31 +88,31 @@ const ProductReviews = () => {
 
           <div className=" mt-5 row m-0">
             <div className="col-md-6">
-             
 
-              {reviewDes.filter(review =>review.id===singleProduct._id)
-                  .map(review =>
-                    <div className="d-flex ps-5">
-                      <div className=" px-3 pt-1">
-                        {/* <img className="w-75 h-50 rounded img-fluid" src={review.image} alt="" /> */}
-                        <i class="fas fa-user fs-1"></i>
-                      </div>
-                      <div className="">
-                        {review ?<h6>{review.name}</h6>:<h6>{review.email}</h6> }
-                        <p style={{ textAlign: "justify" }}>{review.description}</p>
-                      </div>
+
+              {reviewDes
+              .filter(review => review.id === singleProduct._id)
+              .map(review =>
+                  <div className="d-flex ps-5">
+                    <div className=" px-3 pt-1">
+                      {/* <img className="w-75 h-50 rounded img-fluid" src={review.image} alt="" /> */}
+                      <i class="fas fa-user fs-1"></i>
                     </div>
-                 
-                  )
-                }
-                
+                    <div className="">
+                      {review ? <h6>{review.name}</h6> : <h6>{review.email}</h6>}
+                      <p style={{ textAlign: "justify" }}>{review.description}</p>
+                    </div>
+                  </div>
+                )
+              }
+
             </div>
             <div className="col-md-6 ">
               {
-                loggedInUser.email?<ReviewForm></ReviewForm>: 
-                    <p className="text-center">Please, <span><Link to="/login">login</Link></span> or <span><Link to="/login"> register</Link></span> here to give review. </p>
+                loggedInUser.email ? <ReviewForm></ReviewForm> :
+                  <p className="text-center">Please, <span><Link to="/login">login</Link></span> or <span><Link to="/login"> register</Link></span> here to give review. </p>
               }
-              
+
             </div>
           </div>
         </div>

@@ -23,7 +23,7 @@ const Products = () => {
 
     //product slicing
     const productLoader = recentProducts.slice(0, visibleProduct);
-    console.log(productLoader)
+    // console.log(productLoader)
 
     // load product more
     const showMoreProducts = () => {
@@ -64,7 +64,9 @@ const Products = () => {
                 <h4 className="mb-5 border-bottom fw-bolder">Recent Products</h4>
                 <div className="row">
                     {
-                        productLoader.map(products =>
+                        productLoader
+                        .filter(products=>products.status === "Published")
+                        .map(products =>
                             <ProductDetails key={products._id} products={products} addToCart={addToCart}
                             />
                         )
