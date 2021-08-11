@@ -1,3 +1,5 @@
+import { Button } from '@material-ui/core';
+import axios from 'axios';
 import React, { useState } from 'react';
 // import Sidebar from '../AdminPanel/Sidebar/Sidebar';
 // import Navbar from '../../Shared/Navbar/Navbar';
@@ -14,28 +16,47 @@ const AddAdmin = () => {
         setAdmin(newInfo);
     }
 
-    const handleSubmit = (e) =>{
+    // const handleSubmit = (e) =>{
+    //     e.preventDefault();
+    //     const formData = new FormData()
+
+    //     formData.append('email', admin.email)
+
+    //     fetch('http://localhost:5000/addAdmin', {
+    //         method: 'POST',
+           
+    //         body: formData
+    //     })
+    //     .then(response => response.json())
+    //     .then(data => {
+    //         if(data){
+    //             e.target.reset();
+    //             alert('Admin Created Successfully !');
+    //         }
+    //     })
+    //     .catch(error => {
+    //         console.error(error)
+    //     })
+    // }
+    const handleSubmit = async (e) => {
         e.preventDefault();
         const formData = new FormData()
-
         formData.append('email', admin.email)
 
-        fetch('http://localhost:5000/addAdmin', {
-            method: 'POST',
-           
-            body: formData
-        })
-        .then(response => response.json())
-        .then(data => {
-            if(data){
+
+        try {
+            const res = await axios.post('http://localhost:5000/addAdmin', formData)
+            if (res) {
                 e.target.reset();
-                alert('Admin Created Successfully !');
+                alert('data post successfully');
             }
-        })
-        .catch(error => {
+        }
+        catch (error) {
             console.error(error)
-        })
+        }
     }
+
+
     return (
         <section className="container-fluid row mx-0 px-0" >
             <div className="col-md-2 px-0">
@@ -48,7 +69,7 @@ const AddAdmin = () => {
                         <label for="exampleInputEmail1">Email address</label>
                         <input onBlur ={handleBlur} type="email" class="form-control" name="email" placeholder="Enter email" />
                     </div>
-                    <button type="submit" class="btn btn-style">Submit</button>
+                    <Button variant="contained" color="primary" size="large" type="submit">Submit</Button>
                 </form>
             </div>
         </section>
