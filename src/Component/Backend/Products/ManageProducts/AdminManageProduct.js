@@ -90,7 +90,7 @@ export default function AdminManageProduct() {
                     )}
               </StyledTableCell>
               <StyledTableCell align="left">{p.description}</StyledTableCell>
-              <StyledTableCell align="left">{p.price}</StyledTableCell>
+              <StyledTableCell align="left">${p.price}</StyledTableCell>
              
               <StyledTableCell align="left">{p.size}</StyledTableCell>
               <StyledTableCell align="left">{p.category}</StyledTableCell>

@@ -37,7 +37,6 @@ import ManageOfferProducts from './Component/Backend/Products/MangeOfferProduct/
 
 
  import AdminManageProduct from './Component/Backend/Products/ManageProducts/AdminManageProduct';
-import ManageOfferProducts from './Component/Backend/Products/MangeOfferProduct/ManageOfferProducts'
 
 // import ReviewForm from './Component/FrontEnd/SingleProduct/ReviewForm/ReviewForm';
 axios.defaults.baseURL = "https://fakem storeapi.com";
@@ -113,7 +112,7 @@ function App() {
               <Route path="/addOffer">
                 <AddOfferProducts></AddOfferProducts>
               </Route>
-              <Route path="/adminOfferProducts">
+              <Route path="/adminOfferProduct">
                 <ManageOfferProducts></ManageOfferProducts>
               </Route>
               <Route path="/offerProducts/:id">
