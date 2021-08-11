@@ -33,6 +33,7 @@ import PrivateRoute from './Component/FrontEnd/PrivateRoute/PrivateRoute';
 import AddAdmin from './Component/Backend/AddAdmin/AddAdmin';
 import AddCategory from './Component/Backend/Category/AddCategory/AddCategory';
 import AddType from './Component/Backend/Type/AddType/AddType';
+import ManageOfferProducts from './Component/Backend/Products/MangeOfferProduct/ManageOfferProducts'
 
 
 
