@@ -17,14 +17,16 @@ const ProductReviews = () => {
   const [reviewDes, setReviewDes] = useState([]);
   useEffect(() => {
     const reviewDescription = async () => {
-      const res = await axios.get(`/products`);
+      const res = await axios.get(`http://localhost:5000/reviews`);
       setReviewDes(res.data);
-      // console.log(res.data);
+      console.log(res.data);
     }
     reviewDescription();
   }, [])
-  const recentReview = reviewDes.slice(0, 2);
-  const [singleProduct, setSingleProduct] = useState([]);
+
+
+
+  const [singleProduct, setSingleProduct] = useState({});
 
   const { id } = useParams();
 
@@ -44,7 +46,11 @@ const ProductReviews = () => {
     }
     singleProduct();
   }, [id])
-
+  const reviewMap =()=>{
+    const newReview=  reviewDes.filter(review =>review.id===singleProduct._id )
+    // console.log(newReview.length);
+    return newReview.length;
+   }
   return (
     <div className="container mt-5 pt-5">
       <div className="bloc-tabs">
@@ -58,7 +64,8 @@ const ProductReviews = () => {
           className={toggleState === 2 ? "tabs active-tabs" : "tabs"}
           onClick={() => toggleTab(2)}
         >
-          Reviews ({recentReview.length})
+            Reviews ({reviewMap()})
+   
         </button>
       </div>
 
@@ -75,35 +82,31 @@ const ProductReviews = () => {
           className={toggleState === 2 ? "content  active-content" : "content"}
         >
 
-          <div className=" mt-5 row m-0 d-flex">
+          <div className=" mt-5 row m-0">
             <div className="col-md-6">
-              <div className="row m-0">
+             
 
-
-                {
-                  recentReview.map(product =>
-                    <div className="d-flex">
-
-                      <div className="col-sm-3 col-md-3 ">
-                        <img className="w-75 h-50 rounded img-fluid" src={product.image} alt="" />
+              {reviewDes.filter(review =>review.id===singleProduct._id)
+                  .map(review =>
+                    <div className="d-flex ps-5">
+                      <div className=" px-3 pt-1">
+                        {/* <img className="w-75 h-50 rounded img-fluid" src={review.image} alt="" /> */}
+                        <i class="fas fa-user fs-1"></i>
                       </div>
                       <div className="">
-                        <h5>{product.title}</h5>
-                        <p style={{ textAlign: "justify" }}>{product.description}</p>
+                        {review ?<h6>{review.name}</h6>:<h6>{review.email}</h6> }
+                        <p style={{ textAlign: "justify" }}>{review.description}</p>
                       </div>
                     </div>
+                 
                   )
                 }
-              </div>
+                
             </div>
-            <div className="col-md-6">
+            <div className="col-md-6 ">
               {
                 loggedInUser.email?<ReviewForm></ReviewForm>: 
-                <div>
-                    <p>please login</p>
-                <button className="btn btn-danger"><Link to="/login">login</Link> </button>
-                </div>
-              
+                    <p className="text-center">Please, <span><Link to="/login">login</Link></span> or <span><Link to="/login"> register</Link></span> here to give review. </p>
               }
               
             </div>
