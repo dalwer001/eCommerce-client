@@ -35,6 +35,8 @@ import AddCategory from './Component/Backend/Category/AddCategory/AddCategory';
 import AddType from './Component/Backend/Type/AddType/AddType';
 
 
+ import AdminManageProduct from './Component/Backend/Products/ManageProducts/AdminManageProduct';
+import ManageOfferProducts from './Component/Backend/Products/MangeOfferProduct/ManageOfferProducts'
 
 // import ReviewForm from './Component/FrontEnd/SingleProduct/ReviewForm/ReviewForm';
 axios.defaults.baseURL = "https://fakem storeapi.com";
@@ -110,6 +112,9 @@ function App() {
               <Route path="/addOffer">
                 <AddOfferProducts></AddOfferProducts>
               </Route>
+              <Route path="/adminOfferProducts">
+                <ManageOfferProducts></ManageOfferProducts>
+              </Route>
               <Route path="/offerProducts/:id">
                 <SingleOffer></SingleOffer>
               </Route>
@@ -126,18 +131,18 @@ function App() {
               {/* <Route path="/sidebar">
              <Sidebar/>         
               </Route>  */}
-              <Route path="/vendorSidebar">
-                <VendorSidebar></VendorSidebar>
-              </Route>
-              <Route path="/sidebar">
-                <Sidebar></Sidebar>
-              </Route>
-              <Route path="/addAdmin">
-                <AddAdmin></AddAdmin>
-              </Route>
-              {/* <PrivateRoute path="/addReview">
-                  <ReviewForm></ReviewForm>
-              </PrivateRoute> */}
+             <Route path="/vendorSidebar">
+               <VendorSidebar></VendorSidebar>
+             </Route>
+            <PrivateRoute path="/sidebar">
+              <Sidebar></Sidebar>
+            </PrivateRoute>
+            <Route path="/addAdmin">
+              <AddAdmin></AddAdmin>
+            </Route>
+            <Route path="/adminManageProduct">
+            <AdminManageProduct></AdminManageProduct>
+            </Route>
             </Switch>
             <Footer />
           </Router>
