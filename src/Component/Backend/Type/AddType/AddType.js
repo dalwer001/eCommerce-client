@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useState } from 'react';
+import Sidebar from '../../AdminPanel/Sidebar/Sidebar';
 
 const AddType = () => {
         const [typeInfo, setTypeInfo] = useState({})
@@ -31,7 +32,7 @@ const AddType = () => {
         <div>
             <div className="row m-0">
                 <div className="col-md-2">
-                    {/* <Sidebar></Sidebar> */}
+                    <Sidebar></Sidebar>
                 </div>
                 <div className="col-md-10 py-3 bg-secondary rounded">
                 <h1 className="text-center text-warning border-bottom">Add Type</h1>
