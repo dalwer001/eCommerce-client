@@ -18,7 +18,7 @@ const AddType = () => {
                 const res = await axios.post('http://localhost:5000/addType', formData)
                 if (res){
                     e.target.reset();
-                    alert('data post successfully');
+                    alert('Product type added successfully');
                 }
             }
             catch (error) {

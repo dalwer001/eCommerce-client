@@ -51,7 +51,7 @@ const AddOfferProducts = () => {
             const res = await axios.post('https://sheltered-thicket-75703.herokuapp.com/addOffer', formData)
             if (res) {
                 e.target.reset();
-                alert('data post successfully');
+                alert('Offer product added successfully');
             }
         }
         catch (error) {

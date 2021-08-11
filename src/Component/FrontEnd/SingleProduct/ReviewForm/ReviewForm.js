@@ -46,7 +46,7 @@ const ReviewForm = () => {
         newInfo[e.target.name] = e.target.value;
         setReview(newInfo);
     }
-    
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         const formData = new FormData()
@@ -59,7 +59,7 @@ const ReviewForm = () => {
             const res = await axios.post('http://localhost:5000/addReview', formData);
             if (res) {
                 e.target.reset();
-                alert('data post successfully');
+                alert('Review added successfully');
                 Review();
             }
         }

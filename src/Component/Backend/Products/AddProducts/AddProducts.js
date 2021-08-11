@@ -49,7 +49,7 @@ const AddProducts = () => {
             const res = await axios.post('https://sheltered-thicket-75703.herokuapp.com/addProduct', formData)
             if (res) {
                 e.target.reset();
-                alert('data post successfully');
+                alert('Product added successfully');
             }
         }
         catch (error) {
