@@ -1,42 +1,61 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import './VendorLogin.css'
 import { TextField, Button, Typography, Paper } from '@material-ui/core';
 import useStyles from './VendorStyle.js';
 import { Carousel } from 'react-bootstrap';
 import Grid from "@material-ui/core/Grid";
 import Link from "@material-ui/core/Link";
-import { useHistory } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
+import { UserContext } from '../../../App';
 const VendorLogin = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const history = useHistory();
   const classes = useStyles();
 
-  const logInUser = async(e)=>{
+  const [loggedInUser, setLoggedInUser] = useContext(UserContext);
+  const location = useLocation();
+  const { from } = location.state || { from: { pathname: "/vendorSidebar" } };
+
+  const logInUser = async (e) => {
     e.preventDefault();
+<<<<<<< HEAD
     const res = await fetch('https://sheltered-thicket-75703.herokuapp.com/signIn',{
       method:"POST",
       headers:{
         "Content-Type":"application/json"
+=======
+
+    const res = await fetch('https://sheltered-thicket-75703.herokuapp.com/signIn', {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+>>>>>>> afca9bfcbf7d1f9eea545d05eb70337ee8ba04dd
       },
-      body:JSON.stringify({
-        email,password
+      body: JSON.stringify({
+        email, password
       })
     });
 
+    const signedInUser = {
+      email: email,
+      password: password
+    }
+    setLoggedInUser(signedInUser);
+    // storeAuthToken();
+    history.replace(from);
+
     const data = res.json();
 
-    if(res.status === 400 || !data)
-    {
+    if (res.status === 400 || !data) {
       window.alert('Invalid Credentials');
     }
-    else{
+    else {
       window.alert("Login Successful");
       history.push('/vendorSidebar');
     }
-
-
   }
+
   return (
 
     <div className="vendorLogin">
@@ -87,9 +106,9 @@ const VendorLogin = () => {
                 Vendor Login
               </Typography>
 
-              <TextField type="email" name="email" label="email*" value={email} onChange={(e)=>setEmail(e.target.value)} fullWidth />
+              <TextField type="email" name="email" label="email*" value={email} onChange={(e) => setEmail(e.target.value)} fullWidth />
 
-              <TextField type="password" name="password" label="password*" value={password} onChange={(e)=>setPassword(e.target.value)} fullWidth />
+              <TextField type="password" name="password" label="password*" value={password} onChange={(e) => setPassword(e.target.value)} fullWidth />
 
               <Button variant="contained " className={classes.buttonSubmit} size="large" type="submit" onClick={logInUser}>
                 Submit
