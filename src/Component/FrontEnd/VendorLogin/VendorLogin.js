@@ -14,7 +14,6 @@ const VendorLogin = () => {
 
   const logInUser = async(e)=>{
     e.preventDefault();
-
     const res = await fetch('https://sheltered-thicket-75703.herokuapp.com/signIn',{
       method:"POST",
       headers:{
