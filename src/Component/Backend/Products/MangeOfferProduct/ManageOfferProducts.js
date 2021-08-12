@@ -43,15 +43,15 @@ export default function ManageOfferProducts() {
     const [offerProduct, setOfferProduct] = useState([]);
     
     useEffect(() => {
-        fetch("http://localhost:5000/offerProducts")
+        fetch("https://pacific-plateau-10670.herokuapp.com/offerProducts")
           .then((res) => res.json())
           .then((data) => setOfferProduct(data));
       }, []);
-     
+    
       const statusUpdated = () => {
-        fetch('http://localhost:5000/offerProducts')
+        fetch('https://pacific-plateau-10670.herokuapp.com/offerProducts')
           .then(res => res.json())
-          .then(data => setOfferProduct(data))
+          .then(data => setOfferProduct(data));
       }
     
       const handlePublish = (id) => {
@@ -59,7 +59,7 @@ export default function ManageOfferProducts() {
         const status = 'Published'
         const user = { id, status };
     
-        const url = `http://localhost:5000/publishOfferProduct/${id}`;
+        const url = `https://pacific-plateau-10670.herokuapp.com/publishOfferProduct/${id}`;
         fetch(url, {
           method: 'PATCH',
           headers: {
@@ -80,7 +80,7 @@ export default function ManageOfferProducts() {
         const status = 'Unpublished'
         const user = { id, status };
     
-        const url = `http://localhost:5000/publishOfferProduct/${id}`;
+        const url = `https://pacific-plateau-10670.herokuapp.com/publishOfferProduct/${id}`;
         fetch(url, {
           method: 'PATCH',
           headers: {
@@ -141,7 +141,7 @@ export default function ManageOfferProducts() {
                       <img
                         style={{ width: "8rem", height: "8rem" }}
                         className="img-fluid mb-3"
-                        src={`http://localhost:5000/${op.img}`}
+                        src={`https://pacific-plateau-10670.herokuapp.com/${op.img}`}
                         alt=""
                       />
                     )}

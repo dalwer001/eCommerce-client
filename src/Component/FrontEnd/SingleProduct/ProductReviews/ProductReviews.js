@@ -17,7 +17,7 @@ const ProductReviews = () => {
   const [reviewDes, setReviewDes] = useState([]);
   useEffect(() => {
     const reviewDescription = async () => {
-      const res = await axios.get(`http://localhost:5000/reviews`);
+      const res = await axios.get(`https://pacific-plateau-10670.herokuapp.com/reviews`);
       setReviewDes(res.data);
       console.log(res.data);
     }
@@ -32,7 +32,7 @@ const ProductReviews = () => {
 
   useEffect(() => {
     const singleProduct = async () => {
-      const res = await axios.get(`https://sheltered-thicket-75703.herokuapp.com/products/${id}`);
+      const res = await axios.get(`https://pacific-plateau-10670.herokuapp.com/products/${id}`);
       setSingleProduct(res.data);
       // console.log(res.data);
     }
@@ -41,7 +41,7 @@ const ProductReviews = () => {
 
   useEffect(() => {
     const singleProduct = async () => {
-      const res = await axios.get(`https://sheltered-thicket-75703.herokuapp.com/offerProduct/${id}`);
+      const res = await axios.get(`https://pacific-plateau-10670.herokuapp.com/offerProduct/${id}`);
       setSingleProduct(res.data);
       // console.log(res.data);
     }

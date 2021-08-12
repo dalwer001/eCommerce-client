@@ -100,27 +100,27 @@ function App() {
                 <Shop></Shop>
               </Route> */}
               {/* add category */}
-              <Route path="/addCategory">
+              <PrivateRoute path="/addCategory">
                 <AddCategory></AddCategory>
-              </Route>
+              </PrivateRoute>
               {/* add Type */}
-              <Route path="/addType">
+              <PrivateRoute path="/addType">
                 <AddType></AddType>
-              </Route>
+              </PrivateRoute>
               {/* add products */}
-              <Route path="/addProduct">
+              <VendorPrivateRoute path="/addProduct">
                 <AddProducts/>
-              </Route>
+              </VendorPrivateRoute>
               {/* offer products */}
-              <Route path="/addOffer">
+              <VendorPrivateRoute path="/addOffer">
                 <AddOfferProducts></AddOfferProducts>
-              </Route>
-              <Route path="/adminManageVendor">
+              </VendorPrivateRoute>
+              <PrivateRoute path="/adminManageVendor">
                 <ManageVendor></ManageVendor>
-              </Route>
-              <Route path="/adminOfferProduct">
+              </PrivateRoute>
+              <PrivateRoute path="/adminOfferProduct">
                 <ManageOfferProducts></ManageOfferProducts>
-              </Route>
+              </PrivateRoute>
               <Route path="/offerProducts/:id">
                 <SingleOffer></SingleOffer>
               </Route>
@@ -146,9 +146,9 @@ function App() {
               <Route path="/addAdmin">
                 <AddAdmin></AddAdmin>
               </Route>
-              <Route path="/adminManageProduct">
+              <PrivateRoute path="/adminManageProduct">
                 <AdminManageProduct></AdminManageProduct>
-              </Route>
+              </PrivateRoute>
             </Switch>
             {/* <Footer /> */}
           </Router>

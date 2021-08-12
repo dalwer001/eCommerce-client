@@ -21,7 +21,7 @@ const VendorLogin = () => {
   const { from } = location.state || { from: { pathname: "/vendorSidebar" } };
 
   useEffect(() => {
-    fetch("http://localhost:5000/vendors")
+    fetch("https://pacific-plateau-10670.herokuapp.com/vendors")
       .then((res) => res.json())
       .then((data) => setVendors(data));
   }, []);
@@ -35,7 +35,7 @@ const VendorLogin = () => {
   const logInUser = async (e) => {
     e.preventDefault();
 
-    const res = await fetch('https://sheltered-thicket-75703.herokuapp.com/signIn', {
+    const res = await fetch('https://pacific-plateau-10670.herokuapp.com/signIn', {
       method: "POST",
       headers: {
         "Content-Type": "application/json"

@@ -12,7 +12,7 @@ const SingleProductsDetails = () => {
 
     useEffect(() => {
         const singleProduct = async () => {
-            const res = await axios.get(`https://sheltered-thicket-75703.herokuapp.com/products/${id}`);
+            const res = await axios.get(`https://pacific-plateau-10670.herokuapp.com/products/${id}`);
             setSingleProduct(res.data);
             // console.log(res.data);
         }
