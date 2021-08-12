@@ -19,18 +19,11 @@ const VendorLogin = () => {
 
   const logInUser = async (e) => {
     e.preventDefault();
-<<<<<<< HEAD
-    const res = await fetch('https://sheltered-thicket-75703.herokuapp.com/signIn',{
-      method:"POST",
-      headers:{
-        "Content-Type":"application/json"
-=======
 
     const res = await fetch('https://sheltered-thicket-75703.herokuapp.com/signIn', {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
->>>>>>> afca9bfcbf7d1f9eea545d05eb70337ee8ba04dd
       },
       body: JSON.stringify({
         email, password
