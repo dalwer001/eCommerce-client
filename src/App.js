@@ -36,7 +36,7 @@ import AddType from './Component/Backend/Type/AddType/AddType';
 import ManageOfferProducts from './Component/Backend/Products/MangeOfferProduct/ManageOfferProducts'
 
 import ManageVendor from './Component/Backend/ManageVendor/ManageVendor';
- import AdminManageProduct from './Component/Backend/Products/ManageProducts/AdminManageProduct';
+import AdminManageProduct from './Component/Backend/Products/ManageProducts/AdminManageProduct';
 import VendorPrivateRoute from './Component/FrontEnd/PrivateRoute/VendorPrivateRoute';
 
 
@@ -95,9 +95,9 @@ function App() {
               <Route path="/vendorRegister">
                 <VendorRegister></VendorRegister>
               </Route>
-              <PrivateRoute path="/shop">
+              {/* <Route path="/shop">
                 <Shop></Shop>
-              </PrivateRoute>
+              </Route> */}
               {/* add category */}
               <Route path="/addCategory">
                 <AddCategory></AddCategory>
@@ -108,7 +108,7 @@ function App() {
               </Route>
               {/* add products */}
               <Route path="/addProduct">
-                <AddProducts />
+                <AddProducts/>
               </Route>
               {/* offer products */}
               <Route path="/addOffer">
@@ -134,22 +134,22 @@ function App() {
                 <Contact></Contact>
               </Route>
               {/* <Route path="/sidebar">
-             <Sidebar/>         
+            <Sidebar/>         
               </Route>  */}
-             <VendorPrivateRoute path="/vendorSidebar">
-               <VendorSidebar></VendorSidebar>
-             </VendorPrivateRoute >
-            <PrivateRoute path="/sidebar">
-              <Sidebar></Sidebar>
-            </PrivateRoute>
-            <Route path="/addAdmin">
-              <AddAdmin></AddAdmin>
-            </Route>
-            <Route path="/adminManageProduct">
-            <AdminManageProduct></AdminManageProduct>
-            </Route>
+              <VendorPrivateRoute path="/vendorSidebar">
+                <VendorSidebar></VendorSidebar>
+              </VendorPrivateRoute >
+              <PrivateRoute path="/sidebar">
+                <Sidebar></Sidebar>
+              </PrivateRoute>
+              <Route path="/addAdmin">
+                <AddAdmin></AddAdmin>
+              </Route>
+              <Route path="/adminManageProduct">
+                <AdminManageProduct></AdminManageProduct>
+              </Route>
             </Switch>
-            <Footer />
+            {/* <Footer /> */}
           </Router>
         </TotalContext.Provider>
       </CartContext.Provider>

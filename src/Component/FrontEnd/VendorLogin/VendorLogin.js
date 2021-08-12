@@ -1,4 +1,4 @@
-import React, { useContext, useState,useEffect } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import './VendorLogin.css'
 import { useParams } from 'react-router-dom';
 import { TextField, Button, Typography, Paper } from '@material-ui/core';
@@ -11,7 +11,7 @@ import { UserContext } from '../../../App';
 const VendorLogin = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const[vendors,setVendors]= useState([]);
+  const [vendors, setVendors] = useState([]);
   const history = useHistory();
   const classes = useStyles();
   const { id } = useParams();
@@ -26,10 +26,11 @@ const VendorLogin = () => {
       .then((data) => setVendors(data));
   }, []);
 
-const vendorStatus= ()=>{
-  return vendors.filter(vendor=>vendor.status==="Accepted")
-  .map(vendor=>vendor.status)
-}
+  const vendorStatus = () => {
+    return vendors.filter(vendor => vendor.status === "Accepted")
+      .map(vendor =>console.log(vendor.status))
+  }
+
 
   const logInUser = async (e) => {
     e.preventDefault();
@@ -40,14 +41,13 @@ const vendorStatus= ()=>{
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        email, password, status:vendorStatus()
+        email, password, status: vendorStatus()
       })
     });
-   
 
-   
+
+
     const data = res.json();
-
     if (res.status === 400 || !data || !vendorStatus()) {
       window.alert('Invalid Credentials');
     }
@@ -60,31 +60,27 @@ const vendorStatus= ()=>{
       //   window.alert('Invalid Credentials');
       // }
       // else{
-        window.alert("Login Successful");
-        const signedInUser = {
-          email: email,
-          password: password
-    
-        }
-        setLoggedInUser(signedInUser);
-        // storeAuthToken();
-        
-        history.replace(from);
-  
-      
-        history.push('/vendorSidebar');
-        
+      window.alert("Login Successful");
+      const signedInUser = {
+        email: email,
+        password: password
+
+      }
+      setLoggedInUser(signedInUser);
+      // storeAuthToken();
+
+      history.replace(from);
+      history.push('/vendorSidebar');
       // }
-      
     }
-  
+
   }
 
   return (
 
     <div className="vendorLogin">
 
-      <div style={{ height: '400px' }} className="row d-flex align-items-center w-75">
+      <div style={{ height: '100%' }} className="row d-flex align-items-center w-75">
         <div className="col-md-6 offset-md-1 sideWrite">
           <Carousel>
             <Carousel.Item>
@@ -129,7 +125,7 @@ const vendorStatus= ()=>{
               <Typography variant="h6">
                 Vendor Login
               </Typography>
-              <TextField name="status" type="hidden" value={vendorStatus()}/>
+              <TextField name="status" type="hidden" value={vendorStatus()} />
 
               <TextField type="email" name="email" label="email*" value={email} onChange={(e) => setEmail(e.target.value)} fullWidth />
 
