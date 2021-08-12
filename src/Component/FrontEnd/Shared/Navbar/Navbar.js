@@ -9,6 +9,7 @@ import { Collapse } from 'react-bootstrap';
 import { TextField } from '@material-ui/core';
 // import { CartContext } from '../../../../App';
 import SearchProduct from '../../Home/SearchProduct/SearchProduct';
+import firebase from "firebase/app";
 
 
 
@@ -26,6 +27,25 @@ const Navbar = () => {
   // quantity calculation
   const [loggedInUser, setLoggedInUser] = useContext(UserContext);
   const [cartProducts, setCartProducts] = useContext(CartContext);
+
+  const handleSignOut = () => {
+    firebase.auth().signOut().then(() => {
+      let signedOutUser = {
+        isSignedIn: false,
+        name: '',
+        email: '',
+        password: '',
+        photo: '',
+        error: '',
+        success: false
+      }
+      setLoggedInUser(signedOutUser);
+    })
+      .catch((error) => {
+
+      });
+  }
+
   let cartProductQuantity = 0;
   cartProducts.forEach(p => {
     cartProductQuantity = cartProductQuantity + p.quantity;
@@ -52,7 +72,7 @@ const Navbar = () => {
               <Link to="/offer" class="nav-link" tabindex="-1" aria-disabled="true">Offers</Link>
             </li>
             <li class="nav-item">
-              <Link to="/login" class="nav-link">Login</Link>
+              <Link to="/login" class="nav-link" onClick={handleSignOut}>{loggedInUser.email ? 'Logout' : 'Login'}</Link>
             </li>
             <li class="nav-item">
               <Link to="#" className="nav-link active text-dark">{loggedInUser.displayName || loggedInUser.email}</Link>
