@@ -35,9 +35,10 @@ import AddCategory from './Component/Backend/Category/AddCategory/AddCategory';
 import AddType from './Component/Backend/Type/AddType/AddType';
 import ManageOfferProducts from './Component/Backend/Products/MangeOfferProduct/ManageOfferProducts'
 
-
+import ManageVendor from './Component/Backend/ManageVendor/ManageVendor';
  import AdminManageProduct from './Component/Backend/Products/ManageProducts/AdminManageProduct';
 import VendorPrivateRoute from './Component/FrontEnd/PrivateRoute/VendorPrivateRoute';
+
 
 // import ReviewForm from './Component/FrontEnd/SingleProduct/ReviewForm/ReviewForm';
 axios.defaults.baseURL = "https://fakem storeapi.com";
@@ -112,6 +113,9 @@ function App() {
               {/* offer products */}
               <Route path="/addOffer">
                 <AddOfferProducts></AddOfferProducts>
+              </Route>
+              <Route path="/adminManageVendor">
+                <ManageVendor></ManageVendor>
               </Route>
               <Route path="/adminOfferProduct">
                 <ManageOfferProducts></ManageOfferProducts>

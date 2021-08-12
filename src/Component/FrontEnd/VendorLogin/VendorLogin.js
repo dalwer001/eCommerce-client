@@ -1,5 +1,6 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState,useEffect } from 'react';
 import './VendorLogin.css'
+import { useParams } from 'react-router-dom';
 import { TextField, Button, Typography, Paper } from '@material-ui/core';
 import useStyles from './VendorStyle.js';
 import { Carousel } from 'react-bootstrap';
@@ -10,12 +11,25 @@ import { UserContext } from '../../../App';
 const VendorLogin = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const[vendors,setVendors]= useState([]);
   const history = useHistory();
   const classes = useStyles();
+  const { id } = useParams();
 
   const [loggedInUser, setLoggedInUser] = useContext(UserContext);
   const location = useLocation();
   const { from } = location.state || { from: { pathname: "/vendorSidebar" } };
+
+  useEffect(() => {
+    fetch("http://localhost:5000/vendors")
+      .then((res) => res.json())
+      .then((data) => setVendors(data));
+  }, []);
+
+const vendorStatus= ()=>{
+  return vendors.filter(vendor=>vendor.status==="Accepted")
+  .map(vendor=>vendor.status)
+}
 
   const logInUser = async (e) => {
     e.preventDefault();
@@ -26,27 +40,44 @@ const VendorLogin = () => {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        email, password
+        email, password, status:vendorStatus()
       })
     });
+   
 
-    const signedInUser = {
-      email: email,
-      password: password
-    }
-    setLoggedInUser(signedInUser);
-    // storeAuthToken();
-    history.replace(from);
-
+   
     const data = res.json();
 
-    if (res.status === 400 || !data) {
+    if (res.status === 400 || !data || !vendorStatus()) {
       window.alert('Invalid Credentials');
     }
+
+    // else if(!vendors.status==="Accepted" && !vendors.email && !vendors.password){
+    //   window.alert('Invalid Credentials');
+    // }
     else {
-      window.alert("Login Successful");
-      history.push('/vendorSidebar');
+      // if(){
+      //   window.alert('Invalid Credentials');
+      // }
+      // else{
+        window.alert("Login Successful");
+        const signedInUser = {
+          email: email,
+          password: password
+    
+        }
+        setLoggedInUser(signedInUser);
+        // storeAuthToken();
+        
+        history.replace(from);
+  
+      
+        history.push('/vendorSidebar');
+        
+      // }
+      
     }
+  
   }
 
   return (
@@ -98,6 +129,7 @@ const VendorLogin = () => {
               <Typography variant="h6">
                 Vendor Login
               </Typography>
+              <TextField name="status" type="hidden" value={vendorStatus()}/>
 
               <TextField type="email" name="email" label="email*" value={email} onChange={(e) => setEmail(e.target.value)} fullWidth />
 

@@ -46,9 +46,17 @@ const Sidebar = () => {
                             <Link to="#submenu1" data-bs-toggle="collapse" class="nav-link px-sm-0 px-2">
                             <FontAwesomeIcon icon={faTachometerAlt} /><span class="ms-1 d-none d-sm-inline">Dashboard</span> </Link>
                         </li>
-                        <li>
-                            <Link to="#" class="nav-link px-sm-0 px-2">
-                            <FontAwesomeIcon icon={faUserFriends} /><span class="ms-1 d-none d-sm-inline">Vendor</span></Link>
+                        <li class="dropdown">
+                            <Link to="#" class="nav-link dropdown-toggle px-sm-0 px-1" id="dropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                            <FontAwesomeIcon icon={faUserFriends} /><span class="ms-1 d-none d-sm-inline">Vendor</span>
+                            </Link>
+                            <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdown">
+                               
+                                <li><Link to="/adminManageVendor" class="dropdown-item" >Manage Vendors</Link></li>
+                                <li>
+                                    <hr class="dropdown-divider"/>
+                                </li>
+                            </ul>
                         </li>
                        
                          <li>
