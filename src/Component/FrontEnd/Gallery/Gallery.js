@@ -7,19 +7,34 @@ import './Gallery.css'
 import Zoom from 'react-reveal/Zoom';
 
 const Gallery = () => {
-  const url = "https://fakestoreapi.com/products";
+  // const url = "https://fakestoreapi.com/products";
   const [images, setImages] = useState([]);
 
-  const getImage = () => {
-    axios.get(url).then((res) => {
+  // const getImage = () => {
+  //   axios.get(url).then((res) => {
 
-      setImages(res.data);
-    });
-  };
+  //     setImages(res.data);
+  //   });
+  // };
 
+  // useEffect(() => {
+  //   getImage();
+  // }, []);
   useEffect(() => {
-    getImage();
-  }, []);
+    const productsLoaders = async () => {
+        const res = await axios.get('https://sheltered-thicket-75703.herokuapp.com/products')
+        setImages(res.data);
+    }
+    productsLoaders();
+}, []);
+
+useEffect(() => {
+  const productsLoaders = async () => {
+      const res = await axios.get('https://sheltered-thicket-75703.herokuapp.com/offerProducts')
+      setImages(res.data);
+  }
+  productsLoaders();
+}, []);
 
   if (!images) {
     return <h1>loading.....</h1>;
