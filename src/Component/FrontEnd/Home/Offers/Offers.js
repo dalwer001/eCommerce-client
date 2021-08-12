@@ -50,7 +50,7 @@ const Offers = ({ offers, addToCart }) => {
             </ul> */}
                         <h3 class="titles">{title}</h3>
                         <div class="price"><span>${mainPrice}</span> {'\u00A0'} ${offerPrice}</div>
-                        <a class="add-to-cart" onClick={() => addToCart(offers, offerPrice)}><FontAwesomeIcon size="1x" icon={faShoppingCart} /><span className="p-2">Add to cart</span></a>
+                        <Link class="add-to-cart" onClick={() => addToCart(offers, offerPrice)}><FontAwesomeIcon size="1x" icon={faShoppingCart} /><span className="p-2">Add to cart</span></Link>
                     </div>
                 </div>
             </div>
