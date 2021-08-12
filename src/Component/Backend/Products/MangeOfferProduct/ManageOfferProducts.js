@@ -48,6 +48,55 @@ export default function ManageOfferProducts() {
           .then((data) => setOfferProduct(data));
       }, []);
      
+      const statusUpdated = () => {
+        fetch('http://localhost:5000/offerProducts')
+          .then(res => res.json())
+          .then(data => setOfferProduct(data))
+      }
+    
+      const handlePublish = (id) => {
+    
+        const status = 'Published'
+        const user = { id, status };
+    
+        const url = `http://localhost:5000/publishOfferProduct/${id}`;
+        fetch(url, {
+          method: 'PATCH',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(user)
+        })
+          .then(res => res.json())
+          .then(data => {
+            if (data) {
+              alert('Offer Product Published Successfully');
+              statusUpdated();
+            }
+          })
+      }
+    
+      const handleUnpublish =(id)=>{
+        const status = 'Unpublished'
+        const user = { id, status };
+    
+        const url = `http://localhost:5000/publishOfferProduct/${id}`;
+        fetch(url, {
+          method: 'PATCH',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(user)
+        })
+          .then(res => res.json())
+          .then(data => {
+            if (data) {
+              alert('Offer Product Unpublished Successfully');
+              statusUpdated();
+            }
+          })
+      }
+    
   
   const classes = useStyles();
 
@@ -72,6 +121,8 @@ export default function ManageOfferProducts() {
             <StyledTableCell align="left">Category</StyledTableCell>
             <StyledTableCell align="left">Type</StyledTableCell>
             <StyledTableCell align="left">Quantity</StyledTableCell>
+            <StyledTableCell align="left">Status</StyledTableCell>
+            <StyledTableCell align="left">Action</StyledTableCell>
            
           </TableRow>
         </TableHead>
@@ -104,6 +155,10 @@ export default function ManageOfferProducts() {
               <StyledTableCell align="left">{op.category}</StyledTableCell>
               <StyledTableCell align="left">{op.type}</StyledTableCell>
               <StyledTableCell align="left">{op.quantity}</StyledTableCell>
+              <StyledTableCell align="left">{op.status}</StyledTableCell>
+
+              <button onClick={() => handlePublish(op._id)} className="alert alert-success m-2 fw-bold">Publish</button>
+              <button onClick={() => handleUnpublish(op._id)} className="alert alert-danger m-2 fw-bold">Unpublish</button>
             </StyledTableRow>
           ))}
         </TableBody>

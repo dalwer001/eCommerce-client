@@ -69,7 +69,9 @@ const OfferInfo = () => {
                 <div className="row">
                     <Carousel responsive={responsive}>
                         {
-                            recentProduct.map(offers =>
+                            recentProduct
+                            .filter(offerProducts=>offerProducts.status === "Published")
+                            .map(offers =>
                                 <Offers key={offers._id} offers={offers} addToCart={addToCart}
                                 />
                             )
