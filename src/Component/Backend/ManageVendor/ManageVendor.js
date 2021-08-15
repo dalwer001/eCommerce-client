@@ -41,13 +41,13 @@ const useStyles = makeStyles({
 export default function ManageVendor() {
   const [vendors, setVendors] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/vendors")
+    fetch("https://pacific-plateau-10670.herokuapp.com/vendors")
       .then((res) => res.json())
       .then((data) => setVendors(data));
   }, []);
 
   const statusUpdated = () => {
-    fetch('http://localhost:5000/vendors')
+    fetch('https://pacific-plateau-10670.herokuapp.com/vendors')
       .then(res => res.json())
       .then(data => setVendors(data))
   }
@@ -57,7 +57,7 @@ export default function ManageVendor() {
     const status = 'Accepted'
     const user = { id, status };
 
-    const url = `http://localhost:5000/acceptVendor/${id}`;
+    const url = `https://pacific-plateau-10670.herokuapp.com/acceptVendor/${id}`;
     fetch(url, {
       method: 'PATCH',
       headers: {
@@ -78,7 +78,7 @@ export default function ManageVendor() {
     const status = 'Declined'
     const user = { id, status };
 
-    const url = `http://localhost:5000/acceptVendor/${id}`;
+    const url = `https://pacific-plateau-10670.herokuapp.com/acceptVendor/${id}`;
     fetch(url, {
       method: 'PATCH',
       headers: {

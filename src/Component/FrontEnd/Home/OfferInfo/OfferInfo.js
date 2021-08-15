@@ -10,7 +10,7 @@ const OfferInfo = () => {
 
     useEffect(() => {
         const productsLoaders = async () => {
-            const res = await axios.get('https://sheltered-thicket-75703.herokuapp.com/offerProducts')
+            const res = await axios.get('https://pacific-plateau-10670.herokuapp.com/offerProducts')
             // console.log(res.data);
             setRecentProduct(res.data);
         }

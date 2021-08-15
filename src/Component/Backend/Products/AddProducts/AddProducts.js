@@ -8,7 +8,7 @@ const AddProducts = () => {
     const [categoryInfo, setCategoryInfo] = useState([])
     useEffect(() => {
         const productsLoaders = async () => {
-            const res = await axios.get('http://localhost:5000/categories')
+            const res = await axios.get('https://pacific-plateau-10670.herokuapp.com/categories')
             setCategoryInfo(res.data);
         }
         productsLoaders();
@@ -16,7 +16,7 @@ const AddProducts = () => {
     const [typeInfo, setTypeInfo] = useState([])
     useEffect(() => {
         const productsLoaders = async () => {
-            const res = await axios.get('http://localhost:5000/types')
+            const res = await axios.get('https://pacific-plateau-10670.herokuapp.com/types')
             setTypeInfo(res.data);
         }
         productsLoaders();
@@ -46,7 +46,7 @@ const AddProducts = () => {
 
 
         try {
-            const res = await axios.post('https://sheltered-thicket-75703.herokuapp.com/addProduct', formData)
+            const res = await axios.post('https://pacific-plateau-10670.herokuapp.com/addProduct', formData)
             if (res) {
                 e.target.reset();
                 alert('Product added successfully');

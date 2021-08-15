@@ -22,7 +22,7 @@ const AddAdmin = () => {
 
     //     formData.append('email', admin.email)
 
-    //     fetch('http://localhost:5000/addAdmin', {
+    //     fetch('https://pacific-plateau-10670.herokuapp.com/addAdmin', {
     //         method: 'POST',
            
     //         body: formData
@@ -45,7 +45,7 @@ const AddAdmin = () => {
 
 
         try {
-            const res = await axios.post('http://localhost:5000/addAdmin', formData)
+            const res = await axios.post('https://pacific-plateau-10670.herokuapp.com/addAdmin', formData)
             if (res) {
                 e.target.reset();
                 alert('data post successfully');
