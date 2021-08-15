@@ -49,13 +49,13 @@ const useStyles = makeStyles({
 export default function AdminManageProduct() {
   const [product, setProduct] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/products")
+    fetch("https://pacific-plateau-10670.herokuapp.com/products")
       .then((res) => res.json())
       .then((data) => setProduct(data));
   }, []);
 
   const statusUpdated = () => {
-    fetch('http://localhost:5000/products')
+    fetch('https://pacific-plateau-10670.herokuapp.com/products')
       .then(res => res.json())
       .then(data => setProduct(data))
   }
@@ -65,7 +65,7 @@ export default function AdminManageProduct() {
     const status = 'Published'
     const user = { id, status };
 
-    const url = `http://localhost:5000/publishProduct/${id}`;
+    const url = `https://pacific-plateau-10670.herokuapp.com/publishProduct/${id}`;
     fetch(url, {
       method: 'PATCH',
       headers: {
@@ -86,7 +86,7 @@ export default function AdminManageProduct() {
     const status = 'Unpublished'
     const user = { id, status };
 
-    const url = `http://localhost:5000/publishProduct/${id}`;
+    const url = `https://pacific-plateau-10670.herokuapp.com/publishProduct/${id}`;
     fetch(url, {
       method: 'PATCH',
       headers: {
@@ -145,7 +145,7 @@ export default function AdminManageProduct() {
                       <img
                         style={{ width: "8rem", height: "8rem" }}
                         className="img-fluid mb-3"
-                        src={`http://localhost:5000/${p.img}`}
+                        src={`https://pacific-plateau-10670.herokuapp.com/${p.img}`}
                         alt=""
                       />
                     )}

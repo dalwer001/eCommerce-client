@@ -16,7 +16,7 @@ const AddType = () => {
     
     
             try {
-                const res = await axios.post('http://localhost:5000/addType', formData)
+                const res = await axios.post('https://pacific-plateau-10670.herokuapp.com/addType', formData)
                 if (res){
                     e.target.reset();
                     alert('Product type added successfully');

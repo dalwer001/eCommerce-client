@@ -18,7 +18,7 @@ const ReviewForm = () => {
 
     useEffect(() => {
         const singleProduct = async () => {
-            const res = await axios.get(`https://sheltered-thicket-75703.herokuapp.com/products/${id}`);
+            const res = await axios.get(`https://pacific-plateau-10670.herokuapp.com/products/${id}`);
             setSingleProduct(res.data);
         }
         singleProduct();
@@ -26,7 +26,7 @@ const ReviewForm = () => {
 
     useEffect(() => {
         const singleProduct = async () => {
-            const res = await axios.get(`https://sheltered-thicket-75703.herokuapp.com/offerProduct/${id}`);
+            const res = await axios.get(`https://pacific-plateau-10670.herokuapp.com/offerProduct/${id}`);
             setSingleProduct(res.data);
             // console.log(res.data);
         }
@@ -35,7 +35,7 @@ const ReviewForm = () => {
 
     const Review = () => {
         const singleProduct = async () => {
-            const res = await axios.get(`https://sheltered-thicket-75703.herokuapp.com/products/${id}`);
+            const res = await axios.get(`https://pacific-plateau-10670.herokuapp.com/products/${id}`);
             setSingleProduct(res.data);
         }
         singleProduct();
@@ -56,7 +56,7 @@ const ReviewForm = () => {
         formData.append('description', review.description);
 
         try {
-            const res = await axios.post('http://localhost:5000/addReview', formData);
+            const res = await axios.post('https://pacific-plateau-10670.herokuapp.com/addReview', formData);
             if (res) {
                 e.target.reset();
                 alert('Review added successfully');

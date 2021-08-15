@@ -1,10 +1,69 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useContext, useEffect, useState } from 'react';
+import { Link, useParams } from 'react-router-dom';
+import ProductDetails from '../../Home/ProductDetails/ProductDetails';
+import ShopSidebar from '../ShopSidebar/ShopSidebar';
+import { CartContext } from '../../../../App';
 
 const FilterProducts = () => {
+    const { category, type} = useParams();
+    console.log(category,type)
+    const [categories, SetCategory] = useState([]);
+    useEffect(()=>{
+        const loadCategory = async()=>{
+            const res = await axios.get('http://localhost:5000/products');
+            SetCategory(res.data);
+            console.log(res.data);
+        }
+        loadCategory();
+    },[])
+    // cart product add
+    const [cartProducts, setCartProducts] = useContext(CartContext);
+    const addToCart = (product) => {
+        const toBeAddedKey = product._id;
+        const sameProduct = cartProducts.find(pd => pd._id === toBeAddedKey);
+        let count = 1;
+        let newCart;
+        if (sameProduct) {
+            count = sameProduct.quantity + 1;
+            sameProduct.quantity = count;
+            const others = cartProducts.filter(pd => pd._id !== toBeAddedKey);
+            newCart = [...others, sameProduct];
+        }
+        else {
+            product.quantity = 1;
+            newCart = [...cartProducts, product];
+        }
+        setCartProducts(newCart);
+    };
     
     return (
-        <div>
-            <h1>filter products</h1>
+        <div className="row m-0">
+            <div className="col-md-3">
+                <ShopSidebar></ShopSidebar>
+            </div>
+            <div className="col-md-9">
+                <div className="d-flex justify-content-between">
+                <h4>Shop</h4>
+                <a href="/home"> Back to Home</a>
+                </div>
+            <div className="row m-0">
+
+          {/* {
+              !categories.type ||
+              <p>NOt found</p>
+          }       */}
+            {categories===category||type?
+                 
+                categories.filter(products =>products.category===category && products.type===type).map(products=> <ProductDetails key={products._id} products={products} addToCart={addToCart}
+                    />
+                ):
+                categories.filter(products =>products.category===category).map(products=> <ProductDetails key={products._id} products={products} addToCart={addToCart}
+                    />
+                )
+                } 
+                </div>
+         </div>
         </div>
     );
 };

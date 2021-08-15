@@ -15,7 +15,7 @@ const Products = () => {
 
     useEffect(() => {
         const productsLoaders = async () => {
-            const res = await axios.get('https://sheltered-thicket-75703.herokuapp.com/products')
+            const res = await axios.get('https://pacific-plateau-10670.herokuapp.com/products')
             setRecentProducts(res.data);
         }
         productsLoaders();
@@ -61,35 +61,36 @@ const Products = () => {
     return (
         <div className="recent-product-bg">
             <div className="container p-5">
-                <h4 className="mb-5 border-bottom fw-bolder">Recent Products</h4>
-                <div className="row">
-                    {
-                        productLoader
-                        .filter(products=>products.status === "Published")
-                        .map(products =>
-                            <ProductDetails key={products._id} products={products} addToCart={addToCart}
-                            />
-                        )
-                    }
-                </div>
+                <Bounce left>
+                    <h4 className="mb-5 border-bottom fw-bolder">Recent Products</h4>
+                    <div className="row">
+                        {
+                            productLoader
+                                .filter(products => products.status === "Published")
+                                .map(products =>
+                                    <ProductDetails key={products._id} products={products} addToCart={addToCart}
+                                    />
+                                )
+                        }
+                    </div>
 
-                {/* lOAD MORE PRODUCT */}
-                <div className="d-flex justify-content-center mt-5">
-                    {
-                        !spinner ?
-                            <button className="product-load-btn rounded-pill" id="product-load-hide"
-                                style={{ display: visibleProduct >= recentProducts.length ? 'none' : 'block' }}
-                                onClick={showMoreProducts}>
-                                <div className="d-flex justify-content-center align-items-center mt-2">
-                                    <p>Load More</p>
-                                    <p className="mx-2"><FontAwesomeIcon size="1x" className=" text-dark ms-0" icon={faArrowRight} /></p>
+                    {/* lOAD MORE PRODUCT */}
+                    <div className="d-flex justify-content-center mt-5">
+                        {
+                            !spinner ?
+                                <button className="product-load-btn rounded-pill" id="product-load-hide"
+                                    style={{ display: visibleProduct >= recentProducts.length ? 'none' : 'block' }}
+                                    onClick={showMoreProducts}>
+                                    <div className="d-flex justify-content-center align-items-center mt-2">
+                                        <p>Load More</p>
+                                        <p className="mx-2"><FontAwesomeIcon size="1x" className=" text-dark ms-0" icon={faArrowRight} /></p>
+                                    </div>
+                                </button> : <div class="spinner-border" role="status">
+                                    <span class="visually-hidden">Loading...</span>
                                 </div>
-                            </button> : <div class="spinner-border" role="status">
-                                <span class="visually-hidden">Loading...</span>
-                            </div>
-                    }
-                </div>
-
+                        }
+                    </div>
+                </Bounce>
             </div>
         </div >
     );

@@ -16,7 +16,7 @@ const AddCategory = () => {
     
     
             try {
-                const res = await axios.post('http://localhost:5000/addCategory', formData)
+                const res = await axios.post('https://pacific-plateau-10670.herokuapp.com/addCategory', formData)
                 if (res) {
                     e.target.reset();
                     alert(' Product category added successfully');

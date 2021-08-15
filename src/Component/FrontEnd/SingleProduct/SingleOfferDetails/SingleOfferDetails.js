@@ -11,7 +11,7 @@ const SingleOfferDetails = () => {
 
     useEffect(() => {
         const singleProduct = async () => {
-            const res = await axios.get(`https://sheltered-thicket-75703.herokuapp.com/offerProduct/${id}`);
+            const res = await axios.get(`https://pacific-plateau-10670.herokuapp.com/offerProduct/${id}`);
             setSingleProduct(res.data);
             // console.log(res.data);
         }
@@ -85,7 +85,7 @@ const SingleOfferDetails = () => {
                     {/* ........................ */}
 
                     {/* Cart and wishlist */}
-                    <div className="d-flex mt-5 align-items-center justify-content-between">
+                    {/* <div className="d-flex mt-5 align-items-center justify-content-between">
                         <div className="d-flex single-size-bg rounded-pill">
                             <button className="btn mx-2 btn-outline-remove btn-sm" onClick={decrementCounter}><FontAwesomeIcon size="1x" className="ms-0" icon={faMinus} /></button>
                             <p className="fw-bold mx-2 fs-3 mt-2" >{counter}</p>
@@ -100,7 +100,7 @@ const SingleOfferDetails = () => {
                         <div>
                             <FontAwesomeIcon size="2x" className="product-wishlist ms-0 m-2" icon={faHeart} />
                         </div>
-                    </div>
+                    </div> */}
 
                     {/* Category Name */}
                     <div className="mt-5">
