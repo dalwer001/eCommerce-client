@@ -49,13 +49,13 @@ const useStyles = makeStyles({
 export default function AdminManageProduct() {
   const [product, setProduct] = useState([]);
   useEffect(() => {
-    fetch("https://pacific-plateau-10670.herokuapp.com/products")
+    fetch("http://localhost:5000/products")
       .then((res) => res.json())
       .then((data) => setProduct(data));
   }, []);
 
   const statusUpdated = () => {
-    fetch('https://pacific-plateau-10670.herokuapp.com/products')
+    fetch('http://localhost:5000/products')
       .then(res => res.json())
       .then(data => setProduct(data))
   }
@@ -65,7 +65,7 @@ export default function AdminManageProduct() {
     const status = 'Published'
     const user = { id, status };
 
-    const url = `https://pacific-plateau-10670.herokuapp.com/publishProduct/${id}`;
+    const url = `http://localhost:5000/publishProduct/${id}`;
     fetch(url, {
       method: 'PATCH',
       headers: {
@@ -86,7 +86,7 @@ export default function AdminManageProduct() {
     const status = 'Unpublished'
     const user = { id, status };
 
-    const url = `https://pacific-plateau-10670.herokuapp.com/publishProduct/${id}`;
+    const url = `http://localhost:5000/publishProduct/${id}`;
     fetch(url, {
       method: 'PATCH',
       headers: {
@@ -135,20 +135,11 @@ export default function AdminManageProduct() {
                 <StyledTableRow key={p.name}>
                   <StyledTableCell align="left">{p.title}</StyledTableCell>
                   <StyledTableCell component="th" scope="row">
-                    {p.image ? (
                       <img
                         style={{ width: "8rem", height: "8rem" }}
-                        src={`data:image/png;base64,${p.image.img}`}
+                        src={p.image}
                         alt=""
                       />
-                    ) : (
-                      <img
-                        style={{ width: "8rem", height: "8rem" }}
-                        className="img-fluid mb-3"
-                        src={`https://pacific-plateau-10670.herokuapp.com/${p.img}`}
-                        alt=""
-                      />
-                    )}
                   </StyledTableCell>
                   <StyledTableCell align="left">{p.description}</StyledTableCell>
                   <StyledTableCell align="left">{p.price}</StyledTableCell>
