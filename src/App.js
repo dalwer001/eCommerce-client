@@ -22,7 +22,7 @@ import Sidebar from './Component/Backend/AdminPanel/Sidebar/Sidebar';
 import AddOfferProducts from './Component/Backend/Products/AddOfferProducts/AddOfferProducts';
 import OfferInfo from './Component/FrontEnd/Home/OfferInfo/OfferInfo';
 import SingleOffer from './Component/FrontEnd/SingleProduct/SingleOffer/SingleOffer';
-
+import FilterProducts from './Component/FrontEnd/Shop/FilterProducts/FilterProducts';
 import VendorLogin from './Component/FrontEnd/VendorLogin/VendorLogin';
 import VendorRegister from './Component/FrontEnd/VendorLogin/VendorRegister';
 
@@ -73,7 +73,12 @@ function App() {
               <Route path="/home">
                 <Home />
               </Route>
-
+              <Route path="/filterProducts/:category">
+                <FilterProducts></FilterProducts>
+              </Route>
+              <Route path="/filterProduct/:category/:type">
+                <FilterProducts></FilterProducts>
+              </Route>
               <Route path="/products/:id">
                 <SingleProduct />
               </Route>
@@ -96,9 +101,9 @@ function App() {
               <Route path="/vendorRegister">
                 <VendorRegister></VendorRegister>
               </Route>
-              {/* <Route path="/shop">
+              <Route path="/shop">
                 <Shop></Shop>
-              </Route> */}
+              </Route>
               {/* add category */}
               <Route path="/addCategory">
                 <AddCategory></AddCategory>

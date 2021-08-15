@@ -2,21 +2,29 @@ import axios from 'axios';
 import React, { useState } from 'react';
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { useHistory } from "react-router";
 import'./ShopSidebar.css';
 
 const ShopSidebar = () => {
-
-    const [category, SetCategory] = useState([]);
-
-    useEffect(()=>{
-        const loadCategory = async()=>{
-            const res = await axios.get('/products/categories/jewelery');
-            SetCategory(res.data);
-            console.log(res.data);
-        }
-        loadCategory();
-    },[])
-
+    let history = useHistory();
+    const CategoryMatch = (category) =>{
+        if(category)
+        {
+            history.push(`/filterProducts/${category}`)
+        }  
+    }
+    const TypeMatch = (category,type) =>{
+        if(category && type)
+        {
+            history.push(`/filterProduct/${category}/${type}`)
+        }  
+    }
+    // const WoMenCa = (category) =>{
+    //         if(category)
+    //         {
+    //             history.push("/filterProducts")
+    //         }          
+    //     }
 
     return (
 
@@ -24,89 +32,64 @@ const ShopSidebar = () => {
             <h6 className="text-muted">Filter by category</h6>
             <ul className="list-unstyled mt-4 ">
                 <li>
-                    <Link to="/men" >
+                    <button className="btn" onClick={()=>CategoryMatch("Men")}><span>Men</span></button>
+                   
+                    {/* <Link to="/men" >
                         <span>Men</span>
-                    </Link>
+                    </Link> */}
                 </li>
-                    <ul className="px-3 list-unstyled mb-5 ">
+                    <ul className="px-3 list-unstyled ">
                         <li>
-                            <Link to="/clothes" >
-                                <span>Clothes</span>
-                            </Link>
+                        <button className="btn" onClick={()=>TypeMatch("Men","Clothes")}><span>Clothes</span></button>
                         </li>
                         <li>
-                            <Link to="/shoes">
-                                <span>Shoes</span>
-                            </Link>
+                        <button className="btn" onClick={()=>TypeMatch("Men","Shoes")}><span>Shoes</span></button>
                         </li>
                         <li>
-                            <Link to="/bags" >
-                                <span>Bags</span>
-                            </Link>
+                        <button className="btn" onClick={()=>TypeMatch("Men","Bags")}><span>Bags</span></button>
                         </li>
                         <li>
-                            <Link to="/accessories" >
-                                <span>Accessories</span>
-                            </Link>
+                        <button className="btn" onClick={()=>TypeMatch("Men","Accessories")}><span>Accessories</span></button>
                         </li>
                     </ul>
 
             </ul>
             <ul className="list-unstyled ">
                 <li>
-                    <Link to="/buyer-dashboard" >
-                        <span>Women</span>
-                    </Link>
+                <button className="btn" onClick={()=>CategoryMatch("Women")}><span>WoMen</span></button>
+                   
                 </li>
-                <ul className="px-3 list-unstyled mb-5 ">
+                <ul className="px-3 list-unstyled ">
                         <li>
-                            <Link to="/addSample" >
-                                <span>Clothes</span>
-                            </Link>
+                        <button className="btn" onClick={()=>TypeMatch("Women","Clothes")}><span>Clothes</span></button>
                         </li>
                         <li>
-                            <Link to="/manageSample">
-                                <span>Shoes</span>
-                            </Link>
+                        <button className="btn" onClick={()=>TypeMatch("Women","Shoes")}><span>Shoes</span></button>
                         </li>
                         <li>
-                            <Link to="/addOrder" >
-                                <span>Bags</span>
-                            </Link>
+                        <button className="btn" onClick={()=>TypeMatch("Women","Bags")}><span>Bags</span></button>
                         </li>
                         <li>
-                            <Link to="/manageOrder" >
-                                <span>Accessories</span>
-                            </Link>
+                        <button className="btn" onClick={()=>TypeMatch("Women","Accessories")}><span>Accessories</span></button>
                         </li>
                     </ul>
             </ul>
             <ul className="list-unstyled ">
                 <li>
-                    <Link to="/buyer-dashboard" >
-                        <span>Kids</span>
-                    </Link>
+                <button className="btn" onClick={()=>CategoryMatch("Kids")}><span>Kids</span></button>
                 </li>
-                <ul className="px-3 list-unstyled mb-5 ">
-                        <li>
-                            <Link to="/addSample" >
-                                <span>Clothes</span>
-                            </Link>
+                <ul className="px-3 list-unstyled ">
+                <li>
+                        <button className="btn" onClick={()=>TypeMatch("Kids","Clothes")}><span>Clothes</span></button>
                         </li>
                         <li>
-                            <Link to="/manageSample">
-                                <span>Shoes</span>
-                            </Link>
+                        <button className="btn" onClick={()=>TypeMatch("Kids","Shoes")}><span>Shoes</span></button>
                         </li>
                         <li>
-                            <Link to="/addOrder" >
-                                <span>Bags</span>
-                            </Link>
+                        <button className="btn" onClick={()=>TypeMatch("Kids","Bags")}><span>Bags</span></button>
                         </li>
                         <li>
-                            <Link to="/manageOrder" >
-                                <span>Accessories</span>
-                            </Link>
+                        <button className="btn" onClick={()=>TypeMatch("Kids","Accessories")}><span>Accessories</span></button>
                         </li>
                     </ul>
             </ul>
