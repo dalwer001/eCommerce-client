@@ -29,7 +29,6 @@ const AddProducts = () => {
     // }
 
     const handleImageUpload = e => {
-        console.log(e.target.files[0])
         const imageData = new FormData();
         imageData.set('key', '798ea45a777a4ccd52f1701860227c6b');
         imageData.append('image', e.target.files[0]);
@@ -110,7 +109,7 @@ const AddProducts = () => {
                     <div className="col-md-6">
                         <label class="form-label fw-bolder text-white">category</label>
                         <select class="form-select" name="category" id="sel1">
-                            <option></option>
+                            <option>Select Category</option>
                             {
                                 categoryInfo.map(categories =>
                                     <option>{categories.category}</option>
@@ -122,7 +121,7 @@ const AddProducts = () => {
                     <div className="col-md-6">
                         <label class="form-label fw-bolder text-white">Type</label>
                         <select class="form-select" name="type" id="sel1">
-                            <option></option>
+                            <option>Select Type</option>
                             {
                                 typeInfo.map(types =>
                                     <option>{types.type}</option>
