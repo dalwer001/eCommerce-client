@@ -24,15 +24,8 @@ const ProductDetails = ({ products, addToCart }) => {
                 <div class="product-grid">
                     <div style={{ height: "13rem", width:"18rem" }} class="">
                         <Link to="#" onClick={() => singleProductClick(_id)} class="images">
-                         
-                            {
-                                image ? <img class="product-image" src={`data:image/jpeg;base64,${image.img}`} alt="" />
-                                    :
-                                    <img className="img-fluid mb-3 product-image" src={`https://gentle-stream-95244.herokuapp.com//${products.img}`} alt="" />
-                            }
+                            <img class="product-image" src={image} alt="" />
                         </Link>
-                        
-                        
                     </div>
                     <div class="product-content">
                         <h3 class="titles">{title}</h3>

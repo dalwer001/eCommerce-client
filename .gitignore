@@ -5,6 +5,8 @@
 /.pnp
 .pnp.js
 
+#component hide
+/Component/Backend/AddAdmin
 # testing
 /coverage
 

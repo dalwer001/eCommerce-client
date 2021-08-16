@@ -23,21 +23,21 @@ const Gallery = () => {
   // }, []);
   useEffect(() => {
     const productsLoaders = async () => {
-        const res = await axios.get('https://pacific-plateau-10670.herokuapp.com/products')
-        setImages(res.data);
+      const res = await axios.get('http://localhost:5000/products')
+      setImages(res.data);
     }
     productsLoaders();
-}, []);
+  }, []);
 
-useEffect(() => {
-  const productsLoaders = async () => {
-      const res = await axios.get('https://pacific-plateau-10670.herokuapp.com/offerProducts')
+  useEffect(() => {
+    const productsLoaders = async () => {
+      const res = await axios.get('http://localhost:5000/offerProducts')
       setImage(res.data);
-  }
-  productsLoaders();
-}, []);
+    }
+    productsLoaders();
+  }, []);
 
-  if (!images&&!image) {
+  if (!images && !image) {
     return <h1>loading.....</h1>;
 
   }
@@ -48,22 +48,14 @@ useEffect(() => {
         {images.map((product) =>
           <div className="col-md-6 col-sm-12 col-lg-3 p-3 mb-2">
             <Zoom>
-               {
-                  product.image ? <img style={{height: "18rem", width:"15rem",border:"3px solid black"}} class="" src={`data:image/jpeg;base64,${product.image.img}`} alt="" />
-                      :
-                      <img style={{height:"300px",width:"250px",border:"3px solid black"}} className="img-fluid mb-3 " src={`https://gentle-stream-95244.herokuapp.com//${product.img}`} alt="" />
-                }
+              <img style={{ height: "18rem", width: "15rem", border: "3px solid black" }} class="" src={product.image} alt="" />
             </Zoom>
           </div>
         )}
-         {image.map((products) =>
+        {image.map((products) =>
           <div className="col-md-6 col-sm-12 col-lg-3 p-3 mb-2 ">
             <Zoom>
-               {
-                  products.image ? <img style={{height: "18rem", width:"15rem",border:"3px solid black"}} class="" src={`data:image/jpeg;base64,${products.image.img}`} alt="" />
-                      :
-                      <img style={{height:"300px",width:"250px",border:"3px solid black"}} className="img-fluid mb-3 " src={`https://gentle-stream-95244.herokuapp.com//${products.img}`} alt="" />
-                }
+              <img style={{ height: "18rem", width: "15rem", border: "3px solid black" }} class="" src={products.image} alt="" />
             </Zoom>
           </div>
         )}

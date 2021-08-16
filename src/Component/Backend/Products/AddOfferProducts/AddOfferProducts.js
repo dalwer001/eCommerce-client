@@ -2,8 +2,7 @@ import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 
 const AddOfferProducts = () => {
-    const [info, setInfo] = useState({})
-    const [file, setFile] = useState(null)
+    const [imageURL, setIMageURL] = useState(null);
     const [categoryInfo, setCategoryInfo] = useState([])
     useEffect(() => {
         const productsLoaders = async () => {
@@ -21,34 +20,41 @@ const AddOfferProducts = () => {
         productsLoaders();
     }, []);
 
-    const handleBlur = e => {
-        const newInfo = { ...info }
-        newInfo[e.target.name] = e.target.value;
-        setInfo(newInfo);
+
+    const handleImageUpload = e => {
+        const imageData = new FormData();
+        imageData.set('key', '798ea45a777a4ccd52f1701860227c6b');
+        imageData.append('image', e.target.files[0]);
+
+        axios.post('https://api.imgbb.com/1/upload',
+            imageData)
+            .then(function (response) {
+                setIMageURL(response.data.data.display_url);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
     }
 
-    const handleFileChange = e => {
-        const newFile = e.target.files[0];
-        setFile(newFile);
-    }
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        
-        const formData = new FormData()
-        formData.append('file', file);
-        formData.append('title', info.title);
-        formData.append('description', info.description);
-        formData.append('mainPrice', info.mainPrice);
-        formData.append('offer', info.offer);
-        formData.append('size', info.size);
-        formData.append('category', info.category);
-        formData.append('type', info.type);
-        formData.append('quantity', info.quantity);
+
+        const productData = {
+            image: imageURL,
+            title: e.target.title.value,
+            description: e.target.description.value,
+            mainPrice: e.target.mainPrice.value,
+            offer:e.target.offer.value,
+            size: e.target.size.value,
+            category: e.target.category.value,
+            type: e.target.type.value,
+            quantity: e.target.quantity.value
+        };
 
 
         try {
-            const res = await axios.post('https://pacific-plateau-10670.herokuapp.com/addOffer', formData)
+            const res = await axios.post('http://localhost:5000/addOffer', productData)
             if (res) {
                 e.target.reset();
                 alert('Offer product added successfully');
@@ -66,23 +72,23 @@ const AddOfferProducts = () => {
             <form class="row  bg-secondary mt-5 p-5 rounded container" onSubmit={handleSubmit}>
                 <div className="col-md-6">
                     <label class="form-label fw-bolder text-white"> Product Name</label>
-                    <input type="text" name="title" onBlur={handleBlur} class="form-control" placeholder="Enter Product Name" />
+                    <input type="text" name="title" class="form-control" placeholder="Enter Product Name" />
                 </div>
                 <div className="col-md-6">
                     <label class="form-label fw-bolder text-white">Price</label>
-                    <input type="number" name="mainPrice" onBlur={handleBlur} class="form-control" placeholder="Enter Price" />
+                    <input type="number" name="mainPrice" class="form-control" placeholder="Enter Price" />
                 </div>
                 <div className="col-md-6">
                     <label class="form-label fw-bolder text-white">Offer</label>
-                    <input type="number" name="offer" onBlur={handleBlur} class="form-control" placeholder="Enter Offer" />
+                    <input type="number" name="offer" class="form-control" placeholder="Enter Offer" />
                 </div>
                 <div className="col-md-6">
                     <label class="form-label fw-bolder text-white">Image</label>
-                    <input class="form-control" onChange={handleFileChange} type="file" name="image" />
+                    <input class="form-control" onChange={handleImageUpload} type="file" name="image" />
                 </div>
                 <div className="col-md-6">
                     <label class="form-label fw-bolder text-white">Size</label>
-                    <select class="form-select"onBlur={handleBlur} name="size" id="sel1">
+                    <select class="form-select"  name="size" id="sel1">
                         <option></option>
                         <option>L</option>
                         <option>XL</option>
@@ -92,35 +98,35 @@ const AddOfferProducts = () => {
                     </select>
                 </div>
                 <div className="col-md-6">
-                        <label class="form-label fw-bolder text-white">Category</label>
-                        <select class="form-select" name="category" onBlur={handleBlur} id="sel1">
-                            <option></option>
-                    {
-                        categoryInfo.map(categories=> 
-                            <option>{categories.category}</option>
-                       )
-                    }
-                     </select>
-                    </div>
-               
-                    <div className="col-md-6">
-                        <label class="form-label fw-bolder text-white">Type</label>
-                        <select class="form-select" name="type" onBlur={handleBlur} id="sel1">
-                            <option></option>
-                    {
-                        typeInfo.map(types=> 
-                            <option>{types.type}</option>
-                       )
-                    }
-                     </select>
-                    </div>
+                    <label class="form-label fw-bolder text-white">Category</label>
+                    <select class="form-select" name="category"  id="sel1">
+                        <option>Select Category</option>
+                        {
+                            categoryInfo.map(categories =>
+                                <option>{categories.category}</option>
+                            )
+                        }
+                    </select>
+                </div>
+
+                <div className="col-md-6">
+                    <label class="form-label fw-bolder text-white">Type</label>
+                    <select class="form-select" name="type"  id="sel1">
+                        <option>Select Type</option>
+                        {
+                            typeInfo.map(types =>
+                                <option>{types.type}</option>
+                            )
+                        }
+                    </select>
+                </div>
                 <div className="col-md-6">
                     <label class="form-label fw-bolder text-white">Quantity</label>
-                    <input type="number" name="quantity" onBlur={handleBlur} class="form-control" placeholder="Enter quantity" />
+                    <input type="number" name="quantity"  class="form-control" placeholder="Enter quantity" />
                 </div>
                 <div className="col-md-6">
                     <label class="form-label fw-bolder text-white">Description</label>
-                    <textarea type="text" onBlur={handleBlur} name="description" class="form-control" style={{ height: '15vh' }} placeholder="Enter Description" />
+                    <textarea type="text"  name="description" class="form-control" style={{ height: '15vh' }} placeholder="Enter Description" />
                 </div>
 
                 <div className="col-md-12 d-flex align-items-center">
