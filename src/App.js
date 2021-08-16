@@ -25,6 +25,7 @@ import SingleOffer from './Component/FrontEnd/SingleProduct/SingleOffer/SingleOf
 import FilterProducts from './Component/FrontEnd/Shop/FilterProducts/FilterProducts';
 import VendorLogin from './Component/FrontEnd/VendorLogin/VendorLogin';
 import VendorRegister from './Component/FrontEnd/VendorLogin/VendorRegister';
+import ReviewForm from './Component/FrontEnd/SingleProduct/ReviewForm/ReviewForm';
 
 
 import AddProducts from './Component/Backend/Products/AddProducts/AddProducts';
@@ -82,7 +83,9 @@ function App() {
               <Route path="/products/:id">
                 <SingleProduct />
               </Route>
-
+              <PrivateRoute path="/reviewForm/:id">
+              <SingleProduct />
+              </PrivateRoute>
               <Route path="/gallery">
                 <Gallery></Gallery>
               </Route>
