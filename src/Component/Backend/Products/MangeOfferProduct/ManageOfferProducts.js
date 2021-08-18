@@ -130,22 +130,13 @@ export default function ManageOfferProducts() {
           {offerProduct.map((op) => (
             <StyledTableRow key={op.name}>
                   <StyledTableCell align="left">{op.title}</StyledTableCell>
-              <StyledTableCell component="th" scope="row">
-              {op.image ? (
-                      <img
-                        style={{ width: "8rem", height: "8rem" }}
-                        src={`data:image/png;base64,${op.image.img}`}
-                        alt=""
-                      />
-                    ) : (
-                      <img
-                        style={{ width: "8rem", height: "8rem" }}
-                        className="img-fluid mb-3"
-                        src={`https://pacific-plateau-10670.herokuapp.com/${op.img}`}
-                        alt=""
-                      />
-                    )}
-              </StyledTableCell>
+                  <StyledTableCell component="th" scope="row">
+                    <img
+                      style={{ width: "8rem", height: "8rem" }}
+                      src={op.image}
+                      alt=""
+                    />
+                  </StyledTableCell>
               <StyledTableCell align="left">{op.description}</StyledTableCell>
               <StyledTableCell align="left">${op.mainPrice}</StyledTableCell>
               <StyledTableCell align="left">{op.offer}%</StyledTableCell>
