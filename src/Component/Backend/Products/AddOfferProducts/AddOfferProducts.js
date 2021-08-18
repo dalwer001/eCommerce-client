@@ -1,9 +1,11 @@
 import axios from 'axios';
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState,useContext } from 'react';
+import { UserContext } from '../../../../App';
 
 const AddOfferProducts = () => {
     const [imageURL, setIMageURL] = useState(null);
     const [categoryInfo, setCategoryInfo] = useState([])
+    const [loggedInUser, setLoggedInUser] = useContext(UserContext);
     useEffect(() => {
         const productsLoaders = async () => {
             const res = await axios.get('https://pacific-plateau-10670.herokuapp.com/categories')
@@ -41,6 +43,7 @@ const AddOfferProducts = () => {
         e.preventDefault();
 
         const productData = {
+            email:loggedInUser.email,
             image: imageURL,
             title: e.target.title.value,
             description: e.target.description.value,
@@ -70,6 +73,7 @@ const AddOfferProducts = () => {
         <section className="container py-3 bg-secondary rounded">
             <h1 className="text-center text-warning border-bottom">Add Offer Products</h1>
             <form class="row  bg-secondary mt-5 p-5 rounded container" onSubmit={handleSubmit}>
+            <input name="email" type="hidden" value={loggedInUser.email} class="form-control" />
                 <div className="col-md-6">
                     <label class="form-label fw-bolder text-white"> Product Name</label>
                     <input type="text" name="title" class="form-control" placeholder="Enter Product Name" />

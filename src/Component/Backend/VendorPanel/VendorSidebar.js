@@ -62,7 +62,7 @@ const VendorSidebar = () => {
                     </Link>
                   </li>
                   <li>
-                    <Link class="dropdown-item" to="#">
+                    <Link class="dropdown-item" to="/vendorManageProduct">
                       Manage Products
                     </Link>
                   </li>
@@ -92,7 +92,7 @@ const VendorSidebar = () => {
                     </Link>
                   </li>
                   <li>
-                    <Link class="dropdown-item" to="#">
+                    <Link to="/vendorManageOffers" class="dropdown-item" >
                       Manage offer Products
                     </Link>
                   </li>

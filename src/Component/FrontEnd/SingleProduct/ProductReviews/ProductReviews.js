@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { Link, useParams,useHistory } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import './ProductReviews.css';
 import ReviewForm from '../ReviewForm/ReviewForm';
 import { useContext } from 'react';
@@ -10,55 +10,36 @@ import { UserContext } from '../../../../App';
 const ProductReviews = () => {
   const [loggedInUser, setLoggedInUser] = useContext(UserContext);
   const [toggleState, setToggleState] = useState(1);
-  const [orders, setOrders] = useState([])
-  useEffect(() => {
-      fetch('http://localhost:5000/products')
-          .then(res => res.json())
-          .then(data => {
-              data.map(data => setOrders(data))
-          })
-  }, [])
-
-  const history = useHistory();
-  console.log(orders._id)
-
-  const singleProductClick = (id) => {
-      history.push(`/reviewForm/${id}`);
-  }
-
+  const [singleProduct, setSingleProduct] = useState({});
+  const { id } = useParams();
+  
   const toggleTab = (index) => {
     setToggleState(index);
   };
   const [reviewDes, setReviewDes] = useState([]);
   useEffect(() => {
     const reviewDescription = async () => {
-      const res = await axios.get(`https://pacific-plateau-10670.herokuapp.com/reviews`);
+      const res = await axios.get(`http://localhost:5000/reviews`);
       setReviewDes(res.data);
       console.log(res.data);
     }
     reviewDescription();
   }, [])
 
-
-
-  const [singleProduct, setSingleProduct] = useState({});
-
-  const { id } = useParams();
-
   useEffect(() => {
     const singleProduct = async () => {
-      const res = await axios.get(`https://pacific-plateau-10670.herokuapp.com/products/${id}`);
+      const res = await axios.get(`http://localhost:5000/products/${id}`);
       setSingleProduct(res.data);
-      // console.log(res.data);
+      console.log(res.data);
     }
     singleProduct();
   }, [id])
 
   useEffect(() => {
     const singleProduct = async () => {
-      const res = await axios.get(`https://pacific-plateau-10670.herokuapp.com/offerProduct/${id}`);
+      const res = await axios.get(`http://localhost:5000/offerProduct/${id}`);
       setSingleProduct(res.data);
-      // console.log(res.data);
+      console.log(res.data);
     }
     singleProduct();
   }, [id])
@@ -66,7 +47,6 @@ const ProductReviews = () => {
   
   const reviewMap = () => {
     const newReview = reviewDes.filter(review => review.id === singleProduct._id)
-    // console.log(newReview.length);
     return newReview.length;
   }
 
@@ -125,7 +105,7 @@ const ProductReviews = () => {
             <div className="col-md-6 ">
               {
                 loggedInUser.email ? <ReviewForm></ReviewForm> :
-                  <p className="text-center">Please, <span><Link to="#"onClick={() => singleProductClick(orders._id)}>login</Link></span> or <span><Link to="/reviewForm"> register</Link></span> here to give review. </p>
+                  <p className="text-center">Please, <span><Link to="/login">login</Link></span> or <span><Link to="/reviewForm"> register</Link></span> here to give review. </p>
               }
 
             </div>
