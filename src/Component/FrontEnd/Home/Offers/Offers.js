@@ -27,12 +27,7 @@ const Offers = ({ offers, addToCart }) => {
                 <div class="product-grid">
                     <div style={{ height: "13rem" }} class="">
                         <a href="#" class="images">
-                            {/* <img class="product-image" src={products.image} /> */}
-                            {
-                                image ? <img class="product-image" src={`data:image/jpeg;base64,${image.img}`} alt="" />
-                                    :
-                                    <img className="img-fluid mb-3 product-image" src={`https://gentle-stream-95244.herokuapp.com//${image.img}`} alt="" />
-                            }
+                                <img class="product-image" src={image} alt="" />
                         </a>
                         <span class="product-discount-label">{offer}%</span>
                         <ul class="product-links">

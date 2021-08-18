@@ -40,64 +40,64 @@ const useStyles = makeStyles({
 });
 
 export default function ManageOfferProducts() {
-    const [offerProduct, setOfferProduct] = useState([]);
-    
-    useEffect(() => {
-        fetch("https://pacific-plateau-10670.herokuapp.com/offerProducts")
-          .then((res) => res.json())
-          .then((data) => setOfferProduct(data));
-      }, []);
-    
-      const statusUpdated = () => {
-        fetch('https://pacific-plateau-10670.herokuapp.com/offerProducts')
-          .then(res => res.json())
-          .then(data => setOfferProduct(data));
-      }
-    
-      const handlePublish = (id) => {
-    
-        const status = 'Published'
-        const user = { id, status };
-    
-        const url = `https://pacific-plateau-10670.herokuapp.com/publishOfferProduct/${id}`;
-        fetch(url, {
-          method: 'PATCH',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(user)
-        })
-          .then(res => res.json())
-          .then(data => {
-            if (data) {
-              alert('Offer Product Published Successfully');
-              statusUpdated();
-            }
-          })
-      }
-    
-      const handleUnpublish =(id)=>{
-        const status = 'Unpublished'
-        const user = { id, status };
-    
-        const url = `https://pacific-plateau-10670.herokuapp.com/publishOfferProduct/${id}`;
-        fetch(url, {
-          method: 'PATCH',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(user)
-        })
-          .then(res => res.json())
-          .then(data => {
-            if (data) {
-              alert('Offer Product Unpublished Successfully');
-              statusUpdated();
-            }
-          })
-      }
-    
-  
+  const [offerProduct, setOfferProduct] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:5000/offerProducts")
+      .then((res) => res.json())
+      .then((data) => setOfferProduct(data));
+  }, []);
+
+  const statusUpdated = () => {
+    fetch('http://localhost:5000/offerProducts')
+      .then(res => res.json())
+      .then(data => setOfferProduct(data));
+  }
+
+  const handlePublish = (id) => {
+
+    const status = 'Published'
+    const user = { id, status };
+
+    const url = `http://localhost:5000/publishOfferProduct/${id}`;
+    fetch(url, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(user)
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data) {
+          alert('Offer Product Published Successfully');
+          statusUpdated();
+        }
+      })
+  }
+
+  const handleUnpublish = (id) => {
+    const status = 'Unpublished'
+    const user = { id, status };
+
+    const url = `http://localhost:5000/${id}`;
+    fetch(url, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(user)
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data) {
+          alert('Offer Product Unpublished Successfully');
+          statusUpdated();
+        }
+      })
+  }
+
+
   const classes = useStyles();
 
   return (

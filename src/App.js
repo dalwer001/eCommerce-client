@@ -22,7 +22,7 @@ import Sidebar from './Component/Backend/AdminPanel/Sidebar/Sidebar';
 import AddOfferProducts from './Component/Backend/Products/AddOfferProducts/AddOfferProducts';
 import OfferInfo from './Component/FrontEnd/Home/OfferInfo/OfferInfo';
 import SingleOffer from './Component/FrontEnd/SingleProduct/SingleOffer/SingleOffer';
-
+import FilterProducts from './Component/FrontEnd/Shop/FilterProducts/FilterProducts';
 import VendorLogin from './Component/FrontEnd/VendorLogin/VendorLogin';
 import VendorRegister from './Component/FrontEnd/VendorLogin/VendorRegister';
 
@@ -37,6 +37,8 @@ import ManageOfferProducts from './Component/Backend/Products/MangeOfferProduct/
 
 import ManageVendor from './Component/Backend/ManageVendor/ManageVendor';
 import AdminManageProduct from './Component/Backend/Products/ManageProducts/AdminManageProduct';
+import VendorManageProducts from './Component/Backend/Products/ManageProducts/VendorManageProducts';
+import VendorManageOffer from './Component/Backend/Products/MangeOfferProduct/VendorManageOffer';
 import VendorPrivateRoute from './Component/FrontEnd/PrivateRoute/VendorPrivateRoute';
  import AdminDashboard from './Component/Backend/AdminPanel/AdminDashboard/AdminDashboard';
 // import AdminSidebarPanel from './Component/Backend/AdminPanel/AdminSidebarPanel';
@@ -74,11 +76,18 @@ function App() {
               <Route path="/home">
                 <Home />
               </Route>
-
+              <Route path="/filterProducts/:category">
+                <FilterProducts></FilterProducts>
+              </Route>
+              <Route path="/filterProduct/:category/:type">
+                <FilterProducts></FilterProducts>
+              </Route>
               <Route path="/products/:id">
                 <SingleProduct />
               </Route>
-
+              {/* <PrivateRoute path="/productss">
+                <SingleProductsDetails />
+              </PrivateRoute> */}
               <Route path="/gallery">
                 <Gallery></Gallery>
               </Route>
@@ -97,9 +106,9 @@ function App() {
               <Route path="/vendorRegister">
                 <VendorRegister></VendorRegister>
               </Route>
-              {/* <Route path="/shop">
+              <Route path="/shop">
                 <Shop></Shop>
-              </Route> */}
+              </Route>
               {/* add category */}
               <PrivateRoute path="/addCategory">
                 <AddCategory></AddCategory>
@@ -141,7 +150,12 @@ function App() {
               <VendorPrivateRoute path="/vendorSidebar">
                 <VendorSidebar></VendorSidebar>
               </VendorPrivateRoute >
-              
+              <VendorPrivateRoute path="/vendorManageProduct">
+                <VendorManageProducts></VendorManageProducts>
+              </VendorPrivateRoute >
+              <VendorPrivateRoute path="/vendorManageOffers">
+                <VendorManageOffer></VendorManageOffer>
+              </VendorPrivateRoute >
               <PrivateRoute path="/adminDashboard">
                <AdminDashboard></AdminDashboard>
               </PrivateRoute>
@@ -151,6 +165,7 @@ function App() {
               <PrivateRoute path="/adminManageProduct">
                 <AdminManageProduct></AdminManageProduct>
               </PrivateRoute>
+
             </Switch>
             
           </Router>
