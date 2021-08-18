@@ -1,6 +1,8 @@
 import axios from 'axios';
 import React, { useEffect, useState,useContext } from 'react';
 import { UserContext } from '../../../../App';
+import VendorSidebar from '../../VendorPanel/VendorSidebar';
+
 
 const AddProducts = () => {
     const [imageURL, setIMageURL] = useState(null);
@@ -82,8 +84,11 @@ const AddProducts = () => {
     }
 
     return (
-        <div>
-            <section className="container py-3 bg-secondary rounded">
+        <div className="row mx-0">
+            <div className="col-md-2">
+               <VendorSidebar></VendorSidebar>
+            </div>
+            <div className="col-md-10 container py-3 bg-secondary rounded">
                 <h1 className="text-center text-warning border-bottom">Add Products</h1>
                 <form class="row  bg-secondary mt-5 p-5 rounded container" onSubmit={handleSubmit}>
                 <input name="email" type="hidden" value={loggedInUser.email} class="form-control"/>
@@ -146,7 +151,7 @@ const AddProducts = () => {
                         <input type="submit" className="mt-3 btn btn-primary" />
                     </div>
                 </form>
-            </section>
+            </div>
         </div>
     );
 };
