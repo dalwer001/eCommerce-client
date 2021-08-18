@@ -1,0 +1,11 @@
+.tables-row{
+   margin-top:15px;
+    border-radius: 1px solid black;
+    margin-left: 15px;
+}
+.a-button{
+    height: 50px;
+    width: 120px;
+    justify-content: center;
+    margin-left: 20px;
+}

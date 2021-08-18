@@ -18,7 +18,7 @@ const SingleOfferDetails = () => {
         singleProduct();
     }, [id]);
 
-    const { _id,title, mainPrice, image, category, description,offer} = singleProduct;
+    const { _id, title, mainPrice, image, category, description, offer } = singleProduct;
     const offerprice = mainPrice - (mainPrice * offer / 100);
     console.log(offerprice);
 
@@ -56,12 +56,7 @@ const SingleOfferDetails = () => {
         <section className="container">
             <div className="row d-flex align-items-center">
                 <div className="col-sm-12 col-md-6 P-5 d-flex justify-content-center ">
-                    {
-                                image ? <img className="w-50 img-fluid"src={`data:image/jpeg;base64,${image.img}`} alt="" />
-                                    :
-                                    <></>
-                                    // <img className="img-fluid w-50 mb-3" src={`https://gentle-stream-95244.herokuapp.com//${image.img}`} alt="" />
-                            }
+                    <img className="w-50 img-fluid" src={image} alt="" />
                 </div>
                 <div className="col-md-6 col-sm-12 mt-5">
                     <div>

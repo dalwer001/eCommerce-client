@@ -10,12 +10,12 @@ import Paper from '@material-ui/core/Paper';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import Sidebar from '../../AdminPanel/Sidebar/Sidebar';
-
+import './ManageOfferProduct.css'
 
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
-    backgroundColor: theme.palette.common.black,
+  
     color: theme.palette.common.white,
   },
   body: {
@@ -40,75 +40,75 @@ const useStyles = makeStyles({
 });
 
 export default function ManageOfferProducts() {
-    const [offerProduct, setOfferProduct] = useState([]);
-    
-    useEffect(() => {
-        fetch("https://pacific-plateau-10670.herokuapp.com/offerProducts")
-          .then((res) => res.json())
-          .then((data) => setOfferProduct(data));
-      }, []);
-    
-      const statusUpdated = () => {
-        fetch('https://pacific-plateau-10670.herokuapp.com/offerProducts')
-          .then(res => res.json())
-          .then(data => setOfferProduct(data));
-      }
-    
-      const handlePublish = (id) => {
-    
-        const status = 'Published'
-        const user = { id, status };
-    
-        const url = `https://pacific-plateau-10670.herokuapp.com/publishOfferProduct/${id}`;
-        fetch(url, {
-          method: 'PATCH',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(user)
-        })
-          .then(res => res.json())
-          .then(data => {
-            if (data) {
-              alert('Offer Product Published Successfully');
-              statusUpdated();
-            }
-          })
-      }
-    
-      const handleUnpublish =(id)=>{
-        const status = 'Unpublished'
-        const user = { id, status };
-    
-        const url = `https://pacific-plateau-10670.herokuapp.com/publishOfferProduct/${id}`;
-        fetch(url, {
-          method: 'PATCH',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(user)
-        })
-          .then(res => res.json())
-          .then(data => {
-            if (data) {
-              alert('Offer Product Unpublished Successfully');
-              statusUpdated();
-            }
-          })
-      }
-    
-  
+  const [offerProduct, setOfferProduct] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:5000/offerProducts")
+      .then((res) => res.json())
+      .then((data) => setOfferProduct(data));
+  }, []);
+
+  const statusUpdated = () => {
+    fetch('http://localhost:5000/offerProducts')
+      .then(res => res.json())
+      .then(data => setOfferProduct(data));
+  }
+
+  const handlePublish = (id) => {
+
+    const status = 'Published'
+    const user = { id, status };
+
+    const url = `http://localhost:5000/publishOfferProduct/${id}`;
+    fetch(url, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(user)
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data) {
+          alert('Offer Product Published Successfully');
+          statusUpdated();
+        }
+      })
+  }
+
+  const handleUnpublish = (id) => {
+    const status = 'Unpublished'
+    const user = { id, status };
+
+    const url = `http://localhost:5000/${id}`;
+    fetch(url, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(user)
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data) {
+          alert('Offer Product Unpublished Successfully');
+          statusUpdated();
+        }
+      })
+  }
+
+
   const classes = useStyles();
 
   return (
    <div className="row m-0">
-       <div className="col-md-2 p-0">
+       <div className="col-md-2 col-sm-2 col-lg-2 p-0">
       <Sidebar></Sidebar>
        </div>
-       <div className="col-md-10">
+       <div className="col-md-10 col-sm-10 mt-2">
        <TableContainer component={Paper}>
       <Table className={classes.table} aria-label="customized table">
-        <TableHead>
+        <TableHead style={{  backgroundColor: "#0B4C61"}}>
           <TableRow>
             <StyledTableCell align="left">Title</StyledTableCell>
             <StyledTableCell align="left">Picture</StyledTableCell>
@@ -130,22 +130,13 @@ export default function ManageOfferProducts() {
           {offerProduct.map((op) => (
             <StyledTableRow key={op.name}>
                   <StyledTableCell align="left">{op.title}</StyledTableCell>
-              <StyledTableCell component="th" scope="row">
-              {op.image ? (
-                      <img
-                        style={{ width: "8rem", height: "8rem" }}
-                        src={`data:image/png;base64,${op.image.img}`}
-                        alt=""
-                      />
-                    ) : (
-                      <img
-                        style={{ width: "8rem", height: "8rem" }}
-                        className="img-fluid mb-3"
-                        src={`https://pacific-plateau-10670.herokuapp.com/${op.img}`}
-                        alt=""
-                      />
-                    )}
-              </StyledTableCell>
+                  <StyledTableCell component="th" scope="row">
+                    <img
+                      style={{ width: "8rem", height: "8rem" }}
+                      src={op.image}
+                      alt=""
+                    />
+                  </StyledTableCell>
               <StyledTableCell align="left">{op.description}</StyledTableCell>
               <StyledTableCell align="left">${op.mainPrice}</StyledTableCell>
               <StyledTableCell align="left">{op.offer}%</StyledTableCell>
@@ -156,9 +147,18 @@ export default function ManageOfferProducts() {
               <StyledTableCell align="left">{op.type}</StyledTableCell>
               <StyledTableCell align="left">{op.quantity}</StyledTableCell>
               <StyledTableCell align="left">{op.status}</StyledTableCell>
-
-              <button onClick={() => handlePublish(op._id)} className="alert alert-success m-2 fw-bold">Publish</button>
-              <button onClick={() => handleUnpublish(op._id)} className="alert alert-danger m-2 fw-bold">Unpublish</button>
+              <div class="dropdown offer-table-row">
+            <button class="btn btn-sm btn-light border dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi bi-arrow-down-right-circle"></i>
+            </button>
+            <ul class="dropdown-menu " aria-labelledby="dropdownMenuButton1">
+                <li>
+                    <button onClick={() => handlePublish(op._id)} className="alert alert-success o-button fw-bold">Publish</button>
+              <button onClick={() => handleUnpublish(op._id)} className="alert alert-danger o-button fw-bold">Unpublish</button>
+                </li>
+            </ul>
+        </div>
+              
             </StyledTableRow>
           ))}
         </TableBody>

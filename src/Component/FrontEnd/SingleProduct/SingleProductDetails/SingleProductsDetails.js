@@ -68,12 +68,7 @@ const SingleProductsDetails = () => {
         <section className="container py-5">
             <div className="row d-flex align-items-center">
                 <div className="col-sm-12 col-md-6 P-5 d-flex justify-content-center ">
-                    {
-                        image ? <img src={`data:image/jpeg;base64,${image.img}`} alt="" className="w-75 img-fluid" />
-                            :
-                            <img className="img-fluid mb-3 product-image" src={`https://gentle-stream-95244.herokuapp.com//${singleProduct.img}`} alt="" />
-                    }
-
+                    <img src={image} alt="" className="w-75 img-fluid" />
                 </div>
                 <div className="col-md-6 col-sm-12 mt-5">
                     <div>

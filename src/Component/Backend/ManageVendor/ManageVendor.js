@@ -10,11 +10,11 @@ import Paper from '@material-ui/core/Paper';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import Sidebar from '../AdminPanel/Sidebar/Sidebar';
-
+import './ManageVendor.css'
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
-    backgroundColor: theme.palette.common.black,
+    
     color: theme.palette.common.white,
   },
   body: {
@@ -106,7 +106,7 @@ export default function ManageVendor() {
       <div className="col-md-10">
         <TableContainer component={Paper}>
           <Table className={classes.table} aria-label="customized table">
-            <TableHead>
+            <TableHead style={{  backgroundColor: "#0B4C61"}}>
               <TableRow>
                 <StyledTableCell align="left">First Name</StyledTableCell>
                 <StyledTableCell align="left">Last Name</StyledTableCell>
@@ -130,8 +130,19 @@ export default function ManageVendor() {
                   <StyledTableCell align="left">{p.email}</StyledTableCell>
                   <StyledTableCell align="left">{p.password}</StyledTableCell>
                   <StyledTableCell align="left">{p.status}</StyledTableCell>
-                  <button onClick={() => handleAccept(p._id)} className="alert alert-success m-2 fw-bold">Accept</button>
-                  <button onClick={() => handleDecline(p._id)} className="alert alert-danger m-2 fw-bold">Decline</button>
+                
+                  <div class="dropdown tables-row">
+            <button class="btn btn-sm btn-light dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi bi-arrow-down-left-circle"></i>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <li>
+                <button onClick={() => handleAccept(p._id)} className="alert alert-success a-button  fw-bold">Accept</button>
+                  <button onClick={() => handleDecline(p._id)} className="alert alert-danger a-button  fw-bold">Decline</button>
+                </li>
+            </ul>
+        </div>
+                  
                 </StyledTableRow>
               ))}
             </TableBody>
