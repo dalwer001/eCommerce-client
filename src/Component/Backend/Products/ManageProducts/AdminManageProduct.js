@@ -9,20 +9,17 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import { useEffect } from 'react';
 import { useState } from 'react';
-import Sidebar from '../../AdminPanel/Sidebar/Sidebar';
-import { FormControl } from '@material-ui/core';
-import InputLabel from '@material-ui/core/InputLabel';
-import MenuItem from '@material-ui/core/MenuItem';
-// import FormControl from '@material-ui/core/FormControl';
-import Select from '@material-ui/core/Select';
-import NativeSelect from '@material-ui/core/NativeSelect';
-import InputBase from '@material-ui/core/InputBase';
 
-// import Sidebar from "../../AdminPanel/Sidebar/Sidebar";
+
+import Sidebar from '../../AdminPanel/Sidebar/Sidebar';
+import './AdminManageProduct.css'
+
+
+
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
-    backgroundColor: theme.palette.common.black,
+  
     color: theme.palette.common.white,
   },
   body: {
@@ -108,14 +105,14 @@ export default function AdminManageProduct() {
 
   return (
     <div className="row m-0">
-      <div className="col-md-2 col-lg-2 p-0">
-        <Sidebar></Sidebar>
+      <div className="col-md-2 col-sm-2 col-lg-2 p-0">
+  <Sidebar></Sidebar>
       </div>
-      <div className="col-md-10">
+      <div className="col-md-10 mt-2 col-sm-10">
         <TableContainer component={Paper}>
           <Table className={classes.table} aria-label="customized table">
-            <TableHead>
-              <TableRow>
+            <TableHead style={{  backgroundColor: "#0B4C61"}}>
+              <TableRow >
                 <StyledTableCell align="left">Title</StyledTableCell>
                 <StyledTableCell align="left">Picture</StyledTableCell>
                 <StyledTableCell align="left">Description</StyledTableCell>
@@ -158,8 +155,19 @@ export default function AdminManageProduct() {
                   <StyledTableCell align="left">{p.type}</StyledTableCell>
                   <StyledTableCell align="left">{p.quantity}</StyledTableCell>
                   <StyledTableCell align="left">{p.status}</StyledTableCell>
-                  <button onClick={() => handlePublish(p._id)} className="alert alert-success m-2 fw-bold">Publish</button>
-                  <button onClick={() => handleUnpublish(p._id)} className="alert alert-danger m-2 fw-bold">Unpublish</button>
+                  <div class="dropdown table-row">
+            <button class="btn btn-sm btn-light dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi bi-arrow-down-right-circle"></i>
+            </button>
+            <ul class="dropdown-menu " aria-labelledby="dropdownMenuButton1">
+                <li>
+                    <button onClick={() => handlePublish(p._id)} className="alert alert-success  p-button fw-bold">Publish</button>
+                  <button onClick={() => handleUnpublish(p._id)} className="alert alert-danger  p-button fw-bold">Unpublish</button>
+                </li>
+            </ul>
+        </div>
+       
+                  
                 </StyledTableRow>
               ))}
             </TableBody>

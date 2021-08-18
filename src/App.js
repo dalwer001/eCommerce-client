@@ -38,7 +38,8 @@ import ManageOfferProducts from './Component/Backend/Products/MangeOfferProduct/
 import ManageVendor from './Component/Backend/ManageVendor/ManageVendor';
 import AdminManageProduct from './Component/Backend/Products/ManageProducts/AdminManageProduct';
 import VendorPrivateRoute from './Component/FrontEnd/PrivateRoute/VendorPrivateRoute';
-import AdminDashboard from './Component/Backend/AdminPanel/AdminDashboard/AdminDashboard';
+ import AdminDashboard from './Component/Backend/AdminPanel/AdminDashboard/AdminDashboard';
+// import AdminSidebarPanel from './Component/Backend/AdminPanel/AdminSidebarPanel';
 
 
 // import ReviewForm from './Component/FrontEnd/SingleProduct/ReviewForm/ReviewForm';
@@ -140,8 +141,9 @@ function App() {
               <VendorPrivateRoute path="/vendorSidebar">
                 <VendorSidebar></VendorSidebar>
               </VendorPrivateRoute >
+              
               <PrivateRoute path="/adminDashboard">
-                <AdminDashboard/>
+               <AdminDashboard></AdminDashboard>
               </PrivateRoute>
               <Route path="/addAdmin">
                 <AddAdmin></AddAdmin>
@@ -150,7 +152,7 @@ function App() {
                 <AdminManageProduct></AdminManageProduct>
               </PrivateRoute>
             </Switch>
-            {/* <Footer /> */}
+            
           </Router>
         </TotalContext.Provider>
       </CartContext.Provider>

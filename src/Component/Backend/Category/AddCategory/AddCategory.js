@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import Sidebar from '../../AdminPanel/Sidebar/Sidebar';
-
+import './AddCategory.css'
 const AddCategory = () => {
         const [categoryInfo, setCategoryInfo] = useState({})
         const handleBlur = e => {
@@ -29,25 +29,25 @@ const AddCategory = () => {
     
 
     return (
-        <div>
-            <div className="row m-0">
-                <div className="col-md-2">
+       
+            <div className="row m-auto add-category " >
+                <div className="col-md-2 ">
                     <Sidebar></Sidebar>
                 </div>
-                <div className="col-md-10 py-3 bg-secondary rounded">
+                <div className="col-md-8  mt-5 col-lg-6 py-3  category  rounded">
                 <h1 className="text-center text-warning border-bottom">Add Category</h1>
-                <form class="row  bg-secondary mt-5 p-5 rounded container" onSubmit={handleSubmit}>
+                <form class="row mx-auto  category-two  rounded container" onSubmit={handleSubmit}>
                     <div className="col-md-12">
                         <label class="form-label fw-bolder text-white"> Category Name</label>
                         <input type="text" name="category" onBlur={handleBlur} class="form-control" placeholder="Enter Category Name" />
                     </div>
-                    <div className="col-md-12 d-flex align-items-center">
-                        <input type="submit" className="mt-3 btn btn-primary" />
+                    <div className="col-md-8 d-flex align-items-center">
+                        <input type="submit" className="mt-3  submit-button" />
                     </div>
                 </form>
             </div>
             </div>
-        </div>
+        
     );
 };
 

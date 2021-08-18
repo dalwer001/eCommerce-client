@@ -1,0 +1,12 @@
+
+.offer-table-row{
+    padding-top:135px;
+    border-radius: 1px solid black;
+    padding-left:20px;
+}
+.o-button{
+    height: 50px;
+    width: 120px;
+    justify-content: center;
+    margin-left: 20px;
+}
