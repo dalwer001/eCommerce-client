@@ -9,11 +9,10 @@ import Paper from '@material-ui/core/Paper';
 import React, { useEffect, useState,useContext } from 'react';
 import { UserContext } from '../../../../App';
 import VendorSidebar from '../../VendorPanel/VendorSidebar';
-
+import './VendorManageOffer.css'
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
-    backgroundColor: theme.palette.common.black,
     color: theme.palette.common.white,
   },
   body: {
@@ -59,7 +58,7 @@ export default function VendorManageOffer() {
       <div className="col-md-10">
         <TableContainer component={Paper}>
           <Table className={classes.table} aria-label="customized table">
-            <TableHead>
+            <TableHead style={{  backgroundColor: "#0B4C61"}}>
               <TableRow>
                 <StyledTableCell align="left">Title</StyledTableCell>
                 <StyledTableCell align="left">Picture</StyledTableCell>
@@ -98,9 +97,18 @@ export default function VendorManageOffer() {
                   <StyledTableCell align="left">{op.type}</StyledTableCell>
                   <StyledTableCell align="left">{op.quantity}</StyledTableCell>
                   <StyledTableCell align="left">{op.status}</StyledTableCell>
-
-                  {/* <button onClick={() => handlePublish(op._id)} className="alert alert-success m-2 fw-bold">Publish</button>
-                  <button onClick={() => handleUnpublish(op._id)} className="alert alert-danger m-2 fw-bold">Unpublish</button> */}
+                  <div class="dropdown offer-table-row">
+            <button class="btn btn-sm btn-light border dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi bi-arrow-down-right-circle"></i>
+            </button>
+            <ul class="dropdown-menu " aria-labelledby="dropdownMenuButton1">
+                <li>
+                    {/* <button onClick={() => handlePublish(op._id)} className="alert alert-success o-button fw-bold">Publish</button>
+              <button onClick={() => handleUnpublish(op._id)} className="alert alert-danger o-button fw-bold">Unpublish</button> */}
+                </li>
+            </ul>
+        </div>
+              
                 </StyledTableRow>
               ))}
             </TableBody>
