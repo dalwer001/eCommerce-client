@@ -28,11 +28,7 @@ const Sidebar = () => {
     
     return (
         <>
-            {/* {!isAdmin &&
-                <div className="">
-                <h1>hi</h1>
-            </div>
-            } */}
+            
         {isAdmin &&
             <div>
         <div class="row m-0 ">
