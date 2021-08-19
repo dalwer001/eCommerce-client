@@ -34,7 +34,7 @@ const AddCategory = () => {
                 <div className="col-md-2 ">
                     <Sidebar></Sidebar>
                 </div>
-                <div className="col-md-8  mt-5 col-lg-6 py-3  category  rounded">
+                <div className="col-md-8  mt-5 col-lg-8 mx-auto py-3  category  rounded">
                 <h1 className="text-center text-warning border-bottom">Add Category</h1>
                 <form class="row mx-auto  category-two  rounded container" onSubmit={handleSubmit}>
                     <div className="col-md-12">

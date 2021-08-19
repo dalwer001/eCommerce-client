@@ -34,9 +34,9 @@ const AddType = () => {
                 <div className="col-md-2">
                     <Sidebar></Sidebar>
                 </div>
-                <div className="col-md-8  mt-5 col-lg-6 py-3 type  rounded">
+                <div className="col-md-8  mt-5 col-lg-8 mx-auto py-3 type  rounded">
                 <h1 className="text-center text-warning border-bottom">Add Type</h1>
-                <form class="row mx-auto  category-two  rounded container" onSubmit={handleSubmit}>
+                <form class="row mx-auto  type-two  rounded container" onSubmit={handleSubmit}>
                     <div className="col-md-12">
                         <label class="form-label fw-bolder text-white"> Type</label>
                         <input type="text" name="type" onBlur={handleBlur} class="form-control" placeholder="Enter Type Name" />

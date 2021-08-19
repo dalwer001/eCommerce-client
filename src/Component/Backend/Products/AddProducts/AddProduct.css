@@ -1,10 +1,11 @@
-.type {
-  height: 100%;
-  width: 100%;
+.product {
+  /* height: 100%; */
   background-color: #0b4c61;
+  margin-bottom: 20px;
+  margin-top: 10px;
 }
-.type-two {
-  padding: 40px;
+.product-two {
+  padding: 50px;
   background-color: #0c5f79;
 }
 .submit-button {
