@@ -1,7 +1,44 @@
-import React from "react";
+import React, { useState } from "react";
+
+import { useEffect } from "react";
+
 import Sidebar from "../Sidebar/Sidebar";
 
 const AdminDashboard = () => {
+    
+    
+   
+    const [products, setProducts] = useState([])
+    useEffect(() => {
+        fetch('http://localhost:5000/products')
+            .then(res => res.json())
+            .then(data => setProducts(data))
+    }, [])
+
+    const [offerProducts, setOfferProducts] = useState([])
+    useEffect(() => {
+        fetch('http://localhost:5000/offerProducts')
+            .then(res => res.json())
+            .then(data => setOfferProducts(data))
+    }, [])
+    const [vendors, setVendors] = useState([])
+    useEffect(() => {
+        fetch('http://localhost:5000/vendors')
+            .then(res => res.json())
+            .then(data => setVendors(data))
+    }, [])
+    const [categories, setCategories] = useState([])
+    useEffect(() => {
+        fetch('http://localhost:5000/categories')
+            .then(res => res.json())
+            .then(data => setCategories(data))
+    }, [])
+    const [types, setTypes] = useState([])
+    useEffect(() => {
+        fetch('http://localhost:5000/types')
+            .then(res => res.json())
+            .then(data => setTypes(data))
+    }, [])
   return (
     <div className="row m-0">
       <div className="col-md-2 col-sm-2 col-lg-2 p-0">
@@ -21,8 +58,8 @@ const AdminDashboard = () => {
                 textAlign: "center",
               }}
             >
-              <p>Total Vendor</p>
-              {/* <p>{orders.length}</p> */}
+              <h4>Total Vendor</h4>
+              <h1>{vendors.length}</h1>
             </div>
           </div>
           <div className="col-md-4">
@@ -37,8 +74,8 @@ const AdminDashboard = () => {
                 textAlign: "center",
               }}
             >
-              <p>Total Customer</p>
-              {/* <p>{samples.length}</p> */}
+              <h4>Total Customer</h4>
+              {/* <h1>{samples.length}</h1> */}
             </div>
           </div>
           <div className="col-md-4">
@@ -53,8 +90,8 @@ const AdminDashboard = () => {
                 textAlign: "center",
               }}
             >
-              <p>Total Category</p>
-              {/* <p>{orderSta.length}</p> */}
+              <h4>Total Category</h4>
+              <h1>{categories.length}</h1>
             </div>
           </div>
           <div className="col-md-4">
@@ -69,8 +106,8 @@ const AdminDashboard = () => {
                 textAlign: "center",
               }}
             >
-              <p>Total Type</p>
-              {/* <p>{orders.length}</p> */}
+              <h4>Total Type</h4>
+              <h1>{types.length}</h1>
             </div>
           </div>
           <div className="col-md-4">
@@ -85,8 +122,8 @@ const AdminDashboard = () => {
                 textAlign: "center",
               }}
             >
-              <p>Total Product</p>
-              {/* <p>{samples.length}</p> */}
+              <h4>Total Product</h4>
+              <h1>{products.length}</h1>
             </div>
           </div>
           <div className="col-md-4">
@@ -101,8 +138,8 @@ const AdminDashboard = () => {
                 textAlign: "center",
               }}
             >
-              <p>Total Offer Product</p>
-              {/* <p>{orderSta.length}</p> */}
+              <h4>Total Offer Product</h4>
+              <h1>{offerProducts.length}</h1>
             </div>
           </div>
         </div>

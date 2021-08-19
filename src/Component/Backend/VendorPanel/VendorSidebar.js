@@ -18,8 +18,7 @@ const VendorSidebar = () => {
   return (
     <div>
       <div class="row m-0 ">
-        {/* <div class="col-12 col-sm-3 col-xl-2 px-sm-2 px-0 bg-dark d-flex sticky-top"> */}
-        <div class="flex-sm-column flex-column sidebar  align-items-center align-items-sm-start h-100 vx-100 px-3 pt-2 text-white">
+        <div class=" sidebars  align-items-center align-items-sm-start  vx-100 px-3 pt-2 text-white">
           <Link
             to="/"
             class="d-flex align-items-center pb-sm-3 mb-md-0 me-md-auto text-white text-decoration-none"

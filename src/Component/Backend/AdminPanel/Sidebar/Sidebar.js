@@ -34,7 +34,7 @@ const Sidebar = () => {
         <div class="row m-0 ">
         
            
-                <div class=" flex-sm-column flex-column sidebar  align-items-center align-items-sm-start vx-100 px-3 pt-2 text-white">
+                <div class=" flex-sm-column flex-column sidebars  align-items-center align-items-sm-start vx-100 px-3 pt-2 text-white">
                     <Link to="/" class="d-flex align-items-center pb-sm-3 mb-md-0 me-md-auto text-white text-decoration-none">
                         <span class="fs-5">A<span class="d-none d-sm-inline">dmin Panel</span></span>
                     </Link>
