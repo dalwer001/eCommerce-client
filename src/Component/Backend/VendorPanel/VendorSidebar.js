@@ -17,9 +17,9 @@ import DashboardIcon from "@material-ui/icons/Dashboard";
 const VendorSidebar = () => {
   return (
     <div>
-      <div class="row m-0">
+      <div class="row m-0 ">
         {/* <div class="col-12 col-sm-3 col-xl-2 px-sm-2 px-0 bg-dark d-flex sticky-top"> */}
-        <div class="flex-sm-column flex-column sidebar  align-items-center align-items-sm-start vx-100 px-3 pt-2 text-white">
+        <div class="flex-sm-column flex-column sidebar  align-items-center align-items-sm-start h-100 vx-100 px-3 pt-2 text-white">
           <Link
             to="/"
             class="d-flex align-items-center pb-sm-3 mb-md-0 me-md-auto text-white text-decoration-none"
@@ -33,7 +33,7 @@ const VendorSidebar = () => {
             id="menu"
           >
             <li>
-              <Link to="/adminDashboard" class="nav-link px-sm-0 px-2 ">
+              <Link to="/VendorDashboard" class="nav-link px-sm-0 px-2 ">
                 <DashboardIcon className="text-white" />
                 <span class="ms-1 d-none  text-white d-sm-inline">
                   Dashboard

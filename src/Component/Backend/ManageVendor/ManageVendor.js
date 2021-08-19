@@ -103,7 +103,7 @@ export default function ManageVendor() {
       <div className="col-md-2 col-lg-2 p-0">
         <Sidebar></Sidebar>
       </div>
-      <div className="col-md-10">
+      <div className="col-md-10  mt-2">
         <TableContainer component={Paper}>
           <Table className={classes.table} aria-label="customized table">
             <TableHead style={{  backgroundColor: "#0B4C61"}}>

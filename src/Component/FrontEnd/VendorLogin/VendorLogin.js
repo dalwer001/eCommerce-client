@@ -18,7 +18,7 @@ const VendorLogin = () => {
 
   const [loggedInUser, setLoggedInUser] = useContext(UserContext);
   const location = useLocation();
-  const { from } = location.state || { from: { pathname: "/vendorSidebar" } };
+  const { from } = location.state || { from: { pathname: "/vendorDashboard" } };
 
   useEffect(() => {
     fetch("https://pacific-plateau-10670.herokuapp.com/vendors")
@@ -70,7 +70,7 @@ const VendorLogin = () => {
       // storeAuthToken();
 
       history.replace(from);
-      history.push('/vendorSidebar');
+      history.push('/vendorDashboard');
       // }
     }
 

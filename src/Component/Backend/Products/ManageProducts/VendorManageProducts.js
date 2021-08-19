@@ -12,6 +12,7 @@ import VendorSidebar from "../../VendorPanel/VendorSidebar";
 import './VendorManageProduct.css'
 const StyledTableCell = withStyles((theme) => ({
   head: {
+    
     color: theme.palette.common.white,
   },
   body: {
@@ -49,10 +50,10 @@ export default function VendorManageProducts() {
       <div className="col-md-2 col-lg-2 p-0">
         <VendorSidebar></VendorSidebar>
       </div>
-      <div className="col-md-10">
+      <div className="col-md-10  mt-2">
         <TableContainer component={Paper}>
           <Table className={classes.table} aria-label="customized table">
-            <TableHead style={{ backgroundColor: "#0B4C61" }}>
+            <TableHead  style={{ backgroundColor: "#0B4C61" }}>
               <TableRow>
                 <StyledTableCell align="left">Title</StyledTableCell>
                 <StyledTableCell align="left">Picture</StyledTableCell>

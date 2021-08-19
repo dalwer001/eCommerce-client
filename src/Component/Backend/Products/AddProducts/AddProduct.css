@@ -1,0 +1,25 @@
+
+.product{
+    /* height: 100%; */
+    background-color: #0B4C61;
+    margin-bottom: 20px;
+    margin-top:10px;
+}
+.product-two{
+    padding: 50px;
+background-color: #0C5F79;
+}
+.submit-button {
+    height: 42px;
+    width: 145px;
+    
+    background: #FFBD2F;
+    border-radius: 50px;
+    color: black;
+    text-decoration: none;
+    border:none;
+  }
+  .submit-button:hover{
+      background-color: #b9131b;
+      color:white;
+  }

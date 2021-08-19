@@ -18,7 +18,7 @@ import Shop from './Component/FrontEnd/Shop/Shop/Shop';
 import OurCompany from './Component/FrontEnd/FooterInfo/AboutUs/OurCompany/OurCompany';
 import History from './Component/FrontEnd/FooterInfo/AboutUs/History/History';
 import Contact from './Component/FrontEnd/FooterInfo/AboutUs/Contact/Contact';
-import Sidebar from './Component/Backend/AdminPanel/Sidebar/Sidebar';
+// import Sidebar from './Component/Backend/AdminPanel/Sidebar/Sidebar';
 import AddOfferProducts from './Component/Backend/Products/AddOfferProducts/AddOfferProducts';
 import OfferInfo from './Component/FrontEnd/Home/OfferInfo/OfferInfo';
 import SingleOffer from './Component/FrontEnd/SingleProduct/SingleOffer/SingleOffer';
@@ -28,7 +28,7 @@ import VendorRegister from './Component/FrontEnd/VendorLogin/VendorRegister';
 
 
 import AddProducts from './Component/Backend/Products/AddProducts/AddProducts';
-import VendorSidebar from './Component/Backend/VendorPanel/VendorSidebar';
+// import VendorSidebar from './Component/Backend/VendorPanel/VendorSidebar';
 import PrivateRoute from './Component/FrontEnd/PrivateRoute/PrivateRoute';
 import AddAdmin from './Component/Backend/AddAdmin/AddAdmin';
 import AddCategory from './Component/Backend/Category/AddCategory/AddCategory';
@@ -41,6 +41,7 @@ import VendorManageProducts from './Component/Backend/Products/ManageProducts/Ve
 import VendorManageOffer from './Component/Backend/Products/MangeOfferProduct/VendorManageOffer';
 import VendorPrivateRoute from './Component/FrontEnd/PrivateRoute/VendorPrivateRoute';
  import AdminDashboard from './Component/Backend/AdminPanel/AdminDashboard/AdminDashboard';
+import VendorDashboard from './Component/Backend/VendorDashboard/VendorDashboard';
 // import AdminSidebarPanel from './Component/Backend/AdminPanel/AdminSidebarPanel';
 
 
@@ -144,28 +145,27 @@ function App() {
               <Route path="/contact">
                 <Contact></Contact>
               </Route>
-              {/* <Route path="/sidebar">
-            <Sidebar/>         
-              </Route>  */}
-              <VendorPrivateRoute path="/vendorSidebar">
-                <VendorSidebar></VendorSidebar>
-              </VendorPrivateRoute >
+             <PrivateRoute path="/adminDashboard">
+               <AdminDashboard></AdminDashboard>
+              </PrivateRoute>
+               <Route path="/addAdmin">
+                <AddAdmin></AddAdmin>
+              </Route>
+              <PrivateRoute path="/adminManageProduct">
+                <AdminManageProduct></AdminManageProduct>
+              </PrivateRoute>
+              <VendorPrivateRoute path="/VendorDashboard">
+               <VendorDashboard></VendorDashboard>
+              </VendorPrivateRoute>
               <VendorPrivateRoute path="/vendorManageProduct">
                 <VendorManageProducts></VendorManageProducts>
               </VendorPrivateRoute >
               <VendorPrivateRoute path="/vendorManageOffers">
                 <VendorManageOffer></VendorManageOffer>
               </VendorPrivateRoute >
-              <PrivateRoute path="/adminDashboard">
-               <AdminDashboard></AdminDashboard>
-              </PrivateRoute>
-              <Route path="/addAdmin">
-                <AddAdmin></AddAdmin>
-              </Route>
-              <PrivateRoute path="/adminManageProduct">
-                <AdminManageProduct></AdminManageProduct>
-              </PrivateRoute>
-
+             
+             
+              
             </Switch>
             
           </Router>

@@ -55,7 +55,7 @@ export default function VendorManageOffer() {
       <div className="col-md-2 p-0">
       <VendorSidebar></VendorSidebar>
       </div>
-      <div className="col-md-10">
+      <div className="col-md-10  mt-2">
         <TableContainer component={Paper}>
           <Table className={classes.table} aria-label="customized table">
             <TableHead style={{  backgroundColor: "#0B4C61"}}>
