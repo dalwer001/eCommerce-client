@@ -74,7 +74,7 @@ export default function SearchProduct() {
   }
   
     return (
-      <Autocomplete
+      <Autocomplete 
         
         selectOnFocus
         clearOnBlur
@@ -97,6 +97,7 @@ export default function SearchProduct() {
         style={{ width: 300 }}
         freeSolo
         renderInput={(data) => (
+          
           <TextField {...data} onChange={(e) => search(e.target.value)}
                     name="title"
                     label="Search"
