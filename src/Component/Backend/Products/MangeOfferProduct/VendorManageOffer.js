@@ -10,6 +10,8 @@ import React, { useEffect, useState,useContext } from 'react';
 import { UserContext } from '../../../../App';
 import VendorSidebar from '../../VendorPanel/VendorSidebar';
 import './VendorManageOffer.css'
+// import { Link } from '@material-ui/core';
+import { useHistory } from 'react-router-dom';
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
@@ -45,6 +47,12 @@ export default function VendorManageOffer() {
       .then((res) => res.json())
       .then((data) => setOfferProduct(data));
   }, []);
+
+  // update
+  const history = useHistory();
+  const handleUpdate = (id) => {
+      history.push(`/updateOfferProduct/${id}`);
+  }
 
 
 
@@ -105,6 +113,7 @@ export default function VendorManageOffer() {
                 <li>
                     {/* <button onClick={() => handlePublish(op._id)} className="alert alert-success o-button fw-bold">Publish</button>
               <button onClick={() => handleUnpublish(op._id)} className="alert alert-danger o-button fw-bold">Unpublish</button> */}
+              <button onClick={() => handleUpdate(op._id)} className="btn btn-success mt-3">Update</button>
                 </li>
             </ul>
         </div>

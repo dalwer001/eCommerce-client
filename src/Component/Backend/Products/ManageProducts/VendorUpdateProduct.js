@@ -1,13 +1,33 @@
 import axios from "axios";
-import React, { useEffect, useState, useContext } from "react";
-import { UserContext } from "../../../../App";
+import React, { useEffect } from "react";
+import { useState } from "react";
+import { useParams } from "react-router-dom";
 import VendorSidebar from "../../VendorPanel/VendorSidebar";
-import "./AddOfferProduct.css";
-const AddOfferProducts = () => {
+
+const VendorUpdateProduct = () => {
   const [imageURL, setIMageURL] = useState(null);
+  const [imageURLStatus, setImageURLStatus] = useState();
+  const [dbStatus, setDbStatus] = useState(false);
   const [categoryInfo, setCategoryInfo] = useState([]);
-  const [loggedInUser, setLoggedInUser] = useContext(UserContext);
-  
+  const [typeInfo, setTypeInfo] = useState([]);
+  const [P, setP] = useState([]);
+  const [title, setTitle] = useState("");
+
+  const [description, setDescription] = useState("");
+  const [price, setPrice] = useState("");
+
+  const [size, setSize] = useState("");
+  const [category, setCategory] = useState("");
+  const [type, setType] = useState("");
+  const [quantity, setQuantity] = useState("");
+  const [image, setImage] = useState("");
+  const { id } = useParams();
+  useEffect(() => {
+    fetch(`http://localhost:5000/updateP/${id}`)
+      .then((res) => res.json())
+      .then((data) => setP(data));
+  }, [id]);
+
   useEffect(() => {
     const productsLoaders = async () => {
       const res = await axios.get(
@@ -17,7 +37,6 @@ const AddOfferProducts = () => {
     };
     productsLoaders();
   }, []);
-  const [typeInfo, setTypeInfo] = useState([]);
   useEffect(() => {
     const productsLoaders = async () => {
       const res = await axios.get(
@@ -28,6 +47,76 @@ const AddOfferProducts = () => {
     productsLoaders();
   }, []);
 
+  //   update P
+
+  const handleTitle = (e) => {
+    setTitle(e.target.value);
+  };
+
+  const handleDescription = (e) => {
+    setDescription(e.target.value);
+  };
+
+  const handlePrice = (e) => {
+    setPrice(e.target.value);
+  };
+
+  const handleImage = () => {
+    setImage(imageURL || P.imageURL);
+  };
+
+  const handleSize = (e) => {
+    setSize(e.target.value);
+  };
+
+  const handleCategory = (e) => {
+    setCategory(e.target.value);
+  };
+
+  const handleQuantity = (e) => {
+    setQuantity(e.target.value);
+  };
+
+  const handleType = (e) => {
+    setType(e.target.value);
+  };
+  const handlePClick = (id) => {
+    const updatedP = {
+      id,
+      title: title || P.title,
+
+      description: description || P.description,
+      price: price || P.mainPrice,
+
+      size: size || P.size,
+      category: category || P.category,
+      type: type || P.type,
+      quantity: quantity || P.quantity,
+      image: image || P.imageURL,
+    };
+
+    console.log(updatedP);
+
+    const url = `http://localhost:5000/updateProduct/${id}`;
+    fetch(url, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(updatedP),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data) {
+          setDbStatus(data);
+          alert("Offer Products Updated");
+        }
+      });
+  };
+  const handlePSubmit = (e) => {
+    e.preventDefault();
+  };
+
   const handleImageUpload = (e) => {
     const imageData = new FormData();
     imageData.set("key", "798ea45a777a4ccd52f1701860227c6b");
@@ -37,40 +126,14 @@ const AddOfferProducts = () => {
       .post("https://api.imgbb.com/1/upload", imageData)
       .then(function (response) {
         setIMageURL(response.data.data.display_url);
+        setImageURLStatus(true);
+        if (response) {
+          alert("Image Updated Successfully");
+        }
       })
       .catch(function (error) {
         console.log(error);
       });
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    const productData = {
-      email: loggedInUser.email,
-      image: imageURL,
-      title: e.target.title.value,
-      description: e.target.description.value,
-      mainPrice: e.target.mainPrice.value,
-      offer: e.target.offer.value,
-      size: e.target.size.value,
-      category: e.target.category.value,
-      type: e.target.type.value,
-      quantity: e.target.quantity.value,
-    };
-
-    try {
-      const res = await axios.post(
-        "http://localhost:5000/addOffer",
-        productData
-      );
-      if (res) {
-        e.target.reset();
-        alert("Offer product added successfully");
-      }
-    } catch (error) {
-      console.error(error);
-    }
   };
 
   return (
@@ -84,19 +147,15 @@ const AddOfferProducts = () => {
         </h1>
         <form
           class="row  offer-product-two mx-auto  p-5 rounded container"
-          onSubmit={handleSubmit}
+          onSubmit={handlePSubmit}
         >
-          <input
-            name="email"
-            type="hidden"
-            value={loggedInUser.email}
-            class="form-control"
-          />
           <div className="col-md-6">
             <label class="form-label fw-bolder text-white"> Product Name</label>
             <input
               type="text"
               name="title"
+              onBlur={handleTitle}
+              defaultValue={P.title}
               class="form-control"
               placeholder="Enter Product Name"
             />
@@ -106,23 +165,19 @@ const AddOfferProducts = () => {
             <input
               type="number"
               name="mainPrice"
+              onBlur={handlePrice}
+              defaultValue={P.price}
               class="form-control"
               placeholder="Enter Price"
             />
           </div>
-          <div className="col-md-6">
-            <label class="form-label fw-bolder text-white">Offer</label>
-            <input
-              type="number"
-              name="offer"
-              class="form-control"
-              placeholder="Enter Offer"
-            />
-          </div>
+
           <div className="col-md-6">
             <label class="form-label fw-bolder text-white">Image</label>
             <input
               class="form-control"
+              onBlur={handleImage}
+              defaultValue={P.imageURL}
               onChange={handleImageUpload}
               type="file"
               name="image"
@@ -130,7 +185,13 @@ const AddOfferProducts = () => {
           </div>
           <div className="col-md-6">
             <label class="form-label fw-bolder text-white">Size</label>
-            <select class="form-select" name="size" id="sel1">
+            <select
+              onBlur={handleSize}
+              defaultValue={P.size}
+              class="form-select"
+              name="size"
+              id="sel1"
+            >
               <option></option>
               <option>L</option>
               <option>XL</option>
@@ -141,7 +202,13 @@ const AddOfferProducts = () => {
           </div>
           <div className="col-md-6">
             <label class="form-label fw-bolder text-white">Category</label>
-            <select class="form-select" name="category" id="sel1">
+            <select
+              onBlur={handleCategory}
+              defaultValue={P.Quantity}
+              class="form-select"
+              name="category"
+              id="sel1"
+            >
               <option>Select Category</option>
               {categoryInfo.map((categories) => (
                 <option>{categories.category}</option>
@@ -151,7 +218,13 @@ const AddOfferProducts = () => {
 
           <div className="col-md-6">
             <label class="form-label fw-bolder text-white">Type</label>
-            <select class="form-select" name="type" id="sel1">
+            <select
+              defaultValue={P.type}
+              onBlur={handleType}
+              class="form-select"
+              name="type"
+              id="sel1"
+            >
               <option>Select Type</option>
               {typeInfo.map((types) => (
                 <option>{types.type}</option>
@@ -162,6 +235,8 @@ const AddOfferProducts = () => {
             <label class="form-label fw-bolder text-white">Quantity</label>
             <input
               type="number"
+              onBlur={handleQuantity}
+              defaultValue={P.quantity}
               name="quantity"
               class="form-control"
               placeholder="Enter quantity"
@@ -171,6 +246,8 @@ const AddOfferProducts = () => {
             <label class="form-label fw-bolder text-white">Description</label>
             <textarea
               type="text"
+              onBlur={handleDescription}
+              defaultValue={P.description}
               name="description"
               class="form-control"
               style={{ height: "15vh" }}
@@ -179,11 +256,16 @@ const AddOfferProducts = () => {
           </div>
 
           <div className="col-md-12 d-flex align-items-center">
-            <input  type="submit" className="mt-3 submit-button" />
+            <input
+              onClick={() => handlePClick(P._id)}
+              type="submit"
+              className="mt-3 submit-button"
+            />
           </div>
         </form>
       </div>
     </div>
   );
 };
-export default AddOfferProducts;
+
+export default VendorUpdateProduct;

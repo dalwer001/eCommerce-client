@@ -10,6 +10,8 @@ import React, { useEffect, useState, useContext } from "react";
 import { UserContext } from "../../../../App";
 import VendorSidebar from "../../VendorPanel/VendorSidebar";
 import './VendorManageProduct.css'
+import { Link } from "@material-ui/icons";
+import { useHistory } from "react-router-dom";
 const StyledTableCell = withStyles((theme) => ({
   head: {
     
@@ -44,6 +46,10 @@ export default function VendorManageProducts() {
   }, []);
 
   const classes = useStyles();
+  const history = useHistory();
+  const handleUpdate = (id) => {
+      history.push(`/updateProduct/${id}`);
+  }
 
   return (
     <div className="row m-0">
@@ -95,8 +101,8 @@ export default function VendorManageProducts() {
             </button>
             <ul class="dropdown-menu " aria-labelledby="dropdownMenuButton1">
                 <li>
-                    {/* <button onClick={() => handlePublish(p._id)} className="alert alert-success  p-button fw-bold">Publish</button>
-                  <button onClick={() => handleUnpublish(p._id)} className="alert alert-danger  p-button fw-bold">Unpublish</button> */}
+                    {/* <button onClick={() => handlePublish(p._id)} className="alert alert-success  p-button fw-bold">Publish</button> */}
+                    <button onClick={() => handleUpdate(p._id)} className="btn btn-success mt-3">Update</button>
                 </li>
             </ul>
         </div>

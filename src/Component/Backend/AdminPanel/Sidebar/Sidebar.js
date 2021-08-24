@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from 'react';
-import {   faTachometerAlt, faUsers,  faUserFriends, faTasks, faEye, faList, faImages, faChartLine, faCreditCard} from '@fortawesome/free-solid-svg-icons';
+import { faUsers,  faUserFriends, faTasks, faEye, faList, faImages, faChartLine, faCreditCard} from '@fortawesome/free-solid-svg-icons';
 import DashboardIcon from '@material-ui/icons/Dashboard';
 import {faProductHunt, faFirstOrder} from '@fortawesome/free-brands-svg-icons'
 import './Sidebar.css';
@@ -67,6 +67,7 @@ const Sidebar = () => {
                                
                                 <li><Link to="/addCategory" class="dropdown-item  " >Add Category</Link></li>
                                
+                                <li><Link to="/manageCategory" class="dropdown-item sidebar" >Manage Category</Link></li>
                             </ul>
                         </li>
                         <li class="dropdown">

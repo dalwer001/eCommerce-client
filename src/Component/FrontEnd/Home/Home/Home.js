@@ -11,10 +11,12 @@ import OfferInfo from '../OfferInfo/OfferInfo';
 const Home = () => {
     return (
       <div>
+        <Navbar></Navbar>
         <Slider></Slider>
         <Category/>
         <Products/>
         <OfferInfo></OfferInfo>
+        <Footer></Footer>
       </div>
     );
 };

@@ -113,7 +113,7 @@ export default function ManageVendor() {
                 <StyledTableCell align="left">Company Name</StyledTableCell>
                 <StyledTableCell align="left">Contact Number</StyledTableCell>
                 <StyledTableCell align="left">Email</StyledTableCell>
-                <StyledTableCell align="left">Password</StyledTableCell>
+              
                 <StyledTableCell align="left">Status</StyledTableCell>
                 <StyledTableCell align="left">Action</StyledTableCell>
 
@@ -128,7 +128,7 @@ export default function ManageVendor() {
 
                   <StyledTableCell align="left">{p.contactNumber}</StyledTableCell>
                   <StyledTableCell align="left">{p.email}</StyledTableCell>
-                  <StyledTableCell align="left">{p.password}</StyledTableCell>
+                 
                   <StyledTableCell align="left">{p.status}</StyledTableCell>
                 
                   <div class="dropdown tables-row">
