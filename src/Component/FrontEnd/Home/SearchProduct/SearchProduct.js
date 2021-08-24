@@ -7,7 +7,7 @@ import { TextField } from "@material-ui/core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import ProductDetails from "../ProductDetails/ProductDetails";
-import Autocomplete from '@material-ui/lab/Autocomplete';
+import { Autocomplete } from '@material-ui/lab';
 import { Link, useHistory } from 'react-router-dom';
 import './SearchProducts.css'
 
