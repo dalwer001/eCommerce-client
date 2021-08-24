@@ -99,6 +99,24 @@ export default function AdminManageProduct() {
         }
       })
   }
+  const handleDelete = (id) => {
+
+    fetch(`http://localhost:5000/deleteProducts/${id}`, {
+        method : "DELETE"
+    })
+    .then(res => res.json())
+    .then(data=>{
+        if(data){
+          deleteProducts ();
+            alert('Product Deleted')
+        }
+    })
+}
+const deleteProducts  = () =>{
+    fetch(`http://localhost:5000/products`)
+    .then(res =>res.json())
+    .then(data => setProduct(data))
+   }
 
 
   const classes = useStyles();
@@ -154,6 +172,7 @@ export default function AdminManageProduct() {
                 <li>
                     <button onClick={() => handlePublish(p._id)} className="alert alert-success  p-button fw-bold">Publish</button>
                   <button onClick={() => handleUnpublish(p._id)} className="alert alert-danger  p-button fw-bold">Unpublish</button>
+                  <button onClick={() => handleDelete(p._id)} className="alert alert-danger  p-button fw-bold">Delete</button>
                 </li>
             </ul>
         </div>
