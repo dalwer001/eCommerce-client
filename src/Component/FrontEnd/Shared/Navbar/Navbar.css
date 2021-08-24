@@ -1,28 +1,357 @@
-.logo{
-    width:45px;
-    height:40px;
-}
-.search{
-    color:rgb(210, 209, 214)
-}
-.search:hover{
-    color:green;
-}
-.wishlistNav{
-    color:rgb(210, 209, 214)
-}
-.wishlistNav:hover{
-    color:red;
-}
-
-.shoppingCart{
-    color:rgb(205, 202, 206)
-}
-.shoppingCart:hover{
-    color:rgb(228, 168, 153);
-}
-@media screen and (min-width: 768px) {
-    .loginNav {
-      display: inline-block;
+body {
+    font-family: "Roboto", sans-serif;}
+  
+  img {
+    max-width: 100%;
+  }
+  
+  .grybg{
+    background: gray;
+    transition: .3s;
+  }
+  
+  
+  /* Begain Custom Style  */
+  .main-header .container-fluid,
+  .slider-section .container-fluid {
+    max-width: 1480px;
+  }
+  .header-button a {
+    border: none;
+    position: relative;
+    border: none;
+    display: inline-block;
+    padding: 14px 41px;
+    border-radius: 5px;
+    color: #fff;
+    transition: 0.4s;
+    z-index: 111;
+    background-color: #e73a3e !important;
+    border-color: #e73a3e;
+    position: relative;
+    text-decoration: none;
+    font-size: 17px;
+  }
+  .header-button a:hover {
+    border-color: rgb(255, 255, 255) !important;
+    z-index: 999;
+  }
+  .header-button a::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: #000000;
+    transition: 0.4s;
+    color: #fff !important;
+    z-index: -1;
+    border-radius: 5px;
+  }
+  .header-button a:hover::after {
+    width: 100%;
+  }
+  
+  /* Menu */
+  .our-primary-menu {
+    margin-left: 0 auto;
+  }
+  .our-primary-menu {
+    text-align: center;
+  }
+  ul.our-primary-menu li a {
+    text-decoration: none;
+    display: inline-block;
+    padding: 10px 20px;
+    color: black;
+    font-weight: 500;
+    margin-left: auto;
+    transition: .3s ease-in-out;
+  }
+  ul.our-primary-menu li a:hover {
+    color: #E73A3E
+  }
+  
+  .header-search {
+    color: #fafafa;
+  }
+  /*  DropDown Menu CSS  */
+  ul.our-primary-menu li {
+    position: relative;
+  }
+  ul.our-primary-menu li ul {
+    position: absolute;
+    width: 300px;
+    left: 0;
+    top: 160%;
+    background: #fafafa;
+    list-style: none;
+    padding: 10px;
+    box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.1);
+  
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s ease-in-out;
+  }
+  ul.our-primary-menu li ul li {
+    flex-direction: column;
+  }
+  ul.our-primary-menu li:hover ul {
+    opacity: 1;
+    visibility: visible;
+    top: 120%;
+  }
+  
+  ul.our-primary-menu li ul li a {
+  }
+  
+  .header-info {
+  }
+  .header-search {
+    width: 60px;
+    font-size: 22px;
+    text-align: center;
+    margin-right: 20px;
+    border-right: 1px solid #ddd;
+  }
+  .header-call {
+    width: 220px;
+  }
+  .header-call-icon {
+    font-size: 33px;
+    color: #e73a3e;
+  }
+  .header-call-info span {
+    position: relative;
+    right: 16px;
+    color: #fff;
+  }
+  .header-call-info a {
+    font-weight: 500;
+    text-decoration: none;
+    font-size: 18px;
+    color: #fafafa;
+  }
+  .header-call-icon span {
+    transform: rotate(94deg);
+    float: left;
+    margin-right: 13px;
+  }
+  .navbar-collapse {
+    flex-basis: 100%;
+    flex-grow: 1;
+    align-items: center;
+    justify-content: flex-end;
+  }
+  @media only screen and (max-width: 500px) {
+  
+    .ReactModal__Content.ReactModal__Content--after-open {
+      width: 100%;
+      border: none!important;
+      box-shadow: 0px 5px 10px 10px #c4a5a526;
+      text-align: center;
+      padding: 60px 20px!important;
+      overflow: hidden!important;
+      position: relative!important;
+      top: 330px!important;
+  }
+  .ReactModal__Content.ReactModal__Content--after-open h4 {
+    font-size: 20px;
+    color: #676565;
+    margin-bottom: 20px;
+    position: relative;
+    top: 48px;
+    line-height: 32px;
+    padding-top: 50px;
+  }
+  button.customization-button {
+    background: none;
+    border: none;
+    color: red;
+    position: relative;
+    bottom: 70px!important;
+    font-size: 20px;
+    left: 48%!important;
+  }
+  
+  .ReactModal__Content.ReactModal__Content--after-open h4 {
+    font-size: 21px;
+    color: #676565;
+    margin-bottom: 20px;
+    position: relative;
+    top: 56px!important;
+  }
+  .button-align button {
+    margin: 6px 0;
+    border: none;
+    padding: 16px 74px;
+    color: #FFF;
+    background: linear-gradient(45deg, #ff3b3b, #ff461dcf);
+    border: 2px solid #ffffff;
+    transition: .3s ease-in-out;
+    position: relative;
+    bottom: 13px;
+  }
+  }
+  @media only screen and (max-width: 490px) {
+    button.customization-button {
+      background: none!important;
+      border: none!important;
+      color: red!important;
+      position: relative!important;
+      transform: translate(-6px, -49px)!important;
+  }
+  }
+  @media only screen and (max-width: 990px) {
+    button.customization-button {
+      background: none;
+      border: none;
+      color: red;
+      position: relative;
+      bottom: 20px!important;
+      font-size: 20px;
+      left: 47%;
+  }
+    .button-align {
+      text-align: right!important;
+      width: 100%!important;
+      margin: 0 auto!important;
+  }
+    .ReactModal__Content.ReactModal__Content--after-open {
+      width: 100%!important;
+      border: none!important;
+      box-shadow: 0px 5px 10px 10px #c4a5a526;
+      text-align: center;
+      padding: 45px 20px!important;
+      overflow: hidden!important;
+      position: relative!important;
+      top: 330px!important;
+  }
+    .ReactModal__Content.ReactModal__Content--after-open h4 {
+      font-size: 20px;
+      color: #676565;
+      margin-bottom: 20px;
+      position: relative;
+      top: 48px;
+      line-height: 32px;
+      padding-top: 50px;
+  }
+  
+    .navbar-collapse {
+      flex-basis: 100%;
+      flex-grow: 1;
+      align-items: center;
     }
+    .class-for-visibility {
+      margin: 20px 0;
+    }
+    .header-info.d-flex.align-items-center {
+      display: flex;
+      justify-content: center;
+    }
+    .header-call-info {
+      position: relative;
+      right: 0px;
+    }
+  
+    p{width: 100%;}
+  
+    select.form-select {
+      width: 100%!important;
+      margin: 21px auto;
+      outline: none!important;
+      padding: 11px;
+      outline: none;
+      border: 1px solid #828282!important;
+      color: #767676;
+      border-radius: 0px!important;
+  }
+  .modal-form input {
+      display: block;
+      width: 100%!important;
+      margin: 24px auto;
+      padding: 11px;
+      outline: none;
+      border: 1px solid #828282!important;
+      color: #767676;
+  }
+  .ReactModal__Content.ReactModal__Content--after-open h4 {
+    font-size: 20px;
+    color: #676565;
+    margin-bottom: 20px;
+    position: relative;
+    top: 48px;
+    line-height: 32px;
+  }
+  .button-align {
+    text-align: right;
+    width: 100%;
+    margin: 0 auto;
+  }
+  .button-align button {
+    margin: 6px 0;
+    padding: 10px 47px;
+    color: #FFF;
+    background: linear-gradient(45deg, #ff3b3b, #ff461dcf);
+    border: 2px solid #ffffff;
+    transition: .3s ease-in-out;
+  }
+  
+  }
+  .navbar-collapse {
+    flex-basis: 100%;
+    flex-grow: 1;
+    align-items: center;
+    justify-content: flex-end;
+  }
+  
+  .background-color {
+      transition: 2s !important;
+  }
+  .header-call-info {
+    position: relative;
+    right: 16px;
+  }
+  
+  .our-primary-menu ul li a {
+    text-decoration: none;
+    transition: 0.3s;
+  }
+  .our-primary-menu ul li a:active {
+    color: #c22022;
+  }
+  
+  .navbar-brand img {
+      height: 55px;
+  }
+  
+  
+  
+  /* ////////// */
+  .navbar-brand span {
+    color: #ffffff;
+    font-size: 35px;
+    transition: .4s;
+    animation: logo 1s ease-in infinite alternate;
+  }
+  
+  @keyframes logo{
+  
+  0%, 50%{
+    position: relative;
+    top: -8px;
+    color: #ffffff;
+    animation: logo 1s ease-in infinite alternate;
+  
+  }
+  100%{
+    position: relative;
+      top: 8px;
+      color: #fff;
+    
+  }
+  
+  
+  
   }

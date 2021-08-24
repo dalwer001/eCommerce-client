@@ -13,7 +13,7 @@ import { createContext, useState } from 'react';
 import Footer from './Component/FrontEnd/Shared/Footer/Footer';
 import Gallery from './Component/FrontEnd/Gallery/Gallery';
 import Cart from './Component/FrontEnd/Home/Cart/Cart';
-import Navbar from './Component/FrontEnd/Shared/Navbar/Navbar';
+
 import Shop from './Component/FrontEnd/Shop/Shop/Shop';
 import OurCompany from './Component/FrontEnd/FooterInfo/AboutUs/OurCompany/OurCompany';
 import History from './Component/FrontEnd/FooterInfo/AboutUs/History/History';
@@ -42,6 +42,12 @@ import VendorManageOffer from './Component/Backend/Products/MangeOfferProduct/Ve
 import VendorPrivateRoute from './Component/FrontEnd/PrivateRoute/VendorPrivateRoute';
  import AdminDashboard from './Component/Backend/AdminPanel/AdminDashboard/AdminDashboard';
 import VendorDashboard from './Component/Backend/VendorDashboard/VendorDashboard';
+
+
+import VendorUpdateProduct from './Component/Backend/Products/ManageProducts/VendorUpdateProduct';
+import VendorUpdateOfferProduct from './Component/Backend/Products/MangeOfferProduct/VendorUpdateOfferProduct';
+import ManageCategory from './Component/Backend/Category/ManageCategory/ManageCategory';
+import UpdateCategory from './Component/Backend/Category/ManageCategory/UpdateCategory';
 // import AdminSidebarPanel from './Component/Backend/AdminPanel/AdminSidebarPanel';
 
 
@@ -66,7 +72,7 @@ function App() {
       <CartContext.Provider value={[cartProducts, setCartProducts]}>
         <TotalContext.Provider value={[grandTotal, setGrandTotal]}>
           <Router>
-            <Navbar />
+            
             <Switch>
               <Route exact path="/">
                 <Home />
@@ -129,6 +135,12 @@ function App() {
               <PrivateRoute path="/adminManageVendor">
                 <ManageVendor></ManageVendor>
               </PrivateRoute>
+              <PrivateRoute path="/manageCategory">
+                <ManageCategory></ManageCategory>
+              </PrivateRoute>
+              <PrivateRoute path="/updateCategory/:id">
+                <UpdateCategory></UpdateCategory>
+              </PrivateRoute>
               <PrivateRoute path="/adminOfferProduct">
                 <ManageOfferProducts></ManageOfferProducts>
               </PrivateRoute>
@@ -160,10 +172,15 @@ function App() {
               <VendorPrivateRoute path="/vendorManageProduct">
                 <VendorManageProducts></VendorManageProducts>
               </VendorPrivateRoute >
+              <VendorPrivateRoute path="/updateProduct/:id">
+           <VendorUpdateProduct></VendorUpdateProduct>
+          </VendorPrivateRoute>
               <VendorPrivateRoute path="/vendorManageOffers">
                 <VendorManageOffer></VendorManageOffer>
               </VendorPrivateRoute >
-             
+              <VendorPrivateRoute path="/updateOfferProduct/:id">
+         <VendorUpdateOfferProduct></VendorUpdateOfferProduct>
+          </VendorPrivateRoute>
              
               
             </Switch>
