@@ -12,7 +12,7 @@ const UpdateCategory = () => {
   const [dbStatus, setDbStatus] = useState(false);
   const { id } = useParams();
   useEffect(() => {
-    fetch(`http://localhost:5000/updateCat/${id}`)
+    fetch(`https://pacific-plateau-10670.herokuapp.com/updateCat/${id}`)
       .then((res) => res.json())
       .then((data) => setC(data));
   }, [id]);
@@ -33,7 +33,7 @@ const UpdateCategory = () => {
 
     console.log(updatedC);
 
-    const url = `http://localhost:5000/updateCategory/${id}`;
+    const url = `https://pacific-plateau-10670.herokuapp.com/updateCategory/${id}`;
     fetch(url, {
       method: "PATCH",
       headers: {

@@ -17,7 +17,7 @@ const SearchProduct = () => {
   const [data, setData] = useState([]);
 //     useEffect(() => {
 //     const productsLoaders = async () => {
-//         const res = await axios.get('http://localhost:5000/products')
+//         const res = await axios.get('https://pacific-plateau-10670.herokuapp.com/products')
 //         setData(res.data);
 //     }
 //     productsLoaders();
@@ -31,7 +31,7 @@ const singleProductClick = (_id) => {
 }
   async function search(key) {
     console.log(key);
-    let result = await fetch("http://localhost:5000/search/" + key); 
+    let result = await fetch("https://pacific-plateau-10670.herokuapp.com/search/" + key); 
 
     result = await result.json();
     console.log(result);
@@ -79,13 +79,13 @@ export default SearchProduct;
 
 //   useEffect(() => {
 //     const productsLoaders = async () => {
-//         const res = await axios.get('http://localhost:5000/products')
+//         const res = await axios.get('https://pacific-plateau-10670.herokuapp.com/products')
 //         setData(res.data);
 //     }
 //     productsLoaders();
 // }, []);
 // // useEffect(() => {
-// //   fetch(`http://localhost:5000/products`)
+// //   fetch(`https://pacific-plateau-10670.herokuapp.com/products`)
 // //       .then(res => res.json())
 // //       .then(data =>{
 // //           data.map(data => setData(data[0]))
@@ -103,7 +103,7 @@ export default SearchProduct;
 //   async function search(key) {
 
 //     console.log(key);
-//     let result = await fetch("http://localhost:5000/search/" + key); 
+//     let result = await fetch("https://pacific-plateau-10670.herokuapp.com/search/" + key); 
 
 //     result = await result.json();
 //     console.log(result);

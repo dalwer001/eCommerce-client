@@ -47,7 +47,7 @@ const useStyles = makeStyles({
 export default function ManageCategory() {
   const [cat, setCat] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/categories")
+    fetch("https://pacific-plateau-10670.herokuapp.com/categories")
       .then((res) => res.json())
       .then((data) => setCat(data));
   }, []);

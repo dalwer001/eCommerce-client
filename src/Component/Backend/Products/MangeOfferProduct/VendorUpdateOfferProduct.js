@@ -22,7 +22,7 @@ const VendorUpdateOfferProduct = () => {
   const [image, setImage] = useState("");
   const { id } = useParams();
   useEffect(() => {
-    fetch(`http://localhost:5000/updateOP/${id}`)
+    fetch(`https://pacific-plateau-10670.herokuapp.com/updateOP/${id}`)
       .then((res) => res.json())
       .then((data) => setOP(data));
   }, [id]);
@@ -99,7 +99,7 @@ const VendorUpdateOfferProduct = () => {
 
     console.log(updatedOP);
 
-    const url = `http://localhost:5000/updateOfferProduct/${id}`;
+    const url = `https://pacific-plateau-10670.herokuapp.com/updateOfferProduct/${id}`;
     fetch(url, {
       method: "PATCH",
       headers: {

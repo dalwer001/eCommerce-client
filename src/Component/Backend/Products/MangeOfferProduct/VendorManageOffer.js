@@ -43,7 +43,7 @@ export default function VendorManageOffer() {
   const [loggedInUser, setLoggedInUser] = useContext(UserContext);
 
   useEffect(() => {
-    fetch("http://localhost:5000/offerProduct?email="+loggedInUser.email)
+    fetch("https://pacific-plateau-10670.herokuapp.com/offerProduct?email="+loggedInUser.email)
       .then((res) => res.json())
       .then((data) => setOfferProduct(data));
   }, []);

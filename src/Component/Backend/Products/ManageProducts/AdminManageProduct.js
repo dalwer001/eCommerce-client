@@ -46,13 +46,13 @@ const useStyles = makeStyles({
 export default function AdminManageProduct() {
   const [product, setProduct] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/products")
+    fetch("https://pacific-plateau-10670.herokuapp.com/products")
       .then((res) => res.json())
       .then((data) => setProduct(data));
   }, []);
 
   const statusUpdated = () => {
-    fetch('http://localhost:5000/products')
+    fetch('https://pacific-plateau-10670.herokuapp.com/products')
       .then(res => res.json())
       .then(data => setProduct(data))
   }
@@ -62,7 +62,7 @@ export default function AdminManageProduct() {
     const status = 'Published'
     const user = { id, status };
 
-    const url = `http://localhost:5000/publishProduct/${id}`;
+    const url = `https://pacific-plateau-10670.herokuapp.com/publishProduct/${id}`;
     fetch(url, {
       method: 'PATCH',
       headers: {
@@ -83,7 +83,7 @@ export default function AdminManageProduct() {
     const status = 'Unpublished'
     const user = { id, status };
 
-    const url = `http://localhost:5000/publishProduct/${id}`;
+    const url = `https://pacific-plateau-10670.herokuapp.com/publishProduct/${id}`;
     fetch(url, {
       method: 'PATCH',
       headers: {
@@ -101,7 +101,7 @@ export default function AdminManageProduct() {
   }
   const handleDelete = (id) => {
 
-    fetch(`http://localhost:5000/deleteProducts/${id}`, {
+    fetch(`https://pacific-plateau-10670.herokuapp.com/deleteProducts/${id}`, {
         method : "DELETE"
     })
     .then(res => res.json())
@@ -113,7 +113,7 @@ export default function AdminManageProduct() {
     })
 }
 const deleteProducts  = () =>{
-    fetch(`http://localhost:5000/products`)
+    fetch(`https://pacific-plateau-10670.herokuapp.com/products`)
     .then(res =>res.json())
     .then(data => setProduct(data))
    }

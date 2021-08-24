@@ -7,7 +7,7 @@ const VendorDashboard = () => {
     const [product, setProduct] = useState([]);
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
     useEffect(() => {
-      fetch("http://localhost:5000/product?email=" + loggedInUser.email)
+      fetch("https://pacific-plateau-10670.herokuapp.com/product?email=" + loggedInUser.email)
         .then((res) => res.json())
         .then((data) => setProduct(data));
     }, []);
@@ -15,7 +15,7 @@ const VendorDashboard = () => {
     // const [loggedInUser, setLoggedInUser] = useContext(UserContext);
   
     useEffect(() => {
-      fetch("http://localhost:5000/offerProduct?email="+loggedInUser.email)
+      fetch("https://pacific-plateau-10670.herokuapp.com/offerProduct?email="+loggedInUser.email)
         .then((res) => res.json())
         .then((data) => setOfferProduct(data));
     }, []);
