@@ -1,12 +1,12 @@
 body {
-    font-family: "Roboto", sans-serif;}
+  font-family: 'Kaisei Decol', serif;}
   
   img {
     max-width: 100%;
   }
   
   .grybg{
-    background: gray;
+    background: #b67686;
     transition: .3s;
   }
   
