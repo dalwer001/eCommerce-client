@@ -48,6 +48,8 @@ import VendorUpdateProduct from './Component/Backend/Products/ManageProducts/Ven
 import VendorUpdateOfferProduct from './Component/Backend/Products/MangeOfferProduct/VendorUpdateOfferProduct';
 import ManageCategory from './Component/Backend/Category/ManageCategory/ManageCategory';
 import UpdateCategory from './Component/Backend/Category/ManageCategory/UpdateCategory';
+import ManageType from './Component/Backend/Type/ManageType/ManageType';
+import UpdateType from './Component/Backend/Type/ManageType/UpdateType';
 // import AdminSidebarPanel from './Component/Backend/AdminPanel/AdminSidebarPanel';
 
 
@@ -140,6 +142,12 @@ function App() {
               </PrivateRoute>
               <PrivateRoute path="/updateCategory/:id">
                 <UpdateCategory></UpdateCategory>
+              </PrivateRoute>
+              <PrivateRoute path="/manageType">
+                <ManageType></ManageType>
+              </PrivateRoute>
+              <PrivateRoute path="/updateTypes/:id">
+               <UpdateType></UpdateType>
               </PrivateRoute>
               <PrivateRoute path="/adminOfferProduct">
                 <ManageOfferProducts></ManageOfferProducts>

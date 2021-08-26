@@ -77,7 +77,7 @@ const Sidebar = () => {
                             <ul class="dropdown-menu shadow" aria-labelledby="dropdown">
                                
                                 <li><Link to="/addType" class="dropdown-item  " >Add Type</Link></li>
-                               
+                                <li><Link to="/manageType" class="dropdown-item sidebar" >Manage Type</Link></li>
                             </ul>
                         </li>
                         <li class="dropdown">

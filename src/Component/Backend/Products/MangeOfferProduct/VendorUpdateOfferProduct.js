@@ -60,9 +60,9 @@ const VendorUpdateOfferProduct = () => {
     setMainPrice(e.target.value);
   };
 
-  const handleImage = () => {
-    setImage(imageURL || OP.imageURL);
-  };
+  // const handleImage = () => {
+  //   setImage(imageURL || OP.imageURL);
+  // };
   const handleOffer = (e) => {
     setOffer(e.target.value);
   };
@@ -94,7 +94,7 @@ const VendorUpdateOfferProduct = () => {
       category: category || OP.category,
       type: type || OP.type,
       quantity: quantity || OP.quantity,
-      image: image || OP.imageURL,
+      // image: image || OP.imageURL,
     };
 
     console.log(updatedOP);
@@ -145,7 +145,7 @@ const VendorUpdateOfferProduct = () => {
       </div>
       <div className="col-md-10 container py-3 mt-2 offer-product rounded">
         <h1 className="text-center text-warning border-bottom">
-          Add Offer Products
+          Update Offer Products
         </h1>
         <form
           class="row  offer-product-two mx-auto  p-5 rounded container"
@@ -185,10 +185,10 @@ const VendorUpdateOfferProduct = () => {
             />
           </div>
           <div className="col-md-6">
-            <label class="form-label fw-bolder text-white">Image</label>
+            <label class="form-label fw-bolder read-only text-white">Image</label>
             <input
               class="form-control"
-              onBlur={handleImage}
+              // onBlur={handleImage}
               defaultValue={OP.imageURL}
               onChange={handleImageUpload}
               type="file"

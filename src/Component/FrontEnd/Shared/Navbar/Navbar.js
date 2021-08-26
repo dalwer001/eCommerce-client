@@ -121,6 +121,15 @@ const Navbar = () => {
             <li>
               <Link to="#">{loggedInUser.displayName || loggedInUser.email}</Link>
             </li>
+            <Link to="/cart">
+              <button type="button" className="btn btn-sm  position-relative p-0 m-0">
+                <FontAwesomeIcon size="2x" className=" shoppingCart ms-0 m-2" icon={faCartPlus} />
+                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                  {cartProductQuantity}
+                </span>
+              </button>
+            </Link>
+            
           </ul>
           {/* <div class="header-info d-flex align-items-center">
             <div class="header-search">

@@ -99,10 +99,10 @@ export default function VendorManageProducts() {
             <button class="btn btn-sm btn-light dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                 <i class="bi bi-arrow-down-right-circle"></i>
             </button>
-            <ul class="dropdown-menu " aria-labelledby="dropdownMenuButton1">
+            <ul class="dropdown-menu  " aria-labelledby="dropdownMenuButton1">
                 <li>
                     {/* <button onClick={() => handlePublish(p._id)} className="alert alert-success  p-button fw-bold">Publish</button> */}
-                    <button onClick={() => handleUpdate(p._id)} className="btn btn-success mt-3">Update</button>
+                    <button onClick={() => handleUpdate(p._id)} className=" p-button mt-3">Update</button>
                 </li>
             </ul>
         </div>

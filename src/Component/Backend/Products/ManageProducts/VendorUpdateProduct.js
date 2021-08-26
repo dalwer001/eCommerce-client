@@ -20,7 +20,7 @@ const VendorUpdateProduct = () => {
   const [category, setCategory] = useState("");
   const [type, setType] = useState("");
   const [quantity, setQuantity] = useState("");
-  const [image, setImage] = useState("");
+  // const [image, setImage] = useState("");
   const { id } = useParams();
   useEffect(() => {
     fetch(`http://localhost:5000/updateP/${id}`)
@@ -61,9 +61,9 @@ const VendorUpdateProduct = () => {
     setPrice(e.target.value);
   };
 
-  const handleImage = () => {
-    setImage(imageURL || P.imageURL);
-  };
+  // const handleImage = () => {
+  //   setImage(imageURL || P.imageURL);
+  // };
 
   const handleSize = (e) => {
     setSize(e.target.value);
@@ -92,7 +92,7 @@ const VendorUpdateProduct = () => {
       category: category || P.category,
       type: type || P.type,
       quantity: quantity || P.quantity,
-      image: image || P.imageURL,
+      // image: image || P.imageURL,
     };
 
     console.log(updatedP);
@@ -143,7 +143,7 @@ const VendorUpdateProduct = () => {
       </div>
       <div className="col-md-10 container py-3 mt-2 offer-product rounded">
         <h1 className="text-center text-warning border-bottom">
-          Add Offer Products
+          Update Products
         </h1>
         <form
           class="row  offer-product-two mx-auto  p-5 rounded container"
@@ -173,10 +173,10 @@ const VendorUpdateProduct = () => {
           </div>
 
           <div className="col-md-6">
-            <label class="form-label fw-bolder text-white">Image</label>
+            <label class="form-label fw-bolder read-only text-white">Image</label>
             <input
               class="form-control"
-              onBlur={handleImage}
+              // onBlur={handleImage}
               defaultValue={P.imageURL}
               onChange={handleImageUpload}
               type="file"

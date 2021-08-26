@@ -113,7 +113,7 @@ export default function VendorManageOffer() {
                 <li>
                     {/* <button onClick={() => handlePublish(op._id)} className="alert alert-success o-button fw-bold">Publish</button>
               <button onClick={() => handleUnpublish(op._id)} className="alert alert-danger o-button fw-bold">Unpublish</button> */}
-              <button onClick={() => handleUpdate(op._id)} className="btn btn-success mt-3">Update</button>
+              <button onClick={() => handleUpdate(op._id)} className="btn btn-success o-button mt-3">Update</button>
                 </li>
             </ul>
         </div>
