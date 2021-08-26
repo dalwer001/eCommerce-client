@@ -272,6 +272,10 @@ const updateUserName = name => {
                 </button>
               </div>
 
+              <div className="text-center">
+                      <a href="/home" className="btn btn-outline-info text-decoration-none text-dark">Back Home</a>
+              </div>
+
               <div>
                 <p style={{ color: "red", textAlign: "center" }}>{user.error}</p>
                 {user.success && (
