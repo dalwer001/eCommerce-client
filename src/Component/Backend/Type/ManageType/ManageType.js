@@ -47,7 +47,7 @@ const useStyles = makeStyles({
 export default function ManageType() {
   const [ty, setTy] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/types")
+    fetch("https://pacific-plateau-10670.herokuapp.com/types")
       .then((res) => res.json())
       .then((data) => setTy(data));
   }, []);

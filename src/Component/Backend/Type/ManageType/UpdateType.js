@@ -12,7 +12,7 @@ const UpdateType = () => {
   const [dbStatus, setDbStatus] = useState(false);
   const { id } = useParams();
   useEffect(() => {
-    fetch(`http://localhost:5000/updateT/${id}`)
+    fetch(`https://pacific-plateau-10670.herokuapp.com/updateT/${id}`)
       .then((res) => res.json())
       .then((data) => setT(data))
   }, [id]);
@@ -33,7 +33,7 @@ const UpdateType = () => {
 
     console.log(updatedT);
 
-    const url = `http://localhost:5000/updateType/${id}`;
+    const url = `https://pacific-plateau-10670.herokuapp.com/updateType/${id}`;
     fetch(url, {
       method: "PATCH",
       headers: {
