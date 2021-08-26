@@ -1,13 +1,15 @@
 import React from 'react';
 import { TextField, Button, TextareaAutosize, Paper } from '@material-ui/core';
 import useStyles from '../../../SingleProduct/ReviewForm/styles';
+import Navbar from '../../../Shared/Navbar/Navbar';
 
 const Contact = () => {
     const classes = useStyles();
     return (
         <section>
             <div className="container p-5">
-                <div className="text-center mb-5">
+                <Navbar></Navbar>
+                <div className="text-center mt-5 mb-5">
                     <h1 className="text-center mb-5">Get in Touch</h1>
                     <p style={{ color: "#93C4CD", fontWeight: "700" }}>Contact us for any further questions, possible business partnerships</p>
                 </div>

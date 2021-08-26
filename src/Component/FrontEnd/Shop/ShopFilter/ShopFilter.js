@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import './ShopFilter.css'
 import { Collapse } from 'react-bootstrap';
 import Pulse from 'react-reveal/Pulse';
+import Navbar from '../../Shared/Navbar/Navbar';
 
 
 const ShopFilter = () => {
@@ -23,7 +24,7 @@ const ShopFilter = () => {
     return (
         <div className="mb-3" >
              <div className="d-flex justify-content-end ">
-             
+             <Navbar></Navbar>
              <Button  className="fw-bolder "  onClick={() => setShowProduct(!showProduct)} variant="contained">Filter</Button>
              
             

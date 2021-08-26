@@ -3,6 +3,7 @@ import React, { useContext, useEffect, useState } from 'react';
 
 import Carousel from 'react-multi-carousel';
 import { CartContext } from '../../../../App';
+import Navbar from '../../Shared/Navbar/Navbar';
 import Offers from '../Offers/Offers';
 
 const OfferInfo = () => {
@@ -64,7 +65,8 @@ const OfferInfo = () => {
 
     return (
         <div className="recent-product-bg">
-            <div className="container p-5">
+            <Navbar></Navbar>
+            <div className="container mt-5 p-5">
                 <h4 className="mb-5 border-bottom fw-bolder">Offer Products</h4>
                 <div className="row">
                     <Carousel responsive={responsive}>

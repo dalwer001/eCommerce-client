@@ -4,6 +4,7 @@ import { CartContext, TotalContext } from '../../../../App';
 import './Cart.css';
 import CartDetails from './CartDetails';
 import { Link } from 'react-router-dom';
+import Navbar from '../../Shared/Navbar/Navbar';
 
 const Cart = () => {
     const [cartProducts, setCartProducts] = useContext(CartContext);
@@ -11,7 +12,8 @@ const Cart = () => {
 
     return (
         <div className="container">
-            <h3 className="mt-5 text-center">Shopping Cart</h3>
+            <Navbar></Navbar>
+            <h3 className="mt-5 pt-5 text-center">Shopping Cart</h3>
             {
                 cartProducts.length ?
                     <>
