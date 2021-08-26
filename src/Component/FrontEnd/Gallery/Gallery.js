@@ -23,7 +23,7 @@ const Gallery = () => {
   // }, []);
   useEffect(() => {
     const productsLoaders = async () => {
-      const res = await axios.get('http://localhost:5000/products')
+      const res = await axios.get('https://pacific-plateau-10670.herokuapp.com/products')
       setImages(res.data);
     }
     productsLoaders();
@@ -31,7 +31,7 @@ const Gallery = () => {
 
   useEffect(() => {
     const productsLoaders = async () => {
-      const res = await axios.get('http://localhost:5000/offerProducts')
+      const res = await axios.get('https://pacific-plateau-10670.herokuapp.com/offerProducts')
       setImage(res.data);
     }
     productsLoaders();

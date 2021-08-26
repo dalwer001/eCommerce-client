@@ -10,32 +10,32 @@ const AdminDashboard = () => {
    
     const [products, setProducts] = useState([])
     useEffect(() => {
-        fetch('http://localhost:5000/products')
+        fetch('https://pacific-plateau-10670.herokuapp.com/products')
             .then(res => res.json())
             .then(data => setProducts(data))
     }, [])
 
     const [offerProducts, setOfferProducts] = useState([])
     useEffect(() => {
-        fetch('http://localhost:5000/offerProducts')
+        fetch('https://pacific-plateau-10670.herokuapp.com/offerProducts')
             .then(res => res.json())
             .then(data => setOfferProducts(data))
     }, [])
     const [vendors, setVendors] = useState([])
     useEffect(() => {
-        fetch('http://localhost:5000/vendors')
+        fetch('https://pacific-plateau-10670.herokuapp.com/vendors')
             .then(res => res.json())
             .then(data => setVendors(data))
     }, [])
     const [categories, setCategories] = useState([])
     useEffect(() => {
-        fetch('http://localhost:5000/categories')
+        fetch('https://pacific-plateau-10670.herokuapp.com/categories')
             .then(res => res.json())
             .then(data => setCategories(data))
     }, [])
     const [types, setTypes] = useState([])
     useEffect(() => {
-        fetch('http://localhost:5000/types')
+        fetch('https://pacific-plateau-10670.herokuapp.com/types')
             .then(res => res.json())
             .then(data => setTypes(data))
     }, [])

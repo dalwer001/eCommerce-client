@@ -77,7 +77,7 @@ const AddProducts = () => {
 
     try {
       const res = await axios.post(
-        "http://localhost:5000/addProduct",
+        "https://pacific-plateau-10670.herokuapp.com/addProduct",
         productData
       );
       if (res) {

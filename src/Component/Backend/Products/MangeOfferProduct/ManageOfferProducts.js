@@ -43,13 +43,13 @@ export default function ManageOfferProducts() {
   const [offerProduct, setOfferProduct] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/offerProducts")
+    fetch("https://pacific-plateau-10670.herokuapp.com/offerProducts")
       .then((res) => res.json())
       .then((data) => setOfferProduct(data));
   }, []);
 
   const statusUpdated = () => {
-    fetch('http://localhost:5000/offerProducts')
+    fetch('https://pacific-plateau-10670.herokuapp.com/offerProducts')
       .then(res => res.json())
       .then(data => setOfferProduct(data));
   }
@@ -59,7 +59,7 @@ export default function ManageOfferProducts() {
     const status = 'Published'
     const user = { id, status };
 
-    const url = `http://localhost:5000/publishOfferProduct/${id}`;
+    const url = `https://pacific-plateau-10670.herokuapp.com/publishOfferProduct/${id}`;
     fetch(url, {
       method: 'PATCH',
       headers: {
@@ -80,7 +80,7 @@ export default function ManageOfferProducts() {
     const status = 'Unpublished'
     const user = { id, status };
 
-    const url = `http://localhost:5000/${id}`;
+    const url = `https://pacific-plateau-10670.herokuapp.com/${id}`;
     fetch(url, {
       method: 'PATCH',
       headers: {

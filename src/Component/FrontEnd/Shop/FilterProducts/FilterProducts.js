@@ -11,7 +11,7 @@ const FilterProducts = () => {
     const [categories, SetCategory] = useState([]);
     useEffect(()=>{
         const loadCategory = async()=>{
-            const res = await axios.get('http://localhost:5000/products');
+            const res = await axios.get('https://pacific-plateau-10670.herokuapp.com/products');
             SetCategory(res.data);
             console.log(res.data);
         }
