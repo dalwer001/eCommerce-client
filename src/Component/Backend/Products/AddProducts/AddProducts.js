@@ -30,11 +30,6 @@ const AddProducts = () => {
     productsLoaders();
   }, []);
 
-  // const handleBlur = e => {
-  //     const newInfo = { ...productInfo }
-  //     newInfo[e.target.name] = e.target.value;
-  //     setProductInfo(newInfo);
-  // }
 
   const handleImageUpload = (e) => {
     const imageData = new FormData();
@@ -53,16 +48,6 @@ const AddProducts = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // const formData = new FormData()
-    // formData.append('image', imageURL);
-    // formData.append('title', productInfo.title);
-    // formData.append('description', productInfo.description);
-    // formData.append('price', productInfo.price);
-    // formData.append('size', productInfo.size);
-    // formData.append('category', productInfo.category);
-    // formData.append('type', productInfo.type);
-    // formData.append('quantity', productInfo.quantity);
-
     const productData = {
       email: loggedInUser.email,
       image: imageURL,

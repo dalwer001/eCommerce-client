@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartPlus, faHeart } from '@fortawesome/free-solid-svg-icons';
 import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
-import logo from '../../../../Images/logo.jpg';
+import logo from '../../../../Images/logo.png';
 import './Navbar.css';
 import { CartContext, UserContext } from '../../../../App';
 import { Collapse } from 'react-bootstrap';
@@ -69,12 +69,8 @@ const Navbar = () => {
     }
   >
     <div class="container-fluid px-5">
-        <a class="navbar-brand" href="#">
-          <a class="navbar-brand" href="#">
-            
+        <a class="navbar-brand" href="/">
               <img class="logo" src={logo} alt="" />
-            
-          </a>
         </a>
         <button
           class="navbar-toggler"

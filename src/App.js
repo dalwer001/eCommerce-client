@@ -51,6 +51,8 @@ import UpdateCategory from './Component/Backend/Category/ManageCategory/UpdateCa
 import ManageType from './Component/Backend/Type/ManageType/ManageType';
 import UpdateType from './Component/Backend/Type/ManageType/UpdateType';
 import NoMatch from './Component/FrontEnd/Shared/NoMatch/NoMatch';
+import Checkout from './Component/FrontEnd/Home/Cart/Checkout/Checkout/Checkout';
+
 // import AdminSidebarPanel from './Component/Backend/AdminPanel/AdminSidebarPanel';
 
 
@@ -80,9 +82,6 @@ function App() {
               <Route exact path="/">
                 <Home />
               </Route>
-              {/* <Route exact path="/">
-            <Home></Home>
-          </Route> */}
               <Route path="/home">
                 <Home />
               </Route>
@@ -95,9 +94,15 @@ function App() {
               <Route path="/products/:id">
                 <SingleProduct />
               </Route>
+
               {/* <PrivateRoute path="/productss">
                 <SingleProductsDetails />
               </PrivateRoute> */}
+
+                <PrivateRoute path="/checkout">
+                  <Checkout/>
+                </PrivateRoute>
+
               <Route path="/gallery">
                 <Gallery></Gallery>
               </Route>
@@ -127,14 +132,7 @@ function App() {
               <PrivateRoute path="/addType">
                 <AddType></AddType>
               </PrivateRoute>
-              {/* add products */}
-              <VendorPrivateRoute path="/addProduct">
-                <AddProducts />
-              </VendorPrivateRoute>
-              {/* offer products */}
-              <VendorPrivateRoute path="/addOffer">
-                <AddOfferProducts></AddOfferProducts>
-              </VendorPrivateRoute>
+              
               <PrivateRoute path="/adminManageVendor">
                 <ManageVendor></ManageVendor>
               </PrivateRoute>
@@ -175,6 +173,16 @@ function App() {
               <PrivateRoute path="/adminManageProduct">
                 <AdminManageProduct></AdminManageProduct>
               </PrivateRoute>
+
+
+              {/* add products */}
+              <VendorPrivateRoute path="/addProduct">
+                <AddProducts />
+              </VendorPrivateRoute>
+              {/* offer products */}
+              <VendorPrivateRoute path="/addOffer">
+                <AddOfferProducts></AddOfferProducts>
+              </VendorPrivateRoute>
               <VendorPrivateRoute path="/VendorDashboard">
                 <VendorDashboard></VendorDashboard>
               </VendorPrivateRoute>
