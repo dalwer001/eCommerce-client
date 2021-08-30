@@ -6,6 +6,7 @@ import Products from '../Products/Products';
 import Category from '../Category/Category';
 import Offers from '../Offers/Offers';
 import OfferInfo from '../OfferInfo/OfferInfo';
+import CountWatch from '../CountWatch/CountWatch';
 
 
 const Home = () => {
@@ -15,6 +16,7 @@ const Home = () => {
         <Slider></Slider>
         <Category/>
         <Products/>
+        <CountWatch></CountWatch>
         <OfferInfo></OfferInfo>
         <Footer></Footer>
       </div>
