@@ -123,7 +123,7 @@ export default function VendorRegister() {
                 id="lastName"
                 label="Last Name"
                 name="lastName"
-                value={user.lasttName}
+                value={user.lastName}
                 onChange={handleInputs}
                 autoComplete="lname"
               />
