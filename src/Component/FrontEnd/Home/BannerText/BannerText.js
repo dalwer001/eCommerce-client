@@ -24,8 +24,8 @@ const BannerText = () => {
                     nobis ducimus ut aperiam, soluta culpa odio amet ? <br /> Id
                     unde recusandae consectetur.
                   </p>
-                  <Link to="product">
-                    <button>Get Started </button>
+                  <Link to="/shop">
+                    <button>Get Started</button>
                   </Link>
                 </div>
               </div>

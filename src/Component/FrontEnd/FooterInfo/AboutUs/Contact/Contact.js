@@ -6,7 +6,7 @@ import Navbar from '../../../Shared/Navbar/Navbar';
 const Contact = () => {
     const classes = useStyles();
     return (
-        <section>
+        <section className="p-5">
             <div className="container p-5">
                 <Navbar></Navbar>
                 <div className="text-center mt-5 mb-5">

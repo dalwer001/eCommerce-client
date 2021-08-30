@@ -37,7 +37,7 @@ const Cart = () => {
                     :
                     <div className="text-center">
                         <p className="mt-3">Your shopping cart is empty!</p>
-                        <Link to="/home">
+                        <Link to="/shop">
                             <Button variant="primary">Continue</Button>
                         </Link>
                     </div>

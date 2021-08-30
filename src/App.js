@@ -40,7 +40,7 @@ import AdminManageProduct from './Component/Backend/Products/ManageProducts/Admi
 import VendorManageProducts from './Component/Backend/Products/ManageProducts/VendorManageProducts';
 import VendorManageOffer from './Component/Backend/Products/MangeOfferProduct/VendorManageOffer';
 import VendorPrivateRoute from './Component/FrontEnd/PrivateRoute/VendorPrivateRoute';
- import AdminDashboard from './Component/Backend/AdminPanel/AdminDashboard/AdminDashboard';
+import AdminDashboard from './Component/Backend/AdminPanel/AdminDashboard/AdminDashboard';
 import VendorDashboard from './Component/Backend/VendorDashboard/VendorDashboard';
 
 
@@ -50,6 +50,7 @@ import ManageCategory from './Component/Backend/Category/ManageCategory/ManageCa
 import UpdateCategory from './Component/Backend/Category/ManageCategory/UpdateCategory';
 import ManageType from './Component/Backend/Type/ManageType/ManageType';
 import UpdateType from './Component/Backend/Type/ManageType/UpdateType';
+import NoMatch from './Component/FrontEnd/Shared/NoMatch/NoMatch';
 // import AdminSidebarPanel from './Component/Backend/AdminPanel/AdminSidebarPanel';
 
 
@@ -74,7 +75,7 @@ function App() {
       <CartContext.Provider value={[cartProducts, setCartProducts]}>
         <TotalContext.Provider value={[grandTotal, setGrandTotal]}>
           <Router>
-            
+
             <Switch>
               <Route exact path="/">
                 <Home />
@@ -128,7 +129,7 @@ function App() {
               </PrivateRoute>
               {/* add products */}
               <VendorPrivateRoute path="/addProduct">
-                <AddProducts/>
+                <AddProducts />
               </VendorPrivateRoute>
               {/* offer products */}
               <VendorPrivateRoute path="/addOffer">
@@ -147,7 +148,7 @@ function App() {
                 <ManageType></ManageType>
               </PrivateRoute>
               <PrivateRoute path="/updateTypes/:id">
-               <UpdateType></UpdateType>
+                <UpdateType></UpdateType>
               </PrivateRoute>
               <PrivateRoute path="/adminOfferProduct">
                 <ManageOfferProducts></ManageOfferProducts>
@@ -165,34 +166,36 @@ function App() {
               <Route path="/contact">
                 <Contact></Contact>
               </Route>
-             <PrivateRoute path="/adminDashboard">
-               <AdminDashboard></AdminDashboard>
+              <PrivateRoute path="/adminDashboard">
+                <AdminDashboard></AdminDashboard>
               </PrivateRoute>
-               <Route path="/addAdmin">
+              <Route path="/addAdmin">
                 <AddAdmin></AddAdmin>
               </Route>
               <PrivateRoute path="/adminManageProduct">
                 <AdminManageProduct></AdminManageProduct>
               </PrivateRoute>
               <VendorPrivateRoute path="/VendorDashboard">
-               <VendorDashboard></VendorDashboard>
+                <VendorDashboard></VendorDashboard>
               </VendorPrivateRoute>
               <VendorPrivateRoute path="/vendorManageProduct">
                 <VendorManageProducts></VendorManageProducts>
               </VendorPrivateRoute >
               <VendorPrivateRoute path="/updateProduct/:id">
-           <VendorUpdateProduct></VendorUpdateProduct>
-          </VendorPrivateRoute>
+                <VendorUpdateProduct></VendorUpdateProduct>
+              </VendorPrivateRoute>
               <VendorPrivateRoute path="/vendorManageOffers">
                 <VendorManageOffer></VendorManageOffer>
               </VendorPrivateRoute >
               <VendorPrivateRoute path="/updateOfferProduct/:id">
-         <VendorUpdateOfferProduct></VendorUpdateOfferProduct>
-          </VendorPrivateRoute>
-             
-              
+                <VendorUpdateOfferProduct></VendorUpdateOfferProduct>
+              </VendorPrivateRoute>
+
+              <Route path="*">
+                <NoMatch />
+              </Route>
             </Switch>
-            
+
           </Router>
         </TotalContext.Provider>
       </CartContext.Provider>
