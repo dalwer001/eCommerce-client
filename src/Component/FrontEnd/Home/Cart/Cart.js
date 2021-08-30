@@ -36,7 +36,7 @@ const Cart = () => {
 
                         <div className="d-flex justify-content-between my-5">
                             <div>
-                                <Link>
+                                <Link to="/shop">
                                     <Button variant="outline-dark">Continue Shopping</Button>
                                 </Link>
                             </div>
