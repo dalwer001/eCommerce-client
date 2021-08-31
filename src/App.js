@@ -50,6 +50,7 @@ import ManageCategory from './Component/Backend/Category/ManageCategory/ManageCa
 import UpdateCategory from './Component/Backend/Category/ManageCategory/UpdateCategory';
 import ManageType from './Component/Backend/Type/ManageType/ManageType';
 import UpdateType from './Component/Backend/Type/ManageType/UpdateType';
+import SearchProduct from './Component/FrontEnd/Home/SearchProduct/SearchProduct';
 // import AdminSidebarPanel from './Component/Backend/AdminPanel/AdminSidebarPanel';
 
 
@@ -102,6 +103,9 @@ function App() {
               </Route>
               <Route path="/offer">
                 <OfferInfo></OfferInfo>
+              </Route>
+              <Route path="/search">
+                <SearchProduct />
               </Route>
               <Route path="/cart">
                 <Cart />
