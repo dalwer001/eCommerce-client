@@ -127,7 +127,7 @@ const CheckoutPage = () => {
                                         <p>City: {delivery.city}</p>
                                         <p>Address: {delivery.address}</p>
                                         <div className="mb-3 col-md-12">
-                                            <Link to="" className="btn btn-outline-primary">Payment Process</Link>
+                                            <Link to="/paymentProcess" className="btn btn-outline-primary">Payment Process</Link>
                                         </div>
                                     </div>
                                 )
