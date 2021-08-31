@@ -33,15 +33,29 @@ const Cart = () => {
                                 <h4>Total: <span className="money">${grandTotal.toFixed(2)}</span></h4>
                             </div>
                         </div>
+
+                        <div className="d-flex justify-content-between my-5">
+                            <div>
+                                <Link to="/shop">
+                                    <Button variant="outline-dark">Continue Shopping</Button>
+                                </Link>
+                            </div>
+                            <div>
+                                <Link to="/checkout">
+                                    <Button variant="outline-danger">Checkout</Button>
+                                </Link>
+                            </div>
+                        </div>
                     </>
                     :
                     <div className="text-center">
                         <p className="mt-3">Your shopping cart is empty!</p>
-                        <Link to="/home">
+                        <Link to="/shop">
                             <Button variant="primary">Continue</Button>
                         </Link>
                     </div>
             }
+
         </div>
     );
 };

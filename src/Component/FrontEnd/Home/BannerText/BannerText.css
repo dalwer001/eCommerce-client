@@ -31,7 +31,7 @@ button.carousel-control-next {
 
 .caption button:before {
 	font-family: FontAwesome;
-	content:"\f0f0";
+	content:"";
 	position: absolute;
 	top: 18px;
 	left: -22px;

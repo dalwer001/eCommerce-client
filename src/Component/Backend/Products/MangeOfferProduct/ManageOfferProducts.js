@@ -80,7 +80,7 @@ export default function ManageOfferProducts() {
     const status = 'Unpublished'
     const user = { id, status };
 
-    const url = `https://pacific-plateau-10670.herokuapp.com/${id}`;
+    const url = `https://pacific-plateau-10670.herokuapp.com/publishOfferProduct/${id}`;
     fetch(url, {
       method: 'PATCH',
       headers: {

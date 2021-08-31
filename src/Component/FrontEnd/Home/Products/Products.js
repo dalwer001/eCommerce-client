@@ -60,7 +60,7 @@ const Products = () => {
 
     return (
         <div className="recent-product-bg">
-            <div className="container p-5">
+            <div className="container">
                 
                 <Bounce left>
                     <h4 className="mb-5 border-bottom fw-bolder">Recent Products</h4>

@@ -1,12 +1,12 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCartPlus, faHeart } from "@fortawesome/free-solid-svg-icons";
-import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
-import logo from "../../../../Images/logo.jpg";
-import "./Navbar.css";
-import { CartContext, UserContext } from "../../../../App";
-import { Collapse } from "react-bootstrap";
-import { TextField } from "@material-ui/core";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCartPlus, faHeart } from '@fortawesome/free-solid-svg-icons';
+import React, { useContext, useState } from 'react';
+import { Link } from 'react-router-dom';
+import logo from '../../../../Images/logo.png';
+import './Navbar.css';
+import { CartContext, UserContext } from '../../../../App';
+import { Collapse } from 'react-bootstrap';
+import { TextField } from '@material-ui/core';
 // import { CartContext } from '../../../../App';
 import SearchProduct from "../../Home/SearchProduct/SearchProduct";
 import firebase from "firebase/app";
@@ -62,17 +62,15 @@ const Navbar = () => {
   });
   return (
     <nav
-      class={
-        navbar
-          ? "navbar navbar-expand-lg navbar-light sticky grybg fixed-top"
-          : "navbar navbar-expand-lg navbar-light sticky  fixed-top"
-      }
-    >
-      <div class="container-fluid px-5">
-        <a class="navbar-brand" href="#">
-          <a class="navbar-brand" href="#">
-            <img class="logo" src={logo} alt="" />
-          </a>
+    class={
+      navbar
+        ? "navbar navbar-expand-lg navbar-light sticky grybg fixed-top"
+        : "navbar navbar-expand-lg navbar-light sticky  fixed-top"
+    }
+  >
+    <div class="container-fluid px-5">
+        <a class="navbar-brand" href="/">
+              <img class="logo" src={logo} alt="" />
         </a>
         <button
           class="navbar-toggler"
