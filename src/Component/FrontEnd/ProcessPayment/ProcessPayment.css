@@ -1,3 +1,25 @@
 .payment-card{
     margin-top: 200px;
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15)!important;
+
+    margin-left:20px;
+}
+
+.pay{
+    margin-top:200px;
+   
+    padding: 10px;
+    box-shadow:1 px;
+    margin-left: 100px;
+}
+.dropdown{
+    width: 1000px;
+}
+.pay{
+    padding-top:200px;
+}
+.pay-details{
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15)!important;
+
+    margin-left: 20px;
 }

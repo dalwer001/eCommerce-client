@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
-import card from "../../../Images/credit.png";
-import "./SimpleCardForm.css";
-const SimpleCardForm = ({ handlePaymentSuccess }) => {
+import React from 'react';
+import {CardElement, useStripe, useElements} from '@stripe/react-stripe-js';
+import { useState } from 'react';
+
+const SimpleCardForm = ({handlePayment}) => {
   const stripe = useStripe();
   const elements = useElements();
 
@@ -25,8 +25,8 @@ const SimpleCardForm = ({ handlePaymentSuccess }) => {
     const cardElement = elements.getElement(CardElement);
 
     // Use your card Element with other Stripe.js APIs
-    const { error, paymentMethod } = await stripe.createPaymentMethod({
-      type: "card",
+    const {error, paymentMethod} = await stripe.createPaymentMethod({
+      type: 'card',
       card: cardElement,
     });
 
@@ -34,49 +34,25 @@ const SimpleCardForm = ({ handlePaymentSuccess }) => {
       setPaymentError(error.message);
       setPaymentSuccess(null);
     } else {
-      // console.log('[PaymentMethod]', paymentMethod);
-      setPaymentSuccess(paymentMethod.id);
-      setPaymentError(null);
-      handlePaymentSuccess(paymentMethod.id);
+        setPaymentSuccess(paymentMethod.id);
+        setPaymentError(null);
+        handlePayment(paymentMethod.id)
     }
   };
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
-        <div className="row m-0 pay">
-          <div className="col-md-4">
-            <div class="dropdown">
-              <img
-                src={card}
-                alt=""
-                className="image-payment dropdown-toggle"
-                type="button"
-                id="dropdownMenuButton2"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              />
-
-              <ul
-                class="dropdown-menu dropdown-menu-light"
-                aria-labelledby="dropdownMenuButton2"
-              >
-                <CardElement className="card-element" />
-                
-                <button type="submit" disabled={!stripe}>
-                  Pay
-                </button>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </form>
-      {paymentError && <p style={{ color: "red" }}>{paymentError}</p>}
-      {paymentSuccess && (
-        <p style={{ color: "green" }}>
-          Your payment has completed successfully.
-        </p>
-      )}
+        <form onSubmit={handleSubmit}>
+            <CardElement />
+            
+            <button type="submit" disabled={!stripe} class="btn btn-outline-danger mt-5 mb-2">Pay</button>
+        </form>
+        {
+            paymentError && <p style={{color: 'red'}}>{paymentError}</p>
+        }
+        { 
+            paymentSuccess && <p style={{color: 'green'}}>Your payment was successful.</p>
+        }
     </div>
   );
 };
