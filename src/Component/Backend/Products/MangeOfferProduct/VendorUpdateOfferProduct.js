@@ -60,9 +60,9 @@ const VendorUpdateOfferProduct = () => {
     setMainPrice(e.target.value);
   };
 
-  // const handleImage = () => {
-  //   setImage(imageURL || OP.imageURL);
-  // };
+    const handleImage = () => {
+    setImage(imageURL || OP.imageURL);
+  };
   const handleOffer = (e) => {
     setOffer(e.target.value);
   };
@@ -94,7 +94,7 @@ const VendorUpdateOfferProduct = () => {
       category: category || OP.category,
       type: type || OP.type,
       quantity: quantity || OP.quantity,
-      // image: image || OP.imageURL,
+      imageURL: image || OP.imageURL,
     };
 
     console.log(updatedOP);
@@ -188,11 +188,12 @@ const VendorUpdateOfferProduct = () => {
             <label class="form-label fw-bolder read-only text-white">Image</label>
             <input
               class="form-control"
-              // onBlur={handleImage}
-              defaultValue={OP.imageURL}
+              onBlur={handleImage}
+              name="imageURL"
               onChange={handleImageUpload}
+              defaultValue={OP.imageURL}
               type="file"
-              name="image"
+             
             />
           </div>
           <div className="col-md-6">

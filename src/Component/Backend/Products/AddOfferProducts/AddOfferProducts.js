@@ -125,7 +125,7 @@ const AddOfferProducts = () => {
               class="form-control"
               onChange={handleImageUpload}
               type="file"
-              name="image"
+              // name="image"
             />
           </div>
           <div className="col-md-6">

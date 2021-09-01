@@ -20,7 +20,7 @@ const VendorUpdateProduct = () => {
   const [category, setCategory] = useState("");
   const [type, setType] = useState("");
   const [quantity, setQuantity] = useState("");
-  // const [image, setImage] = useState("");
+   const [image, setImage] = useState("");
   const { id } = useParams();
   useEffect(() => {
     fetch(`https://pacific-plateau-10670.herokuapp.com/updateP/${id}`)
@@ -61,9 +61,9 @@ const VendorUpdateProduct = () => {
     setPrice(e.target.value);
   };
 
-  // const handleImage = () => {
-  //   setImage(imageURL || P.imageURL);
-  // };
+  const handleImage = () => {
+    setImage(imageURL || P.imageURL);
+  };
 
   const handleSize = (e) => {
     setSize(e.target.value);
@@ -92,7 +92,7 @@ const VendorUpdateProduct = () => {
       category: category || P.category,
       type: type || P.type,
       quantity: quantity || P.quantity,
-      // image: image || P.imageURL,
+      imageURL: image || P.imageURL,
     };
 
     console.log(updatedP);
@@ -176,11 +176,12 @@ const VendorUpdateProduct = () => {
             <label class="form-label fw-bolder read-only text-white">Image</label>
             <input
               class="form-control"
-              // onBlur={handleImage}
-              defaultValue={P.imageURL}
+              onBlur={handleImage}
               onChange={handleImageUpload}
+              defaultValue={P.imageURL}
               type="file"
-              name="image"
+              name="imageURL"
+              // name="image"
             />
           </div>
           <div className="col-md-6">

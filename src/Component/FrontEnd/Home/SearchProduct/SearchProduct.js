@@ -14,14 +14,7 @@ import './SearchProducts.css'
 const SearchProduct = () => {
   
   const [showSearchBox, setShowSearchBox] = useState(false);
-  const [data, setData] = useState([]);
-//     useEffect(() => {
-//     const productsLoaders = async () => {
-//         const res = await axios.get('https://pacific-plateau-10670.herokuapp.com/products')
-//         setData(res.data);
-//     }
-//     productsLoaders();
-// }, []);
+  const [data, setData] = useState([])
 
 const history = useHistory();
 
@@ -41,7 +34,7 @@ const singleProductClick = (_id) => {
   return (
     <>
         
-       <Link onClick={() => setShowSearchBox(!showSearchBox)} to="#">
+       {/* <Link onClick={() => setShowSearchBox(!showSearchBox)} to="#">
         <FontAwesomeIcon
           size="2x"
           className="search ms-0 m-2 "
@@ -57,7 +50,7 @@ const singleProductClick = (_id) => {
           autoComplete='off'
         />
         
-      </Collapse>
+      </Collapse> */}
    
      <div className="searchItem">
       {

@@ -44,7 +44,7 @@ useEffect(() => {
     }
 })
   return (
-    <section className="timer-container">
+    <section className="timer-container mt-5">
       <section className="timer ">
         <div>
           <section>

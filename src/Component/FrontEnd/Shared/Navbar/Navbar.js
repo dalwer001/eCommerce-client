@@ -1,12 +1,12 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCartPlus, faHeart } from '@fortawesome/free-solid-svg-icons';
-import React, { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
-import logo from '../../../../Images/logo.png';
-import './Navbar.css';
-import { CartContext, UserContext } from '../../../../App';
-import { Collapse } from 'react-bootstrap';
-import { TextField } from '@material-ui/core';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCartPlus, faHeart } from "@fortawesome/free-solid-svg-icons";
+import React, { useContext, useState } from "react";
+import { Link, useHistory } from "react-router-dom";
+import logo from "../../../../Images/logo.png";
+import "./Navbar.css";
+import { CartContext, UserContext } from "../../../../App";
+import { Collapse } from "react-bootstrap";
+import { TextField } from "@material-ui/core";
 // import { CartContext } from '../../../../App';
 import SearchProduct from "../../Home/SearchProduct/SearchProduct";
 import firebase from "firebase/app";
@@ -15,19 +15,11 @@ import { faPhone, faSearch, faUserMd } from "@fortawesome/free-solid-svg-icons";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Navbar = () => {
-  const [data,setData] = useState();
-  async function search(key) {
-    console.log(key);
-    let result = await fetch("https://fakestoreapi.com/products" + key);
-    console.log(result)
-    result = await result.json();
-    setData(result)
-  }
-
+  const [data, setData] = useState([]);
   // quantity calculation
   const [loggedInUser, setLoggedInUser] = useContext(UserContext);
   const [cartProducts, setCartProducts] = useContext(CartContext);
-  const[showSearchBox, setShowSearchBox]=useState();
+  const [showSearchBox, setShowSearchBox] = useState(false);
   const [navbar, setNavbar] = useState(false);
   const changeBackground = () => {
     if (window.scrollY > 40) {
@@ -60,17 +52,33 @@ const Navbar = () => {
   cartProducts.forEach((p) => {
     cartProductQuantity = cartProductQuantity + p.quantity;
   });
+
+  const history = useHistory();
+
+  const singleProductClick = (_id) => {
+    history.push(`/products/${_id}`);
+  };
+  async function search(key) {
+    console.log(key);
+    let result = await fetch(
+      "https://pacific-plateau-10670.herokuapp.com/search/" + key
+    );
+
+    result = await result.json();
+    console.log(result);
+    setData(result);
+  }
+
   return (
     <nav
-    class={
-      navbar
-        ? "navbar navbar-expand-lg navbar-light sticky grybg fixed-top"
-        : "navbar navbar-expand-lg navbar-light sticky  fixed-top"
-    }
-  >
-    <div class="container-fluid px-5">
+      className=
+         "navbar navbar-expand-lg navbar-light sticky grybg fixed-top"
+        
+      
+    >
+      <div class="container-fluid px-5">
         <a class="navbar-brand" href="/">
-              <img class="logo" src={logo} alt="" />
+          <img class="logo" src={logo} alt="" />
         </a>
         <button
           class="navbar-toggler"
@@ -119,31 +127,64 @@ const Navbar = () => {
                 {loggedInUser.displayName || loggedInUser.email}
               </Link>
             </li>
-
-            
-            <Link onClick={() => setShowSearchBox(!showSearchBox)} to="/search">
-            <button
-                type="button"
-                className="btn btn-sm  position-relative p-0 m-0"
-              >
-                <FontAwesomeIcon
+           <div>
+           <form class="d-flex">
+        <input  onChange={(e) => search(e.target.value)} class="form-control me-2" type="search"   name="title"
+          label="Search"
+          fullWidth
+          autoComplete='off' placeholder="Search" aria-label="Search"/>
+        {/* <button class="btn btn-outline-success" onClick={() => setShowSearchBox(showSearchBox)} type="submit">Search</button> */}
+      </form>
+      
+     <div className="searchItem">
+      {
+                data.map(products=> <p onClick={() => singleProductClick(products._id)}>{products.title}</p> )
+            } 
+            </div>
+           </div>
+      
+        {/* <>
+                <TextField
+                  onChange={(e) => search(e.target.value)}
+                  name="title"
+                  label="Search"
+                  fullWidth
+                  autoComplete="off"
+                />
+              </>
+              <div >
+              {data.map((products) => (
+                <p onClick={() => singleProductClick(products._id)}>
+                  {products.title}
+                </p>
+              ))}
+            </div> */}
+      {/* </form> */}
+            {/* <Link onClick={() => setShowSearchBox(!showSearchBox)} to="#">
+            <FontAwesomeIcon
           size="2x"
           className="search ms-0 m-2 "
           icon={faSearch}
         />
-               
-              </button>
-            </Link>
-            <Collapse in={showSearchBox}>
-        <TextField
-          onChange={(e) => search(e.target.value)}
-          name="title"
-          label="Search"
-          fullWidth
-          autoComplete='off'
-        />
-        
-      </Collapse>
+              <Collapse in={showSearchBox}>
+                <TextField
+                  onChange={(e) => search(e.target.value)}
+                  name="title"
+                  label="Search"
+                  fullWidth
+                  autoComplete="off"
+                />
+              </Collapse>
+              <div >
+              {data.map((products) => (
+                <p onClick={() => singleProductClick(products._id)}>
+                  {products.title}
+                </p>
+              ))}
+            </div>
+            </Link> */}
+
+           
 
             <Link to="/cart">
               <button
@@ -152,7 +193,7 @@ const Navbar = () => {
               >
                 <FontAwesomeIcon
                   size="2x"
-                  className=" shoppingCart ms-0 m-2"
+                  className=" shoppingCart text-light ms-0 m-2"
                   icon={faCartPlus}
                 />
                 <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
@@ -160,47 +201,7 @@ const Navbar = () => {
                 </span>
               </button>
             </Link>
-
-            {/* <div class="header-info d-flex align-items-center">
-            <div class="header-search">
-              <span>
-                {" "}
-                <FontAwesomeIcon icon={faSearch} type="search" placeholder="Search" aria-label="Search"  />
-                <Link onClick={() => setShowSearchBox(!showSearchBox)} to="#"><FontAwesomeIcon size="2x" className="search ms-0 m-2 " icon={faSearch} /></Link>
-            <Collapse in={showSearchBox}>
-              <TextField onChange={(e) => search(e.target.value)} name="title" label="Search" fullWidth />
-            </Collapse>
-            <SearchProduct></SearchProduct> {" "}
-              </span>
-            </div>
-            </div> */}
           </ul>
-
-          {/* <Link to="#"><FontAwesomeIcon size="2x" className=" wishlistNav  ms-0 m-2" icon={faHeart} /></Link>
-            <Link to="/cart">
-              <button type="button" className="btn btn-sm btn-light position-relative p-0 m-0">
-                <FontAwesomeIcon size="2x" className=" shoppingCart ms-0 m-2" icon={faCartPlus} />
-                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                  {cartProductQuantity}
-                </span>
-              </button>
-            </Link> */}
-
-          {/* </div> */}
-          {/* <div class="header-button class-for-visibility text-center">
-            <Link to="/service">Apply Now</Link>
-          </div> */}
-          {/* </div> */}
-
-          {/* <form class="d-flex"> */}
-            {/* 
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-
-            <Link onClick={() => setShowSearchBox(!showSearchBox)} to="#"><FontAwesomeIcon size="2x" className="search ms-0 m-2 " icon={faSearch} /></Link>
-            <Collapse in={showSearchBox}>
-              <TextField onChange={(e) => search(e.target.value)} name="title" label="Search" fullWidth />
-            </Collapse> */}
-          {/* </form> */}
         </div>
       </div>
     </nav>
