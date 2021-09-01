@@ -13,8 +13,8 @@ body {
   
   .searchItem {
     position: absolute;
-    right: 90px;
-    top: 70px;
+    right: 94px;
+    top: 50px;
     z-index: 1;
     background: white;
     padding:15px;

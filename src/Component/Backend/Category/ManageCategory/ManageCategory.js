@@ -20,7 +20,7 @@ import { useHistory } from 'react-router-dom';
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
-  
+
     color: theme.palette.common.white,
   },
   body: {
@@ -52,26 +52,26 @@ export default function ManageCategory() {
       .then((data) => setCat(data));
   }, []);
 
-  
 
-  
+
+
 
 
 
   const classes = useStyles();
   const history = useHistory();
   const handleUpdate = (id) => {
-      history.push(`/updateCategory/${id}`);
+    history.push(`/updateCategory/${id}`);
   }
   return (
     <div className="row m-0">
       <div className="col-md-2 col-sm-2 col-lg-2 p-0">
-  <Sidebar></Sidebar>
+        <Sidebar></Sidebar>
       </div>
       <div className="col-md-10 mt-2 col-sm-10">
         <TableContainer component={Paper}>
           <Table className={classes.table} aria-label="customized table">
-            <TableHead style={{  backgroundColor: "#0B4C61"}}>
+            <TableHead style={{ backgroundColor: "#0B4C61" }}>
               <TableRow >
                 <StyledTableCell align="left">Title</StyledTableCell>
                 <StyledTableCell align="left">Price</StyledTableCell>
@@ -84,26 +84,26 @@ export default function ManageCategory() {
                 <StyledTableRow key={c.name}>
                   <StyledTableCell align="left">{c.category}</StyledTableCell>
                   <StyledTableCell component="th" scope="row">
-                      <img
-                        style={{ width: "8rem", height: "8rem" }}
-                        src={c.image}
-                        alt=""
-                      />
+                    <img
+                      style={{ width: "8rem", height: "8rem" }}
+                      src={c.image}
+                      alt=""
+                    />
                   </StyledTableCell>
-                  
-                 
+
+                  <StyledTableCell>
                   <div class="dropdown table-row">
-            <button class="btn btn-sm btn-light dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                <i class="bi bi-arrow-down-right-circle"></i>
-            </button>
-            <ul class="dropdown-menu " aria-labelledby="dropdownMenuButton1">
-                <li>
-                <button  onClick={() => handleUpdate(c._id)} className="p-button mt-3">Update</button>
-                </li>
-            </ul>
-        </div>
-       
-                  
+                    <button class="btn btn-sm btn-light dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                      <i class="bi bi-arrow-down-right-circle"></i>
+                    </button>
+                    <ul class="dropdown-menu " aria-labelledby="dropdownMenuButton1">
+                      <li>
+                        <button onClick={() => handleUpdate(c._id)} className="p-button mt-3">Update</button>
+                      </li>
+                    </ul>
+                  </div>
+                  </StyledTableCell>
+
                 </StyledTableRow>
               ))}
             </TableBody>

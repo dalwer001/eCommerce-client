@@ -45,7 +45,7 @@ const Navbar = () => {
         };
         setLoggedInUser(signedOutUser);
       })
-      .catch((error) => {});
+      .catch((error) => { });
   };
 
   let cartProductQuantity = 0;
@@ -72,9 +72,9 @@ const Navbar = () => {
   return (
     <nav
       className=
-         "navbar navbar-expand-lg navbar-light sticky grybg fixed-top"
-        
-      
+      "navbar navbar-expand-lg navbar-light sticky grybg fixed-top"
+
+
     >
       <div class="container-fluid px-5">
         <a class="navbar-brand" href="/">
@@ -105,9 +105,9 @@ const Navbar = () => {
             <li>
               <Link to="/gallery">Gallery</Link>
             </li>
-            <li>
+            {/* <li>
               <Link to="/blog">Blog</Link>
-            </li>
+            </li> */}
 
             <li>
               <Link to="/contact">Contact</Link>
@@ -127,23 +127,23 @@ const Navbar = () => {
                 {loggedInUser.displayName || loggedInUser.email}
               </Link>
             </li>
-           <div>
-           <form class="d-flex">
-        <input  onChange={(e) => search(e.target.value)} class="form-control me-2" type="search"   name="title"
-          label="Search"
-          fullWidth
-          autoComplete='off' placeholder="Search" aria-label="Search"/>
-        {/* <button class="btn btn-outline-success" onClick={() => setShowSearchBox(showSearchBox)} type="submit">Search</button> */}
-      </form>
-      
-     <div className="searchItem">
-      {
-                data.map(products=> <p onClick={() => singleProductClick(products._id)}>{products.title}</p> )
-            } 
+            <div>
+              <form class="d-flex">
+                <input onChange={(e) => search(e.target.value)} class="form-control me-2" type="search" name="title"
+                  label="Search"
+                  fullWidth
+                  autoComplete='off' placeholder="Search" aria-label="Search" />
+                {/* <button class="btn btn-outline-success" onClick={() => setShowSearchBox(showSearchBox)} type="submit">Search</button> */}
+              </form>
+
+              <div className="searchItem">
+                {
+                  data.map(products => <p onClick={() => singleProductClick(products._id)}>{products.title}</p>)
+                }
+              </div>
             </div>
-           </div>
-      
-        {/* <>
+
+            {/* <>
                 <TextField
                   onChange={(e) => search(e.target.value)}
                   name="title"
@@ -159,7 +159,7 @@ const Navbar = () => {
                 </p>
               ))}
             </div> */}
-      {/* </form> */}
+            {/* </form> */}
             {/* <Link onClick={() => setShowSearchBox(!showSearchBox)} to="#">
             <FontAwesomeIcon
           size="2x"
@@ -184,7 +184,7 @@ const Navbar = () => {
             </div>
             </Link> */}
 
-           
+
 
             <Link to="/cart">
               <button
