@@ -47,6 +47,7 @@ import UpdateType from "./Component/Backend/Type/ManageType/UpdateType";
 import NoMatch from "./Component/FrontEnd/Shared/NoMatch/NoMatch";
 import Checkout from "./Component/FrontEnd/Home/Cart/Checkout/Checkout/Checkout";
 import ProcessPayment from "./Component/FrontEnd/ProcessPayment/ProcessPayment";
+import SearchProduct from "./Component/FrontEnd/Home/SearchProduct/SearchProduct";
 
 // import AdminSidebarPanel from './Component/Backend/AdminPanel/AdminSidebarPanel';
 
@@ -98,6 +99,9 @@ function App() {
               </Route>
               <Route path="/offer">
                 <OfferInfo></OfferInfo>
+              </Route>
+              <Route path="/search">
+                <SearchProduct />
               </Route>
               <Route path="/cart">
                 <Cart />

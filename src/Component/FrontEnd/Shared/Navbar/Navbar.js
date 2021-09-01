@@ -8,27 +8,26 @@ import { CartContext, UserContext } from '../../../../App';
 import { Collapse } from 'react-bootstrap';
 import { TextField } from '@material-ui/core';
 // import { CartContext } from '../../../../App';
-import SearchProduct from '../../Home/SearchProduct/SearchProduct';
+import SearchProduct from "../../Home/SearchProduct/SearchProduct";
 import firebase from "firebase/app";
-
 
 import { faPhone, faSearch, faUserMd } from "@fortawesome/free-solid-svg-icons";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Navbar = () => {
-  // async function search(key) {
-  //   console.log(key);
-  //   let result = await fetch("https://fakestoreapi.com/products" + key);
-  //   console.log(result)
-  //   result = await result.json();
-  //   setData(result)
-  // }
-
+  const [data,setData] = useState();
+  async function search(key) {
+    console.log(key);
+    let result = await fetch("https://fakestoreapi.com/products" + key);
+    console.log(result)
+    result = await result.json();
+    setData(result)
+  }
 
   // quantity calculation
   const [loggedInUser, setLoggedInUser] = useContext(UserContext);
   const [cartProducts, setCartProducts] = useContext(CartContext);
-  // const[showSearchBox, setShowSearchBox]=useContext(SearchBoxContext);
+  const[showSearchBox, setShowSearchBox]=useState();
   const [navbar, setNavbar] = useState(false);
   const changeBackground = () => {
     if (window.scrollY > 40) {
@@ -39,25 +38,26 @@ const Navbar = () => {
   };
   window.addEventListener("scroll", changeBackground);
   const handleSignOut = () => {
-    firebase.auth().signOut().then(() => {
-      let signedOutUser = {
-        isSignedIn: false,
-        name: '',
-        email: '',
-        password: '',
-        photo: '',
-        error: '',
-        success: false
-      }
-      setLoggedInUser(signedOutUser);
-    })
-      .catch((error) => {
-
-      });
-  }
+    firebase
+      .auth()
+      .signOut()
+      .then(() => {
+        let signedOutUser = {
+          isSignedIn: false,
+          name: "",
+          email: "",
+          password: "",
+          photo: "",
+          error: "",
+          success: false,
+        };
+        setLoggedInUser(signedOutUser);
+      })
+      .catch((error) => {});
+  };
 
   let cartProductQuantity = 0;
-  cartProducts.forEach(p => {
+  cartProducts.forEach((p) => {
     cartProductQuantity = cartProductQuantity + p.quantity;
   });
   return (
@@ -111,23 +111,57 @@ const Navbar = () => {
               {loggedInUser?.email ? (
                 <Link to="/">Log Out</Link>
               ) : (
-                <Link to="/login" >Log In</Link>
+                <Link to="/login">Log In</Link>
               )}
             </li>
             <li>
-              <Link to="#">{loggedInUser.displayName || loggedInUser.email}</Link>
+              <Link to="#">
+                {loggedInUser.displayName || loggedInUser.email}
+              </Link>
             </li>
+
+            
+            <Link onClick={() => setShowSearchBox(!showSearchBox)} to="/search">
+            <button
+                type="button"
+                className="btn btn-sm  position-relative p-0 m-0"
+              >
+                <FontAwesomeIcon
+          size="2x"
+          className="search ms-0 m-2 "
+          icon={faSearch}
+        />
+               
+              </button>
+            </Link>
+            <Collapse in={showSearchBox}>
+        <TextField
+          onChange={(e) => search(e.target.value)}
+          name="title"
+          label="Search"
+          fullWidth
+          autoComplete='off'
+        />
+        
+      </Collapse>
+
             <Link to="/cart">
-              <button type="button" className="btn btn-sm  position-relative p-0 m-0">
-                <FontAwesomeIcon size="2x" className=" shoppingCart ms-0 m-2" icon={faCartPlus} />
+              <button
+                type="button"
+                className="btn btn-sm  position-relative p-0 m-0"
+              >
+                <FontAwesomeIcon
+                  size="2x"
+                  className=" shoppingCart ms-0 m-2"
+                  icon={faCartPlus}
+                />
                 <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                   {cartProductQuantity}
                 </span>
               </button>
             </Link>
-            
-          </ul>
-          {/* <div class="header-info d-flex align-items-center">
+
+            {/* <div class="header-info d-flex align-items-center">
             <div class="header-search">
               <span>
                 {" "}
@@ -139,7 +173,10 @@ const Navbar = () => {
             <SearchProduct></SearchProduct> {" "}
               </span>
             </div>
-            <Link to="#"><FontAwesomeIcon size="2x" className=" wishlistNav  ms-0 m-2" icon={faHeart} /></Link>
+            </div> */}
+          </ul>
+
+          {/* <Link to="#"><FontAwesomeIcon size="2x" className=" wishlistNav  ms-0 m-2" icon={faHeart} /></Link>
             <Link to="/cart">
               <button type="button" className="btn btn-sm btn-light position-relative p-0 m-0">
                 <FontAwesomeIcon size="2x" className=" shoppingCart ms-0 m-2" icon={faCartPlus} />
@@ -147,46 +184,25 @@ const Navbar = () => {
                   {cartProductQuantity}
                 </span>
               </button>
-            </Link>
-             
-            </div> */}
-          </div>
+            </Link> */}
+
+          {/* </div> */}
           {/* <div class="header-button class-for-visibility text-center">
             <Link to="/service">Apply Now</Link>
           </div> */}
-        </div>
-    
-     
-         
+          {/* </div> */}
+
           {/* <form class="d-flex"> */}
-            {/* <div>
-              <ul class="navbar-nav me-auto mb-2 mb-lg-0"> 
-                <li class="nav-item  loginNav">
-                <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">Login</a>
-              </li>
-              </ul>
-               </div> */}
+            {/* 
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
 
-            {/* <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/> */}
-
-            {/* <Link onClick={() => setShowSearchBox(!showSearchBox)} to="#"><FontAwesomeIcon size="2x" className="search ms-0 m-2 " icon={faSearch} /></Link>
+            <Link onClick={() => setShowSearchBox(!showSearchBox)} to="#"><FontAwesomeIcon size="2x" className="search ms-0 m-2 " icon={faSearch} /></Link>
             <Collapse in={showSearchBox}>
               <TextField onChange={(e) => search(e.target.value)} name="title" label="Search" fullWidth />
             </Collapse> */}
-
-            {/* <SearchProduct></SearchProduct>
-            <Link to="#"><FontAwesomeIcon size="2x" className=" wishlistNav  ms-0 m-2" icon={faHeart} /></Link>
-            <Link to="/cart">
-              <button type="button" className="btn btn-sm btn-light position-relative p-0 m-0">
-                <FontAwesomeIcon size="2x" className=" shoppingCart ms-0 m-2" icon={faCartPlus} />
-                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                  {cartProductQuantity}
-                </span>
-              </button>
-            </Link>
-          </form>
-        </div> */}
-      {/* </div> */} 
+          {/* </form> */}
+        </div>
+      </div>
     </nav>
   );
 };
