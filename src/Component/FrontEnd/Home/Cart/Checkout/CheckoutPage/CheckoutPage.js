@@ -15,13 +15,13 @@ const CheckoutPage = () => {
     const productTotal = grandTotal + cost;
 
     useEffect(() => {
-        fetch("http://localhost:5000/delivery?email=" + loggedInUser.email)
+        fetch("https://pacific-plateau-10670.herokuapp.com/delivery?email=" + loggedInUser.email)
             .then(res => res.json())
             .then(data => setDeliveryData(data));
     }, []);
 
     const customerInfo = () => {
-        fetch("http://localhost:5000/delivery?email=" + loggedInUser.email)
+        fetch("https://pacific-plateau-10670.herokuapp.com/delivery?email=" + loggedInUser.email)
             .then(res => res.json())
             .then(data => setDeliveryData(data));
     }
@@ -38,7 +38,7 @@ const CheckoutPage = () => {
         };
         try {
             const res = await axios.post(
-                "http://localhost:5000/addDelivery",
+                "https://pacific-plateau-10670.herokuapp.com/addDelivery",
                 deliveryData
             );
             if (res) {
