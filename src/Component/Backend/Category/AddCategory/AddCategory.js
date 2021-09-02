@@ -34,7 +34,7 @@ const AddCategory = () => {
             // formData.append('category', categoryInfo.category);
             const categoryData ={ 
                 category:e.target.category.value,
-                image: imageURL
+                imageURL: imageURL
             }
     
             try {
@@ -69,7 +69,7 @@ const AddCategory = () => {
               class="form-control"
               onChange={handleImageUpload}
               type="file"
-              name="image"
+        //  name="imageURL"
             />
           </div>
                     <div className="col-md-8 d-flex align-items-center">

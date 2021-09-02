@@ -86,7 +86,7 @@ export default function ManageCategory() {
                   <StyledTableCell component="th" scope="row">
                     <img
                       style={{ width: "8rem", height: "8rem" }}
-                      src={c.image}
+                      src={c.imageURL}
                       alt=""
                     />
                   </StyledTableCell>
