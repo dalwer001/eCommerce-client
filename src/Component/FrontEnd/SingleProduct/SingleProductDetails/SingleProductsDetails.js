@@ -5,7 +5,8 @@ import './SingleProductsDetails.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faMinus, faArrowRight, faHeart } from '@fortawesome/free-solid-svg-icons';
 import { CartContext } from '../../../../App';
-
+import {  faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+import { Link } from '@material-ui/icons';
 const SingleProductsDetails = () => {
     const [singleProduct, setSingleProduct] = useState([]);
     const { id } = useParams();
@@ -110,7 +111,7 @@ const SingleProductsDetails = () => {
                     <div className="mt-5">
                         <small className="text-category fs-6 ">Category: <span className="fw-bolder text-dark">{category}</span></small>
                     </div>
-
+                    {/* <Link class="add-to-cart" onClick={() => addToCart(products)}><FontAwesomeIcon size="1x" icon={faShoppingCart} /><span className="p-2">Add to cart</span></Link> */}
                 </div>
             </div>
         </section>

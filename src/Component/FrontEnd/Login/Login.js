@@ -194,11 +194,14 @@ const updateUserName = name => {
                 <TextField
                   label={newUser ? "Name:" : "Username or Email"}
                   type="text"
-                  className="form-control"
+                  // className="form-control"
                   name="name"
                   placeholder="Your Name"
                   onBlur={handleBlur}
                   required
+                  margin="normal"
+                  autoFocus
+                  fullWidth
                 />
               )}
               <TextField
