@@ -3,6 +3,7 @@ import React, { useContext, useState } from 'react';
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { CartContext, TotalContext, UserContext } from '../../../../../../App.js';
+import ProcessPayment from '../../../../ProcessPayment/ProcessPayment.js';
 import CheckoutProduct from '../CheckoutProduct/CheckoutProduct.js';
 import './CheckoutPage.css';
 const CheckoutPage = () => {
@@ -32,7 +33,8 @@ const CheckoutPage = () => {
             name: e.target.name.value,
             phoneNumber: e.target.phoneNumber.value,
             city: e.target.city.value,
-            address: e.target.address.value
+            address: e.target.address.value,
+        
         };
         try {
             const res = await axios.post(
@@ -48,6 +50,7 @@ const CheckoutPage = () => {
             console.error(error);
         }
     }
+    
 
     return (
         <div className="container">
@@ -95,6 +98,7 @@ const CheckoutPage = () => {
 
                         </div>
                     </div>
+                    
                     <div className="col-md-4 checkout-details">
                         <h2 className>Order Summery</h2>
                         <div className="d-flex justify-content-between">
@@ -135,7 +139,10 @@ const CheckoutPage = () => {
                         </div>
                     </div>
                 </div>
-
+                {/* <div className="col-md-6">
+                        <h1>Payment Method</h1>
+                        <ProcessPayment></ProcessPayment>
+                    </div> */}
                 <div className="col-md-12">
                     <div className="row title d-flex justify-content-between text-start mt-3">
                         <h6 className="col-md-1 image">Image</h6>

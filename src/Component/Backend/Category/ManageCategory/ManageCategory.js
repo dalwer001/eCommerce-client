@@ -74,7 +74,7 @@ export default function ManageCategory() {
             <TableHead style={{ backgroundColor: "#0B4C61" }}>
               <TableRow >
                 <StyledTableCell align="left">Title</StyledTableCell>
-                <StyledTableCell align="left">Price</StyledTableCell>
+                {/* <StyledTableCell align="left">Price</StyledTableCell> */}
                 <StyledTableCell align="left">Action</StyledTableCell>
 
               </TableRow>
@@ -83,13 +83,13 @@ export default function ManageCategory() {
               {cat.map((c) => (
                 <StyledTableRow key={c.name}>
                   <StyledTableCell align="left">{c.category}</StyledTableCell>
-                  <StyledTableCell component="th" scope="row">
+                  {/* <StyledTableCell component="th" scope="row">
                     <img
                       style={{ width: "8rem", height: "8rem" }}
-                      src={c.imageURL}
+                      src={c.image}
                       alt=""
                     />
-                  </StyledTableCell>
+                  </StyledTableCell> */}
 
                   <StyledTableCell>
                   <div class="dropdown table-row">

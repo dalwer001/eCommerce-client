@@ -4,12 +4,12 @@ import Sidebar from '../../AdminPanel/Sidebar/Sidebar';
 import './AddCategory.css'
 const AddCategory = () => {
         const [imageURL, setIMageURL] = useState(null);
-        // const [categoryInfo, setCategoryInfo] = useState({})
-        // const handleBlur = e => {
-        //     const newInfo = { ...categoryInfo }
-        //     newInfo[e.target.name] = e.target.value;
-        //     setCategoryInfo(newInfo);
-        // }
+        const [categoryInfo, setCategoryInfo] = useState({})
+        const handleBlur = e => {
+            const newInfo = { ...categoryInfo }
+            newInfo[e.target.name] = e.target.value;
+            setCategoryInfo(newInfo);
+        }
 
         const handleImageUpload = (e) => {
             const imageData = new FormData();
@@ -34,7 +34,7 @@ const AddCategory = () => {
             // formData.append('category', categoryInfo.category);
             const categoryData ={ 
                 category:e.target.category.value,
-                imageURL: imageURL
+                 image: imageURL
             }
     
             try {
@@ -69,7 +69,7 @@ const AddCategory = () => {
               class="form-control"
               onChange={handleImageUpload}
               type="file"
-        //  name="imageURL"
+         name="image"
             />
           </div>
                     <div className="col-md-8 d-flex align-items-center">

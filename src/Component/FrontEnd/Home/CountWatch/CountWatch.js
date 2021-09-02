@@ -45,7 +45,9 @@ useEffect(() => {
 })
   return (
     <section className="timer-container mt-5">
+      
       <section className="timer ">
+     
         <div>
           <section>
             <h6 className="time-head">{timerDays}</h6>

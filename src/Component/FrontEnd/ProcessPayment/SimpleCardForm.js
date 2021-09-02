@@ -2,7 +2,7 @@ import React from 'react';
 import {CardElement, useStripe, useElements} from '@stripe/react-stripe-js';
 import { useState } from 'react';
 
-const SimpleCardForm = ({handlePayment}) => {
+const SimpleCardForm = ({handlePaymentSuccess}) => {
   const stripe = useStripe();
   const elements = useElements();
 
@@ -34,15 +34,26 @@ const SimpleCardForm = ({handlePayment}) => {
       setPaymentError(error.message);
       setPaymentSuccess(null);
     } else {
-        setPaymentSuccess(paymentMethod.id);
-        setPaymentError(null);
-        handlePayment(paymentMethod.id)
+      // console.log('[PaymentMethod]', paymentMethod);
+      setPaymentSuccess(paymentMethod.id);
+      setPaymentError(null);
+      handlePaymentSuccess(paymentMethod.id)
     }
   };
 
   return (
-    <div>
-        <form onSubmit={handleSubmit}>
+    <div >
+      <form onSubmit={handleSubmit}>
+      <CardElement />
+      <button type="submit" disabled={!stripe} class="btn btn-outline-danger mt-5 mb-2">Pay</button>
+    </form>
+    {
+      paymentError && <p style={{color: 'red'}}>{paymentError}</p>
+    }
+    {
+      paymentSuccess && <p style={{color: 'green'}}>Your payment has completed successfully.</p>
+    }
+        {/* <form onSubmit={handleSubmit}>
             <CardElement />
             
             <button type="submit" disabled={!stripe} class="btn btn-outline-danger mt-5 mb-2">Pay</button>
@@ -52,7 +63,7 @@ const SimpleCardForm = ({handlePayment}) => {
         }
         { 
             paymentSuccess && <p style={{color: 'green'}}>Your payment was successful.</p>
-        }
+        } */}
     </div>
   );
 };
